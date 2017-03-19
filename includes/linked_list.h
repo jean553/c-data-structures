@@ -35,3 +35,21 @@ void push(Node* node, const int data);
  * @return const int
  */
 const int at(Node* node, const unsigned int index);
+
+/**
+ * @brief Returns the length of the linked list
+ *
+ * @param node the linked list to analyze
+ *
+ * @return const unsigned int
+ */
+const unsigned int size(Node* node);
+
+/**
+ * @brief Prints every nodes from the first one to the last one
+ *
+ * @param node the linked list to print
+ *
+ * @return int*
+ */
+int* all(Node* node);

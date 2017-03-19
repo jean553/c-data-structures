@@ -50,3 +50,36 @@ const int at(Node* node, const unsigned int index)
 
     return current->data;
 }
+
+/**
+ *
+ */
+const unsigned int size(Node* node)
+{
+    Node* current = node;
+    unsigned int size = 1;
+
+    while(current->next != NULL)
+    {
+        current = current->next;
+        size++;
+    }
+
+    return size;
+}
+
+/**
+ *
+ */
+int* all(Node* node)
+{
+    const unsigned int length = size(node);
+    int* datas = (int*) malloc(length * sizeof(int));
+
+    for(int i = 0; i < length; i++)
+    {
+        datas[i] = at(node, i);
+    }
+
+    return datas;
+}
