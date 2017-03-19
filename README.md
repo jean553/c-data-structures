@@ -7,13 +7,13 @@ Clone of https://github.com/jean553/data-structures in C.
 ### Ubuntu/Debian
 
 ```bash
-apt-get install gcc cmake
+apt-get install gcc cmake check
 ```
 
 ### Archlinux
 
 ```bash
-pacman -S gcc cmake
+pacman -S gcc cmake check
 ```
 
 ## Compilation
@@ -24,10 +24,10 @@ cmake ..
 make
 ```
 
-## Execution
+## Tests execution
 
 ```bash
-./bin/c-data-structures
+ctest --output-on-failure .
 ```
 
 ## Documentation
