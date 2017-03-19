@@ -20,16 +20,14 @@ Node create(const int data)
  */
 void push(Node* node, const int data)
 {
-    Node* current = node;
-
-    while(current->next != NULL)
+    while(node->next != NULL)
     {
-        current = current->next;
+        node = node->next;
     }
 
-    current->next = malloc(sizeof(Node));
-    current->next->data = data;
-    current->next->next = NULL;
+    node->next = malloc(sizeof(Node));
+    node->next->data = data;
+    node->next->next = NULL;
 }
 
 /**
@@ -37,18 +35,16 @@ void push(Node* node, const int data)
  */
 const int at(Node* node, const unsigned int index)
 {
-    Node* current = node;
-
     for (
         unsigned int i = 0;
         i != index;
         i++
     )
     {
-        current = current->next;
+        node = node->next;
     }
 
-    return current->data;
+    return node->data;
 }
 
 /**
@@ -56,12 +52,11 @@ const int at(Node* node, const unsigned int index)
  */
 const unsigned int size(Node* node)
 {
-    Node* current = node;
     unsigned int size = 1;
 
-    while(current->next != NULL)
+    while(node->next != NULL)
     {
-        current = current->next;
+        node = node->next;
         size++;
     }
 
