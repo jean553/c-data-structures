@@ -6,19 +6,19 @@ Clone of https://github.com/jean553/data-structures in C.
 
 ### Ubuntu/Debian
 
-```
+```bash
 apt-get install gcc cmake
 ```
 
 ### Archlinux
 
-```
+```bash
 pacman -S gcc cmake
 ```
 
 ## Compilation
 
-```
+```bash
 mkdir build && cd build/
 cmake ..
 make
@@ -26,7 +26,7 @@ make
 
 ## Execution
 
-```
+```bash
 ./bin/c-data-structures
 ```
 
@@ -36,18 +36,18 @@ make
 
 #### Ubuntu/Debian
 
-```
+```bash
 apt-get install doxygen
 ```
 
 #### ArchLinux
 
-```
+```bash
 pacman -S doxygen
 ```
 
 ### Documentation generation
 
-```
+```bash
 doxygen
 ```
