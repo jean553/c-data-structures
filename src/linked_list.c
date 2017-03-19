@@ -3,6 +3,9 @@
 
 #include "linked_list.h"
 
+/**
+ *
+ */
 Node create(const int data)
 {
     Node node;
@@ -12,6 +15,9 @@ Node create(const int data)
     return node;
 }
 
+/**
+ *
+ */
 void push(Node* node, const int data)
 {
     Node* current = node;
@@ -26,6 +32,9 @@ void push(Node* node, const int data)
     current->next->next = NULL;
 }
 
+/**
+ *
+ */
 const int at(Node* node, const unsigned int index)
 {
     Node* current = node;
