@@ -53,3 +53,12 @@ const unsigned int size(Node* node);
  * @return int*
  */
 int* all(Node* node);
+
+/**
+ * @brief Inserts one node at the given index
+ *
+ * @param node the linked list to modify
+ * @param index the index where the data has to be inserted
+ * @param data the data to insert
+ */
+void insert(Node* node, const unsigned int index, const int data);
