@@ -140,6 +140,63 @@ END_TEST
 /**
  *
  */
+START_TEST(test_insert)
+{
+    /* insert at the beginning when list contains one node */
+
+    Node first_node = create(10);
+
+    insert(&first_node, 0, 20);
+
+    ck_assert_int_eq(at(&first_node, 0), 20);
+    ck_assert_int_eq(at(&first_node, 1), 10);
+
+    /* insert at the beginning when list contains many nodes */
+
+    Node second_node = create(10);
+    push(&second_node, 20);
+    push(&second_node, 30);
+    push(&second_node, 40);
+
+    insert(&second_node, 0, 50);
+
+    ck_assert_int_eq(at(&second_node, 0), 50);
+    ck_assert_int_eq(at(&second_node, 1), 10);
+    ck_assert_int_eq(at(&second_node, 2), 20);
+    ck_assert_int_eq(at(&second_node, 3), 30);
+    ck_assert_int_eq(at(&second_node, 4), 40);
+
+    /* insert in the middle when only contains two nodes */
+
+    Node third_node = create(10);
+    push(&third_node, 20);
+
+    insert(&third_node, 1, 40);
+
+    ck_assert_int_eq(at(&third_node, 0), 10);
+    ck_assert_int_eq(at(&third_node, 1), 40);
+    ck_assert_int_eq(at(&third_node, 2), 20);
+
+    /* insert in the middle when contains many nodes */
+
+    Node fourth_node = create(10);
+    push(&fourth_node, 20);
+    push(&fourth_node, 30);
+    push(&fourth_node, 40);
+
+    insert(&fourth_node, 2, 50);
+
+    ck_assert_int_eq(at(&fourth_node, 0), 10);
+    ck_assert_int_eq(at(&fourth_node, 1), 20);
+    ck_assert_int_eq(at(&fourth_node, 2), 50);
+    ck_assert_int_eq(at(&fourth_node, 3), 30);
+    ck_assert_int_eq(at(&fourth_node, 4), 40);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("linked_list");
@@ -149,6 +206,7 @@ Suite* linked_list_suite()
     tcase_add_test(tcase, test_push);
     tcase_add_test(tcase, test_size);
     tcase_add_test(tcase, test_all);
+    tcase_add_test(tcase, test_insert);
 
     suite_add_tcase(suite, tcase);
 

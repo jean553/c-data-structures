@@ -78,3 +78,23 @@ int* all(Node* node)
 
     return datas;
 }
+
+/**
+ *
+ */
+void insert(Node* node, const unsigned int index, const int data)
+{
+    for(unsigned int i = 0; i != index; i++)
+    {
+        node = node->next;
+    }
+
+    Node* currentNext = node->next;
+    int currentData = node->data;
+
+    node->data = data;
+    node->next = malloc(sizeof(Node));
+
+    node->next->data = currentData;
+    node->next->next = currentNext;
+}
