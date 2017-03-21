@@ -98,3 +98,28 @@ void insert(Node* node, const unsigned int index, const int data)
     node->next->data = currentData;
     node->next->next = currentNext;
 }
+
+/**
+ *
+ */
+void drop(Node* node, const unsigned int index)
+{
+    for(unsigned int i = 0; i != index; i++)
+    {
+        node = node->next;
+    }
+
+    if (node->next == NULL)
+    {
+        free(node);
+
+        return;
+    }
+
+    node->data = node->next->data;
+
+    Node* previousNext = node->next;
+    node->next = node->next->next;
+
+    free(previousNext);
+}

@@ -197,6 +197,57 @@ END_TEST
 /**
  *
  */
+START_TEST(test_drop)
+{
+    /* delete one node from the middle of the list */
+
+    Node first_node = create(10);
+    push(&first_node, 20);
+    push(&first_node, 30);
+    push(&first_node, 40);
+
+    drop(&first_node, 2);
+
+    ck_assert_int_eq(at(&first_node, 0), 10);
+    ck_assert_int_eq(at(&first_node, 1), 20);
+    ck_assert_int_eq(at(&first_node, 2), 40);
+
+    /* delete the first node when many nodes */
+
+    Node second_node = create(10);
+    push(&second_node, 20);
+    push(&second_node, 30);
+
+    drop(&second_node, 0);
+
+    ck_assert_int_eq(at(&second_node, 0), 20);
+    ck_assert_int_eq(at(&second_node, 1), 30);
+
+    /* delete the first node when only two nodes */
+
+    Node third_node = create(10);
+    push(&third_node, 20);
+
+    drop(&third_node, 0);
+
+    ck_assert_int_eq(at(&third_node, 0), 20);
+
+    /* delete the last node */
+
+    Node fourth_node = create(10);
+    push(&fourth_node, 20);
+    push(&fourth_node, 30);
+
+    drop(&fourth_node, 2);
+
+    ck_assert_int_eq(at(&fourth_node, 0), 10);
+    ck_assert_int_eq(at(&fourth_node, 1), 20);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("linked_list");
@@ -207,6 +258,7 @@ Suite* linked_list_suite()
     tcase_add_test(tcase, test_size);
     tcase_add_test(tcase, test_all);
     tcase_add_test(tcase, test_insert);
+    tcase_add_test(tcase, test_drop);
 
     suite_add_tcase(suite, tcase);
 
