@@ -5,6 +5,7 @@ dist: trusty
 before_script:
     - sudo apt-get update
     - sudo apt-get install gcc cmake check -y
+
 script: 
     - mkdir build && cd build/
     - cmake ..
