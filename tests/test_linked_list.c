@@ -232,7 +232,7 @@ START_TEST(test_drop)
 
     ck_assert_int_eq(at(&third_node, 0), 20);
 
-    /* delete the last node */
+    /* delete the last node when many nodes */
 
     Node fourth_node = create(10);
     push(&fourth_node, 20);
@@ -242,6 +242,15 @@ START_TEST(test_drop)
 
     ck_assert_int_eq(at(&fourth_node, 0), 10);
     ck_assert_int_eq(at(&fourth_node, 1), 20);
+
+    /* delete the last node when only two nodes */
+
+    Node fifth_node = create(10);
+    push(&fifth_node, 20);
+
+    drop(&fifth_node, 1);
+
+    ck_assert_int_eq(at(&fifth_node, 0), 10);
 }
 END_TEST
 
