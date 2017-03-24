@@ -3,20 +3,20 @@
  * @file linked_list.h
  */
 
-typedef struct Node
+typedef struct LinkedListNode
 {
     int data;
-    struct Node* next;
-} Node;
+    struct LinkedListNode* next;
+} LinkedListNode;
 
 /**
  * @brief Creates a new linked list with one node
  *
  * @param data integer to set into the new created node
  *
- * @return Node
+ * @return LinkedListNode
  */
-Node create(const int data);
+LinkedListNode create(const int data);
 
 /**
  * @brief Appends one new node into the given linked list
@@ -24,7 +24,7 @@ Node create(const int data);
  * @param node the linked list to modify
  * @param data integer to set into the new created node
  */
-void push(Node* node, const int data);
+void push(LinkedListNode* node, const int data);
 
 /**
  * @brief Returns the value of the node at the given position
@@ -34,7 +34,7 @@ void push(Node* node, const int data);
  *
  * @return const int
  */
-const int at(Node* node, const unsigned int index);
+const int at(LinkedListNode* node, const unsigned int index);
 
 /**
  * @brief Returns the length of the linked list
@@ -43,7 +43,7 @@ const int at(Node* node, const unsigned int index);
  *
  * @return const unsigned int
  */
-const unsigned int size(Node* node);
+const unsigned int size(LinkedListNode* node);
 
 /**
  * @brief Prints every nodes from the first one to the last one
@@ -52,7 +52,7 @@ const unsigned int size(Node* node);
  *
  * @return int*
  */
-int* all(Node* node);
+int* all(LinkedListNode* node);
 
 /**
  * @brief Inserts one node at the given index
@@ -61,7 +61,7 @@ int* all(Node* node);
  * @param index the index where the data has to be inserted
  * @param data the data to insert
  */
-void insert(Node* node, const unsigned int index, const int data);
+void insert(LinkedListNode* node, const unsigned int index, const int data);
 
 /**
  * @brief Deletes one node at the given index
@@ -69,11 +69,11 @@ void insert(Node* node, const unsigned int index, const int data);
  * @param node the linked list to modify
  * @param index the index where the data has to be dropd
  */
-void drop(Node* node, const unsigned int index);
+void drop(LinkedListNode* node, const unsigned int index);
 
 /**
  * @brief Deletes the last node from the list
  *
  * @param node the linked list to modify
  */
-void pop(Node* node);
+void pop(LinkedListNode* node);

@@ -6,9 +6,9 @@
 /**
  *
  */
-Node create(const int data)
+LinkedListNode create(const int data)
 {
-    Node node;
+    LinkedListNode node;
     node.data = data;
     node.next = NULL;
 
@@ -18,14 +18,14 @@ Node create(const int data)
 /**
  *
  */
-void push(Node* node, const int data)
+void push(LinkedListNode* node, const int data)
 {
     while(node->next != NULL)
     {
         node = node->next;
     }
 
-    node->next = malloc(sizeof(Node));
+    node->next = malloc(sizeof(LinkedListNode));
     node->next->data = data;
     node->next->next = NULL;
 }
@@ -33,7 +33,7 @@ void push(Node* node, const int data)
 /**
  *
  */
-const int at(Node* node, const unsigned int index)
+const int at(LinkedListNode* node, const unsigned int index)
 {
     for (
         unsigned int i = 0;
@@ -50,7 +50,7 @@ const int at(Node* node, const unsigned int index)
 /**
  *
  */
-const unsigned int size(Node* node)
+const unsigned int size(LinkedListNode* node)
 {
     unsigned int size = 1;
 
@@ -66,7 +66,7 @@ const unsigned int size(Node* node)
 /**
  *
  */
-int* all(Node* node)
+int* all(LinkedListNode* node)
 {
     const unsigned int length = size(node);
     int* datas = (int*) malloc(length * sizeof(int));
@@ -82,18 +82,18 @@ int* all(Node* node)
 /**
  *
  */
-void insert(Node* node, const unsigned int index, const int data)
+void insert(LinkedListNode* node, const unsigned int index, const int data)
 {
     for(unsigned int i = 0; i != index; i++)
     {
         node = node->next;
     }
 
-    Node* currentNext = node->next;
+    LinkedListNode* currentNext = node->next;
     int currentData = node->data;
 
     node->data = data;
-    node->next = malloc(sizeof(Node));
+    node->next = malloc(sizeof(LinkedListNode));
 
     node->next->data = currentData;
     node->next->next = currentNext;
@@ -102,7 +102,7 @@ void insert(Node* node, const unsigned int index, const int data)
 /**
  *
  */
-void drop(Node* node, const unsigned int index)
+void drop(LinkedListNode* node, const unsigned int index)
 {
     for(unsigned int i = 0; i != index; i++)
     {
@@ -118,7 +118,7 @@ void drop(Node* node, const unsigned int index)
 
     node->data = node->next->data;
 
-    Node* previousNext = node->next;
+    LinkedListNode* previousNext = node->next;
     node->next = node->next->next;
 
     free(previousNext);
@@ -127,9 +127,9 @@ void drop(Node* node, const unsigned int index)
 /**
  *
  */
-void pop(Node* node)
+void pop(LinkedListNode* node)
 {
-    Node* newLast = node;
+    LinkedListNode* newLast = node;
 
     while(node->next != NULL)
     {
