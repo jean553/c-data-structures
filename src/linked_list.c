@@ -123,3 +123,20 @@ void drop(Node* node, const unsigned int index)
 
     free(previousNext);
 }
+
+/**
+ *
+ */
+void pop(Node* node)
+{
+    Node* newLast = node;
+
+    while(node->next != NULL)
+    {
+        newLast = node;
+        node = node->next;
+    }
+
+    free(node);
+    newLast->next = NULL;
+}
