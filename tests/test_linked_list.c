@@ -257,6 +257,41 @@ END_TEST
 /**
  *
  */
+START_TEST(test_pop)
+{
+    /* delete the last node when many nodes */
+
+    Node first_node = create(10);
+    push(&first_node, 20);
+    push(&first_node, 30);
+    push(&first_node, 40);
+
+    ck_assert_int_eq(size(&first_node), 4);
+
+    pop(&first_node);
+
+    ck_assert_int_eq(size(&first_node), 3);
+
+    pop(&first_node);
+
+    ck_assert_int_eq(size(&first_node), 2);
+
+    /* delete the last node when only two nodes */
+
+    Node second_node = create(10);
+    push(&second_node, 20);
+
+    ck_assert_int_eq(size(&second_node), 2);
+
+    pop(&second_node);
+
+    ck_assert_int_eq(size(&second_node), 1);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("linked_list");
@@ -268,6 +303,7 @@ Suite* linked_list_suite()
     tcase_add_test(tcase, test_all);
     tcase_add_test(tcase, test_insert);
     tcase_add_test(tcase, test_drop);
+    tcase_add_test(tcase, test_pop);
 
     suite_add_tcase(suite, tcase);
 

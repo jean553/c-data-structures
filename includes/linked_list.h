@@ -70,3 +70,10 @@ void insert(Node* node, const unsigned int index, const int data);
  * @param index the index where the data has to be dropd
  */
 void drop(Node* node, const unsigned int index);
+
+/**
+ * @brief Deletes the last node from the list
+ *
+ * @param node the linked list to modify
+ */
+void pop(Node* node);
