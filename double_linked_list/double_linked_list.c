@@ -14,7 +14,7 @@ DoubleLinkedList create(const int data)
     node->previous = NULL;
 
     DoubleLinkedList list;
-    list.first = node;
+    list.head = node;
     list.head = node;
 
     return list;
@@ -25,7 +25,7 @@ DoubleLinkedList create(const int data)
  */
 void push(DoubleLinkedList* list, const int data)
 {
-    DoubleLinkedListNode* node = list->first;
+    DoubleLinkedListNode* node = list->head;
 
     /* TODO: #18 this function should also be able
      * to iterates from the end of the list */
