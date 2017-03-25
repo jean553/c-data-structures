@@ -10,7 +10,7 @@
 START_TEST(test_create)
 {
     /* TODO: check with at() method */
-    DoubleLinkedListNode first_node = create(0);
+    DoubleLinkedList first_list = create(0);
 }
 END_TEST
 

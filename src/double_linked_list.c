@@ -6,12 +6,16 @@
 /**
  *
  */
-DoubleLinkedListNode create(const int data)
+DoubleLinkedList create(const int data)
 {
     DoubleLinkedListNode node;
     node.data = data;
     node.next = NULL;
     node.previous = NULL;
 
-    return node;
+    DoubleLinkedList list;
+    list.first = node;
+    list.head = &node;
+
+    return list;
 }
