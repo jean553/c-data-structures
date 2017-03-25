@@ -12,8 +12,8 @@ typedef struct DoubleLinkedListNode
 
 typedef struct DoubleLinkedList
 {
-    struct DoubleLinkedListNode* first;
     struct DoubleLinkedListNode* head;
+    struct DoubleLinkedListNode* tail;
 } DoubleLinkedList;
 
 /**
