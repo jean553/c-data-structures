@@ -18,7 +18,7 @@ LinkedListNode create(const int data)
 /**
  *
  */
-void push(LinkedListNode* node, const int data)
+void insertAtTheEnd(LinkedListNode* node, const int data)
 {
     while(node->next != NULL)
     {
