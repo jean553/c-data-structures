@@ -7,5 +7,7 @@ enable_testing()
 
 add_compile_options(-std=c99)
 
-add_subdirectory(src)
-add_subdirectory(tests)
+add_subdirectory(linked_list)
+add_subdirectory(double_linked_list)
+add_subdirectory(tests_linked_list)
+add_subdirectory(tests_double_linked_list)

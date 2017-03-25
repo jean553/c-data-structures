@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <check.h>
 
-#include "../includes/double_linked_list.h"
+#include "double_linked_list.h"
 
 /**
  *
@@ -17,12 +17,24 @@ END_TEST
 /**
  *
  */
+START_TEST(test_push)
+{
+    /* TODO: check with at() method */
+    DoubleLinkedList first_list = create(0);
+    push(&first_list, 10);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* double_linked_list_suite()
 {
     Suite *suite = suite_create("double_linked_list");
     TCase *tcase = tcase_create("case");
 
     tcase_add_test(tcase, test_create);
+    tcase_add_test(tcase, test_push);
 
     suite_add_tcase(suite, tcase);
 

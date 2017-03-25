@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <check.h>
 
-#include "../includes/linked_list.h"
+#include "linked_list.h"
 
 /**
  *
