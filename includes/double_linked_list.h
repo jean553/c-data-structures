@@ -1,5 +1,5 @@
 /**
- * @brief Doublel inked list structure and methods
+ * @brief Double linked list structure and methods
  * @file double_linked_list.h
  */
 
@@ -10,6 +10,12 @@ typedef struct DoubleLinkedListNode
     struct DoubleLinkedListNode* previous;
 } DoubleLinkedListNode;
 
+typedef struct DoubleLinkedList
+{
+    struct DoubleLinkedListNode first;
+    struct DoubleLinkedListNode* head;
+} DoubleLinkedList;
+
 /**
  * @brief Creates a new double linked list with one node
  *
@@ -17,4 +23,4 @@ typedef struct DoubleLinkedListNode
  *
  * @return DoubleLinkedListNode
  */
-DoubleLinkedListNode create(const int data);
+DoubleLinkedList create(const int data);
