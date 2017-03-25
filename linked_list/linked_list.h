@@ -24,7 +24,7 @@ LinkedListNode create(const int data);
  * @param node the linked list to modify
  * @param data integer to set into the new created node
  */
-void push(LinkedListNode* node, const int data);
+void insertAtTheEnd(LinkedListNode* node, const int data);
 
 /**
  * @brief Returns the value of the node at the given position

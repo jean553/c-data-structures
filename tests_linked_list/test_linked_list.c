@@ -23,15 +23,15 @@ END_TEST
 /**
  *
  */
-START_TEST(test_push)
+START_TEST(test_insertAtTheEnd)
 {
     /* test with a few nodes */
 
     LinkedListNode first_node = create(0);
-    push(&first_node, 10);
-    push(&first_node, 20);
-    push(&first_node, 30);
-    push(&first_node, 40);
+    insertAtTheEnd(&first_node, 10);
+    insertAtTheEnd(&first_node, 20);
+    insertAtTheEnd(&first_node, 30);
+    insertAtTheEnd(&first_node, 40);
 
     ck_assert_int_eq(at(&first_node, 0), 0);
     ck_assert_int_eq(at(&first_node, 4), 40);
@@ -45,7 +45,7 @@ START_TEST(test_push)
 
     for (int i = 1; i < 1000; i++)
     {
-        push(&second_node, i);
+        insertAtTheEnd(&second_node, i);
     }
 
     for (int i = 0; i < 1000; i++)
@@ -68,10 +68,10 @@ START_TEST(test_size)
     /* test with a few nodes */
 
     LinkedListNode second_node = create(10);
-    push(&second_node, 10);
-    push(&second_node, 20);
-    push(&second_node, 30);
-    push(&second_node, 40);
+    insertAtTheEnd(&second_node, 10);
+    insertAtTheEnd(&second_node, 20);
+    insertAtTheEnd(&second_node, 30);
+    insertAtTheEnd(&second_node, 40);
     ck_assert_int_eq(size(&second_node), 5);
 
     /* test with a lot of nodes */
@@ -80,7 +80,7 @@ START_TEST(test_size)
 
     for (int i = 1; i < 1000; i++)
     {
-        push(&third_node, i);
+        insertAtTheEnd(&third_node, i);
     }
 
     ck_assert_int_eq(size(&third_node), 1000);
@@ -104,10 +104,10 @@ START_TEST(test_all)
     /* test with many nodes */
 
     LinkedListNode second_node = create(10);
-    push(&second_node, 20);
-    push(&second_node, 30);
-    push(&second_node, 40);
-    push(&second_node, 50);
+    insertAtTheEnd(&second_node, 20);
+    insertAtTheEnd(&second_node, 30);
+    insertAtTheEnd(&second_node, 40);
+    insertAtTheEnd(&second_node, 50);
 
     int second_expected[5] = {10, 20, 30, 40, 50};
     int* second_got = all(&second_node);
@@ -125,7 +125,7 @@ START_TEST(test_all)
     int* third_expected = (int*) malloc(1000 * sizeof(int));
     for (int i = 0; i < 1000; i++)
     {
-        push(&third_node, i + 1);
+        insertAtTheEnd(&third_node, i + 1);
         third_expected[i] = i;
     }
 
@@ -154,9 +154,9 @@ START_TEST(test_insert)
     /* insert at the beginning when list contains many nodes */
 
     LinkedListNode second_node = create(10);
-    push(&second_node, 20);
-    push(&second_node, 30);
-    push(&second_node, 40);
+    insertAtTheEnd(&second_node, 20);
+    insertAtTheEnd(&second_node, 30);
+    insertAtTheEnd(&second_node, 40);
 
     insert(&second_node, 0, 50);
 
@@ -169,7 +169,7 @@ START_TEST(test_insert)
     /* insert in the middle when only contains two nodes */
 
     LinkedListNode third_node = create(10);
-    push(&third_node, 20);
+    insertAtTheEnd(&third_node, 20);
 
     insert(&third_node, 1, 40);
 
@@ -180,9 +180,9 @@ START_TEST(test_insert)
     /* insert in the middle when contains many nodes */
 
     LinkedListNode fourth_node = create(10);
-    push(&fourth_node, 20);
-    push(&fourth_node, 30);
-    push(&fourth_node, 40);
+    insertAtTheEnd(&fourth_node, 20);
+    insertAtTheEnd(&fourth_node, 30);
+    insertAtTheEnd(&fourth_node, 40);
 
     insert(&fourth_node, 2, 50);
 
@@ -202,9 +202,9 @@ START_TEST(test_drop)
     /* delete one node from the middle of the list */
 
     LinkedListNode first_node = create(10);
-    push(&first_node, 20);
-    push(&first_node, 30);
-    push(&first_node, 40);
+    insertAtTheEnd(&first_node, 20);
+    insertAtTheEnd(&first_node, 30);
+    insertAtTheEnd(&first_node, 40);
 
     drop(&first_node, 2);
 
@@ -215,8 +215,8 @@ START_TEST(test_drop)
     /* delete the first node when many nodes */
 
     LinkedListNode second_node = create(10);
-    push(&second_node, 20);
-    push(&second_node, 30);
+    insertAtTheEnd(&second_node, 20);
+    insertAtTheEnd(&second_node, 30);
 
     drop(&second_node, 0);
 
@@ -226,7 +226,7 @@ START_TEST(test_drop)
     /* delete the first node when only two nodes */
 
     LinkedListNode third_node = create(10);
-    push(&third_node, 20);
+    insertAtTheEnd(&third_node, 20);
 
     drop(&third_node, 0);
 
@@ -235,8 +235,8 @@ START_TEST(test_drop)
     /* delete the last node when many nodes */
 
     LinkedListNode fourth_node = create(10);
-    push(&fourth_node, 20);
-    push(&fourth_node, 30);
+    insertAtTheEnd(&fourth_node, 20);
+    insertAtTheEnd(&fourth_node, 30);
 
     drop(&fourth_node, 2);
 
@@ -246,7 +246,7 @@ START_TEST(test_drop)
     /* delete the last node when only two nodes */
 
     LinkedListNode fifth_node = create(10);
-    push(&fifth_node, 20);
+    insertAtTheEnd(&fifth_node, 20);
 
     drop(&fifth_node, 1);
 
@@ -262,9 +262,9 @@ START_TEST(test_pop)
     /* delete the last node when many nodes */
 
     LinkedListNode first_node = create(10);
-    push(&first_node, 20);
-    push(&first_node, 30);
-    push(&first_node, 40);
+    insertAtTheEnd(&first_node, 20);
+    insertAtTheEnd(&first_node, 30);
+    insertAtTheEnd(&first_node, 40);
 
     ck_assert_int_eq(size(&first_node), 4);
 
@@ -279,7 +279,7 @@ START_TEST(test_pop)
     /* delete the last node when only two nodes */
 
     LinkedListNode second_node = create(10);
-    push(&second_node, 20);
+    insertAtTheEnd(&second_node, 20);
 
     ck_assert_int_eq(size(&second_node), 2);
 
@@ -298,7 +298,7 @@ Suite* linked_list_suite()
     TCase *tcase = tcase_create("case");
 
     tcase_add_test(tcase, test_create);
-    tcase_add_test(tcase, test_push);
+    tcase_add_test(tcase, test_insertAtTheEnd);
     tcase_add_test(tcase, test_size);
     tcase_add_test(tcase, test_all);
     tcase_add_test(tcase, test_insert);
