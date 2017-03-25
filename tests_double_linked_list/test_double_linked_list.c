@@ -9,8 +9,14 @@
  */
 START_TEST(test_create)
 {
-    /* TODO: check with at() method */
-    DoubleLinkedList first_list = create(0);
+    DoubleLinkedList first_list = create(10);
+    ck_assert_int_eq(at(&first_list, 0), 10);
+
+    DoubleLinkedList second_list = create(20);
+    ck_assert_int_eq(at(&second_list, 0), 20);
+
+    DoubleLinkedList third_list = create(30);
+    ck_assert_int_eq(at(&third_list, 0), 30);
 }
 END_TEST
 
@@ -19,9 +25,15 @@ END_TEST
  */
 START_TEST(test_push)
 {
-    /* TODO: check with at() method */
     DoubleLinkedList first_list = create(0);
     push(&first_list, 10);
+    push(&first_list, 20);
+    push(&first_list, 30);
+
+    ck_assert_int_eq(at(&first_list, 0), 0);
+    ck_assert_int_eq(at(&first_list, 1), 10);
+    ck_assert_int_eq(at(&first_list, 2), 20);
+    ck_assert_int_eq(at(&first_list, 3), 30);
 }
 END_TEST
 

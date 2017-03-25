@@ -12,6 +12,7 @@ typedef struct DoubleLinkedListNode
 
 typedef struct DoubleLinkedList
 {
+    struct DoubleLinkedListNode* first;
     struct DoubleLinkedListNode* head;
 } DoubleLinkedList;
 
@@ -31,3 +32,11 @@ DoubleLinkedList create(const int data);
  * @param data the data to insert into the list
  */
 void push(DoubleLinkedList* list, const int data);
+
+/**
+ * @brief Returns the element at the given index
+ *
+ * @param list the double linked list to modify
+ * @param index the index into the list of the expected data
+ */
+const int at(DoubleLinkedList* list, const unsigned int index);
