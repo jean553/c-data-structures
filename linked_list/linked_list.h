@@ -27,6 +27,17 @@ LinkedListNode create(const int data);
 void insertAtTheEnd(LinkedListNode* node, const int data);
 
 /**
+ * @brief Prepends one new node into the given linked list,
+ * returns the new head of the list
+ *
+ * @param node the linked list to modify
+ * @param data integer to set into the new created node
+ *
+ * @return LinkedListNode*
+ */
+LinkedListNode* insertAtTheBeginning(LinkedListNode* node, const int data);
+
+/**
  * @brief Returns the value of the node at the given position
  *
  * @param node the linked list to browse
