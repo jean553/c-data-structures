@@ -58,6 +58,23 @@ END_TEST
 /**
  *
  */
+START_TEST(test_insertAtTheBeginning)
+{
+    /* test with a simple node */
+
+    LinkedListNode first_node = create(5);
+    LinkedListNode* first_node_updated = insertAtTheBeginning(&first_node, 10);
+
+    ck_assert_int_eq(at(first_node_updated, 0), 10);
+    ck_assert_int_eq(at(first_node_updated, 1), 5);
+
+    /* TODO: add tests with many nodes */
+}
+END_TEST
+
+/**
+ *
+ */
 START_TEST(test_size)
 {
     /* test with one node */
@@ -299,6 +316,7 @@ Suite* linked_list_suite()
 
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_insertAtTheEnd);
+    tcase_add_test(tcase, test_insertAtTheBeginning);
     tcase_add_test(tcase, test_size);
     tcase_add_test(tcase, test_all);
     tcase_add_test(tcase, test_insert);

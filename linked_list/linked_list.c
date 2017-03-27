@@ -33,6 +33,18 @@ void insertAtTheEnd(LinkedListNode* node, const int data)
 /**
  *
  */
+LinkedListNode* insertAtTheBeginning(LinkedListNode* node, const int data)
+{
+    LinkedListNode* newNode = malloc(sizeof(LinkedListNode));
+    newNode->next = node;
+    newNode->data = data;
+
+    return newNode;
+}
+
+/**
+ *
+ */
 const int at(LinkedListNode* node, const unsigned int index)
 {
     for (
