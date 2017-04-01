@@ -78,3 +78,28 @@ The implemented methods are:
  * insertAt
  * dropAt
  * dropAtTheEnd
+
+## Double linked list
+
+Each node contains the data itself and two pointers.
+The first one is pointing to the previous node,
+the second one is pointing to the next node.
+
+P : Previous
+D : Data
+N : Next
+
+```
+    +-----------------+      +-----------------+      +-----------------+
+    |     |     |     |      |     |     |     |      |     |     |     |
+ <--+  P  |  D  |  N  +--->  |  P  |  D  |  N  |  <---+  P  |  D  |  N  +-->
+    |     |     |     |      |     |     |     |      |     |     |     |
+    +-----------------+      +-----------------+      +-----------------+
+              ^                 |           |                 ^
+              +-----------------+           +-----------------+
+```
+
+The implemented methods are:
+ * create
+ * push
+ * at
