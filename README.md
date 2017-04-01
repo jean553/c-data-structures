@@ -111,3 +111,25 @@ The implemented methods are:
  * create
  * push
  * at
+
+## Vector - Dynamic array
+
+An array is a set of continuous data in memory.
+A vector is a dynamic array (the allocated size can vary).
+
+```
+     +-----------------------+
+     |       |       |       |
+     |   A   |   B   |   C   |
+     |       |       |       |
+     +-----------------------+
+         ^
+         |
+         |
+         |
+         +
+       ARRAY
+```
+
+The implemented methods are:
+ * create
