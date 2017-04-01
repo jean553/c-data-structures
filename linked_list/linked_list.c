@@ -94,7 +94,7 @@ int* all(LinkedListNode* node)
 /**
  *
  */
-void insert(LinkedListNode* node, const unsigned int index, const int data)
+void insertAt(LinkedListNode* node, const unsigned int index, const int data)
 {
     for(unsigned int i = 0; i != index; i++)
     {
@@ -114,7 +114,7 @@ void insert(LinkedListNode* node, const unsigned int index, const int data)
 /**
  *
  */
-void drop(LinkedListNode* node, const unsigned int index)
+void dropAt(LinkedListNode* node, const unsigned int index)
 {
     for(unsigned int i = 0; i != index; i++)
     {
@@ -139,7 +139,7 @@ void drop(LinkedListNode* node, const unsigned int index)
 /**
  *
  */
-void pop(LinkedListNode* node)
+void dropAtTheEnd(LinkedListNode* node)
 {
     LinkedListNode* newLast = node;
 

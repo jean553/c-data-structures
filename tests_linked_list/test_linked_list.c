@@ -163,7 +163,7 @@ START_TEST(test_insert)
 
     LinkedListNode first_node = create(10);
 
-    insert(&first_node, 0, 20);
+    insertAt(&first_node, 0, 20);
 
     ck_assert_int_eq(at(&first_node, 0), 20);
     ck_assert_int_eq(at(&first_node, 1), 10);
@@ -175,7 +175,7 @@ START_TEST(test_insert)
     insertAtTheEnd(&second_node, 30);
     insertAtTheEnd(&second_node, 40);
 
-    insert(&second_node, 0, 50);
+    insertAt(&second_node, 0, 50);
 
     ck_assert_int_eq(at(&second_node, 0), 50);
     ck_assert_int_eq(at(&second_node, 1), 10);
@@ -188,7 +188,7 @@ START_TEST(test_insert)
     LinkedListNode third_node = create(10);
     insertAtTheEnd(&third_node, 20);
 
-    insert(&third_node, 1, 40);
+    insertAt(&third_node, 1, 40);
 
     ck_assert_int_eq(at(&third_node, 0), 10);
     ck_assert_int_eq(at(&third_node, 1), 40);
@@ -201,7 +201,7 @@ START_TEST(test_insert)
     insertAtTheEnd(&fourth_node, 30);
     insertAtTheEnd(&fourth_node, 40);
 
-    insert(&fourth_node, 2, 50);
+    insertAt(&fourth_node, 2, 50);
 
     ck_assert_int_eq(at(&fourth_node, 0), 10);
     ck_assert_int_eq(at(&fourth_node, 1), 20);
@@ -223,7 +223,7 @@ START_TEST(test_drop)
     insertAtTheEnd(&first_node, 30);
     insertAtTheEnd(&first_node, 40);
 
-    drop(&first_node, 2);
+    dropAt(&first_node, 2);
 
     ck_assert_int_eq(at(&first_node, 0), 10);
     ck_assert_int_eq(at(&first_node, 1), 20);
@@ -235,7 +235,7 @@ START_TEST(test_drop)
     insertAtTheEnd(&second_node, 20);
     insertAtTheEnd(&second_node, 30);
 
-    drop(&second_node, 0);
+    dropAt(&second_node, 0);
 
     ck_assert_int_eq(at(&second_node, 0), 20);
     ck_assert_int_eq(at(&second_node, 1), 30);
@@ -245,7 +245,7 @@ START_TEST(test_drop)
     LinkedListNode third_node = create(10);
     insertAtTheEnd(&third_node, 20);
 
-    drop(&third_node, 0);
+    dropAt(&third_node, 0);
 
     ck_assert_int_eq(at(&third_node, 0), 20);
 
@@ -255,7 +255,7 @@ START_TEST(test_drop)
     insertAtTheEnd(&fourth_node, 20);
     insertAtTheEnd(&fourth_node, 30);
 
-    drop(&fourth_node, 2);
+    dropAt(&fourth_node, 2);
 
     ck_assert_int_eq(at(&fourth_node, 0), 10);
     ck_assert_int_eq(at(&fourth_node, 1), 20);
@@ -265,7 +265,7 @@ START_TEST(test_drop)
     LinkedListNode fifth_node = create(10);
     insertAtTheEnd(&fifth_node, 20);
 
-    drop(&fifth_node, 1);
+    dropAt(&fifth_node, 1);
 
     ck_assert_int_eq(at(&fifth_node, 0), 10);
 }
@@ -274,7 +274,7 @@ END_TEST
 /**
  *
  */
-START_TEST(test_pop)
+START_TEST(test_dropAtTheEnd)
 {
     /* delete the last node when many nodes */
 
@@ -285,11 +285,11 @@ START_TEST(test_pop)
 
     ck_assert_int_eq(size(&first_node), 4);
 
-    pop(&first_node);
+    dropAtTheEnd(&first_node);
 
     ck_assert_int_eq(size(&first_node), 3);
 
-    pop(&first_node);
+    dropAtTheEnd(&first_node);
 
     ck_assert_int_eq(size(&first_node), 2);
 
@@ -300,7 +300,7 @@ START_TEST(test_pop)
 
     ck_assert_int_eq(size(&second_node), 2);
 
-    pop(&second_node);
+    dropAtTheEnd(&second_node);
 
     ck_assert_int_eq(size(&second_node), 1);
 }
@@ -321,7 +321,7 @@ Suite* linked_list_suite()
     tcase_add_test(tcase, test_all);
     tcase_add_test(tcase, test_insert);
     tcase_add_test(tcase, test_drop);
-    tcase_add_test(tcase, test_pop);
+    tcase_add_test(tcase, test_dropAtTheEnd);
 
     suite_add_tcase(suite, tcase);
 
