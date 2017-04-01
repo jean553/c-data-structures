@@ -72,7 +72,7 @@ int* all(LinkedListNode* node);
  * @param index the index where the data has to be inserted
  * @param data the data to insert
  */
-void insert(LinkedListNode* node, const unsigned int index, const int data);
+void insertAt(LinkedListNode* node, const unsigned int index, const int data);
 
 /**
  * @brief Deletes one node at the given index
@@ -80,11 +80,11 @@ void insert(LinkedListNode* node, const unsigned int index, const int data);
  * @param node the linked list to modify
  * @param index the index where the data has to be dropd
  */
-void drop(LinkedListNode* node, const unsigned int index);
+void dropAt(LinkedListNode* node, const unsigned int index);
 
 /**
  * @brief Deletes the last node from the list
  *
  * @param node the linked list to modify
  */
-void pop(LinkedListNode* node);
+void dropAtTheEnd(LinkedListNode* node);

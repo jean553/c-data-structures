@@ -53,3 +53,28 @@ pacman -S doxygen
 ```bash
 doxygen
 ```
+
+# List of data structures
+
+## Linked list
+
+Each node contains the data itself and a pointer to the next node.
+
+```
++-----------+-----------+          +-----------+-----------+           +-----------+-----------+
+|           |           |          |           |           |           |           |           |
+|   Data    |  Pointer  +--------> |   Data    |  Pointer  +---------> |   Data    |  Pointer  +------>  NULL
+|           |           |          |           |           |           |           |           |
++-----------+-----------+          +-----------+-----------+           +-----------+-----------+
+```
+
+The implemented methods are:
+ * create
+ * insertAtTheEnd
+ * insertAtTheBeginning
+ * at
+ * size
+ * all
+ * insertAt
+ * dropAt
+ * dropAtTheEnd
