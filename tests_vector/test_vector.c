@@ -18,12 +18,26 @@ END_TEST
 /**
  *
  */
+START_TEST(test_push)
+{
+    /* TODO: check the size and access */
+
+    Vector first_list = create(10);
+    push(&first_list, 5);
+    push(&first_list, 50);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* vector_suite()
 {
     Suite *suite = suite_create("vector");
     TCase *tcase = tcase_create("case");
 
     tcase_add_test(tcase, test_create);
+    tcase_add_test(tcase, test_push);
 
     suite_add_tcase(suite, tcase);
 

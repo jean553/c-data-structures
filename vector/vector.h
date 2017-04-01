@@ -17,3 +17,11 @@ typedef struct Vector
  * @return Vector
  */
 Vector create(const unsigned short size);
+
+/**
+ * @brief Appends data in the given vector
+ *
+ * @param vector the given vector to modify
+ * @param data the data to append
+ */
+void push(Vector* vector, int data);
