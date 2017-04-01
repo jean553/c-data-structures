@@ -79,6 +79,14 @@ The implemented methods are:
  * dropAt
  * dropAtTheEnd
 
+Pros:
+ * The size is not fixed
+ * Read/Write is fast with small lists
+ * Inserting/Removing does not require to copy the data itself (advantage with big objects)
+
+Cons:
+ * Read/Write is slow with long lists ( O(n) )
+
 ## Double linked list
 
 Each node contains the data itself and two pointers.
