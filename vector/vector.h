@@ -25,3 +25,13 @@ Vector create(const unsigned short size);
  * @param data the data to append
  */
 void push(Vector* vector, int data);
+
+/**
+ * @brief Gets data at the given position
+ *
+ * @param vector the given vector
+ * @param index the position of the data to get
+ *
+ * @return int
+ */
+int at(Vector* vector, const unsigned short index);

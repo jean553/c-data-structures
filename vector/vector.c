@@ -35,3 +35,11 @@ void push(Vector* vector, int data)
 
     vector->array[vector->size - 1] = data;
 }
+
+/**
+ *
+ */
+int at(Vector* vector, const unsigned short index)
+{
+    return vector->array[index];
+}
