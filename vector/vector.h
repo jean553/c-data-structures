@@ -44,3 +44,13 @@ int at(Vector* vector, const unsigned short index);
  * @return const unsigned short
  */
 const unsigned short size(Vector* vector);
+
+/**
+ * @brief Resizes the array;
+ * If the new size is smaller than before, items are deleted;
+ * If the new size is higher than before, 0 are added
+ *
+ * @param vector the vector to resize
+ * @param size the new expected size
+ */
+void resize(Vector* vector, const unsigned short size);

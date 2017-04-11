@@ -49,8 +49,32 @@ END_TEST
 START_TEST(test_size)
 {
     Vector first_list = create(0);
-
     ck_assert_int_eq(size(&first_list), 0);
+}
+END_TEST
+
+/**
+ *
+ */
+START_TEST(test_resize)
+{
+    Vector first_list = create(10);
+    resize(&first_list, 12);
+
+    ck_assert_int_eq(at(&first_list, 10), 0);
+    ck_assert_int_eq(at(&first_list, 11), 0);
+
+    ck_assert_int_eq(size(&first_list), 12);
+
+    Vector second_list = create(0);
+    push(&second_list, 10);
+    push(&second_list, 20);
+    push(&second_list, 30);
+    resize(&second_list, 1);
+
+    ck_assert_int_eq(at(&second_list, 0), 10);
+
+    ck_assert_int_eq(size(&second_list), 1);
 }
 END_TEST
 
@@ -65,6 +89,7 @@ Suite* vector_suite()
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_push);
     tcase_add_test(tcase, test_size);
+    tcase_add_test(tcase, test_resize);
 
     suite_add_tcase(suite, tcase);
 
