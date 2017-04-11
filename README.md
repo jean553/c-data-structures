@@ -135,3 +135,4 @@ The implemented methods are:
  * create
  * push
  * at
+ * size
