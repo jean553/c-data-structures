@@ -35,3 +35,12 @@ void push(Vector* vector, int data);
  * @return int
  */
 int at(Vector* vector, const unsigned short index);
+
+/**
+ * @brief Returns the current array size
+ *
+ * @param vector the given vector
+ *
+ * @return const unsigned short
+ */
+const unsigned short size(Vector* vector);

@@ -43,3 +43,11 @@ int at(Vector* vector, const unsigned short index)
 {
     return vector->array[index];
 }
+
+/**
+ *
+ */
+const unsigned short size(Vector* vector)
+{
+    return vector->size;
+}
