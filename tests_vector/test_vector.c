@@ -57,6 +57,46 @@ END_TEST
 /**
  *
  */
+START_TEST(test_resize)
+{
+    /* increase the size */
+
+    Vector first_list = create(5);
+    push(&first_list, 10);
+    ck_assert_int_eq(size(&first_list), 6);
+
+    resize(&first_list, 15);
+    ck_assert_int_eq(size(&first_list), 15);
+    ck_assert_int_eq(at(&first_list, 14), 0);
+
+    push(&first_list, 20);
+    ck_assert_int_eq(at(&first_list, 15), 20);
+    ck_assert_int_eq(size(&first_list), 16);
+
+    /* decrease the size */
+
+    Vector second_list = create(0);
+    push(&second_list, 10);
+    push(&second_list, 20);
+    push(&second_list, 30);
+    push(&second_list, 40);
+    push(&second_list, 50);
+    ck_assert_int_eq(size(&second_list), 5);
+
+    resize(&second_list, 2);
+    ck_assert_int_eq(size(&second_list), 2);
+    ck_assert_int_eq(at(&second_list, 0), 10);
+    ck_assert_int_eq(at(&second_list, 1), 20);
+
+    push(&second_list, 100);
+    ck_assert_int_eq(at(&second_list, 2), 100);
+    ck_assert_int_eq(size(&second_list), 3);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* vector_suite()
 {
     Suite *suite = suite_create("vector");
@@ -65,6 +105,7 @@ Suite* vector_suite()
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_push);
     tcase_add_test(tcase, test_size);
+    tcase_add_test(tcase, test_resize);
 
     suite_add_tcase(suite, tcase);
 
