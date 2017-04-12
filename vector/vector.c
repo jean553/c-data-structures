@@ -51,3 +51,29 @@ const unsigned short size(Vector* vector)
 {
     return vector->size;
 }
+
+/**
+ *
+ */
+void resize(Vector* vector, const unsigned short size)
+{
+    vector->array = realloc(
+        vector->array,
+        sizeof(int) * size
+    );
+
+    if (size <= vector->size)
+    {
+        vector->size = size;
+
+        return;
+    }
+
+    unsigned short index = vector->size;
+    for (index = vector->size; index < size; index++)
+    {
+        vector->array[index] = 0;
+    }
+
+    vector->size = size;
+}

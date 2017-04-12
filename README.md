@@ -136,3 +136,4 @@ The implemented methods are:
  * push
  * at
  * size
+ * resize
