@@ -133,7 +133,7 @@ A vector is a dynamic array (the allocated size can vary).
 
 The implemented methods are:
  * create
- * push
+ * insertAtTheEnd
  * at
  * size
  * resize

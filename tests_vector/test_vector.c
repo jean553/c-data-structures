@@ -20,11 +20,11 @@ END_TEST
 /**
  *
  */
-START_TEST(test_push)
+START_TEST(test_insertAtTheEnd)
 {
     Vector first_list = create(10);
-    push(&first_list, 5);
-    push(&first_list, 50);
+    insertAtTheEnd(&first_list, 5);
+    insertAtTheEnd(&first_list, 50);
 
     ck_assert_int_eq(at(&first_list, 0), 0);
     ck_assert_int_eq(at(&first_list, 10), 5);
@@ -33,8 +33,8 @@ START_TEST(test_push)
     ck_assert_int_eq(size(&first_list), 12);
 
     Vector second_list = create(0);
-    push(&second_list, 25);
-    push(&second_list, 35);
+    insertAtTheEnd(&second_list, 25);
+    insertAtTheEnd(&second_list, 35);
 
     ck_assert_int_eq(at(&second_list, 0), 25);
     ck_assert_int_eq(at(&second_list, 1), 35);
@@ -62,25 +62,25 @@ START_TEST(test_resize)
     /* increase the size */
 
     Vector first_list = create(5);
-    push(&first_list, 10);
+    insertAtTheEnd(&first_list, 10);
     ck_assert_int_eq(size(&first_list), 6);
 
     resize(&first_list, 15);
     ck_assert_int_eq(size(&first_list), 15);
     ck_assert_int_eq(at(&first_list, 14), 0);
 
-    push(&first_list, 20);
+    insertAtTheEnd(&first_list, 20);
     ck_assert_int_eq(at(&first_list, 15), 20);
     ck_assert_int_eq(size(&first_list), 16);
 
     /* decrease the size */
 
     Vector second_list = create(0);
-    push(&second_list, 10);
-    push(&second_list, 20);
-    push(&second_list, 30);
-    push(&second_list, 40);
-    push(&second_list, 50);
+    insertAtTheEnd(&second_list, 10);
+    insertAtTheEnd(&second_list, 20);
+    insertAtTheEnd(&second_list, 30);
+    insertAtTheEnd(&second_list, 40);
+    insertAtTheEnd(&second_list, 50);
     ck_assert_int_eq(size(&second_list), 5);
 
     resize(&second_list, 2);
@@ -88,7 +88,7 @@ START_TEST(test_resize)
     ck_assert_int_eq(at(&second_list, 0), 10);
     ck_assert_int_eq(at(&second_list, 1), 20);
 
-    push(&second_list, 100);
+    insertAtTheEnd(&second_list, 100);
     ck_assert_int_eq(at(&second_list, 2), 100);
     ck_assert_int_eq(size(&second_list), 3);
 }
@@ -103,7 +103,7 @@ Suite* vector_suite()
     TCase *tcase = tcase_create("case");
 
     tcase_add_test(tcase, test_create);
-    tcase_add_test(tcase, test_push);
+    tcase_add_test(tcase, test_insertAtTheEnd);
     tcase_add_test(tcase, test_size);
     tcase_add_test(tcase, test_resize);
 
