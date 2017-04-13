@@ -24,7 +24,7 @@ Vector create(const unsigned short size);
  * @param vector the given vector to modify
  * @param data the data to append
  */
-void push(Vector* vector, int data);
+void insertAtTheEnd(Vector* vector, int data);
 
 /**
  * @brief Gets data at the given position

@@ -24,7 +24,7 @@ Vector create(const unsigned short size)
 /**
  *
  */
-void push(Vector* vector, int data)
+void insertAtTheEnd(Vector* vector, int data)
 {
     vector->size++;
 
