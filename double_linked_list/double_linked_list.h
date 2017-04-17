@@ -40,3 +40,10 @@ void push(DoubleLinkedList* list, const int data);
  * @param index the index into the list of the expected data
  */
 const int at(DoubleLinkedList* list, const unsigned int index);
+
+/**
+ * @brief Returns the size of the list
+ *
+ * @param list the concerned double linked list
+ */
+const unsigned int size(DoubleLinkedList* list);

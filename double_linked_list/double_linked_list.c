@@ -62,3 +62,21 @@ const int at(DoubleLinkedList* list, const unsigned int index)
 
     return node->data;
 }
+
+/**
+ *
+ */
+const unsigned int size(DoubleLinkedList* list)
+{
+    unsigned int size = 1;
+
+    DoubleLinkedListNode* node = list->head;
+
+    while(node->next != NULL)
+    {
+        node = node->next;
+        size++;
+    }
+
+    return size;
+}

@@ -40,6 +40,24 @@ END_TEST
 /**
  *
  */
+START_TEST(test_size)
+{
+    DoubleLinkedList first_list = create(10);
+    push(&first_list, 20);
+    push(&first_list, 30);
+    push(&first_list, 40);
+
+    ck_assert_int_eq(size(&first_list), 4);
+
+    DoubleLinkedList second_list = create(20);
+
+    ck_assert_int_eq(size(&second_list), 1);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* double_linked_list_suite()
 {
     Suite *suite = suite_create("double_linked_list");
@@ -47,6 +65,7 @@ Suite* double_linked_list_suite()
 
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_push);
+    tcase_add_test(tcase, test_size);
 
     suite_add_tcase(suite, tcase);
 
