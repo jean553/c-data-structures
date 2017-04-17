@@ -112,6 +112,14 @@ The implemented methods are:
  * push
  * at
 
+Pros:
+ * the size is not fixed
+ * can be browsed in both directions
+ * inserting/removing does not require to copy the data
+
+Cons:
+ * take more space than a simple linked list
+
 ## Vector - Dynamic array
 
 An array is a set of continuous data in memory.
