@@ -100,3 +100,19 @@ const unsigned int size(DoubleLinkedList* list)
 {
     return list->size;
 }
+
+/**
+ *
+ */
+int* all(DoubleLinkedList* list)
+{
+    const unsigned int length = size(list);
+    int* datas = (int*) malloc(length * sizeof(int));
+
+    for(int i = 0; i < length; i++)
+    {
+        datas[i] = at(list, i);
+    }
+
+    return datas;
+}
