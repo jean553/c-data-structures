@@ -111,6 +111,7 @@ The implemented methods are:
  * create
  * push
  * at
+ * size
 
 Pros:
  * the size is not fixed
