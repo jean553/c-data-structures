@@ -12,6 +12,7 @@ typedef struct DoubleLinkedListNode
 
 typedef struct DoubleLinkedList
 {
+    unsigned int size;
     struct DoubleLinkedListNode* head;
     struct DoubleLinkedListNode* tail;
 } DoubleLinkedList;

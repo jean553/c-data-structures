@@ -16,6 +16,7 @@ DoubleLinkedList create(const int data)
     DoubleLinkedList list;
     list.head = node;
     list.head = node;
+    list.size = 1;
 
     return list;
 }
@@ -39,6 +40,8 @@ void insertAtTheEnd(DoubleLinkedList* list, const int data)
     node->next->data = data;
     node->next->next = NULL;
     node->next->previous = node;
+
+    list->size++;
 }
 
 /**
@@ -68,15 +71,5 @@ const int at(DoubleLinkedList* list, const unsigned int index)
  */
 const unsigned int size(DoubleLinkedList* list)
 {
-    unsigned int size = 1;
-
-    DoubleLinkedListNode* node = list->head;
-
-    while(node->next != NULL)
-    {
-        node = node->next;
-        size++;
-    }
-
-    return size;
+    return list->size;
 }
