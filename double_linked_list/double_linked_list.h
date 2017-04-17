@@ -31,7 +31,7 @@ DoubleLinkedList create(const int data);
  * @param list the double linked list to modify
  * @param data the data to insert into the list
  */
-void push(DoubleLinkedList* list, const int data);
+void insertAtTheEnd(DoubleLinkedList* list, const int data);
 
 /**
  * @brief Returns the element at the given index
