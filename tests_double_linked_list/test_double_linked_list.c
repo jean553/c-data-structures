@@ -40,6 +40,35 @@ END_TEST
 /**
  *
  */
+START_TEST(test_insertAtTheBeginning)
+{
+    DoubleLinkedList first_list = create(0);
+    insertAtTheBeginning(&first_list, 10);
+    insertAtTheBeginning(&first_list, 20);
+    insertAtTheBeginning(&first_list, 30);
+
+    ck_assert_int_eq(at(&first_list, 0), 30);
+    ck_assert_int_eq(at(&first_list, 1), 20);
+    ck_assert_int_eq(at(&first_list, 2), 10);
+    ck_assert_int_eq(at(&first_list, 3), 0);
+
+    DoubleLinkedList second_list = create(0);
+    insertAtTheEnd(&second_list, 10);
+    insertAtTheBeginning(&second_list, 20);
+    insertAtTheEnd(&second_list, 30);
+    insertAtTheBeginning(&second_list, 40);
+
+    ck_assert_int_eq(at(&second_list, 0), 40);
+    ck_assert_int_eq(at(&second_list, 1), 20);
+    ck_assert_int_eq(at(&second_list, 2), 0);
+    ck_assert_int_eq(at(&second_list, 3), 10);
+    ck_assert_int_eq(at(&second_list, 4), 30);
+}
+END_TEST
+
+/**
+ *
+ */
 START_TEST(test_size)
 {
     DoubleLinkedList first_list = create(10);
@@ -81,6 +110,7 @@ Suite* double_linked_list_suite()
 
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_insertAtTheEnd);
+    tcase_add_test(tcase, test_insertAtTheBeginning);
     tcase_add_test(tcase, test_size);
     tcase_add_test(tcase, test_at);
 

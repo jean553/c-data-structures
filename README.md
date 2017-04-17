@@ -109,7 +109,8 @@ N : Next
 
 The implemented methods are:
  * create
- * push
+ * insertAtTheEnd
+ * insertAtTheBeginning
  * at
  * size
 

@@ -35,6 +35,14 @@ DoubleLinkedList create(const int data);
 void insertAtTheEnd(DoubleLinkedList* list, const int data);
 
 /**
+ * @brief Inserts one node at the beginning of the double linked list
+ *
+ * @param list the double linked list to modify
+ * @param data the data to insert into the list
+ */
+void insertAtTheBeginning(DoubleLinkedList* list, const int data);
+
+/**
  * @brief Returns the element at the given index
  *
  * @param list the double linked list to modify

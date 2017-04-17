@@ -40,6 +40,22 @@ void insertAtTheEnd(DoubleLinkedList* list, const int data)
 /**
  *
  */
+void insertAtTheBeginning(DoubleLinkedList* list, const int data)
+{
+    DoubleLinkedListNode* node = list->head;
+
+    node->previous = malloc(sizeof(DoubleLinkedListNode));
+    node->previous->data = data;
+    node->previous->next = node;
+    node->previous->previous = NULL;
+
+    list->size++;
+    list->head = node->previous;
+}
+
+/**
+ *
+ */
 const int at(DoubleLinkedList* list, const unsigned int index)
 {
     DoubleLinkedListNode* node = NULL;
