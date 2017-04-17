@@ -32,6 +32,22 @@ make
 ctest --output-on-failure .
 ```
 
+## Create individual libraries
+
+In the example below, we create a library for the linked list.
+
+```bash
+cd linked_list/
+gcc -c -fpic linked_list.c
+gcc -shared -o liblinkedlist.so linked_list.o
+```
+
+Export the path for dynamic imports:
+
+```bash
+export LD_LIBRARY_PATH={directory of your *.so file}
+```
+
 ## Documentation
 
 ### Installation
