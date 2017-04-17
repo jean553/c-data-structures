@@ -42,18 +42,36 @@ void insertAtTheEnd(DoubleLinkedList* list, const int data)
  */
 const int at(DoubleLinkedList* list, const unsigned int index)
 {
-    DoubleLinkedListNode* node = list->head;
+    DoubleLinkedListNode* node = NULL;
 
-    /* TODO: #18 this function should also be able
-     * to iterates from the end of the list */
+    const unsigned int currentSize = size(list);
+    const unsigned int middle = currentSize / 2;
 
-    for (
-        unsigned int i = 0;
-        i != index;
-        i++
-    )
+    if (index < middle)
     {
-        node = node->next;
+        node = list->head;
+
+        for (
+            unsigned int i = 0;
+            i != index;
+            i++
+        )
+        {
+            node = node->next;
+        }
+    }
+    else
+    {
+        node = list->tail;
+
+        for (
+            unsigned int i = currentSize - 1;
+            i != index;
+            i--
+        )
+        {
+            node = node->previous;
+        }
     }
 
     return node->data;
