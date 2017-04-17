@@ -15,7 +15,7 @@ DoubleLinkedList create(const int data)
 
     DoubleLinkedList list;
     list.head = node;
-    list.head = node;
+    list.tail = node;
     list.size = 1;
 
     return list;
@@ -26,15 +26,7 @@ DoubleLinkedList create(const int data)
  */
 void insertAtTheEnd(DoubleLinkedList* list, const int data)
 {
-    DoubleLinkedListNode* node = list->head;
-
-    /* TODO: #18 this function should also be able
-     * to iterates from the end of the list */
-
-    while(node->next != NULL)
-    {
-        node = node->next;
-    }
+    DoubleLinkedListNode* node = list->tail;
 
     node->next = malloc(sizeof(DoubleLinkedListNode));
     node->next->data = data;
@@ -42,6 +34,7 @@ void insertAtTheEnd(DoubleLinkedList* list, const int data)
     node->next->previous = node;
 
     list->size++;
+    list->tail = node->next;
 }
 
 /**
