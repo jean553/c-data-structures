@@ -23,7 +23,7 @@ DoubleLinkedList create(const int data)
 /**
  *
  */
-void push(DoubleLinkedList* list, const int data)
+void insertAtTheEnd(DoubleLinkedList* list, const int data)
 {
     DoubleLinkedListNode* node = list->head;
 
