@@ -56,3 +56,12 @@ const int at(DoubleLinkedList* list, const unsigned int index);
  * @param list the concerned double linked list
  */
 const unsigned int size(DoubleLinkedList* list);
+
+/**
+ * @brief Returns an array pointer with all the ordered items
+ *
+ * @param list the concerned double linked list
+ *
+ * @return int*
+ */
+int* all(DoubleLinkedList* list);
