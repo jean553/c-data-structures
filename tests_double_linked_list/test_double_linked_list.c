@@ -103,6 +103,22 @@ END_TEST
 /**
  *
  */
+START_TEST(test_insertAt)
+{
+    /* insert at the beginning when list contains one node */
+
+    DoubleLinkedList first_node = create(10);
+
+    insertAt(&first_node, 0, 20);
+
+    ck_assert_int_eq(at(&first_node, 0), 20);
+    ck_assert_int_eq(at(&first_node, 1), 10);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* double_linked_list_suite()
 {
     Suite *suite = suite_create("double_linked_list");
@@ -113,6 +129,7 @@ Suite* double_linked_list_suite()
     tcase_add_test(tcase, test_insertAtTheBeginning);
     tcase_add_test(tcase, test_size);
     tcase_add_test(tcase, test_at);
+    tcase_add_test(tcase, test_insertAt);
 
     suite_add_tcase(suite, tcase);
 

@@ -65,3 +65,12 @@ const unsigned int size(DoubleLinkedList* list);
  * @return int*
  */
 int* all(DoubleLinkedList* list);
+
+/**
+ * @brief Inserts one node at the given position
+ *
+ * @param list the double linked list to modify
+ * @param index the position of the new node to add
+ * @param data the data to insert into the list
+ */
+void insertAt(DoubleLinkedList* list, const unsigned int index, const int data);
