@@ -88,12 +88,17 @@ const unsigned int size(DoubleLinkedList* list)
  */
 int* all(DoubleLinkedList* list)
 {
-    const unsigned int length = size(list);
-    int* datas = (int*) malloc(length * sizeof(int));
+    DoubleLinkedListNode* node = list->head;
 
-    for(int i = 0; i < length; i++)
+    int* datas = (int*) malloc(list->size * sizeof(int));
+
+    unsigned int i = 0;
+    while(node != NULL)
     {
-        datas[i] = at(list, i);
+        datas[i] = node->data;
+
+        node = node->next;
+        i++;
     }
 
     return datas;
