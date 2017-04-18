@@ -127,6 +127,7 @@ The implemented methods are:
  * create
  * insertAtTheEnd
  * insertAtTheBeginning
+ * insertAt
  * at
  * size
 
