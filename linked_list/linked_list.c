@@ -80,12 +80,15 @@ const unsigned int size(LinkedListNode* node)
  */
 int* all(LinkedListNode* node)
 {
-    const unsigned int length = size(node);
-    int* datas = (int*) malloc(length * sizeof(int));
+    int* datas = (int*) malloc(size(node) * sizeof(int));
 
-    for(int i = 0; i < length; i++)
+    unsigned int i = 0;
+    while(node != NULL)
     {
-        datas[i] = at(node, i);
+        datas[i] = node->data;
+
+        node = node->next;
+        i++;
     }
 
     return datas;
