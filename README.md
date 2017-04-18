@@ -130,6 +130,7 @@ The implemented methods are:
  * insertAt
  * at
  * size
+ * all
 
 Pros:
  * the size is not fixed
