@@ -66,13 +66,13 @@ const unsigned int size(LinkedListNode* node);
 int* all(LinkedListNode* node);
 
 /**
- * @brief Inserts one node at the given index
+ * @brief Inserts one node right after the given index
  *
  * @param node the linked list to modify
  * @param index the index where the data has to be inserted
  * @param data the data to insert
  */
-void insertAt(LinkedListNode* node, const unsigned int index, const int data);
+void insertAfter(LinkedListNode* node, const unsigned int index, const int data);
 
 /**
  * @brief Deletes one node at the given index

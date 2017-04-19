@@ -97,21 +97,25 @@ int* all(LinkedListNode* node)
 /**
  *
  */
-void insertAt(LinkedListNode* node, const unsigned int index, const int data)
+void insertAfter(LinkedListNode* node, const unsigned int index, const int data)
 {
-    for(unsigned int i = 0; i != index; i++)
+    LinkedListNode* currentNext = node->next;
+
+    for (
+        unsigned int i = 0;
+        i < index;
+        i++
+    )
     {
         node = node->next;
+        currentNext = node->next;
     }
 
-    LinkedListNode* currentNext = node->next;
-    int currentData = node->data;
+    LinkedListNode* newNode = malloc(sizeof(LinkedListNode));
+    newNode->data = data;
+    newNode->next = currentNext;
 
-    node->data = data;
-    node->next = malloc(sizeof(LinkedListNode));
-
-    node->next->data = currentData;
-    node->next->next = currentNext;
+    node->next = newNode;
 }
 
 /**
