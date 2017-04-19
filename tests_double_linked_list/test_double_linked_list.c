@@ -109,10 +109,10 @@ START_TEST(test_insertAt)
 
     DoubleLinkedList first_node = create(10);
 
-    insertAt(&first_node, 0, 20);
+    insertAfter(&first_node, 0, 20);
 
-    ck_assert_int_eq(at(&first_node, 0), 20);
-    ck_assert_int_eq(at(&first_node, 1), 10);
+    ck_assert_int_eq(at(&first_node, 0), 10);
+    ck_assert_int_eq(at(&first_node, 1), 20);
 
     /* insert at the beginning when list contains many nodes */
 
@@ -121,10 +121,10 @@ START_TEST(test_insertAt)
     insertAtTheEnd(&second_list, 30);
     insertAtTheEnd(&second_list, 40);
 
-    insertAt(&second_list, 0, 50);
+    insertAfter(&second_list, 0, 50);
 
-    ck_assert_int_eq(at(&second_list, 0), 50);
-    ck_assert_int_eq(at(&second_list, 1), 10);
+    ck_assert_int_eq(at(&second_list, 0), 10);
+    ck_assert_int_eq(at(&second_list, 1), 50);
     ck_assert_int_eq(at(&second_list, 2), 20);
     ck_assert_int_eq(at(&second_list, 3), 30);
     ck_assert_int_eq(at(&second_list, 4), 40);
@@ -133,12 +133,18 @@ START_TEST(test_insertAt)
 
     DoubleLinkedList third_list = create(10);
     insertAtTheEnd(&third_list, 20);
+    insertAtTheEnd(&third_list, 30);
+    insertAtTheEnd(&third_list, 40);
+    insertAtTheEnd(&third_list, 50);
 
-    insertAt(&third_list, 1, 40);
+    insertAfter(&third_list, 2, 60);
 
     ck_assert_int_eq(at(&third_list, 0), 10);
-    ck_assert_int_eq(at(&third_list, 1), 40);
-    ck_assert_int_eq(at(&third_list, 2), 20);
+    ck_assert_int_eq(at(&third_list, 1), 20);
+    ck_assert_int_eq(at(&third_list, 2), 30);
+    ck_assert_int_eq(at(&third_list, 3), 60);
+    ck_assert_int_eq(at(&third_list, 4), 40);
+    ck_assert_int_eq(at(&third_list, 5), 50);
 
     /* insert in the middle when contains many lists */
 
@@ -147,13 +153,13 @@ START_TEST(test_insertAt)
     insertAtTheEnd(&fourth_list, 30);
     insertAtTheEnd(&fourth_list, 40);
 
-    insertAt(&fourth_list, 2, 50);
+    insertAfter(&fourth_list, 3, 50);
 
     ck_assert_int_eq(at(&fourth_list, 0), 10);
     ck_assert_int_eq(at(&fourth_list, 1), 20);
-    ck_assert_int_eq(at(&fourth_list, 2), 50);
-    ck_assert_int_eq(at(&fourth_list, 3), 30);
-    ck_assert_int_eq(at(&fourth_list, 4), 40);
+    ck_assert_int_eq(at(&fourth_list, 2), 30);
+    ck_assert_int_eq(at(&fourth_list, 3), 40);
+    ck_assert_int_eq(at(&fourth_list, 4), 50);
 }
 END_TEST
 

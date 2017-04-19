@@ -91,7 +91,7 @@ The implemented methods are:
  * at
  * size
  * all
- * insertAt
+ * insertAfter
  * dropAt
  * dropAtTheEnd
 
@@ -127,7 +127,7 @@ The implemented methods are:
  * create
  * insertAtTheEnd
  * insertAtTheBeginning
- * insertAt
+ * insertAfter
  * at
  * size
  * all

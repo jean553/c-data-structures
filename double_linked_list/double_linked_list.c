@@ -107,28 +107,24 @@ int* all(DoubleLinkedList* list)
 /**
  *
  */
-void insertAt(DoubleLinkedList* list, const unsigned int index, const int data)
+void insertAfter(DoubleLinkedList* list, const unsigned int index, const int data)
 {
     DoubleLinkedListNode* node = list->head;
+    DoubleLinkedListNode* currentNext = node->next;
 
-    for(unsigned int i = 0; i != index; i++)
+    for (
+        unsigned int i = 0;
+        i < index;
+        i++
+    )
     {
         node = node->next;
+        currentNext = node->next;
     }
 
-    DoubleLinkedListNode* currentNext = node->next;
-    DoubleLinkedListNode* currentPrevious = node->previous;
-
-    /* TODO: #43 do not copy the data when insert into a list */
-    int currentData = node->data;
-
-    node->data = data;
-
     DoubleLinkedListNode* newNode = malloc(sizeof(DoubleLinkedListNode));
-    newNode->data = currentData;
+    newNode->data = data;
     newNode->next = currentNext;
-    newNode->previous = currentPrevious;
 
     node->next = newNode;
-    list->size++;
 }
