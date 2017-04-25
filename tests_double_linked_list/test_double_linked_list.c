@@ -105,15 +105,6 @@ END_TEST
  */
 START_TEST(test_insertAt)
 {
-    /* insert at the beginning when list contains one node */
-
-    DoubleLinkedList first_node = create(10);
-
-    insertAfter(&first_node, 0, 20);
-
-    ck_assert_int_eq(at(&first_node, 0), 10);
-    ck_assert_int_eq(at(&first_node, 1), 20);
-
     /* insert at the beginning when list contains many nodes */
 
     DoubleLinkedList second_list = create(10);
@@ -153,13 +144,13 @@ START_TEST(test_insertAt)
     insertAtTheEnd(&fourth_list, 30);
     insertAtTheEnd(&fourth_list, 40);
 
-    insertAfter(&fourth_list, 3, 50);
+    insertAfter(&fourth_list, 2, 50);
 
     ck_assert_int_eq(at(&fourth_list, 0), 10);
     ck_assert_int_eq(at(&fourth_list, 1), 20);
     ck_assert_int_eq(at(&fourth_list, 2), 30);
-    ck_assert_int_eq(at(&fourth_list, 3), 40);
-    ck_assert_int_eq(at(&fourth_list, 4), 50);
+    ck_assert_int_eq(at(&fourth_list, 3), 50);
+    ck_assert_int_eq(at(&fourth_list, 4), 40);
 }
 END_TEST
 
