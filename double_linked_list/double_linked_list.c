@@ -58,18 +58,36 @@ void insertAtTheBeginning(DoubleLinkedList* list, const int data)
  */
 const int at(DoubleLinkedList* list, const unsigned int index)
 {
-    DoubleLinkedListNode* node = list->head;
+    const unsigned int length = size(list);
+    const unsigned int middle = length / 2;
 
-    /* TODO: #42 the at() method should browse the list
-     * from the tail to the head */
+    DoubleLinkedListNode* node;
 
-    for (
-        unsigned int i = 0;
-        i != index;
-        i++
-    )
+    if (index < middle)
     {
-        node = node->next;
+        node = list->head;
+
+        for (
+            unsigned int i = 0;
+            i != index;
+            i++
+        )
+        {
+            node = node->next;
+        }
+    }
+    else
+    {
+        node = list->tail;
+
+        for (
+            unsigned int i = length - 1;
+            i != index;
+            i--
+        )
+        {
+            node = node->previous;
+        }
     }
 
     return node->data;
@@ -112,6 +130,8 @@ void insertAfter(DoubleLinkedList* list, const unsigned int index, const int dat
     DoubleLinkedListNode* node = list->head;
     DoubleLinkedListNode* currentNext = node->next;
 
+    /* TODO: #42 list should be browse in both directions */
+
     for (
         unsigned int i = 0;
         i < index;
@@ -122,9 +142,12 @@ void insertAfter(DoubleLinkedList* list, const unsigned int index, const int dat
         currentNext = node->next;
     }
 
-    DoubleLinkedListNode* newNode = malloc(sizeof(DoubleLinkedListNode));
-    newNode->data = data;
-    newNode->next = currentNext;
+    node->next = malloc(sizeof(DoubleLinkedListNode));
+    node->next->data = data;
+    node->next->next = currentNext;
+    node->next->previous = node;
 
-    node->next = newNode;
+    currentNext->previous = node->next;
+
+    list->size++;
 }
