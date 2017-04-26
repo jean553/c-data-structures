@@ -165,3 +165,11 @@ The implemented methods are:
  * at
  * size
  * resize
+
+Pros:
+ * read and write is fast, because we use a pointer to directly jumps at the expected index
+
+Cons:
+ * the size is fixed because memory has to be allocated once in order to ensure that all the nodes are contiguous;
+ * "dynamic" insertion requires to reallocate the memory
+ * insert into the array requires to copy (shift) many nodes
