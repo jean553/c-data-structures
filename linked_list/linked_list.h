@@ -3,6 +3,11 @@
  * @file linked_list.h
  */
 
+typedef struct LinkedList
+{
+    struct LinkedList* head;
+} LinkedList;
+
 typedef struct LinkedListNode
 {
     int data;
