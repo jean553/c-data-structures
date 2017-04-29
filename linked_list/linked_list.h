@@ -5,7 +5,7 @@
 
 typedef struct LinkedList
 {
-    struct LinkedList* head;
+    struct LinkedListNode* head;
 } LinkedList;
 
 typedef struct LinkedListNode
@@ -19,77 +19,75 @@ typedef struct LinkedListNode
  *
  * @param data integer to set into the new created node
  *
- * @return LinkedListNode
+ * @return LinkedList
  */
-LinkedListNode create(const int data);
+LinkedList create(const int data);
 
 /**
  * @brief Appends one new node into the given linked list
  *
- * @param node the linked list to modify
+ * @param list the linked list to modify
  * @param data integer to set into the new created node
  */
-void insertAtTheEnd(LinkedListNode* node, const int data);
+void insertAtTheEnd(LinkedList* list, const int data);
 
 /**
  * @brief Prepends one new node into the given linked list,
  * returns the new head of the list
  *
- * @param node the linked list to modify
+ * @param list the linked list to modify
  * @param data integer to set into the new created node
- *
- * @return LinkedListNode*
  */
-LinkedListNode* insertAtTheBeginning(LinkedListNode* node, const int data);
+void insertAtTheBeginning(LinkedList* node, const int data);
 
 /**
  * @brief Returns the value of the node at the given position
  *
- * @param node the linked list to browse
+ * @param list the linked list to browse
  * @param index the index into the list of the expected data
  *
  * @return const int
  */
-const int at(LinkedListNode* node, const unsigned int index);
+const int at(LinkedList* list, const unsigned int index);
 
 /**
  * @brief Returns the length of the linked list
  *
- * @param node the linked list to analyze
+ * @param list the linked list to analyze
  *
  * @return const unsigned int
  */
-const unsigned int size(LinkedListNode* node);
+const unsigned int size(LinkedList* list);
 
 /**
  * @brief Prints every nodes from the first one to the last one
  *
- * @param node the linked list to print
+ * @param list the linked list to print
  *
  * @return int*
  */
-int* all(LinkedListNode* node);
+int* all(LinkedList* list);
 
 /**
  * @brief Inserts one node right after the given index
  *
- * @param node the linked list to modify
+ * @param list the linked list to modify
  * @param index the index where the data has to be inserted
  * @param data the data to insert
  */
-void insertAfter(LinkedListNode* node, const unsigned int index, const int data);
+void insertAfter(LinkedList* list, const unsigned int index, const int data);
 
 /**
  * @brief Deletes one node at the given index
  *
- * @param node the linked list to modify
+ * @param list the linked list to modify
  * @param index the index where the data has to be dropd
  */
-void dropAt(LinkedListNode* node, const unsigned int index);
+void dropAt(LinkedList* list, const unsigned int index);
 
 /**
  * @brief Deletes the last node from the list
  *
- * @param node the linked list to modify
+ * @param list the linked list to modify
  */
-void dropAtTheEnd(LinkedListNode* node);
+void dropAtTheEnd(LinkedList* list);
