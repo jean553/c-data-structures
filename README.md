@@ -179,6 +179,10 @@ Cons:
 A simple linked list that automatically updates its nodes order.
 The order is updated according to the usage frequency of each node.
 
+The implemented methods are:
+ * atWithMTF - like at() and applies `Move To Front` method
+ * atTranspose - like at() and applies `Swapping` method
+
 ### Move To Front
 
 Everytime a node is requested, the node is moved to the head of the list.
