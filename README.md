@@ -189,3 +189,13 @@ Pros:
 Cons:
  * not accurate: simply moves to the top every requested node,
 the algorithm does not include any average consideration of nodes usage. 
+
+### Swapping method
+
+Everytime a node is requested, the selected node is swapped with the previous one.
+
+Pros:
+ * accurate compare to MTF, nodes move according to the frequency they are requested and they move progressively to the head
+
+Cons:
+ * takes many accesses to move one node to the head

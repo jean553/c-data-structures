@@ -16,3 +16,15 @@ typedef struct LinkedList LinkedList;
  * @return const int
  */
 const int atWithMTF(LinkedList* list, const unsigned int index);
+
+/**
+ * @brief returns data at the given index and
+ * swap the selected node with the previous one
+ * (Transpose method)
+ *
+ * @param list the linked list to modify
+ * @param index the index into the list of the expected data
+ *
+ * @return const int
+ */
+const int atTranspose(LinkedList* list, const unsigned int index);
