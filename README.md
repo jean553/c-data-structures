@@ -173,3 +173,19 @@ Cons:
  * the size is fixed because memory has to be allocated once in order to ensure that all the nodes are contiguous;
  * "dynamic" insertion requires to reallocate the memory
  * insert into the array requires to copy (shift) many nodes
+
+## Self-organizing list
+
+A simple linked list that automatically updates its nodes order.
+The order is updated according to the usage frequency of each node.
+
+### Move To Front
+
+Everytime a node is requested, the node is moved to the head of the list.
+
+Pros:
+ * no additional data into the linked list (standard linked list can be used)
+
+Cons:
+ * not accurate: simply moves to the top every requested node,
+the algorithm does not include any average consideration of nodes usage. 
