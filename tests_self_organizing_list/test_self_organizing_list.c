@@ -54,12 +54,72 @@ END_TEST
 /**
  *
  */
+START_TEST(test_atTranspose)
+{
+    /* index in the middle */
+
+    LinkedList first_node = create(10);
+    insertAtTheEnd(&first_node, 20);
+    insertAtTheEnd(&first_node, 30);
+    insertAtTheEnd(&first_node, 40);
+
+    ck_assert_int_eq(atTranspose(&first_node, 2), 30);
+    ck_assert_int_eq(at(&first_node, 0), 10);
+    ck_assert_int_eq(at(&first_node, 1), 30);
+    ck_assert_int_eq(at(&first_node, 2), 20);
+    ck_assert_int_eq(at(&first_node, 3), 40);
+
+    /* index at the end */
+
+    LinkedList second_node = create(10);
+    insertAtTheEnd(&second_node, 20);
+    insertAtTheEnd(&second_node, 30);
+    insertAtTheEnd(&second_node, 40);
+
+    ck_assert_int_eq(atTranspose(&second_node, 3), 40);
+    ck_assert_int_eq(at(&second_node, 0), 10);
+    ck_assert_int_eq(at(&second_node, 1), 20);
+    ck_assert_int_eq(at(&second_node, 2), 40);
+    ck_assert_int_eq(at(&second_node, 3), 30);
+
+    /* index at the beginning */
+
+    LinkedList third_node = create(10);
+    insertAtTheEnd(&third_node, 20);
+    insertAtTheEnd(&third_node, 30);
+    insertAtTheEnd(&third_node, 40);
+
+    ck_assert_int_eq(atTranspose(&third_node, 0), 10);
+    ck_assert_int_eq(at(&third_node, 0), 10);
+    ck_assert_int_eq(at(&third_node, 1), 20);
+    ck_assert_int_eq(at(&third_node, 2), 30);
+    ck_assert_int_eq(at(&third_node, 3), 40);
+
+    /* index at the second position */
+
+    LinkedList fourth_node = create(10);
+    insertAtTheEnd(&fourth_node, 20);
+    insertAtTheEnd(&fourth_node, 30);
+    insertAtTheEnd(&fourth_node, 40);
+
+    ck_assert_int_eq(atTranspose(&fourth_node, 1), 20);
+    ck_assert_int_eq(at(&fourth_node, 0), 20);
+    ck_assert_int_eq(at(&fourth_node, 1), 10);
+    ck_assert_int_eq(at(&fourth_node, 2), 30);
+    ck_assert_int_eq(at(&fourth_node, 3), 40);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* double_linked_list_suite()
 {
     Suite *suite = suite_create("self_organizing_list");
     TCase *tcase = tcase_create("case");
 
     tcase_add_test(tcase, test_atWithMTF);
+    tcase_add_test(tcase, test_atTranspose);
 
     suite_add_tcase(suite, tcase);
 
