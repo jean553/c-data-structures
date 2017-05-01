@@ -101,3 +101,11 @@ void insertAt(Vector* vector, const unsigned short index, const int data)
 
     vector->array[index] = data;
 }
+
+/**
+ *
+ */
+void updateAt(Vector* vector, const unsigned short index, const int data)
+{
+    vector->array[index] = data;
+}

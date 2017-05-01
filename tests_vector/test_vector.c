@@ -171,6 +171,38 @@ END_TEST
 /**
  *
  */
+START_TEST(test_updateAt)
+{
+    /* insert only one node */
+
+    Vector first_list = create(10);
+    updateAt(&first_list, 0, 0);
+    updateAt(&first_list, 1, 10);
+    updateAt(&first_list, 2, 20);
+    updateAt(&first_list, 3, 30);
+    updateAt(&first_list, 4, 40);
+    updateAt(&first_list, 5, 50);
+    updateAt(&first_list, 6, 60);
+    updateAt(&first_list, 7, 70);
+    updateAt(&first_list, 8, 80);
+    updateAt(&first_list, 9, 90);
+
+    ck_assert_int_eq(at(&first_list, 0), 0);
+    ck_assert_int_eq(at(&first_list, 1), 10);
+    ck_assert_int_eq(at(&first_list, 2), 20);
+    ck_assert_int_eq(at(&first_list, 3), 30);
+    ck_assert_int_eq(at(&first_list, 4), 40);
+    ck_assert_int_eq(at(&first_list, 5), 50);
+    ck_assert_int_eq(at(&first_list, 6), 60);
+    ck_assert_int_eq(at(&first_list, 7), 70);
+    ck_assert_int_eq(at(&first_list, 8), 80);
+    ck_assert_int_eq(at(&first_list, 9), 90);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* vector_suite()
 {
     Suite *suite = suite_create("vector");
@@ -181,6 +213,7 @@ Suite* vector_suite()
     tcase_add_test(tcase, test_size);
     tcase_add_test(tcase, test_resize);
     tcase_add_test(tcase, test_insertAt);
+    tcase_add_test(tcase, test_updateAt);
 
     suite_add_tcase(suite, tcase);
 
