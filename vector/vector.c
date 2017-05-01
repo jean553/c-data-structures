@@ -77,3 +77,27 @@ void resize(Vector* vector, const unsigned short size)
 
     vector->size = size;
 }
+
+/**
+ *
+ */
+void insertAt(Vector* vector, const unsigned short index, const int data)
+{
+    vector->size++;
+
+    vector->array = realloc(
+        vector->array,
+        sizeof(int) * vector->size
+    );
+
+    for(
+        unsigned int i = vector->size - 2; // minus 2 as the last one is empty
+        i > index;
+        i--
+    )
+    {
+        vector->array[i + 1] = vector->array[i];
+    }
+
+    vector->array[index] = data;
+}

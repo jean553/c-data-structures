@@ -162,6 +162,7 @@ A vector is a dynamic array (the allocated size can vary).
 The implemented methods are:
  * create
  * insertAtTheEnd
+ * insertAt
  * at
  * size
  * resize

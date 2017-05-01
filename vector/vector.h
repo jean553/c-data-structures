@@ -52,3 +52,13 @@ const unsigned short size(Vector* vector);
  * @param size the new expected size
  */
 void resize(Vector* vector, const unsigned short size);
+
+/**
+ * @brief Inserts in the vector at the given index;
+ * every nodes after the selected one are shifted to the right of the array
+ *
+ * @param vector the concerned vector where the data has to be inserted
+ * @param index the new data is inserted after the given index
+ * @param data the data to insert into the vector
+ */
+void insertAt(Vector* vector, const unsigned short index, const int data);
