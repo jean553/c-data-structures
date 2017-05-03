@@ -20,8 +20,12 @@ typedef struct UnrolledLinkedListNode
  * @brief Creates a new unrolled linked list with one node
  * and one item into the first dynamic array
  *
+ * @param size the size of every nodes array
  * @param data integer to set into the new created node dynamic array
  *
  * @return UnrolledLinkedList
  */
-UnrolledLinkedList create(const int data);
+UnrolledLinkedList createULL(
+    const unsigned short size,
+    const int data
+);

@@ -4,12 +4,17 @@
 
 #include "unrolled_linked_list.h"
 
+const unsigned short ARRAY_SIZE = 5;
+
 /**
  *
  */
 START_TEST(test_create)
 {
-    /* TODO */
+    UnrolledLinkedList first_list = createULL(
+        ARRAY_SIZE,
+        10
+    );
 }
 END_TEST
 
