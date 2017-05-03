@@ -163,6 +163,7 @@ The implemented methods are:
  * create
  * insertAtTheEnd
  * insertAt
+ * updateAt
  * at
  * size
  * resize

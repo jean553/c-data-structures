@@ -62,3 +62,13 @@ void resize(Vector* vector, const unsigned short size);
  * @param data the data to insert into the vector
  */
 void insertAt(Vector* vector, const unsigned short index, const int data);
+
+/**
+ * @brief Updates the data at the given index;
+ * the existing data is deleted
+ *
+ * @param vector the concerned vector where the data has to be updated
+ * @param index the new data is inserted after the given index
+ * @param data the data to insert into the vector
+ */
+void updateAt(Vector* vector, const unsigned short index, const int data);
