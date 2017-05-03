@@ -26,10 +26,7 @@ typedef struct UnrolledLinkedListNode
  *
  * @return UnrolledLinkedList
  */
-UnrolledLinkedList createULL(
-    const unsigned short size,
-    const int data
-);
+UnrolledLinkedList createULL(const unsigned short size);
 
 /**
  * @brief Returns the data at the given index from the unrolled linked list

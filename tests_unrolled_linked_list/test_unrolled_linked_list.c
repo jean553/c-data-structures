@@ -11,10 +11,7 @@ const unsigned short ARRAY_SIZE = 5;
  */
 START_TEST(test_create)
 {
-    UnrolledLinkedList first_list = createULL(
-        ARRAY_SIZE,
-        10
-    );
+    UnrolledLinkedList first_list = createULL(ARRAY_SIZE);
 
     ck_assert_int_eq(atULL(&first_list, 0), 0);
     ck_assert_int_eq(atULL(&first_list, 1), 0);
@@ -29,10 +26,7 @@ END_TEST
  */
 START_TEST(test_insertAtTheEndULL)
 {
-    UnrolledLinkedList first_list = createULL(
-        ARRAY_SIZE,
-        10
-    );
+    UnrolledLinkedList first_list = createULL(ARRAY_SIZE);
 
     insertAtTheEndULL(&first_list);
 
