@@ -7,27 +7,11 @@
 /**
  *
  */
-UnrolledLinkedList createULL(
-    const unsigned short size,
-    const int data
-)
+UnrolledLinkedList createULL(const unsigned short arraySize)
 {
-    Vector* vector = malloc(sizeof(Vector));
-    vector->size = size;
-    vector->array = (int*) malloc(sizeof(int) * size);
-
-    unsigned short i = 0;
-    for (i = 0; i < size; i++)
-    {
-        vector->array[i] = 0;
-    }
-
-    UnrolledLinkedListNode* node = malloc(sizeof(UnrolledLinkedListNode));
-    node->vector = vector;
-    node->next = NULL;
-
     UnrolledLinkedList list;
-    list.head = node;
+    list.head = getNewUnrolledLinkedListNode(arraySize);
+    list.arraySize = arraySize;
 
     return list;
 }
@@ -37,8 +21,56 @@ UnrolledLinkedList createULL(
  */
 int atULL(
     UnrolledLinkedList* list,
-    const unsigned short index
+    unsigned short index
 )
 {
-    return at(list->head->vector, index);
+    const unsigned short arraySize = list->arraySize;
+
+    UnrolledLinkedListNode* node = list->head;
+
+    while(index > arraySize)
+    {
+        node = node->next;
+
+        index -= arraySize;
+    }
+
+    return at(node->vector, index);
+}
+
+/**
+ *
+ */
+void insertAtTheEndULL(UnrolledLinkedList* list)
+{
+    UnrolledLinkedListNode* node = list->head;
+
+    while(node->next != NULL)
+    {
+        node = node->next;
+    }
+
+    node->next = getNewUnrolledLinkedListNode(list->arraySize);
+}
+
+/**
+ *
+ */
+UnrolledLinkedListNode* getNewUnrolledLinkedListNode(const unsigned short arraySize)
+{
+    Vector* vector = malloc(sizeof(Vector));
+    vector->size = arraySize;
+    vector->array = (int*) malloc(sizeof(int) * arraySize);
+
+    unsigned short i = 0;
+    for (i = 0; i < arraySize; i++)
+    {
+        vector->array[i] = 0;
+    }
+
+    UnrolledLinkedListNode* newNode = malloc(sizeof(UnrolledLinkedListNode));
+    newNode->vector = vector;
+    newNode->next = NULL;
+
+    return newNode;
 }

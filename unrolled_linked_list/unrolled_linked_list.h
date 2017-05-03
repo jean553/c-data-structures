@@ -8,6 +8,7 @@ typedef struct Vector Vector;
 typedef struct UnrolledLinkedList
 {
     struct UnrolledLinkedListNode* head;
+    unsigned short arraySize;
 } UnrolledLinkedList;
 
 typedef struct UnrolledLinkedListNode
@@ -20,15 +21,11 @@ typedef struct UnrolledLinkedListNode
  * @brief Creates a new unrolled linked list with one node
  * and one item into the first dynamic array
  *
- * @param size the size of every nodes array
- * @param data integer to set into the new created node dynamic array
+ * @param arraySize the size of every nodes array
  *
  * @return UnrolledLinkedList
  */
-UnrolledLinkedList createULL(
-    const unsigned short size,
-    const int data
-);
+UnrolledLinkedList createULL(const unsigned short arraySize);
 
 /**
  * @brief Returns the data at the given index from the unrolled linked list
@@ -37,11 +34,25 @@ UnrolledLinkedList createULL(
  * @param index the position of the expected data
  *
  * @return int
- *
- * TODO: the function should be able to return data
- * from other nodes than the first one
  */
 int atULL(
     UnrolledLinkedList* list,
-    const unsigned short index
+    unsigned short index
 );
+
+/**
+ * @brief Appends one new node at the end of the list
+ *
+ * @param list the concerned linked list
+ */
+void insertAtTheEndULL(UnrolledLinkedList* list);
+
+/**
+ * @brief Internal function used to create a new linked list node
+ * with a new array (filled with 0) of the expected size
+ *
+ * @param arraySize the expected size for the array of the new node
+ *
+ * @return UnrolledLinkedListNode*
+ */
+UnrolledLinkedListNode* getNewUnrolledLinkedListNode(const unsigned short arraySize);
