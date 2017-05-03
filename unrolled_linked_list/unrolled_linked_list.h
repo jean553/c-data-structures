@@ -50,3 +50,13 @@ int atULL(
  * @param list the concerned linked list
  */
 void insertAtTheEndULL(UnrolledLinkedList* list);
+
+/**
+ * @brief Internal function used to create a new linked list node
+ * with a new array (filled with 0) of the expected size
+ *
+ * @param size the expected size for the array of the new node
+ *
+ * @return UnrolledLinkedListNode*
+ */
+UnrolledLinkedListNode* getNewUnrolledLinkedListNode(const unsigned short size);
