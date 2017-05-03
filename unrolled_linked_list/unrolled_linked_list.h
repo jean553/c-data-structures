@@ -29,3 +29,19 @@ UnrolledLinkedList createULL(
     const unsigned short size,
     const int data
 );
+
+/**
+ * @brief Returns the data at the given index from the unrolled linked list
+ *
+ * @param list the concerned linked list
+ * @param index the position of the expected data
+ *
+ * @return int
+ *
+ * TODO: the function should be able to return data
+ * from other nodes than the first one
+ */
+int atULL(
+    UnrolledLinkedList* list,
+    const unsigned short index
+);

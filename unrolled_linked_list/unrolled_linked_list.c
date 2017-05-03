@@ -31,3 +31,14 @@ UnrolledLinkedList createULL(
 
     return list;
 }
+
+/**
+ *
+ */
+int atULL(
+    UnrolledLinkedList* list,
+    const unsigned short index
+)
+{
+    return at(list->head->vector, index);
+}

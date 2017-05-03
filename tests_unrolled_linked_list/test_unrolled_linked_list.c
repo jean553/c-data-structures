@@ -15,6 +15,12 @@ START_TEST(test_create)
         ARRAY_SIZE,
         10
     );
+
+    ck_assert_int_eq(atULL(&first_list, 0), 0);
+    ck_assert_int_eq(atULL(&first_list, 1), 0);
+    ck_assert_int_eq(atULL(&first_list, 2), 0);
+    ck_assert_int_eq(atULL(&first_list, 3), 0);
+    ck_assert_int_eq(atULL(&first_list, 4), 0);
 }
 END_TEST
 
