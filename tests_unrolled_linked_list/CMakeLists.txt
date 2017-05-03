@@ -2,8 +2,8 @@ enable_testing()
 
 find_package(Check REQUIRED)
 
-include_directories(${CHECK_INCLUDE_DIRS} ../unrolled_linked_list)
-set(LIBS ${LIBS} ${CHECK_LIBRARIES} unrolled_linked_list)
+include_directories(${CHECK_INCLUDE_DIRS} ../unrolled_linked_list ../vector)
+set(LIBS ${LIBS} ${CHECK_LIBRARIES} unrolled_linked_list vector)
 
 add_executable(test_unrolled_linked_list test_unrolled_linked_list.c)
 target_link_libraries(test_unrolled_linked_list ${LIBS} -lpthread -lm -lrt)
