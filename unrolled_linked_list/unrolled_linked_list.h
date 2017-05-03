@@ -8,6 +8,7 @@ typedef struct Vector Vector;
 typedef struct UnrolledLinkedList
 {
     struct UnrolledLinkedListNode* head;
+    unsigned short size;
 } UnrolledLinkedList;
 
 typedef struct UnrolledLinkedListNode
@@ -43,5 +44,12 @@ UnrolledLinkedList createULL(
  */
 int atULL(
     UnrolledLinkedList* list,
-    const unsigned short index
+    unsigned short index
 );
+
+/**
+ * @brief Appends one new node at the end of the list
+ *
+ * @param list the concerned linked list
+ */
+void insertAtTheEndULL(UnrolledLinkedList* list);
