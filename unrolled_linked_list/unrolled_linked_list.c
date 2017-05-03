@@ -26,22 +26,14 @@ int atULL(
 {
     const unsigned short size = list->size;
 
-    unsigned short start = 0;
-    unsigned short end = size;
-    unsigned short counter = 0;
-
     UnrolledLinkedListNode* node = list->head;
 
-    while(index < start || index > end)
+    while(index > size)
     {
         node = node->next;
 
-        start += size;
-        end += size;
-        counter += 1;
+        index -= size;
     }
-
-    index = index - counter * size;
 
     return at(node->vector, index);
 }

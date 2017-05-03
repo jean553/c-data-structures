@@ -35,9 +35,6 @@ UnrolledLinkedList createULL(const unsigned short size);
  * @param index the position of the expected data
  *
  * @return int
- *
- * TODO: the function should be able to return data
- * from other nodes than the first one
  */
 int atULL(
     UnrolledLinkedList* list,
