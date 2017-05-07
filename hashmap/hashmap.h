@@ -3,18 +3,18 @@
  * @file hashmap.h
  */
 
+typedef struct Hashmap
+{
+    struct HashmapNode* head;
+    unsigned short size;
+} Hashmap;
+
 typedef struct HashmapNode
 {
     char* key;
     int value;
     struct HashmapNode* next;
 } HashmapNode;
-
-typedef struct Hashmap
-{
-    struct HashmapNode* head;
-    unsigned short size;
-} Hashmap;
 
 /**
  * @brief Creates a hashmap of the given size
@@ -43,3 +43,13 @@ void insert(Hashmap* hashmap, const char* key, const int value);
  * @return const int
  */
 const int at(Hashmap* hashmap, const char* key);
+
+/**
+ * @brief Returns the hash of the given key for the given hashmap
+ *
+ * @param hashmap the concerned hashmap
+ * @param key the key value to translate into hash
+ *
+ * @return const unsigned int
+ */
+const unsigned int hash(Hashmap* hasmap, const char* key);
