@@ -7,12 +7,44 @@
 /**
  *
  */
+START_TEST(test_create)
+{
+    Hashmap first_hashmap = create(10);
+}
+END_TEST
+
+/**
+ *
+ */
+START_TEST(test_insert)
+{
+    Hashmap first_hashmap = create(10);
+    insert(&first_hashmap, "val1", 10);
+}
+END_TEST
+
+/**
+ *
+ */
+START_TEST(test_at)
+{
+    Hashmap first_hashmap = create(10);
+    insert(&first_hashmap, "val1", 25);
+    ck_assert_int_eq(at(&first_hashmap, "val1"), 25);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* vector_suite()
 {
     Suite *suite = suite_create("hashmap");
     TCase *tcase = tcase_create("case");
 
-    /* TODO */
+    tcase_add_test(tcase, test_create);
+    tcase_add_test(tcase, test_insert);
+    tcase_add_test(tcase, test_at);
 
     suite_add_tcase(suite, tcase);
 
