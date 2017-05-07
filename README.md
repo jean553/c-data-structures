@@ -72,6 +72,10 @@ doxygen
 
 # List of data structures
 
+NOTE: the following data structures have not been created in this project:
+ * `tuples`: finite ordered list of items that can have different types, accessed by index or key, they are `structures` in C,
+ * `fixed array`: finite ordered list of items that have the same type, accessed by index, they are `arrays` in C.
+
 ## Linked list
 
 Each node contains the data itself and a pointer to the next node.
