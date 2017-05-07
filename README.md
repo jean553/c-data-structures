@@ -205,3 +205,38 @@ Pros:
 
 Cons:
  * takes many accesses to move one node to the head
+
+## Unrolled linked list
+
+```
+        +--------------------------------+
+        | +----------------------------+ |
+        | |    ||    ||    ||    ||    | |
+        | | 0  || 1  || 2  || 3  || 4  | +----+
+        | +----------------------------+ |    |
+        +--------------------------------+    |
+                                              |
+  +-------------------------------------------+
+  |
+  |     +--------------------------------+
+  |     | +----------------------------+ |
+  |     | |    ||    ||    ||    ||    | |
+  +---> | | 5  || 6  || 7  || 8  || 9  | +-->  NULL
+        | +----------------------------+ |
+        +--------------------------------+
+```
+
+The unrolled linked list is a linked list that contains arrays.
+All the arrays have the same size, this size is set during the list creation.
+
+Implemented methods:
+ * createULL
+ * atULL
+ * insertAtTheEndULL
+
+Pros:
+ * access to an item by index can be faster because the last browsing step
+is performed by array indexing,
+
+Cons:
+ * inserts in the middle are expensives (every item of arrays of all of nodes have to be shifted)
