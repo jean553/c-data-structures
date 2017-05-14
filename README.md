@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/jean553/c-data-structures.svg?branch=master)](https://travis-ci.org/jean553/c-data-structures)
 
+Taiga project: https://tree.taiga.io/project/jean553-jean553c-data-structures
+
 # c-data-structures
 
 Clone of https://github.com/jean553/data-structures in C.
@@ -282,3 +284,8 @@ Insertion steps:
  * the value is inserted at the hash address in the array (the key is inserted with its value),
  * if many keys have the same hash (collision), the new node is inserted just after the others (linked list),
  * both of the key and the hash method are used to find data (the keys of the same linked list are browsed if many nodes have the same hash)
+
+Implemented methods:
+ * create
+ * insert
+ * at
