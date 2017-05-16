@@ -120,7 +120,7 @@ START_TEST(test_insertAt)
     ck_assert_int_eq(at(&second_list, 3), 30);
     ck_assert_int_eq(at(&second_list, 4), 40);
 
-    /* insert in the middle when only contains two nodes */
+    /* insert in the middle when only contains five nodes */
 
     DoubleLinkedList third_list = create(10);
     insertAtTheEnd(&third_list, 20);
@@ -137,7 +137,7 @@ START_TEST(test_insertAt)
     ck_assert_int_eq(at(&third_list, 4), 40);
     ck_assert_int_eq(at(&third_list, 5), 50);
 
-    /* insert in the middle when contains many lists */
+    /* insert in the middle when contains four nodes */
 
     DoubleLinkedList fourth_list = create(10);
     insertAtTheEnd(&fourth_list, 20);
@@ -151,6 +151,23 @@ START_TEST(test_insertAt)
     ck_assert_int_eq(at(&fourth_list, 2), 30);
     ck_assert_int_eq(at(&fourth_list, 3), 50);
     ck_assert_int_eq(at(&fourth_list, 4), 40);
+
+    /* insert just before the end of the list */
+
+    DoubleLinkedList fifth_list = create(10);
+    insertAtTheEnd(&fifth_list, 20);
+    insertAtTheEnd(&fifth_list, 30);
+    insertAtTheEnd(&fifth_list, 40);
+    insertAtTheEnd(&fifth_list, 50);
+
+    insertAfter(&fifth_list, 3, 60);
+
+    ck_assert_int_eq(at(&fifth_list, 0), 10);
+    ck_assert_int_eq(at(&fifth_list, 1), 20);
+    ck_assert_int_eq(at(&fifth_list, 2), 30);
+    ck_assert_int_eq(at(&fifth_list, 3), 40);
+    ck_assert_int_eq(at(&fifth_list, 4), 60);
+    ck_assert_int_eq(at(&fifth_list, 5), 50);
 }
 END_TEST
 
