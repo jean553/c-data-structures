@@ -15,5 +15,23 @@ XorDoubleLinkedList create(const int data)
     XorDoubleLinkedList list;
     list.head = node;
     list.tail = node;
+    list.size = 1;
     return list;
+}
+
+/**
+ *
+ */
+void insertAtTheEnd(XorDoubleLinkedList* list, const int data)
+{
+    XorDoubleLinkedListNode* newNode = malloc(sizeof(XorDoubleLinkedListNode));
+    newNode->data = data;
+
+    if (list->size == 1)
+    {
+        newNode->address = list->tail;
+        list->tail->address = newNode;
+    }
+
+    list->size++;
 }

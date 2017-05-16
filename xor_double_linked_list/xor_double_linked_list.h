@@ -24,3 +24,11 @@ typedef struct XorDoubleLinkedList
  * @return XorDoubleLinkedListNode
  */
 XorDoubleLinkedList create(const int data);
+
+/**
+ * @brief Inserts one node at the end of the list
+ *
+ * @param list the XOR double linked list to modify
+ * @param data integer to set into the new created node
+ */
+void insertAtTheEnd(XorDoubleLinkedList* list, const int data);
