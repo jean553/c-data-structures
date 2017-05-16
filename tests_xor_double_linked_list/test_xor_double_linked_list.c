@@ -10,8 +10,13 @@
 START_TEST(test_create)
 {
     XorDoubleLinkedList first_list = create(10);
+    ck_assert_int_eq(at(&first_list, 0), 10);
+
     XorDoubleLinkedList second_list = create(20);
+    ck_assert_int_eq(at(&second_list, 0), 20);
+
     XorDoubleLinkedList third_list = create(30);
+    ck_assert_int_eq(at(&third_list, 0), 30);
 }
 END_TEST
 
@@ -24,6 +29,11 @@ START_TEST(test_insertAtTheEnd)
     insertAtTheEnd(&first_list, 20);
     insertAtTheEnd(&first_list, 30);
     insertAtTheEnd(&first_list, 40);
+
+    ck_assert_int_eq(at(&first_list, 0), 10);
+    ck_assert_int_eq(at(&first_list, 1), 20);
+    ck_assert_int_eq(at(&first_list, 2), 30);
+    ck_assert_int_eq(at(&first_list, 3), 40);
 }
 END_TEST
 

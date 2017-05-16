@@ -289,3 +289,26 @@ Implemented methods:
  * create
  * insert
  * at
+
+## XOR Double linked list
+
+A double linked list that only uses one pointer per node to go to the previous or next node.
+A bitwise XOR operation is applied on the node address field when inserting and reading;
+by this way, the list can find the next or previous node.
+
+```
++---------+  +---------+  +---------+  +---------+
+|    a    |  |    b    |  |    c    |  |    d    |
++---------+  +---------+  +---------+  +---------+
+| b XOR 0 |  | a XOR c |  | b XOR d |  | c XOR 0 |
++---------+  +---------+  +---------+  +---------+
+
++------------------------------------------------>
+
+<------------------------------------------------+
+```
+
+Implemented methods:
+ * create
+ * insert
+ * at

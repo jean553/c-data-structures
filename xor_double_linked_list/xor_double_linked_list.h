@@ -17,6 +17,19 @@ typedef struct XorDoubleLinkedList
 } XorDoubleLinkedList;
 
 /**
+ * @brief Takes two address and returns the value after XOR bitwise applied on it
+ *
+ * @param first the first address
+ * @param second the second address
+ *
+ * @return XorDoubleLinkedListNode*
+ */
+XorDoubleLinkedListNode* xorMethod(
+    XorDoubleLinkedListNode* first,
+    XorDoubleLinkedListNode* second
+);
+
+/**
  * @brief Creates a new XOR double linked list with one node
  *
  * @param data integer to set into the new created node
@@ -32,3 +45,13 @@ XorDoubleLinkedList create(const int data);
  * @param data integer to set into the new created node
  */
 void insertAtTheEnd(XorDoubleLinkedList* list, const int data);
+
+/**
+ * @brief Returns the data at the given index from the given list
+ *
+ * @param list the XOR double linked list to modify
+ * @param index the position of the expected data into the list
+ *
+ * @return const int
+ */
+const int at(XorDoubleLinkedList* list, const unsigned short index);
