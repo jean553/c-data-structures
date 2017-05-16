@@ -127,27 +127,59 @@ int* all(DoubleLinkedList* list)
  */
 void insertAfter(DoubleLinkedList* list, const unsigned int index, const int data)
 {
-    DoubleLinkedListNode* node = list->head;
-    DoubleLinkedListNode* currentNext = node->next;
+    const unsigned int length = size(list);
+    const unsigned int middle = length / 2;
 
-    /* TODO: #42 list should be browse in both directions */
+    DoubleLinkedListNode* node;
+    DoubleLinkedListNode* currentNext;
+    DoubleLinkedListNode* currentPrevious;
 
-    for (
-        unsigned int i = 0;
-        i < index;
-        i++
-    )
+    if (index < middle)
     {
-        node = node->next;
+        node = list->head;
         currentNext = node->next;
+
+        for (
+            unsigned int i = 0;
+            i < index;
+            i++
+        )
+        {
+            node = node->next;
+            currentNext = node->next;
+        }
+
+        node->next = malloc(sizeof(DoubleLinkedListNode));
+        node->next->data = data;
+        node->next->next = currentNext;
+        node->next->previous = node;
+
+        currentNext->previous = node->next;
     }
+    else
+    {
+        node = list->tail;
+        currentPrevious = node->previous;
+        currentNext = node->next;
 
-    node->next = malloc(sizeof(DoubleLinkedListNode));
-    node->next->data = data;
-    node->next->next = currentNext;
-    node->next->previous = node;
+        for (
+            unsigned int i = length - 1;
+            i > index;
+            i--
+        )
+        {
+            node = node->previous;
+            currentPrevious = node->previous;
+            currentNext = node->next;
+        }
 
-    currentNext->previous = node->next;
+        node->next = malloc(sizeof(DoubleLinkedListNode));
+        node->next->data = data;
+        node->next->next = currentNext;
+        node->next->previous = node;
+
+        currentNext->previous = node->next;
+    }
 
     list->size++;
 }
