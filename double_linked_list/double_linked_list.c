@@ -148,13 +148,6 @@ void insertAfter(DoubleLinkedList* list, const unsigned int index, const int dat
             node = node->next;
             currentNext = node->next;
         }
-
-        node->next = malloc(sizeof(DoubleLinkedListNode));
-        node->next->data = data;
-        node->next->next = currentNext;
-        node->next->previous = node;
-
-        currentNext->previous = node->next;
     }
     else
     {
@@ -172,14 +165,14 @@ void insertAfter(DoubleLinkedList* list, const unsigned int index, const int dat
             currentPrevious = node->previous;
             currentNext = node->next;
         }
-
-        node->next = malloc(sizeof(DoubleLinkedListNode));
-        node->next->data = data;
-        node->next->next = currentNext;
-        node->next->previous = node;
-
-        currentNext->previous = node->next;
     }
+
+    node->next = malloc(sizeof(DoubleLinkedListNode));
+    node->next->data = data;
+    node->next->next = currentNext;
+    node->next->previous = node;
+
+    currentNext->previous = node->next;
 
     list->size++;
 }
