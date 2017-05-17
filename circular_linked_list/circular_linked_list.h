@@ -31,6 +31,17 @@ void insertAtTheEndCLL(
 );
 
 /**
+ * @brief Inserts one node at the beginning of the list
+ *
+ * @param list the circular linked list to update
+ * @param data the new data to insert
+ */
+void insertAtTheBeginningCLL(
+    CircularLinkedList* list,
+    const int data
+);
+
+/**
  * @brief Returns the data at the given index
  *
  * @param list the circular linked list to update
