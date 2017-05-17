@@ -3,13 +3,13 @@
  * @file circular_linked_list.h
  */
 
-typedef struct LinkedList LinkedList;
+typedef struct LinkedListNode LinkedListNode;
 
 /**
  * @brief Creates a new circular linked list with one node
  *
  * @param data integer to set into the new created node
  *
- * @return LinkedList
+ * @return LinkedListNode
  */
-LinkedList createCLL(const int data);
+LinkedListNode createCLL(const int data);

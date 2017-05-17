@@ -7,12 +7,11 @@
 /**
  *
  */
-LinkedList createCLL(const int data)
+LinkedListNode createCLL(const int data)
 {
-    LinkedList list;
-    list.head = malloc(sizeof(LinkedListNode));
-    list.head->data = data;
-    list.head->next = NULL;
+    LinkedListNode node;
+    node.data = data;
+    node.next = NULL;
 
-    return list;
+    return node;
 }
