@@ -10,9 +10,9 @@
  */
 START_TEST(test_create)
 {
-    LinkedList first_list = createCLL(0);
-    LinkedList second_list = createCLL(10);
-    LinkedList third_list = createCLL(100);
+    LinkedListNode first_list = createCLL(0);
+    LinkedListNode second_list = createCLL(10);
+    LinkedListNode third_list = createCLL(100);
 }
 END_TEST
 
