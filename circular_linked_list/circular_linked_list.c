@@ -25,14 +25,28 @@ void insertAtTheEndCLL(
     const int data
 )
 {
+    insertAtTheBeginningCLL(
+        list,
+        data
+    );
+
+    list->last = list->last->next;
+}
+
+/**
+ *
+ */
+void insertAtTheBeginningCLL(
+    CircularLinkedList* list,
+    const int data
+)
+{
     LinkedListNode* lastNode = list->last;
     LinkedListNode* first = lastNode->next;
 
     lastNode->next = malloc(sizeof(LinkedListNode));
     lastNode->next->data = data;
     lastNode->next->next = first;
-
-    list->last = lastNode->next;
 }
 
 /**
