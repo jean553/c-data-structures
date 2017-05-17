@@ -10,9 +10,20 @@
  */
 START_TEST(test_create)
 {
-    LinkedListNode first_list = createCLL(0);
-    LinkedListNode second_list = createCLL(10);
-    LinkedListNode third_list = createCLL(100);
+    CircularLinkedList first_list = createCLL(0);
+    CircularLinkedList second_list = createCLL(10);
+    CircularLinkedList third_list = createCLL(100);
+}
+END_TEST
+
+/**
+ *
+ */
+START_TEST(test_insertAtTheEndCLL)
+{
+    CircularLinkedList first_list = createCLL(10);
+    insertAtTheEndCLL(&first_list, 20);
+    insertAtTheEndCLL(&first_list, 30);
 }
 END_TEST
 
@@ -25,6 +36,7 @@ Suite* linked_list_suite()
     TCase *tcase = tcase_create("case");
 
     tcase_add_test(tcase, test_create);
+    tcase_add_test(tcase, test_insertAtTheEndCLL);
 
     suite_add_tcase(suite, tcase);
 

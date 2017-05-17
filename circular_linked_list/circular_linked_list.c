@@ -7,11 +7,30 @@
 /**
  *
  */
-LinkedListNode createCLL(const int data)
+CircularLinkedList createCLL(const int data)
 {
-    LinkedListNode node;
-    node.data = data;
-    node.next = NULL;
+    CircularLinkedList list;
+    list.last = malloc(sizeof(LinkedListNode));
+    list.last->data = data;
+    list.last->next = list.last;
 
-    return node;
+    return list;
+}
+
+/**
+ *
+ */
+void insertAtTheEndCLL(
+    CircularLinkedList* list,
+    const int data
+)
+{
+    LinkedListNode* lastNode = list->last;
+    LinkedListNode* first = lastNode->next;
+
+    lastNode->next = malloc(sizeof(LinkedListNode));
+    lastNode->next->data = data;
+    lastNode->next->next = first;
+
+    list->last = lastNode->next;
 }
