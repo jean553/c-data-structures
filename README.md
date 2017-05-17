@@ -312,3 +312,25 @@ Implemented methods:
  * create
  * insert
  * at
+
+## Circular linked list
+
+The circular linked list is a linked list without head and tail.
+The last node simply points to the first one.
+
+```
++----+        +----+        +----+
+| 10 +----->  | 20 +------> | 30 |
++-+--+        +----+        +--+-+
+  ^                            |
+  |                            |
+  +----------------------------+
+```
+
+Implemented methods:
+ * create
+ * insertAtTheEnd
+ * insertAtTheBeginning
+ * at
+
+NOTE: In such kind of list, at(5) in the list [1,2,3,4] returns 2.
