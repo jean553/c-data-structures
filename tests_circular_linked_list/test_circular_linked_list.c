@@ -49,6 +49,29 @@ END_TEST
 /**
  *
  */
+START_TEST(test_listIsCircular)
+{
+    CircularLinkedList first_list = createCLL(10);
+    insertAtTheEndCLL(&first_list, 20);
+    insertAtTheEndCLL(&first_list, 30);
+
+    ck_assert_int_eq(atCLL(&first_list, 0), 10);
+    ck_assert_int_eq(atCLL(&first_list, 1), 20);
+    ck_assert_int_eq(atCLL(&first_list, 2), 30);
+
+    ck_assert_int_eq(atCLL(&first_list, 3), 10);
+    ck_assert_int_eq(atCLL(&first_list, 4), 20);
+    ck_assert_int_eq(atCLL(&first_list, 5), 30);
+
+    ck_assert_int_eq(atCLL(&first_list, 6), 10);
+    ck_assert_int_eq(atCLL(&first_list, 7), 20);
+    ck_assert_int_eq(atCLL(&first_list, 8), 30);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("circular_linked_list");
@@ -57,6 +80,7 @@ Suite* linked_list_suite()
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_insertAtTheEndCLL);
     tcase_add_test(tcase, test_insertAtTheBeginningCLL);
+    tcase_add_test(tcase, test_listIsCircular);
 
     suite_add_tcase(suite, tcase);
 
