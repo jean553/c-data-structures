@@ -29,3 +29,16 @@ void insertAtTheEndCLL(
     CircularLinkedList* list,
     const int data
 );
+
+/**
+ * @brief Returns the data at the given index
+ *
+ * @param list the circular linked list to update
+ * @param index the index of the expected data
+ *
+ * @return const int
+ */
+const int atCLL(
+    CircularLinkedList* list,
+    const unsigned short index
+);

@@ -34,3 +34,25 @@ void insertAtTheEndCLL(
 
     list->last = lastNode->next;
 }
+
+/**
+ *
+ */
+const int atCLL(
+    CircularLinkedList* list,
+    const unsigned short index
+)
+{
+    LinkedListNode* node = list->last->next;
+
+    for(
+        unsigned short i = 0;
+        i < index;
+        i++
+    )
+    {
+        node = node->next;
+    }
+
+    return node->data;
+}
