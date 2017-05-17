@@ -24,6 +24,10 @@ START_TEST(test_insertAtTheEndCLL)
     CircularLinkedList first_list = createCLL(10);
     insertAtTheEndCLL(&first_list, 20);
     insertAtTheEndCLL(&first_list, 30);
+
+    ck_assert_int_eq(atCLL(&first_list, 0), 10);
+    ck_assert_int_eq(atCLL(&first_list, 1), 20);
+    ck_assert_int_eq(atCLL(&first_list, 2), 30);
 }
 END_TEST
 
