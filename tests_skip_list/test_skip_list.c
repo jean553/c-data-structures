@@ -23,11 +23,19 @@ START_TEST(test_insert)
     SkipList first_list = create(5, 10);
     insert(&first_list, 6, 20);
 
+    ck_assert_int_eq(at(&first_list, 5), 10);
+    ck_assert_int_eq(at(&first_list, 6), 20);
+
     SkipList second_list = create(5, 10);
     insert(&second_list, 4, 20);
 
+    ck_assert_int_eq(at(&second_list, 5), 10);
+    ck_assert_int_eq(at(&second_list, 4), 20);
+
     SkipList third_list = create(5, 10);
     insert(&third_list, 5, 20);
+
+    ck_assert_int_eq(at(&third_list, 5), 20);
 }
 END_TEST
 

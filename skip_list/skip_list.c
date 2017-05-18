@@ -70,3 +70,23 @@ void insert(
         nodeData->data = data;
     }
 }
+
+/**
+ *
+ */
+const int at(
+    SkipList* list,
+    const unsigned short key
+)
+{
+    /* TODO: for now, we only check the nodes at the unique bottom line */
+
+    SkipListNode* node = list->head;
+
+    while(node->data->key != key)
+    {
+        node = node->next;
+    }
+
+    return node->data->data;
+}
