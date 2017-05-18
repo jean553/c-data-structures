@@ -33,3 +33,16 @@ SkipList create(
     const unsigned short key,
     int data
 );
+
+/**
+ * @brief Inserts node data/key pair to the skip list
+ *
+ * @param list the skip list to update
+ * @param key the key of the first data node
+ * @param data the data of the first data node
+ */
+void insert(
+    SkipList* list,
+    const unsigned short key,
+    int data
+);
