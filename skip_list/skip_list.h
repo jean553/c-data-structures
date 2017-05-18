@@ -46,3 +46,16 @@ void insert(
     const unsigned short key,
     int data
 );
+
+/**
+ * @brief Returns the data at the given key location
+ *
+ * @param list the skip list to update
+ * @param key the key of the first data node
+ *
+ * @return const int
+ */
+const int at(
+    SkipList* list,
+    const unsigned short key
+);
