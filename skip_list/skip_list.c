@@ -40,40 +40,32 @@ void insert(
     int data
 )
 {
-    SkipListNode* node = list->head->next;
+    SkipListNode* node = list->head;
 
-    /* TODO: for now, we only check the first list node
-       and we only inserts at the unique bottom level */
-    SkipListData* nodeData = node->data;
-
-    if (nodeData->key > key)
+    while(
+        node->next != NULL &&
+        node->next->data->key < key
+    )
     {
-        SkipListData* newNodeData = malloc(sizeof(SkipListData));
-        newNodeData->data = data;
-        newNodeData->key = key;
-
-        SkipListNode* newNode = malloc(sizeof(SkipListNode));
-        newNode->next = node;
-        newNode->subNode = NULL;
-        newNode->data = newNodeData;
-
-        list->head->next = newNode;
+        node = node->next;
     }
-    else if (nodeData->key < key)
+
+    if (node->next != NULL && node->next->data->key == key)
     {
-        SkipListData* newNodeData = malloc(sizeof(SkipListData));
-        newNodeData->data = data;
-        newNodeData->key = key;
-
-        node->next = malloc(sizeof(SkipListNode));
-        node->next->next = NULL;
-        node->next->subNode = NULL;
-        node->next->data = newNodeData;
-
-    } else {
-
-        nodeData->data = data;
+        node->next->data->data = data;
+        return;
     }
+
+    SkipListData* newData = malloc(sizeof(SkipListData));
+    newData->data = data;
+    newData->key = key;
+
+    SkipListNode* newNode = malloc(sizeof(SkipListNode));
+    newNode->next = node->next;
+    newNode->subNode = NULL;
+    newNode->data = newData;
+
+    node->next = newNode;
 }
 
 /**
