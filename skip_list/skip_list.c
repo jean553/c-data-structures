@@ -20,8 +20,13 @@ SkipList create(
     node->next = NULL;
     node->subNode = NULL;
 
+    SkipListNode* head = malloc(sizeof(SkipListNode));
+    head->data = NULL;
+    head->next = node;
+    head->subNode = NULL;
+
     SkipList list;
-    list.head = node;
+    list.head = head;
 
     return list;
 }
@@ -35,7 +40,7 @@ void insert(
     int data
 )
 {
-    SkipListNode* node = list->head;
+    SkipListNode* node = list->head->next;
 
     /* TODO: for now, we only check the first list node
        and we only inserts at the unique bottom level */
@@ -52,7 +57,7 @@ void insert(
         newNode->subNode = NULL;
         newNode->data = newNodeData;
 
-        list->head = newNode;
+        list->head->next = newNode;
     }
     else if (nodeData->key < key)
     {
@@ -81,7 +86,7 @@ const int at(
 {
     /* TODO: for now, we only check the nodes at the unique bottom line */
 
-    SkipListNode* node = list->head;
+    SkipListNode* node = list->head->next;
 
     while(node->data->key != key)
     {
