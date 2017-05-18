@@ -334,3 +334,42 @@ Implemented methods:
  * at
 
 NOTE: In such kind of list, at(5) in the list [1,2,3,4] returns 2.
+
+## Skip list
+
+```
+ +------+  +-------+                                +-----+
+ | head |  |level 3+------------------------------> |  7  +------------------------------>  NULL
+ +------+  +-------+                                +-----+
+               |                                       |
+               v                                       v
+
+           +-------+                                +-----+                   +-----+
+           |level 2+------------------------------> |  7  +-----------------> |  9  +---->  NULL
+           +-------+                                +-----+                   +-----+
+               |                                       |                         |
+               v                                       v                         v
+
+           +-------+                   +-----+      +-----+                   +-----+
+           |level 1+-----------------> |  6  +----> |  7  +-----------------> |  9  +---->  NULL
+           +-------+                   +-----+      +-----+                   +-----+
+               |                          |            |         
+               v                          v            v                         v
+               
+           +-------+      +-----+      +-----+      +-----+      +-----+      +-----+
+           |level 0+----> |  4  +----> |  6  +----> |  7  +----> |  8  +----> |  9  +---->  NULL
+           +---+---+      +--+--+      +--+--+      +--+--+      +--+--+      +--+--+
+               |             |            |            |            |            |
+               v             v            v            v            v            v
+             NULL           NULL         NULL         NULL         NULL  
+```
+
+The skip list provides different lanes of nodes to access data quicly.
+On each lane, every nodes are ordered by key. Every node points on one data item.
+The nodes with the same key point to the same data item.
+
+Implemented methods:
+ * create
+ * insert
+ * at
+ * all
