@@ -7,10 +7,23 @@
 /**
  *
  */
+START_TEST(test_create)
+{
+    SkipList first_list = create(5, 10);
+    SkipList second_list = create(10, 20);
+    SkipList third_list = create(15, 30);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("skip_list");
     TCase *tcase = tcase_create("case");
+
+    tcase_add_test(tcase, test_create);
 
     suite_add_tcase(suite, tcase);
 
