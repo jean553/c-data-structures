@@ -19,6 +19,7 @@ typedef struct SkipListNode
 typedef struct SkipList
 {
     SkipListNode* head;
+    unsigned short headsAmount;
 } SkipList;
 
 /**
@@ -58,4 +59,15 @@ void insert(
 const int at(
     SkipList* list,
     const unsigned short key
+);
+
+/**
+ * @brief Prints every keys at the given level
+ *
+ * @param list the skip list to update
+ * @param level the level of the keys to list
+ */
+void all(
+    SkipList* list,
+    const unsigned short level
 );
