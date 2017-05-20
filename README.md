@@ -313,9 +313,9 @@ Implemented methods:
  * at
  * all
 
-### Trees
+## Trees
 
-## Binary tree
+### Binary tree
 
 The binary tree is a tree in which one every node has at most two children.
 
@@ -330,6 +330,44 @@ The `root` node is the top node of the tree. A `leaf` node is a node on the last
 The `height of a binary tree` is the number of node(s) between the root node to any one of the leaf node.
 
 ![Image 2](images/binary_tree_levels.png)
+
+Find N the maximum nodes of a binary tree with a height of H:
+`N = 2^(H+1) - 1`
+
+Find H the height of a binary tree of N nodes:
+`H = log2(N+1) - 1` 
+
+Find H the minimum height of a binary tree of N nodes:
+`H = log2(N)`
+
+Find H the maximum height of a binary tree of N nodes:
+`H = N - 1`
+
+![Image 3](images/binary_tree_heights.png)
+
+Most of the time, we always want to keep the binary tree with a height as small as possible;
+we call that kind of tree a `balanced` tree.
+
+A binary tree is `balanced` when the difference the height of the left sub-tree and
+the height of the right sub-tree is equal to 0 or 1.
+
+The difference D between two sub-nodes of a given node can be calculated
+with the height HL of the left sub-node and the height HR of the right sub-node:
+`D = |HL - HR|`
+
+![Image 4](images/binary_tree_diffs.png)
+
+In a perfect tree, the difference of every node is 0.
+
+In programming, a binary tree can be built with `pointers` or with an `array`.
+
+Access the left item N of the node I in a binary tree stored as an array:
+`N = I * 2 + 1`
+
+Access the right item N of the node I in a binary tree stored as an array:
+`N = I * 2 + 2`
+
+![Image 5](images/binary_tree_structure.png)
 
 ## Others
 
