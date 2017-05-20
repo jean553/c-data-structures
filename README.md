@@ -83,6 +83,9 @@ Lists:
  * circular linked list,
  * skip list
 
+Trees:
+ * binary tree
+
 Others:
  * vector - dynamic array,
  * hashmap
@@ -309,6 +312,19 @@ Implemented methods:
  * insert
  * at
  * all
+
+### Trees
+
+## Binary tree
+
+The binary tree is a tree in which one every node has at most two children.
+
+The `strict` binary tree has every nodes with exactly zero or two children.
+The `complete` binary tree has every level fullfilled (the last one may not be fullfilled),
+and all nodes are as left as possible.
+The `perfect` binary tree has every level filled.
+
+![Image 1](images/binary_tree.png)
 
 ## Others
 
