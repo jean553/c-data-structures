@@ -326,6 +326,11 @@ The `perfect` binary tree has every level filled.
 
 ![Image 1](images/binary_tree.png)
 
+The `root` node is the top node of the tree. A `leaf` node is a node on the last level of the tree.
+The `height of a binary tree` is the number of node(s) between the root node to any one of the leaf node.
+
+![Image 2](images/binary_tree_levels.png)
+
 ## Others
 
 ### Vector - Dynamic array
