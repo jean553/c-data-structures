@@ -74,11 +74,26 @@ doxygen
 
 # List of data structures
 
+Lists:
+ * linked list,
+ * double linked list,
+ * self-organized list, 
+ * unrolled linked list,
+ * XOR double linked list,
+ * circular linked list,
+ * skip list
+
+Others:
+ * vector - dynamic array,
+ * hashmap
+
+## Lists
+
 NOTE: the following data structures have not been created in this project:
  * `tuples`: finite ordered list of items that can have different types, accessed by index or key, they are `structures` in C,
  * `fixed array`: finite ordered list of items that have the same type, accessed by index, they are `arrays` in C.
 
-## Linked list
+### Linked list
 
 Each node contains the data itself and a pointer to the next node.
 
@@ -109,7 +124,7 @@ Pros:
 Cons:
  * Read/Write is slow with long lists ( O(n) )
 
-## Double linked list
+### Double linked list
 
 Each node contains the data itself and two pointers.
 The first one is pointing to the previous node,
@@ -146,43 +161,7 @@ Pros:
 Cons:
  * take more space than a simple linked list
 
-## Vector - Dynamic array
-
-An array is a set of continuous data in memory.
-A vector is a dynamic array (the allocated size can vary).
-
-```
-     +-----------------------+
-     |       |       |       |
-     |   A   |   B   |   C   |
-     |       |       |       |
-     +-----------------------+
-         ^
-         |
-         |
-         |
-         +
-       ARRAY
-```
-
-The implemented methods are:
- * create
- * insertAtTheEnd
- * insertAt
- * updateAt
- * at
- * size
- * resize
-
-Pros:
- * read and write is fast, because we use a pointer to directly jumps at the expected index
-
-Cons:
- * the size is fixed because memory has to be allocated once in order to ensure that all the nodes are contiguous;
- * "dynamic" insertion requires to reallocate the memory
- * insert into the array requires to copy (shift) many nodes
-
-## Self-organizing list
+### Self-organizing list
 
 A simple linked list that automatically updates its nodes order.
 The order is updated according to the usage frequency of each node.
@@ -191,7 +170,7 @@ The implemented methods are:
  * atWithMTF - like at() and applies `Move To Front` method
  * atTranspose - like at() and applies `Swapping` method
 
-### Move To Front
+#### Move To Front
 
 Everytime a node is requested, the node is moved to the head of the list.
 
@@ -202,7 +181,7 @@ Cons:
  * not accurate: simply moves to the top every requested node,
 the algorithm does not include any average consideration of nodes usage. 
 
-### Swapping method
+#### Swapping method
 
 Everytime a node is requested, the selected node is swapped with the previous one.
 
@@ -247,7 +226,129 @@ is performed by array indexing,
 Cons:
  * inserts in the middle are expensives (every item of arrays of all of nodes have to be shifted)
 
-## Hashmap
+### XOR Double linked list
+
+A double linked list that only uses one pointer per node to go to the previous or next node.
+A bitwise XOR operation is applied on the node address field when inserting and reading;
+by this way, the list can find the next or previous node.
+
+```
++---------+  +---------+  +---------+  +---------+
+|    a    |  |    b    |  |    c    |  |    d    |
++---------+  +---------+  +---------+  +---------+
+| b XOR 0 |  | a XOR c |  | b XOR d |  | c XOR 0 |
++---------+  +---------+  +---------+  +---------+
+
++------------------------------------------------>
+
+<------------------------------------------------+
+```
+
+Implemented methods:
+ * create
+ * insert
+ * at
+
+### Circular linked list
+
+The circular linked list is a linked list without head and tail.
+The last node simply points to the first one.
+
+```
++----+        +----+        +----+
+| 10 +----->  | 20 +------> | 30 |
++-+--+        +----+        +--+-+
+  ^                            |
+  |                            |
+  +----------------------------+
+```
+
+Implemented methods:
+ * create
+ * insertAtTheEnd
+ * insertAtTheBeginning
+ * at
+
+NOTE: In such kind of list, at(5) in the list [1,2,3,4] returns 2.
+
+### Skip list
+
+```
+ +------+  +-------+                                +-----+
+ | head |  |level 3+------------------------------> |  7  +------------------------------>  NULL
+ +------+  +-------+                                +-----+
+               |                                       |
+               v                                       v
+
+           +-------+                                +-----+                   +-----+
+           |level 2+------------------------------> |  7  +-----------------> |  9  +---->  NULL
+           +-------+                                +-----+                   +-----+
+               |                                       |                         |
+               v                                       v                         v
+
+           +-------+                   +-----+      +-----+                   +-----+
+           |level 1+-----------------> |  6  +----> |  7  +-----------------> |  9  +---->  NULL
+           +-------+                   +-----+      +-----+                   +-----+
+               |                          |            |         
+               v                          v            v                         v
+               
+           +-------+      +-----+      +-----+      +-----+      +-----+      +-----+
+           |level 0+----> |  4  +----> |  6  +----> |  7  +----> |  8  +----> |  9  +---->  NULL
+           +---+---+      +--+--+      +--+--+      +--+--+      +--+--+      +--+--+
+               |             |            |            |            |            |
+               v             v            v            v            v            v
+             NULL           NULL         NULL         NULL         NULL  
+```
+
+The skip list provides different lanes of nodes to access data quicly.
+On each lane, every nodes are ordered by key. Every node points on one data item.
+The nodes with the same key point to the same data item.
+
+Implemented methods:
+ * create
+ * insert
+ * at
+ * all
+
+## Others
+
+### Vector - Dynamic array
+
+An array is a set of continuous data in memory.
+A vector is a dynamic array (the allocated size can vary).
+
+```
+     +-----------------------+
+     |       |       |       |
+     |   A   |   B   |   C   |
+     |       |       |       |
+     +-----------------------+
+         ^
+         |
+         |
+         |
+         +
+       ARRAY
+```
+
+The implemented methods are:
+ * create
+ * insertAtTheEnd
+ * insertAt
+ * updateAt
+ * at
+ * size
+ * resize
+
+Pros:
+ * read and write is fast, because we use a pointer to directly jumps at the expected index
+
+Cons:
+ * the size is fixed because memory has to be allocated once in order to ensure that all the nodes are contiguous;
+ * "dynamic" insertion requires to reallocate the memory
+ * insert into the array requires to copy (shift) many nodes
+
+### Hashmap
 
 A hashmap is a map that stores data with unique key/value pairs.
 When inserting data into the hashmap, a hash of the key is generated;
@@ -289,87 +390,3 @@ Implemented methods:
  * create
  * insert
  * at
-
-## XOR Double linked list
-
-A double linked list that only uses one pointer per node to go to the previous or next node.
-A bitwise XOR operation is applied on the node address field when inserting and reading;
-by this way, the list can find the next or previous node.
-
-```
-+---------+  +---------+  +---------+  +---------+
-|    a    |  |    b    |  |    c    |  |    d    |
-+---------+  +---------+  +---------+  +---------+
-| b XOR 0 |  | a XOR c |  | b XOR d |  | c XOR 0 |
-+---------+  +---------+  +---------+  +---------+
-
-+------------------------------------------------>
-
-<------------------------------------------------+
-```
-
-Implemented methods:
- * create
- * insert
- * at
-
-## Circular linked list
-
-The circular linked list is a linked list without head and tail.
-The last node simply points to the first one.
-
-```
-+----+        +----+        +----+
-| 10 +----->  | 20 +------> | 30 |
-+-+--+        +----+        +--+-+
-  ^                            |
-  |                            |
-  +----------------------------+
-```
-
-Implemented methods:
- * create
- * insertAtTheEnd
- * insertAtTheBeginning
- * at
-
-NOTE: In such kind of list, at(5) in the list [1,2,3,4] returns 2.
-
-## Skip list
-
-```
- +------+  +-------+                                +-----+
- | head |  |level 3+------------------------------> |  7  +------------------------------>  NULL
- +------+  +-------+                                +-----+
-               |                                       |
-               v                                       v
-
-           +-------+                                +-----+                   +-----+
-           |level 2+------------------------------> |  7  +-----------------> |  9  +---->  NULL
-           +-------+                                +-----+                   +-----+
-               |                                       |                         |
-               v                                       v                         v
-
-           +-------+                   +-----+      +-----+                   +-----+
-           |level 1+-----------------> |  6  +----> |  7  +-----------------> |  9  +---->  NULL
-           +-------+                   +-----+      +-----+                   +-----+
-               |                          |            |         
-               v                          v            v                         v
-               
-           +-------+      +-----+      +-----+      +-----+      +-----+      +-----+
-           |level 0+----> |  4  +----> |  6  +----> |  7  +----> |  8  +----> |  9  +---->  NULL
-           +---+---+      +--+--+      +--+--+      +--+--+      +--+--+      +--+--+
-               |             |            |            |            |            |
-               v             v            v            v            v            v
-             NULL           NULL         NULL         NULL         NULL  
-```
-
-The skip list provides different lanes of nodes to access data quicly.
-On each lane, every nodes are ordered by key. Every node points on one data item.
-The nodes with the same key point to the same data item.
-
-Implemented methods:
- * create
- * insert
- * at
- * all
