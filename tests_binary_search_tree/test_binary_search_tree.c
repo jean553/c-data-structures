@@ -9,7 +9,7 @@
  */
 START_TEST(test_create)
 {
-    BinarySearchTree tree = create(10);
+    BinarySearchTreeNode tree = create(10);
 }
 END_TEST
 
@@ -18,7 +18,7 @@ END_TEST
  */
 START_TEST(test_insert)
 {
-    BinarySearchTree tree = create(10);
+    BinarySearchTreeNode tree = create(10);
     insert(&tree, 20);
     insert(&tree, 15);
     insert(&tree, 25);
@@ -27,6 +27,22 @@ START_TEST(test_insert)
     insert(&tree, 22);
     insert(&tree, 27);
     insert(&tree, 15);
+
+    ck_assert_int_eq(search(&tree, 10), 1);
+    ck_assert_int_eq(search(&tree, 20), 1);
+    ck_assert_int_eq(search(&tree, 15), 1);
+    ck_assert_int_eq(search(&tree, 25), 1);
+    ck_assert_int_eq(search(&tree, 12), 1);
+    ck_assert_int_eq(search(&tree, 17), 1);
+    ck_assert_int_eq(search(&tree, 22), 1);
+    ck_assert_int_eq(search(&tree, 27), 1);
+    ck_assert_int_eq(search(&tree, 15), 1);
+
+    ck_assert_int_eq(search(&tree, 9), 0);
+    ck_assert_int_eq(search(&tree, 14), 0);
+    ck_assert_int_eq(search(&tree, 16), 0);
+    ck_assert_int_eq(search(&tree, 23), 0);
+    ck_assert_int_eq(search(&tree, 26), 0);
 }
 END_TEST
 

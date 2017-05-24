@@ -6,29 +6,24 @@
 /**
  *
  */
-BinarySearchTree create(const int key)
+BinarySearchTreeNode create(const int key)
 {
-    BinarySearchTreeNode* node = malloc(sizeof(BinarySearchTreeNode));
-    node->key = key;
-    node->left = NULL;
-    node->right = NULL;
+    BinarySearchTreeNode node;
+    node.key = key;
+    node.left = NULL;
+    node.right = NULL;
 
-    BinarySearchTree tree;
-    tree.root = node;
-
-    return tree;
+    return node;
 }
 
 /**
  *
  */
 void insert(
-    BinarySearchTree* tree,
+    BinarySearchTreeNode* node,
     const int key
 )
 {
-    BinarySearchTreeNode* node = tree->root;
-
     for (;;)
     {
         if (node->key == key)
@@ -79,6 +74,38 @@ void insert(
 
             break;
         }
+    }
+}
+
+/**
+ *
+ */
+const unsigned short search(
+    BinarySearchTreeNode* node,
+    const int key
+)
+{
+    if (node == NULL)
+    {
+        return 0;
+    }
+    else if (node->key == key)
+    {
+        return 1;
+    }
+    else if (node->key < key)
+    {
+        return search(
+            node->right,
+            key
+        );
+    }
+    else
+    {
+        return search(
+            node->left,
+            key
+        );
     }
 }
 
