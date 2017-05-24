@@ -7,10 +7,21 @@
 /**
  *
  */
+START_TEST(test_create)
+{
+    BinarySearchTree tree = create(10);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("binary_search_tree");
     TCase *tcase = tcase_create("case");
+
+    tcase_add_test(tcase, test_create);
 
     suite_add_tcase(suite, tcase);
 
