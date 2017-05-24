@@ -112,6 +112,28 @@ BinarySearchTreeNode* search(
 /**
  *
  */
+void removeAt(
+    BinarySearchTreeNode* node,
+    const int key
+)
+{
+    /* TODO: the method only works for leaf node for now,
+       others node types must be deletable */
+
+    BinarySearchTreeNode* nodeToDelete = search(
+        node,
+        key
+    );
+
+    if (nodeToDelete != NULL)
+    {
+        free(nodeToDelete);
+    }
+}
+
+/**
+ *
+ */
 BinarySearchTreeNode* createNode(const int key)
 {
     BinarySearchTreeNode* newNode = malloc(sizeof(BinarySearchTreeNode));

@@ -46,6 +46,18 @@ BinarySearchTreeNode* search(
 );
 
 /**
+ * @brief Deletes one node with the given key
+ *
+ * @param node the node with the sub-trees in which the key is expected
+ * (sub-trees of the given node)
+ * @param key the key to search
+ */
+void removeAt(
+    BinarySearchTreeNode* node,
+    const int key
+);
+
+/**
  * @brief Creates a new node (used by the binary search tree methods)
  *
  * @param key the key of the new node to insert

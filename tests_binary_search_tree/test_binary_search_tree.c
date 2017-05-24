@@ -38,11 +38,28 @@ START_TEST(test_insert)
     ck_assert_int_eq(search(&tree, 27)->key, 27);
     ck_assert_int_eq(search(&tree, 15)->key, 15);
 
-    ck_assert_int_eq(search(&tree, 9), NULL);
-    ck_assert_int_eq(search(&tree, 14), NULL);
-    ck_assert_int_eq(search(&tree, 16), NULL);
-    ck_assert_int_eq(search(&tree, 23), NULL);
-    ck_assert_int_eq(search(&tree, 26), NULL);
+    ck_assert_int_eq(search(&tree, 9), 0);
+    ck_assert_int_eq(search(&tree, 14), 0);
+    ck_assert_int_eq(search(&tree, 16), 0);
+    ck_assert_int_eq(search(&tree, 23), 0);
+    ck_assert_int_eq(search(&tree, 26), 0);
+}
+END_TEST
+
+/**
+ *
+ */
+START_TEST(test_removeAt)
+{
+    BinarySearchTreeNode tree = create(10);
+    insert(&tree, 20);
+    insert(&tree, 15);
+
+    ck_assert_int_eq(search(&tree, 15)->key, 15);
+
+    removeAt(&tree, 15);
+
+    ck_assert_int_eq(search(&tree, 15), NULL);
 }
 END_TEST
 
@@ -56,6 +73,7 @@ Suite* linked_list_suite()
 
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_insert);
+    tcase_add_test(tcase, test_removeAt);
 
     suite_add_tcase(suite, tcase);
 
