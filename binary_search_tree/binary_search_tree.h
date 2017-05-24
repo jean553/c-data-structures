@@ -22,4 +22,24 @@ typedef struct BinarySearchTree
  *
  * @return BinarySearchTree
  */
-BinarySearchTree create(const int data);
+BinarySearchTree create(const int key);
+
+/**
+ * @brief Inserts a new binary search tree node at the correct position
+ *
+ * @param tree the concerned tree
+ * @param key the key of the new node to insert
+ */
+void insert(
+    BinarySearchTree* tree,
+    const int key
+);
+
+/**
+ * @brief Creates a new node (used by the binary search tree methods)
+ *
+ * @param key the key of the new node to insert
+ *
+ * @return BinarySearchTreeNode*
+ */
+BinarySearchTreeNode* createNode(const int key);
