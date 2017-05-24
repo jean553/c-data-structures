@@ -31,16 +31,28 @@ void insert(
 );
 
 /**
- * @brief Searchs for a given key into the search binary tree;
+ * @brief Searchs for a given key into the binary search tree;
  * returns 1 if the key is found, 0 if the key is not found
  *
  * @param node the node with the sub-trees in which the key is expected
  * (sub-trees of the given node)
  * @param key the key to search
  *
- * @return const unsigned short
+ * @return BinarySearchTree*
  */
-const unsigned short search(
+BinarySearchTreeNode* search(
+    BinarySearchTreeNode* node,
+    const int key
+);
+
+/**
+ * @brief Deletes one node with the given key
+ *
+ * @param node the node with the sub-trees in which the key is expected
+ * (sub-trees of the given node)
+ * @param key the key to search
+ */
+void removeAt(
     BinarySearchTreeNode* node,
     const int key
 );

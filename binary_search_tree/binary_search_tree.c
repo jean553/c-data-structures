@@ -80,18 +80,18 @@ void insert(
 /**
  *
  */
-const unsigned short search(
+BinarySearchTreeNode* search(
     BinarySearchTreeNode* node,
     const int key
 )
 {
     if (node == NULL)
     {
-        return 0;
+        return NULL;
     }
     else if (node->key == key)
     {
-        return 1;
+        return node;
     }
     else if (node->key < key)
     {
@@ -106,6 +106,28 @@ const unsigned short search(
             node->left,
             key
         );
+    }
+}
+
+/**
+ *
+ */
+void removeAt(
+    BinarySearchTreeNode* node,
+    const int key
+)
+{
+    /* TODO: the method only works for leaf node for now,
+       others node types must be deletable */
+
+    BinarySearchTreeNode* nodeToDelete = search(
+        node,
+        key
+    );
+
+    if (nodeToDelete != NULL)
+    {
+        free(nodeToDelete);
     }
 }
 
