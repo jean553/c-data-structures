@@ -84,7 +84,8 @@ Lists:
  * skip list
 
 Trees:
- * binary tree
+ * binary tree,
+ * binary search tree
 
 Others:
  * vector - dynamic array,
@@ -368,6 +369,40 @@ Access the right item N of the node I in a binary tree stored as an array:
 `N = I * 2 + 2`
 
 ![Image 5](images/binary_tree_structure.png)
+
+### Binary Search Tree (BST)
+
+The binary search tree is a binary tree in which one for each node, the values
+of all the nodes in the left sub-tree is lesser or equal to the current node,
+and the values of all nodes in the right sub-tree is greater to the current node.
+The binary search tree is an ordered binary tree.
+
+Binary search trees are used to access data faster (read and write)
+than basic binary tree.
+
+For example, let's considere a list of 1 million items (10^6).
+Let's considere that the computer that has to find one item in this list
+is able to make one comparision process in 10^-5 seconds.
+The computer has to compare the searched value with every value of the list.
+It would take 10 seconds maximum to find the result.
+The binary search tree is a solution to this "long time search" problem.
+
+![Image 6](images/binary_search_tree_examples.png)
+
+Binary search trees make `Binary search` possible: when binary search is applied,
+a specific value is searched. This searched value is compared to the root node value;
+if the searched value is lesser or equal than the root node value,
+the search goes to the left sub-tree and the same operation is applied;
+if the searched value is greater than the root node value,
+the search goes to the right sub-tree and the same operation is applied.
+
+![Image 7](images/binary_search.png)
+
+In the best case, we need `log2(n)` steps to find an item in a binary search tree
+(where `n` is the total amount of items). This is the case for balanced binary search tree.
+
+In the worst case, we need `n` steps to find an item in a binary search tree
+(for exemple, last item of a linked list, which is a not balanced binary search tree, even if ordered).
 
 ## Others
 
