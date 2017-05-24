@@ -404,6 +404,11 @@ In the best case, we need `log2(n)` steps to find an item in a binary search tre
 In the worst case, we need `n` steps to find an item in a binary search tree
 (for exemple, last item of a linked list, which is a not balanced binary search tree, even if ordered).
 
+Implemented methods:
+ * create
+ * insert
+ * search
+
 ## Others
 
 ### Vector - Dynamic array
