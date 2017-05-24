@@ -117,18 +117,44 @@ void removeAt(
     const int key
 )
 {
-    /* TODO: the method only works for leaf node for now,
+    /* TODO: the method only works for leaf node and
+       nodes with only one child for now,
        others node types must be deletable */
 
-    BinarySearchTreeNode* nodeToDelete = search(
+    NodeWithParent nodeToDelete = getNodeWithParent(
+        NULL,
         node,
         key
     );
 
-    if (nodeToDelete != NULL)
+    if (nodeToDelete.parent != NULL)
     {
-        free(nodeToDelete);
+        BinarySearchTreeNode* next = NULL;
+
+        if (nodeToDelete.node->left != NULL)
+        {
+            next = nodeToDelete.node->left;
+        }
+        else
+        {
+            next = nodeToDelete.node->right;
+        }
+
+        if(nodeToDelete.parent->left == nodeToDelete.node)
+        {
+            nodeToDelete.parent->left = next;
+        }
+        else
+        {
+            nodeToDelete.parent->right = next;
+        }
     }
+
+    if (nodeToDelete.node != NULL)
+    {
+        free(nodeToDelete.node);
+    }
+
 }
 
 /**
@@ -142,4 +168,46 @@ BinarySearchTreeNode* createNode(const int key)
     newNode->right = NULL;
 
     return newNode;
+}
+
+/**
+ *
+ */
+NodeWithParent getNodeWithParent(
+    BinarySearchTreeNode* parent,
+    BinarySearchTreeNode* node,
+    const int key
+)
+{
+    NodeWithParent nodeWithParent;
+    nodeWithParent.parent = parent;
+
+    if (node == NULL)
+    {
+        nodeWithParent.node = NULL;
+
+        return nodeWithParent;
+    }
+    else if (node->key == key)
+    {
+        nodeWithParent.node = node;
+
+        return nodeWithParent;
+    }
+    else if (node->key < key)
+    {
+        return getNodeWithParent(
+            node,
+            node->right,
+            key
+        );
+    }
+    else
+    {
+        return getNodeWithParent(
+            node,
+            node->left,
+            key
+        );
+    }
 }

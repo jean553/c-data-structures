@@ -10,6 +10,12 @@ typedef struct BinarySearchTreeNode
     struct BinarySearchTreeNode* right;
 } BinarySearchTreeNode;
 
+typedef struct NodeWithParent
+{
+    struct BinarySearchTreeNode* node;
+    struct BinarySearchTreeNode* parent;
+} NodeWithParent;
+
 /**
  * @brief Creates a new binary search tree node
  *
@@ -65,3 +71,19 @@ void removeAt(
  * @return BinarySearchTreeNode*
  */
 BinarySearchTreeNode* createNode(const int key);
+
+/**
+ * @brief Searchs a node with its parent node
+ *
+ * @param parent the parent node of the given node
+ * @param node the node with the sub-trees in which the key is expected
+ * (sub-trees of the given node)
+ * @param key the key to search
+ *
+ * @return NodeWithParent*
+ */
+NodeWithParent getNodeWithParent(
+    BinarySearchTreeNode* parent,
+    BinarySearchTreeNode* node,
+    const int key
+);
