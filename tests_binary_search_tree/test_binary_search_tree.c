@@ -28,21 +28,21 @@ START_TEST(test_insert)
     insert(&tree, 27);
     insert(&tree, 15);
 
-    ck_assert_int_eq(search(&tree, 10), 1);
-    ck_assert_int_eq(search(&tree, 20), 1);
-    ck_assert_int_eq(search(&tree, 15), 1);
-    ck_assert_int_eq(search(&tree, 25), 1);
-    ck_assert_int_eq(search(&tree, 12), 1);
-    ck_assert_int_eq(search(&tree, 17), 1);
-    ck_assert_int_eq(search(&tree, 22), 1);
-    ck_assert_int_eq(search(&tree, 27), 1);
-    ck_assert_int_eq(search(&tree, 15), 1);
+    ck_assert_int_eq(search(&tree, 10)->key, 10);
+    ck_assert_int_eq(search(&tree, 20)->key, 20);
+    ck_assert_int_eq(search(&tree, 15)->key, 15);
+    ck_assert_int_eq(search(&tree, 25)->key, 25);
+    ck_assert_int_eq(search(&tree, 12)->key, 12);
+    ck_assert_int_eq(search(&tree, 17)->key, 17);
+    ck_assert_int_eq(search(&tree, 22)->key, 22);
+    ck_assert_int_eq(search(&tree, 27)->key, 27);
+    ck_assert_int_eq(search(&tree, 15)->key, 15);
 
-    ck_assert_int_eq(search(&tree, 9), 0);
-    ck_assert_int_eq(search(&tree, 14), 0);
-    ck_assert_int_eq(search(&tree, 16), 0);
-    ck_assert_int_eq(search(&tree, 23), 0);
-    ck_assert_int_eq(search(&tree, 26), 0);
+    ck_assert_int_eq(search(&tree, 9), NULL);
+    ck_assert_int_eq(search(&tree, 14), NULL);
+    ck_assert_int_eq(search(&tree, 16), NULL);
+    ck_assert_int_eq(search(&tree, 23), NULL);
+    ck_assert_int_eq(search(&tree, 26), NULL);
 }
 END_TEST
 

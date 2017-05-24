@@ -80,18 +80,18 @@ void insert(
 /**
  *
  */
-const unsigned short search(
+BinarySearchTreeNode* search(
     BinarySearchTreeNode* node,
     const int key
 )
 {
     if (node == NULL)
     {
-        return 0;
+        return NULL;
     }
     else if (node->key == key)
     {
-        return 1;
+        return node;
     }
     else if (node->key < key)
     {
