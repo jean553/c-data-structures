@@ -31,6 +31,15 @@ START_TEST(test_at)
     Hashmap first_hashmap = create(10);
     insert(&first_hashmap, "val1", 25);
     ck_assert_int_eq(at(&first_hashmap, "val1"), 25);
+
+    Hashmap second_hashmap = create(10);
+    insert(&second_hashmap, "val1", 20);
+    insert(&second_hashmap, "wal0", 30);
+    insert(&second_hashmap, "xak0", 40);
+
+    ck_assert_int_eq(at(&second_hashmap, "val1"), 20);
+    ck_assert_int_eq(at(&second_hashmap, "wal0"), 30);
+    ck_assert_int_eq(at(&second_hashmap, "xak0"), 40);
 }
 END_TEST
 

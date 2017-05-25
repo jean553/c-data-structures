@@ -5,7 +5,7 @@
 
 typedef struct Hashmap
 {
-    struct HashmapNode* head;
+    struct HashmapNode** head;
     unsigned short size;
 } Hashmap;
 
