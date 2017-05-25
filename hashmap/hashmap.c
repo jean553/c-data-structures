@@ -67,7 +67,10 @@ const int at(Hashmap* hashmap, const char* key)
 {
     HashmapNode* node = hashmap->head[hash(hashmap, key)];
 
-    while(node->next != NULL && node->key != key)
+    while(
+        node->next != NULL &&
+        strcmp(node->key, key) != 0
+    )
     {
         node = node->next;
     }
