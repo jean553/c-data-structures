@@ -118,6 +118,79 @@ START_TEST(test_removeAt)
     ck_assert_int_eq(search(&third_tree, 15)->key, 15);
     ck_assert_int_eq(search(&third_tree, 17)->key, 17);
     ck_assert_int_eq(search(&third_tree, 18), NULL);
+
+    /* delete a node with two children when the minimum key
+       of the right sub-tree is a leaf node */
+
+    BinarySearchTreeNode fourth_tree = create(10);
+    insert(&fourth_tree, 5);
+    insert(&fourth_tree, 20);
+    insert(&fourth_tree, 15);
+    insert(&fourth_tree, 25);
+    insert(&fourth_tree, 17);
+    insert(&fourth_tree, 13);
+    insert(&fourth_tree, 23);
+    insert(&fourth_tree, 27);
+
+    removeAt(&fourth_tree, 20);
+
+    ck_assert_int_eq(search(&fourth_tree, 20), NULL);
+    ck_assert_int_eq(search(&fourth_tree, 10)->key, 10);
+    ck_assert_int_eq(search(&fourth_tree, 5)->key, 5);
+    ck_assert_int_eq(search(&fourth_tree, 15)->key, 15);
+    ck_assert_int_eq(search(&fourth_tree, 25)->key, 25);
+    ck_assert_int_eq(search(&fourth_tree, 17)->key, 17);
+    ck_assert_int_eq(search(&fourth_tree, 13)->key, 13);
+    ck_assert_int_eq(search(&fourth_tree, 23)->key, 23);
+    ck_assert_int_eq(search(&fourth_tree, 27)->key, 27);
+
+    /* delete a node with two children when the minimum key
+       of the right sub-tree is a node with one child */
+
+    BinarySearchTreeNode fifth_tree = create(10);
+    insert(&fifth_tree, 5);
+    insert(&fifth_tree, 20);
+    insert(&fifth_tree, 15);
+    insert(&fifth_tree, 25);
+    insert(&fifth_tree, 17);
+    insert(&fifth_tree, 13);
+    insert(&fifth_tree, 27);
+
+    removeAt(&fifth_tree, 20);
+
+    ck_assert_int_eq(search(&fifth_tree, 20), NULL);
+    ck_assert_int_eq(search(&fifth_tree, 10)->key, 10);
+    ck_assert_int_eq(search(&fifth_tree, 5)->key, 5);
+    ck_assert_int_eq(search(&fifth_tree, 15)->key, 15);
+    ck_assert_int_eq(search(&fifth_tree, 25)->key, 25);
+    ck_assert_int_eq(search(&fifth_tree, 17)->key, 17);
+    ck_assert_int_eq(search(&fifth_tree, 13)->key, 13);
+    ck_assert_int_eq(search(&fifth_tree, 27)->key, 27);
+
+    /* delete multiple nodes */
+
+    BinarySearchTreeNode sixth_tree = create(10);
+    insert(&sixth_tree, 5);
+    insert(&sixth_tree, 20);
+    insert(&sixth_tree, 15);
+    insert(&sixth_tree, 25);
+    insert(&sixth_tree, 17);
+    insert(&sixth_tree, 13);
+    insert(&sixth_tree, 27);
+
+    removeAt(&sixth_tree, 20);
+    removeAt(&sixth_tree, 17);
+    removeAt(&sixth_tree, 25);
+    removeAt(&sixth_tree, 13);
+
+    ck_assert_int_eq(search(&sixth_tree, 20), NULL);
+    ck_assert_int_eq(search(&sixth_tree, 17), NULL);
+    ck_assert_int_eq(search(&sixth_tree, 25), NULL);
+    ck_assert_int_eq(search(&sixth_tree, 13), NULL);
+    ck_assert_int_eq(search(&sixth_tree, 10)->key, 10);
+    ck_assert_int_eq(search(&sixth_tree, 5)->key, 5);
+    ck_assert_int_eq(search(&sixth_tree, 15)->key, 15);
+    ck_assert_int_eq(search(&sixth_tree, 27)->key, 27);
 }
 END_TEST
 

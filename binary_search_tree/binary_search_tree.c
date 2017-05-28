@@ -129,6 +129,27 @@ void removeAt(
 
     if (nodeToDelete.parent != NULL)
     {
+        if (
+            nodeToDelete.node->left != NULL &&
+            nodeToDelete.node->right != NULL
+        )
+        {
+            BinarySearchTreeNode* minimumNode = getNodeWithMinimumKey(
+                nodeToDelete.node->right
+            );
+
+            const unsigned short savedKey = minimumNode->key;
+
+            removeAt(
+                node,
+                minimumNode->key
+            );
+
+            nodeToDelete.node->key = savedKey;
+
+            return;
+        }
+
         BinarySearchTreeNode* next = NULL;
 
         if (nodeToDelete.node->left != NULL)
@@ -210,4 +231,17 @@ NodeWithParent getNodeWithParent(
             key
         );
     }
+}
+
+/**
+ *
+ */
+BinarySearchTreeNode* getNodeWithMinimumKey(BinarySearchTreeNode* node)
+{
+    while (node->left != NULL)
+    {
+        node = node->left;
+    }
+
+    return node;
 }
