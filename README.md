@@ -408,6 +408,7 @@ Implemented methods:
  * create
  * insert
  * search
+ * removeAt
 
 ## Others
 

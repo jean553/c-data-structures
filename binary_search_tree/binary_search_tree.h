@@ -87,3 +87,12 @@ NodeWithParent getNodeWithParent(
     BinarySearchTreeNode* node,
     const int key
 );
+
+/**
+ * @brief Searchs for a node with the minimum key in a tree
+ *
+ * @param node the root node of the binary search tree to browse
+ *
+ * @return BinarySearchTreeNode*
+ */
+BinarySearchTreeNode* getNodeWithMinimumKey(BinarySearchTreeNode* node);
