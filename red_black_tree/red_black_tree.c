@@ -12,9 +12,7 @@ RedBlackTreeNode create(const unsigned short key)
     node.key = key;
     node.left = NULL;
     node.right = NULL;
-
-    /* TODO: the root node cannot be red */
-    node.color = RED;
+    node.color = BLACK;
 
     return node;
 }
