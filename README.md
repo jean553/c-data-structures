@@ -437,7 +437,7 @@ Those violations are recurrent and the solutions to fix them are predefined.
 
 #### Violations
 
-##### Insert a node with red parent and red uncle
+##### Violation 1: Insert a node with red parent and red uncle
 
 This violation occurs when a new (red) node is added right after a red node:
 a red node can only have two black children exaclty (or two NULL children).
@@ -446,10 +446,10 @@ the parent and the uncle become black, the parent of the uncle become red.
 
 ![Image 8](images/red_black_tree_1.png)
 
-##### Insert a left node with red parent (left node too) and black uncle
+##### Violation 2: Insert a left node with red parent (left node too) and black uncle
 
 This violation occurs when:
- * a new (red) node is added right after a red node
+ * a new (red) node (left node) is added right after a red node
  * the parent node itself is a left child node
  * the uncle of the inserted node is black
 
@@ -458,6 +458,19 @@ The predefined solution for this violation is to:
  * rotate the inserted parent node with its own parent
 
 ![Image 9](images/red_black_tree_2.png)
+
+##### Violation 3: Insert a left node with red parent (right node) or insert right node with a red parent (left node) and black uncle
+
+This violation occurs when:
+ * a new (red) node is added right after a red node
+ * the new inserted node is a left node of a right node OR the new inserted node is a right node of a left node
+ * the uncle of the inserted node is black
+
+The predefined solution for this violation is to:
+ * rotate the new inserted node with its own parent in order to have the condition of the violation 2
+ * apply the solution of the violation 2
+
+![Image 10](images/red_black_tree_3.png)
 
 ## Others
 
