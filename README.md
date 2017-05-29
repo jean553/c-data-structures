@@ -86,6 +86,7 @@ Lists:
 Trees:
  * binary tree,
  * binary search tree
+ * red black tree
 
 Others:
  * vector - dynamic array,
@@ -409,6 +410,41 @@ Implemented methods:
  * insert
  * search
  * removeAt
+
+### Red black tree
+
+The red black tree is a binary search tree that ensures self-balancing when inserting.
+In fact, one of the binary search tree main problem is that according to how the insertions are done,
+an efficient binary tree can simply become a linked list.
+The access time complexity can literally decrease.
+
+The red black tree node is the same as the BST node with one more parameter called the color.
+The color is an attribute of every node that can be Black or Red.
+The nodes are inserted into the tree the same way as a standard BST
+and a "self-balancing" procedure is applied on the tree right after the node insertion.
+During this process, the color of one or many nodes may change in order to respect a set of rules.
+This set of rules ensure the tree stay balanced.
+
+These rules are:
+ * the root node is always black,
+ * the leaf nodes of the tree are always black,
+ * every red node always have exactly two black children,
+ * all paths from one node to a leaf node have the same amount of black nodes
+Note that a NULL node of any other node is considered as black.
+
+The self-balancing process simply tries to detect some violations of these rules right after a node insertion.
+Those violations are recurrent and the solutions to fix them are predefined.
+
+#### Violations
+
+##### Insert a node with red parent and red uncle
+
+This violation occurs when a new (red) node is added right after a red node:
+a red node can only have two black children exaclty (or two NULL children).
+When the uncle node of the new node is red, a predefined solution can be applied:
+the parent and the uncle become black, the parent of the uncle become red.
+
+![Image 8](images/red_black_tree_1.png)
 
 ## Others
 
