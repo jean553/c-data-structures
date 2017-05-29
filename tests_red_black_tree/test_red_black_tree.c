@@ -9,6 +9,7 @@
  */
 START_TEST(test_create)
 {
+    RedBlackTreeNode first_tree = create(10);
 }
 END_TEST
 

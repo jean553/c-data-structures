@@ -8,9 +8,18 @@ enum Color {
     RED
 };
 
-struct RedBlackTreeNode {
+typedef struct RedBlackTreeNode {
     unsigned short key;
     enum Color color;
     struct RedBlackTreeNode* left;
     struct RedBlackTreeNode* right;
-};
+} RedBlackTreeNode;
+
+/**
+ * @brief Creates a red black tree node
+ *
+ * @param key the key of the created node
+ *
+ * @return RedBlackTreeNode
+ */
+RedBlackTreeNode create(const unsigned short key);
