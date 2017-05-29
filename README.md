@@ -446,6 +446,19 @@ the parent and the uncle become black, the parent of the uncle become red.
 
 ![Image 8](images/red_black_tree_1.png)
 
+##### Insert a left node with red parent (left node too) and black uncle
+
+This violation occurs when:
+ * a new (red) node is added right after a red node
+ * the parent node itself is a left child node
+ * the uncle of the inserted node is black
+
+The predefined solution for this violation is to:
+ * invert the inserted parent node with its own parent, without inverting the colors,
+ * rotate the inserted parent node with its own parent
+
+![Image 9](images/red_black_tree_2.png)
+
 ## Others
 
 ### Vector - Dynamic array
