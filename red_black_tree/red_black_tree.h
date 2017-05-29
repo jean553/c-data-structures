@@ -14,3 +14,12 @@ struct RedBlackTreeNode {
     struct RedBlackTreeNode* left;
     struct RedBlackTreeNode* right;
 };
+
+/**
+ * @brief Creates a red black tree node
+ *
+ * @param key the key of the created node
+ *
+ * @return RedBlackTreeNode
+ */
+RedBlackTreeNode create(const unsigned short key);
