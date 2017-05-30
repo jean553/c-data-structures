@@ -106,3 +106,40 @@ RedBlackTreeNode* createNode(const int key)
 
     return newNode;
 }
+
+/**
+ *
+ */
+const unsigned short hasRedParentAndRedUncle(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+)
+{
+    if (
+        parent == NULL ||
+        grandParent == NULL ||
+        parent->color != RED
+    )
+    {
+        return 0;
+    }
+
+    RedBlackTreeNode* uncle = NULL;
+
+    if (grandParent->left == parent)
+    {
+        uncle = grandParent->right;
+    }
+    else
+    {
+        uncle = grandParent->left;
+    }
+
+    if (uncle->color == BLACK)
+    {
+        return 0;
+    }
+
+    return 1;
+}

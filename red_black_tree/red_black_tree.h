@@ -43,3 +43,20 @@ void insert(
  * @return RedBlackTreeNode*
  */
 RedBlackTreeNode* createNode(const int key);
+
+/**
+ * @brief Checks if the node has a red parent and a red uncle;
+ * returns 1 if the node has a red parent and a red uncle,
+ * returns 0 in any other case
+ *
+ * @param grandParent the grand parent of the node to check
+ * @paran parent the parent of the node to check
+ * @param node the concerned node to check
+ *
+ * @return const unsigned short
+ */
+const unsigned short hasRedParentAndRedUncle(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+);
