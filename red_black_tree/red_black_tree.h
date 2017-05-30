@@ -23,3 +23,14 @@ typedef struct RedBlackTreeNode {
  * @return RedBlackTreeNode
  */
 RedBlackTreeNode create(const unsigned short key);
+
+/**
+ * @brief Inserts a node into the red black tree
+ *
+ * @param node the red black tree node to use as a node
+ * @param key the key if the node to insert
+ */
+void insert(
+    RedBlackTreeNode* node,
+    const unsigned short key
+);
