@@ -25,6 +25,9 @@ void insert(
     const unsigned short key
 )
 {
+    RedBlackTreeNode* grandParent = NULL;
+    RedBlackTreeNode* parent = NULL;
+
     for (;;)
     {
         if (node->key == key)
@@ -38,6 +41,10 @@ void insert(
         )
         {
             RedBlackTreeNode* newNode = createNode(key);
+
+            grandParent = parent;
+
+            parent = node;
 
             if (node->key > key)
             {
@@ -53,6 +60,10 @@ void insert(
         {
             if (node->left != NULL)
             {
+                grandParent = parent;
+
+                parent = node;
+
                 node = node->left;
 
                 continue;
@@ -66,6 +77,10 @@ void insert(
         {
             if (node->right != NULL)
             {
+                grandParent = parent;
+
+                parent = node;
+
                 node = node->right;
 
                 continue;
