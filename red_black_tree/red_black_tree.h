@@ -60,3 +60,14 @@ const unsigned short hasRedParentAndRedUncle(
     RedBlackTreeNode* parent,
     RedBlackTreeNode* node
 );
+
+/**
+ * @brief Changes the parent and uncle color of a node to black
+ *
+ * @param grandParent the grand parent of the concerned node
+ * @paran parent the parent of the concerned node
+ */
+void setParentAndUncleWithBlack(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent
+);

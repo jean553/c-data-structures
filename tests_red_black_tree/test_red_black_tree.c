@@ -19,14 +19,9 @@ END_TEST
 START_TEST(test_insert)
 {
     RedBlackTreeNode tree = create(10);
-    insert(&tree, 20);
+    insert(&tree, 5);
     insert(&tree, 15);
-    insert(&tree, 25);
-    insert(&tree, 12);
-    insert(&tree, 17);
-    insert(&tree, 22);
-    insert(&tree, 27);
-    insert(&tree, 15);
+    insert(&tree, 3);
 }
 END_TEST
 
