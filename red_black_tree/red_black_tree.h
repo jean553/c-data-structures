@@ -71,3 +71,17 @@ void setParentAndUncleWithBlack(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent
 );
+
+/**
+ * @brief Returns the uncle node of a node
+ * according to its parent and grand parent
+ *
+ * @param grandParent the grand parent of the concerned node
+ * @paran parent the parent of the concerned node
+ *
+ * @return RedBlackTreeNode*
+ */
+RedBlackTreeNode* getUncleNode(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent
+);

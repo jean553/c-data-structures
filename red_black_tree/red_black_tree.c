@@ -181,3 +181,19 @@ void setParentAndUncleWithBlack(
     uncle->color = BLACK;
     parent->color = BLACK;
 }
+
+/**
+ *
+ */
+RedBlackTreeNode* getUncleNode(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent
+)
+{
+    if (grandParent->left == parent)
+    {
+        return grandParent->right;
+    }
+
+    return grandParent->left;
+}
