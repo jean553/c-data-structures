@@ -34,3 +34,12 @@ void insert(
     RedBlackTreeNode* node,
     const unsigned short key
 );
+
+/**
+ * @brief Creates a new node (used by the red black tree methods)
+ *
+ * @param key the key of the new node to insert
+ *
+ * @return RedBlackTreeNode*
+ */
+RedBlackTreeNode* createNode(const int key);

@@ -37,7 +37,7 @@ void insert(
             node->right == NULL
         )
         {
-            BinarySearchTreeNode* newNode = createNode(key);
+            RedBlackTreeNode* newNode = createNode(key);
 
             if (node->key > key)
             {
