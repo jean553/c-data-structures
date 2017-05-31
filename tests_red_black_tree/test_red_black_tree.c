@@ -26,7 +26,7 @@ START_TEST(test_insert)
     insert(&tree, 15);
     insert(&tree, 3);
 
-    ck_assert_int_eq(tree.color, RED);
+    ck_assert_int_eq(tree.color, BLACK);
     ck_assert_int_eq(tree.right->color, BLACK);
     ck_assert_int_eq(tree.left->color, BLACK);
     ck_assert_int_eq(tree.left->left->color, RED);
