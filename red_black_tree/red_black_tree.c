@@ -50,8 +50,10 @@ void insert(
             if (node->key > key)
             {
                 node->left = newNode;
+                node = node->left;
             } else {
                 node->right = newNode;
+                node = node->right;
             }
 
             break;
@@ -107,6 +109,29 @@ void insert(
             grandParent,
             parent
         );
+
+        return;
+    }
+
+    const unsigned short hasRedParentAndBlackUncleAndIsLeftChildCondition =
+        hasRedParentAndBlackUncleAndIsLeftChild(
+            grandParent,
+            parent,
+            node
+        );
+
+    if (hasRedParentAndBlackUncleAndIsLeftChildCondition)
+    {
+        invertParentAndGrandParentKeys(
+            grandParent,
+            parent
+        );
+
+        rotateParentWithGrandParent(
+            grandParent,
+            parent,
+            node
+        );
     }
 }
 
@@ -153,7 +178,49 @@ const unsigned short hasRedParentAndRedUncle(
         uncle = grandParent->left;
     }
 
-    if (uncle->color == BLACK)
+    if (
+        uncle == NULL ||
+        uncle->color == BLACK
+    )
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+/**
+ *
+ */
+const unsigned short hasRedParentAndBlackUncleAndIsLeftChild(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+)
+{
+    if (
+        parent == NULL ||
+        grandParent == NULL ||
+        parent->color != RED
+    )
+    {
+        return 0;
+    }
+
+    if (
+        grandParent->left != parent ||
+        parent->left != node
+    )
+    {
+        return 0;
+    }
+
+    RedBlackTreeNode* uncle = grandParent->right;
+
+    if (
+        uncle != NULL &&
+        uncle->color == RED
+    )
     {
         return 0;
     }
@@ -188,6 +255,36 @@ void setParentAndUncleWithBlack(
     {
         grandParent->color = RED;
     }
+}
+
+/**
+ *
+ */
+void invertParentAndGrandParentKeys(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent
+)
+{
+    /* invert the two values */
+    grandParent->key = grandParent->key + parent->key;
+    parent->key = grandParent->key - parent->key;
+    grandParent->key = grandParent->key - parent->key;
+}
+
+/**
+ *
+ */
+void rotateParentWithGrandParent(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+)
+{
+    RedBlackTreeNode* uncle = grandParent->right;
+
+    grandParent->right = parent;
+    parent->right = uncle;
+    grandParent->left = node;
 }
 
 /**

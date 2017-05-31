@@ -21,15 +21,37 @@ START_TEST(test_insert)
     /* simulate the red parent and red uncle violation
        when the grandparent is the root node of the tree */
 
-    RedBlackTreeNode tree = create(10);
-    insert(&tree, 5);
-    insert(&tree, 15);
-    insert(&tree, 3);
+    RedBlackTreeNode first_tree = create(10);
+    insert(&first_tree, 5);
+    insert(&first_tree, 15);
+    insert(&first_tree, 3);
 
-    ck_assert_int_eq(tree.color, BLACK);
-    ck_assert_int_eq(tree.right->color, BLACK);
-    ck_assert_int_eq(tree.left->color, BLACK);
-    ck_assert_int_eq(tree.left->left->color, RED);
+    ck_assert_int_eq(first_tree.color, BLACK);
+    ck_assert_int_eq(first_tree.right->color, BLACK);
+    ck_assert_int_eq(first_tree.left->color, BLACK);
+    ck_assert_int_eq(first_tree.left->left->color, RED);
+
+    /* simulate the red parent and black uncle violation
+       when the inserted node is the left child and
+       when the grandparent is the root node of the tree */
+
+    RedBlackTreeNode second_tree = create(10);
+    insert(&second_tree, 5);
+    insert(&second_tree, 15);
+    insert(&second_tree, 3);
+    insert(&second_tree, 1);
+
+    ck_assert_int_eq(second_tree.color, BLACK);
+    ck_assert_int_eq(second_tree.right->color, BLACK);
+    ck_assert_int_eq(second_tree.left->color, BLACK);
+    ck_assert_int_eq(second_tree.left->left->color, RED);
+    ck_assert_int_eq(second_tree.left->right->color, RED);
+
+    ck_assert_int_eq(second_tree.key, 10);
+    ck_assert_int_eq(second_tree.right->key, 15);
+    ck_assert_int_eq(second_tree.left->key, 3);
+    ck_assert_int_eq(second_tree.left->left->key, 1);
+    ck_assert_int_eq(second_tree.left->right->key, 5);
 }
 END_TEST
 
