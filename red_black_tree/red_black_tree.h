@@ -101,6 +101,20 @@ void invertParentAndGrandParentKeys(
 );
 
 /**
+ * @brief Rotates the parent with its grand parent
+ * when the parent is the left child of its grand parent
+ *
+ * @param grandParent the grand parent of the node to check
+ * @paran parent the parent of the node to check
+ * @param node the concerned node to check
+ */
+void rotateParentWithGrandParent(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+);
+
+/**
  * @brief Returns the uncle node of a node
  * according to its parent and grand parent
  *

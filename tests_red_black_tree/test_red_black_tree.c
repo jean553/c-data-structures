@@ -46,6 +46,12 @@ START_TEST(test_insert)
     ck_assert_int_eq(second_tree.left->color, BLACK);
     ck_assert_int_eq(second_tree.left->left->color, RED);
     ck_assert_int_eq(second_tree.left->right->color, RED);
+
+    ck_assert_int_eq(second_tree.key, 10);
+    ck_assert_int_eq(second_tree.right->key, 15);
+    ck_assert_int_eq(second_tree.left->key, 3);
+    ck_assert_int_eq(second_tree.left->left->key, 1);
+    ck_assert_int_eq(second_tree.left->right->key, 5);
 }
 END_TEST
 

@@ -50,8 +50,10 @@ void insert(
             if (node->key > key)
             {
                 node->left = newNode;
+                node = node->left;
             } else {
                 node->right = newNode;
+                node = node->right;
             }
 
             break;
@@ -124,6 +126,12 @@ void insert(
             grandParent,
             parent
         );
+
+        rotateParentWithGrandParent(
+            grandParent,
+            parent,
+            node
+        );
     }
 }
 
@@ -170,7 +178,10 @@ const unsigned short hasRedParentAndRedUncle(
         uncle = grandParent->left;
     }
 
-    if (uncle->color == BLACK)
+    if (
+        uncle == NULL ||
+        uncle->color == BLACK
+    )
     {
         return 0;
     }
@@ -206,7 +217,10 @@ const unsigned short hasRedParentAndBlackUncleAndIsLeftChild(
 
     RedBlackTreeNode* uncle = grandParent->right;
 
-    if (uncle->color == RED)
+    if (
+        uncle != NULL &&
+        uncle->color == RED
+    )
     {
         return 0;
     }
@@ -255,6 +269,22 @@ void invertParentAndGrandParentKeys(
     grandParent->key = grandParent->key + parent->key;
     parent->key = grandParent->key - parent->key;
     grandParent->key = grandParent->key - parent->key;
+}
+
+/**
+ *
+ */
+void rotateParentWithGrandParent(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+)
+{
+    RedBlackTreeNode* uncle = grandParent->right;
+
+    grandParent->right = parent;
+    parent->right = uncle;
+    grandParent->left = node;
 }
 
 /**
