@@ -53,21 +53,6 @@ void insert(
                 node->right = newNode;
             }
 
-            const unsigned short hasRedParendAndRedUncle =
-                hasRedParentAndRedUncle(
-                    grandParent,
-                    parent,
-                    node
-                );
-
-            if (hasRedParentAndRedUncle)
-            {
-                setParentAndUncleWithBlack(
-                    grandParent,
-                    parent
-                );
-            }
-
             break;
         }
 
@@ -105,6 +90,22 @@ void insert(
 
             break;
         }
+    }
+
+    const unsigned short hasRedParentAndRedUncleCondition =
+        hasRedParentAndRedUncle(
+            grandParent,
+            parent,
+            node
+        );
+
+    if (hasRedParentAndRedUncleCondition)
+    {
+        setParentAndUncleWithBlack(
+            node,
+            grandParent,
+            parent
+        );
     }
 }
 
@@ -163,6 +164,7 @@ const unsigned short hasRedParentAndRedUncle(
  *
  */
 void setParentAndUncleWithBlack(
+    RedBlackTreeNode* root,
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent
 )
@@ -180,6 +182,11 @@ void setParentAndUncleWithBlack(
 
     uncle->color = BLACK;
     parent->color = BLACK;
+
+    if (grandParent != root)
+    {
+        grandParent->color = RED;
+    }
 }
 
 /**

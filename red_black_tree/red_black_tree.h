@@ -64,10 +64,12 @@ const unsigned short hasRedParentAndRedUncle(
 /**
  * @brief Changes the parent and uncle color of a node to black
  *
+ * @param root the root node of the whole tree
  * @param grandParent the grand parent of the concerned node
  * @paran parent the parent of the concerned node
  */
 void setParentAndUncleWithBlack(
+    RedBlackTreeNode* root,
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent
 );
