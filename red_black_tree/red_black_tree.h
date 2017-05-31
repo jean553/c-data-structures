@@ -60,6 +60,23 @@ const unsigned short hasRedParentAndRedUncle(
 );
 
 /**
+ * @brief Checks if the node has a red parent and a black uncle
+ * and if the current node is a left child node;
+ * returns 1 if yes, returns 0 if no
+ *
+ * @param grandParent the grand parent of the node to check
+ * @paran parent the parent of the node to check
+ * @param node the concerned node to check
+ *
+ * @return const unsigned short
+ */
+const unsigned short hasRedParentAndBlackUncleAndIsLeftChild(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+);
+
+/**
  * @brief Changes the parent and uncle color of a node to black
  *
  * @param root the root node of the whole tree
@@ -68,6 +85,17 @@ const unsigned short hasRedParentAndRedUncle(
  */
 void setParentAndUncleWithBlack(
     RedBlackTreeNode* root,
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent
+);
+
+/**
+ * @brief Inverts the parent and grand parent keys
+ *
+ * @param grandParent the grand parent of the concerned node
+ * @paran parent the parent of the concerned node
+ */
+void invertParentAndGrandParentKeys(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent
 );

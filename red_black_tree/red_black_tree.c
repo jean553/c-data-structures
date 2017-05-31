@@ -107,6 +107,23 @@ void insert(
             grandParent,
             parent
         );
+
+        return;
+    }
+
+    const unsigned short hasRedParentAndBlackUncleAndIsLeftChildCondition =
+        hasRedParentAndBlackUncleAndIsLeftChild(
+            grandParent,
+            parent,
+            node
+        );
+
+    if (hasRedParentAndBlackUncleAndIsLeftChildCondition)
+    {
+        invertParentAndGrandParentKeys(
+            grandParent,
+            parent
+        );
     }
 }
 
@@ -164,6 +181,42 @@ const unsigned short hasRedParentAndRedUncle(
 /**
  *
  */
+const unsigned short hasRedParentAndBlackUncleAndIsLeftChild(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+)
+{
+    if (
+        parent == NULL ||
+        grandParent == NULL ||
+        parent->color != RED
+    )
+    {
+        return 0;
+    }
+
+    if (
+        grandParent->left != parent ||
+        parent->left != node
+    )
+    {
+        return 0;
+    }
+
+    RedBlackTreeNode* uncle = grandParent->right;
+
+    if (uncle->color == RED)
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+/**
+ *
+ */
 void setParentAndUncleWithBlack(
     RedBlackTreeNode* root,
     RedBlackTreeNode* grandParent,
@@ -188,6 +241,20 @@ void setParentAndUncleWithBlack(
     {
         grandParent->color = RED;
     }
+}
+
+/**
+ *
+ */
+void invertParentAndGrandParentKeys(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent
+)
+{
+    /* invert the two values */
+    grandParent->key = grandParent->key + parent->key;
+    parent->key = grandParent->key - parent->key;
+    grandParent->key = grandParent->key - parent->key;
 }
 
 /**
