@@ -3,14 +3,12 @@
  * @file red_black_tree.h
  */
 
-enum Color {
-    BLACK,
-    RED
-};
+#define RED 0
+#define BLACK 1
 
 typedef struct RedBlackTreeNode {
     unsigned short key;
-    enum Color color;
+    unsigned short color;
     struct RedBlackTreeNode* left;
     struct RedBlackTreeNode* right;
 } RedBlackTreeNode;
