@@ -91,6 +91,22 @@ void insert(
             break;
         }
     }
+
+    const unsigned short hasRedParentAndRedUncleCondition =
+        hasRedParentAndRedUncle(
+            grandParent,
+            parent,
+            node
+        );
+
+    if (hasRedParentAndRedUncleCondition)
+    {
+        setParentAndUncleWithBlack(
+            node,
+            grandParent,
+            parent
+        );
+    }
 }
 
 /**
@@ -142,4 +158,49 @@ const unsigned short hasRedParentAndRedUncle(
     }
 
     return 1;
+}
+
+/**
+ *
+ */
+void setParentAndUncleWithBlack(
+    RedBlackTreeNode* root,
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent
+)
+{
+    RedBlackTreeNode* uncle = NULL;
+
+    if (grandParent->left == parent)
+    {
+        uncle = grandParent->right;
+    }
+    else
+    {
+        uncle = grandParent->left;
+    }
+
+    uncle->color = BLACK;
+    parent->color = BLACK;
+
+    if (grandParent != root)
+    {
+        grandParent->color = RED;
+    }
+}
+
+/**
+ *
+ */
+RedBlackTreeNode* getUncleNode(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent
+)
+{
+    if (grandParent->left == parent)
+    {
+        return grandParent->right;
+    }
+
+    return grandParent->left;
 }

@@ -3,14 +3,12 @@
  * @file red_black_tree.h
  */
 
-enum Color {
-    BLACK,
-    RED
-};
+#define RED 0
+#define BLACK 1
 
 typedef struct RedBlackTreeNode {
     unsigned short key;
-    enum Color color;
+    unsigned short color;
     struct RedBlackTreeNode* left;
     struct RedBlackTreeNode* right;
 } RedBlackTreeNode;
@@ -59,4 +57,31 @@ const unsigned short hasRedParentAndRedUncle(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent,
     RedBlackTreeNode* node
+);
+
+/**
+ * @brief Changes the parent and uncle color of a node to black
+ *
+ * @param root the root node of the whole tree
+ * @param grandParent the grand parent of the concerned node
+ * @paran parent the parent of the concerned node
+ */
+void setParentAndUncleWithBlack(
+    RedBlackTreeNode* root,
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent
+);
+
+/**
+ * @brief Returns the uncle node of a node
+ * according to its parent and grand parent
+ *
+ * @param grandParent the grand parent of the concerned node
+ * @paran parent the parent of the concerned node
+ *
+ * @return RedBlackTreeNode*
+ */
+RedBlackTreeNode* getUncleNode(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent
 );
