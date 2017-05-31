@@ -25,6 +25,7 @@ void insert(
     const unsigned short key
 )
 {
+    RedBlackTreeNode* root = node;
     RedBlackTreeNode* grandParent = NULL;
     RedBlackTreeNode* parent = NULL;
 
@@ -102,7 +103,7 @@ void insert(
     if (hasRedParentAndRedUncleCondition)
     {
         setParentAndUncleWithBlack(
-            node,
+            root,
             grandParent,
             parent
         );
