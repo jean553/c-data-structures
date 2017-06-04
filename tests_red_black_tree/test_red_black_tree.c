@@ -106,6 +106,62 @@ START_TEST(test_removeAt)
     ck_assert_int_eq(first_tree.right->key, 15);
     ck_assert_int_eq(first_tree.left->key, 5);
     ck_assert_int_eq(first_tree.left->left, NULL);
+
+    /* delete a node with one left red child, the deleted node is black */
+
+    RedBlackTreeNode second_tree = create(10);
+    insert(&second_tree, 5);
+    insert(&second_tree, 15);
+    insert(&second_tree, 3);
+
+    ck_assert_int_eq(second_tree.color, BLACK);
+    ck_assert_int_eq(second_tree.right->color, BLACK);
+    ck_assert_int_eq(second_tree.left->color, BLACK);
+    ck_assert_int_eq(second_tree.left->left->color, RED);
+
+    ck_assert_int_eq(second_tree.key, 10);
+    ck_assert_int_eq(second_tree.right->key, 15);
+    ck_assert_int_eq(second_tree.left->key, 5);
+    ck_assert_int_eq(second_tree.left->left->key, 3);
+
+    removeAt(&second_tree, 5);
+
+    ck_assert_int_eq(second_tree.color, BLACK);
+    ck_assert_int_eq(second_tree.right->color, BLACK);
+    ck_assert_int_eq(second_tree.left->color, BLACK);
+
+    ck_assert_int_eq(second_tree.key, 10);
+    ck_assert_int_eq(second_tree.right->key, 15);
+    ck_assert_int_eq(second_tree.left->key, 3);
+    ck_assert_int_eq(second_tree.left->left, NULL);
+
+    /* delete a node with one right red child, the deleted node is black */
+
+    RedBlackTreeNode third_tree = create(10);
+    insert(&third_tree, 5);
+    insert(&third_tree, 15);
+    insert(&third_tree, 6);
+
+    ck_assert_int_eq(third_tree.color, BLACK);
+    ck_assert_int_eq(third_tree.right->color, BLACK);
+    ck_assert_int_eq(third_tree.left->color, BLACK);
+    ck_assert_int_eq(third_tree.left->right->color, RED);
+
+    ck_assert_int_eq(third_tree.key, 10);
+    ck_assert_int_eq(third_tree.right->key, 15);
+    ck_assert_int_eq(third_tree.left->key, 5);
+    ck_assert_int_eq(third_tree.left->right->key, 6);
+
+    removeAt(&third_tree, 5);
+
+    ck_assert_int_eq(third_tree.color, BLACK);
+    ck_assert_int_eq(third_tree.right->color, BLACK);
+    ck_assert_int_eq(third_tree.left->color, BLACK);
+
+    ck_assert_int_eq(third_tree.key, 10);
+    ck_assert_int_eq(third_tree.right->key, 15);
+    ck_assert_int_eq(third_tree.left->key, 6);
+    ck_assert_int_eq(third_tree.left->right, NULL);
 }
 END_TEST
 
