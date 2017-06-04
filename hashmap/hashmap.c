@@ -68,11 +68,21 @@ const void* at(Hashmap* hashmap, const char* key)
     HashmapNode* node = hashmap->head[hash(hashmap, key)];
 
     while(
+        node != NULL &&
         node->next != NULL &&
         strcmp(node->key, key) != 0
     )
     {
         node = node->next;
+    }
+
+    if (
+        node == NULL ||
+        node->next == NULL &&
+        strcmp(node->key, key) != 0
+    )
+    {
+        return NULL;
     }
 
     return node->value;
