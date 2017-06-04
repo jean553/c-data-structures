@@ -138,6 +138,41 @@ void insert(
 /**
  *
  */
+void removeAt(
+    RedBlackTreeNode* node,
+    const unsigned short key
+)
+{
+    NodeWithParent nodeToDelete = getNodeWithParent(
+        NULL,
+        node,
+        key
+    );
+
+    if (nodeToDelete.parent != NULL)
+    {
+        if (
+            nodeToDelete.node->left == NULL &&
+            nodeToDelete.node->right == NULL
+        )
+        {
+            if (nodeToDelete.parent->left == nodeToDelete.node)
+            {
+                nodeToDelete.parent->left = NULL;
+            }
+            else
+            {
+                nodeToDelete.parent->right = NULL;
+            }
+
+            free(nodeToDelete.node);
+        }
+    }
+}
+
+/**
+ *
+ */
 RedBlackTreeNode* createNode(const int key)
 {
     RedBlackTreeNode* newNode = malloc(sizeof(RedBlackTreeNode));
@@ -301,4 +336,46 @@ RedBlackTreeNode* getUncleNode(
     }
 
     return grandParent->left;
+}
+
+/**
+ *
+ */
+NodeWithParent getNodeWithParent(
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node,
+    const int key
+)
+{
+    NodeWithParent nodeWithParent;
+    nodeWithParent.parent = parent;
+
+    if (node == NULL)
+    {
+        nodeWithParent.node = NULL;
+
+        return nodeWithParent;
+    }
+    else if (node->key == key)
+    {
+        nodeWithParent.node = node;
+
+        return nodeWithParent;
+    }
+    else if (node->key < key)
+    {
+        return getNodeWithParent(
+            node,
+            node->right,
+            key
+        );
+    }
+    else
+    {
+        return getNodeWithParent(
+            node,
+            node->left,
+            key
+        );
+    }
 }

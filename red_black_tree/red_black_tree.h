@@ -13,6 +13,12 @@ typedef struct RedBlackTreeNode {
     struct RedBlackTreeNode* right;
 } RedBlackTreeNode;
 
+typedef struct NodeWithParent
+{
+    struct RedBlackTreeNode* node;
+    struct RedBlackTreeNode* parent;
+} NodeWithParent;
+
 /**
  * @brief Creates a red black tree node
  *
@@ -29,6 +35,17 @@ RedBlackTreeNode create(const unsigned short key);
  * @param key the key if the node to insert
  */
 void insert(
+    RedBlackTreeNode* node,
+    const unsigned short key
+);
+
+/**
+ * @brief Removes a node with the given key from the given tree
+ *
+ * @param node the red black tree node to use as a node
+ * @param key the key if the node to insert
+ */
+void removeAt(
     RedBlackTreeNode* node,
     const unsigned short key
 );
@@ -126,4 +143,20 @@ void rotateParentWithGrandParent(
 RedBlackTreeNode* getUncleNode(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent
+);
+
+/**
+ * @brief Searchs a node with its parent node
+ *
+ * @param parent the parent node of the given node
+ * @param node the node with the sub-trees in which the key is expected
+ * (sub-trees of the given node)
+ * @param key the key to search
+ *
+ * @return NodeWithParent*
+ */
+NodeWithParent getNodeWithParent(
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node,
+    const int key
 );
