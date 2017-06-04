@@ -19,3 +19,14 @@ typedef struct TrieNode
  * @return TrieNode
  */
 TrieNode createTrieNode(const unsigned short isWord);
+
+/**
+ * @brief Inserts one new node into a tree
+ *
+ * @param node the trie node to update
+ * @param word the word to insert
+ */
+void insertWord(
+    TrieNode* node,
+    const char* word
+);
