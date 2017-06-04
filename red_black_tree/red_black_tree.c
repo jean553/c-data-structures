@@ -143,6 +143,31 @@ void removeAt(
     const unsigned short key
 )
 {
+    NodeWithParent nodeToDelete = getNodeWithParent(
+        NULL,
+        node,
+        key
+    );
+
+    if (nodeToDelete.parent != NULL)
+    {
+        if (
+            nodeToDelete.node->left == NULL &&
+            nodeToDelete.node->right == NULL
+        )
+        {
+            if (nodeToDelete.parent->left == nodeToDelete.node)
+            {
+                nodeToDelete.parent->left = NULL;
+            }
+            else
+            {
+                nodeToDelete.parent->right = NULL;
+            }
+
+            free(nodeToDelete.node);
+        }
+    }
 }
 
 /**
