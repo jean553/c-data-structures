@@ -3,13 +3,14 @@
 #include <check.h>
 
 #include "trie.h"
+#include "hashmap.h"
 
 /**
  *
  */
 START_TEST(test_create)
 {
-    /* TODO */
+    TrieNode first_trie = createTrieNode(0);
 }
 END_TEST
 
