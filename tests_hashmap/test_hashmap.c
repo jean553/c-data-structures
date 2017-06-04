@@ -19,7 +19,10 @@ END_TEST
 START_TEST(test_insert)
 {
     Hashmap first_hashmap = create(10);
-    insert(&first_hashmap, "val1", 10);
+
+    const int first_value = 10;
+
+    insert(&first_hashmap, "val1", &first_value);
 }
 END_TEST
 
@@ -29,17 +32,23 @@ END_TEST
 START_TEST(test_at)
 {
     Hashmap first_hashmap = create(10);
-    insert(&first_hashmap, "val1", 25);
-    ck_assert_int_eq(at(&first_hashmap, "val1"), 25);
+
+    const int first_value = 25;
+    insert(&first_hashmap, "val1", &first_value);
+    ck_assert_int_eq(*(int*) at(&first_hashmap, "val1"), first_value);
 
     Hashmap second_hashmap = create(10);
-    insert(&second_hashmap, "val1", 20);
-    insert(&second_hashmap, "wal0", 30);
-    insert(&second_hashmap, "xak0", 40);
 
-    ck_assert_int_eq(at(&second_hashmap, "val1"), 20);
-    ck_assert_int_eq(at(&second_hashmap, "wal0"), 30);
-    ck_assert_int_eq(at(&second_hashmap, "xak0"), 40);
+    const int second_value = 20;
+    const int third_value = 30;
+    const int fourth_value = 40;
+    insert(&second_hashmap, "val1", &second_value);
+    insert(&second_hashmap, "wal0", &third_value);
+    insert(&second_hashmap, "xak0", &fourth_value);
+
+    ck_assert_int_eq(*(int*) at(&second_hashmap, "val1"), second_value);
+    ck_assert_int_eq(*(int*) at(&second_hashmap, "wal0"), third_value);
+    ck_assert_int_eq(*(int*) at(&second_hashmap, "xak0"), fourth_value);
 }
 END_TEST
 
