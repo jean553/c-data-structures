@@ -46,6 +46,7 @@ void insertWord(
         }
 
         TrieNode* newNode = malloc(sizeof(TrieNode));
+        *newNode = createTrieNode(0);
 
         const char nextCharacter = word[i + 1];
         if (nextCharacter == '\0')
