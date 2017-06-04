@@ -166,6 +166,50 @@ void removeAt(
             }
 
             free(nodeToDelete.node);
+
+            return;
+        }
+
+        if (
+            nodeToDelete.node->right == NULL &&
+            nodeToDelete.node->left != NULL
+        )
+        {
+            nodeToDelete.node->left->color = BLACK;
+
+            if (nodeToDelete.parent->left == nodeToDelete.node)
+            {
+                nodeToDelete.parent->left = nodeToDelete.node->left;
+            }
+            else
+            {
+                nodeToDelete.parent->right = nodeToDelete.node->left;
+            }
+
+            free(nodeToDelete.node);
+
+            return;
+        }
+
+        if (
+            nodeToDelete.node->left == NULL &&
+            nodeToDelete.node->right != NULL
+        )
+        {
+            nodeToDelete.node->right->color = BLACK;
+
+            if (nodeToDelete.parent->left == nodeToDelete.node)
+            {
+                nodeToDelete.parent->left = nodeToDelete.node->right;
+            }
+            else
+            {
+                nodeToDelete.parent->right = nodeToDelete.node->right;
+            }
+
+            free(nodeToDelete.node);
+
+            return;
         }
     }
 }
