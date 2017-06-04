@@ -312,3 +312,45 @@ RedBlackTreeNode* getUncleNode(
 
     return grandParent->left;
 }
+
+/**
+ *
+ */
+NodeWithParent getNodeWithParent(
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node,
+    const int key
+)
+{
+    NodeWithParent nodeWithParent;
+    nodeWithParent.parent = parent;
+
+    if (node == NULL)
+    {
+        nodeWithParent.node = NULL;
+
+        return nodeWithParent;
+    }
+    else if (node->key == key)
+    {
+        nodeWithParent.node = node;
+
+        return nodeWithParent;
+    }
+    else if (node->key < key)
+    {
+        return getNodeWithParent(
+            node,
+            node->right,
+            key
+        );
+    }
+    else
+    {
+        return getNodeWithParent(
+            node,
+            node->left,
+            key
+        );
+    }
+}
