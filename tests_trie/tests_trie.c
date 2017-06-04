@@ -17,12 +17,23 @@ END_TEST
 /**
  *
  */
+START_TEST(test_insertWord)
+{
+    TrieNode first_trie = createTrieNode(0);
+    insertWord(&first_trie, "hello");
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("trie");
     TCase *tcase = tcase_create("case");
 
     tcase_add_test(tcase, test_create);
+    tcase_add_test(tcase, test_insertWord);
 
     suite_add_tcase(suite, tcase);
 
