@@ -117,10 +117,6 @@ void removeAt(
     const int key
 )
 {
-    /* TODO: the method only works for leaf node and
-       nodes with only one child for now,
-       others node types must be deletable */
-
     NodeWithParent nodeToDelete = getNodeWithParent(
         NULL,
         node,
