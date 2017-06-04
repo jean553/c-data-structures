@@ -52,6 +52,29 @@ START_TEST(test_insert)
     ck_assert_int_eq(second_tree.left->key, 3);
     ck_assert_int_eq(second_tree.left->left->key, 1);
     ck_assert_int_eq(second_tree.left->right->key, 5);
+
+    /* insertion that trigger violations 1 and 2 */
+
+    RedBlackTreeNode third_tree = create(10);
+    insert(&third_tree, 5);
+    insert(&third_tree, 15);
+    insert(&third_tree, 3);
+    insert(&third_tree, 1);
+    insert(&third_tree, 0);
+
+    ck_assert_int_eq(third_tree.color, BLACK);
+    ck_assert_int_eq(third_tree.right->color, BLACK);
+    ck_assert_int_eq(third_tree.left->color, RED);
+    ck_assert_int_eq(third_tree.left->left->color, BLACK);
+    ck_assert_int_eq(third_tree.left->right->color, BLACK);
+    ck_assert_int_eq(third_tree.left->left->left->color, RED);
+
+    ck_assert_int_eq(third_tree.key, 10);
+    ck_assert_int_eq(third_tree.right->key, 15);
+    ck_assert_int_eq(third_tree.left->key, 3);
+    ck_assert_int_eq(third_tree.left->left->key, 1);
+    ck_assert_int_eq(third_tree.left->right->key, 5);
+    ck_assert_int_eq(third_tree.left->left->left->key, 0);
 }
 END_TEST
 
