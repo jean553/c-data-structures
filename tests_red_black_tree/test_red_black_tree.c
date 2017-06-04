@@ -81,6 +81,37 @@ END_TEST
 /**
  *
  */
+START_TEST(test_removeAt)
+{
+    /* delete a leaf node */
+
+    RedBlackTreeNode first_tree = create(10);
+    insert(&first_tree, 5);
+    insert(&first_tree, 15);
+    insert(&first_tree, 3);
+
+    ck_assert_int_eq(first_tree.color, BLACK);
+    ck_assert_int_eq(first_tree.right->color, BLACK);
+    ck_assert_int_eq(first_tree.left->color, BLACK);
+    ck_assert_int_eq(first_tree.left->left->color, RED);
+
+    ck_assert_int_eq(first_tree.key, 10);
+    ck_assert_int_eq(first_tree.right->key, 15);
+    ck_assert_int_eq(first_tree.left->key, 5);
+    ck_assert_int_eq(first_tree.left->left->key, 3);
+
+    removeAt(&first_tree, 3);
+
+    ck_assert_int_eq(first_tree.key, 10);
+    ck_assert_int_eq(first_tree.right->key, 15);
+    ck_assert_int_eq(first_tree.left->key, 5);
+    ck_assert_int_eq(first_tree.left->left, NULL);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("red_black_tree");
@@ -88,6 +119,7 @@ Suite* linked_list_suite()
 
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_insert);
+    tcase_add_test(tcase, test_removeAt);
 
     suite_add_tcase(suite, tcase);
 
