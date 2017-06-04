@@ -138,6 +138,16 @@ void insert(
 /**
  *
  */
+void removeAt(
+    RedBlackTreeNode* node,
+    const unsigned short key
+)
+{
+}
+
+/**
+ *
+ */
 RedBlackTreeNode* createNode(const int key)
 {
     RedBlackTreeNode* newNode = malloc(sizeof(RedBlackTreeNode));

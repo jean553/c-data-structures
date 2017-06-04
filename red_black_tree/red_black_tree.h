@@ -34,6 +34,17 @@ void insert(
 );
 
 /**
+ * @brief Removes a node with the given key from the given tree
+ *
+ * @param node the red black tree node to use as a node
+ * @param key the key if the node to insert
+ */
+void removeAt(
+    RedBlackTreeNode* node,
+    const unsigned short key
+);
+
+/**
  * @brief Creates a new node (used by the red black tree methods)
  *
  * @param key the key of the new node to insert
