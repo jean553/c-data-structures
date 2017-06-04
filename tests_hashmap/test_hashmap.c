@@ -49,6 +49,19 @@ START_TEST(test_at)
     ck_assert_int_eq(*(int*) at(&second_hashmap, "val1"), second_value);
     ck_assert_int_eq(*(int*) at(&second_hashmap, "wal0"), third_value);
     ck_assert_int_eq(*(int*) at(&second_hashmap, "xak0"), fourth_value);
+
+    /* try to get a key that does not exist even if the same hash exists */
+
+    Hashmap third_hashmap = create(10);
+
+    const int fifth_value = 25;
+    insert(&third_hashmap, "val1", &fifth_value);
+    ck_assert_int_eq((int*) at(&third_hashmap, "hello"), NULL);
+
+    /* try to get a key that does not exist at all */
+
+    Hashmap fourth_hashmap = create(10);
+    ck_assert_int_eq((int*) at(&fourth_hashmap, "val1"), NULL);
 }
 END_TEST
 
