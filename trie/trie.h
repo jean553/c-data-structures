@@ -38,3 +38,14 @@ const unsigned short keyExists(
     TrieNode* node,
     const char* key
 );
+
+/**
+ * @brief Inserts a new word into a trie
+ *
+ * @param node the node to browse
+ * @param key the word to search
+ */
+void insert(
+    TrieNode* node,
+    const char* key
+);

@@ -32,6 +32,26 @@ END_TEST
 /**
  *
  */
+START_TEST(test_insert)
+{
+    TrieNode* first_trie = create("hello");
+    insert(first_trie, "bonjour");
+    insert(first_trie, "bonsoir");
+    insert(first_trie, "bon");
+
+    ck_assert_int_eq(keyExists(first_trie, "hello"), 1);
+    ck_assert_int_eq(keyExists(first_trie, "bonjour"), 1);
+    ck_assert_int_eq(keyExists(first_trie, "bonsoir"), 1);
+    ck_assert_int_eq(keyExists(first_trie, "bon"), 1);
+
+    ck_assert_int_eq(keyExists(first_trie, "bo"), 0);
+    ck_assert_int_eq(keyExists(first_trie, "bons"), 0);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("trie");
@@ -39,6 +59,7 @@ Suite* linked_list_suite()
 
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_keyExists);
+    tcase_add_test(tcase, test_insert);
 
     suite_add_tcase(suite, tcase);
 
