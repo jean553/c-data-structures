@@ -28,7 +28,7 @@ Hashmap create(const unsigned short size)
 /**
  *
  */
-void insert(Hashmap* hashmap, const char* key, void* value)
+void insert(Hashmap* hashmap, const char* key, const int value)
 {
     HashmapNode* node = hashmap->head[hash(hashmap, key)];
 
@@ -63,7 +63,7 @@ void insert(Hashmap* hashmap, const char* key, void* value)
 /**
  *
  */
-const void* at(Hashmap* hashmap, const char* key)
+const int at(Hashmap* hashmap, const char* key)
 {
     HashmapNode* node = hashmap->head[hash(hashmap, key)];
 

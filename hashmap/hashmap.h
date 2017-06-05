@@ -12,10 +12,7 @@ typedef struct Hashmap
 typedef struct HashmapNode
 {
     char* key;
-
-    /* stores a pointer in order to be able to reference any kind
-       of data through the hashmap, including trie node */
-    void* value;
+    int value;
     struct HashmapNode* next;
 } HashmapNode;
 
@@ -33,19 +30,19 @@ Hashmap create(const unsigned short size);
  *
  * @param hashmap the hashmap to modify
  * @param key the key for the given value
- * @param value pointer to the value itself
+ * @param value the value itself
  */
-void insert(Hashmap* hashmap, const char* key, void* value);
+void insert(Hashmap* hashmap, const char* key, const int value);
 
 /**
- * @brief Returns a pointer to the value for the given key from the hashmap
+ * @brief Returns the value for the given key from the hashmap
  *
  * @param hashmap the hashmap to use
  * @param key the key of the value to get
  *
- * @return const void*
+ * @return const int
  */
-const void* at(Hashmap* hashmap, const char* key);
+const int at(Hashmap* hashmap, const char* key);
 
 /**
  * @brief Returns the hash of the given key for the given hashmap
