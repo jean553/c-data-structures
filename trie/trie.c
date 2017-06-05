@@ -78,6 +78,16 @@ void insert(
         i++
     )
     {
+        if (
+            node->list != NULL &&
+            node->list->node->key == key[i]
+        )
+        {
+            node = node->list->node;
+
+            continue;
+        }
+
         node->list = malloc(sizeof(TrieNodeList));
         node->list->next = NULL;
 
