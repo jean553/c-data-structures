@@ -81,12 +81,15 @@ Lists:
  * unrolled linked list,
  * XOR double linked list,
  * circular linked list,
- * skip list
+ * skip list,
 
 Trees:
  * binary tree,
- * binary search tree
- * red black tree
+ * binary search tree,
+ * red black tree,
+
+Tries:
+ * trie,
 
 Others:
  * vector - dynamic array,
@@ -471,6 +474,42 @@ The predefined solution for this violation is to:
  * apply the solution of the violation 2
 
 ![Image 10](images/red_black_tree_3.png)
+
+## Tries
+
+### Trie
+
+A trie is a structure in which one every node does not have its own key
+but instead the key is part of the node and its parents keys.
+
+![Image 11](images/trie.png)
+
+The trie above contains the following words:
+ * hi,
+ * hell,
+ * hello,
+ * be,
+ * bee,
+ * is,
+ * idiom,
+ * idea
+
+The blue circles indicates the end of one of these words.
+
+This trie can be used for two use cases:
+ * search words from a dictionary (we simply have to browse the trie character by character to know if a word exists),
+ * key/value storage where every node contains data or a pointer to the data; in that case, every node can have a key even if it is not a valid word (ex: h, he, hel, b, ide, idi, idio)
+
+The implemented methods are:
+ * create
+ * keyExists
+ * insert
+
+During insertion and creation, a whole string is given as parameter and inserted into the trie.
+During searching, a whole string is given and used to browse the trie.
+
+In order to store the trie into memory and being able to browse it,
+every trie node stores a pointer to a linked list node that contains all its children (every linked list node contains a pointer to a child).
 
 ## Others
 
