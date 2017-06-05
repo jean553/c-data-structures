@@ -5,7 +5,7 @@
 
 typedef struct TrieNodeList
 {
-    struct TrieNodeList* list;
+    struct TrieNodeList* next;
     struct TrieNode* node;
 } TrieNodeList;
 
