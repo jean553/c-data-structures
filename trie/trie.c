@@ -12,6 +12,8 @@ TrieNode* create(const char* word)
     node->key = ' ';
     node->list = NULL;
 
+    TrieNode* global = node;
+
     for(
         unsigned short i = 0;
         word[i] != '\0';
@@ -27,4 +29,33 @@ TrieNode* create(const char* word)
 
         node = node->list->node;
     }
+
+    return global;
+}
+
+/**
+ *
+ */
+const unsigned short keyExists(
+    TrieNode* node,
+    const char* key
+)
+{
+    for(
+        unsigned short i = 0;
+        key[i] != '\0';
+        i++
+    )
+    {
+        TrieNodeList* list = node->list;
+
+        if (list->node->key != key[i])
+        {
+            return 0;
+        }
+
+        node = list->node;
+    }
+
+    return 1;
 }
