@@ -53,7 +53,17 @@ const unsigned short keyExists(
     {
         TrieNodeList* list = node->list;
 
-        if (list->node->key != key[i])
+        while(list != NULL)
+        {
+            if (list->node->key == key[i])
+            {
+                break;
+            }
+
+            list = list->next;
+        }
+
+        if (list == NULL)
         {
             return 0;
         }
@@ -78,25 +88,51 @@ void insert(
         i++
     )
     {
-        if (
-            node->list != NULL &&
-            node->list->node->key == key[i]
-        )
+        if (node->list == NULL)
         {
+            node->list = malloc(sizeof(TrieNodeList));
+            node->list->next = NULL;
+
+            node->list->node = malloc(sizeof(TrieNode));
+            node->list->node->list = NULL;
+            node->list->node->key = key[i];
+            node->list->node->word = 0;
+
             node = node->list->node;
 
             continue;
         }
 
-        node->list = malloc(sizeof(TrieNodeList));
-        node->list->next = NULL;
+        TrieNodeList* list = node->list;
 
-        node->list->node = malloc(sizeof(TrieNode));
-        node->list->node->list = NULL;
-        node->list->node->key = key[i];
-        node->list->node->word = 0;
+        while(list->next != NULL)
+        {
+            if (list->node->key == key[i])
+            {
+                node = list->node;
 
-        node = node->list->node;
+                break;
+            }
+
+            list = list->next;
+        }
+
+        if (list->node->key == key[i])
+        {
+            node = list->node;
+
+            continue;
+        }
+
+        list->next = malloc(sizeof(TrieNodeList));
+        list->next->next = NULL;
+
+        list->next->node = malloc(sizeof(TrieNode));
+        list->next->node->list = NULL;
+        list->next->node->key = key[i];
+        list->next->node->word = 0;
+
+        node = list->next->node;
     }
 
     node->word = 1;
