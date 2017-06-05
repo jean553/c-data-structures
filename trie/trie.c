@@ -11,6 +11,7 @@ TrieNode* create(const char* word)
     TrieNode* node = malloc(sizeof(TrieNode));
     node->key = ' ';
     node->list = NULL;
+    node->word = 0;
 
     TrieNode* global = node;
 
@@ -26,9 +27,12 @@ TrieNode* create(const char* word)
         node->list->node = malloc(sizeof(TrieNode));
         node->list->node->list = NULL;
         node->list->node->key = word[i];
+        node->list->node->word = 0;
 
         node = node->list->node;
     }
+
+    node->word = 1;
 
     return global;
 }
@@ -57,5 +61,5 @@ const unsigned short keyExists(
         node = list->node;
     }
 
-    return 1;
+    return node->word;
 }
