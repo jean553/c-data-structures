@@ -40,9 +40,9 @@ void insert(Hashmap* hashmap, const char* key, const int value);
  * @param hashmap the hashmap to use
  * @param key the key of the value to get
  *
- * @return const int
+ * @return int*
  */
-const int at(Hashmap* hashmap, const char* key);
+int* at(Hashmap* hashmap, const char* key);
 
 /**
  * @brief Returns the hash of the given key for the given hashmap

@@ -63,7 +63,7 @@ void insert(Hashmap* hashmap, const char* key, const int value)
 /**
  *
  */
-const int at(Hashmap* hashmap, const char* key)
+int* at(Hashmap* hashmap, const char* key)
 {
     HashmapNode* node = hashmap->head[hash(hashmap, key)];
 
@@ -85,7 +85,7 @@ const int at(Hashmap* hashmap, const char* key)
         return NULL;
     }
 
-    return node->value;
+    return &node->value;
 }
 
 /**

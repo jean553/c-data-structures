@@ -28,18 +28,33 @@ END_TEST
  */
 START_TEST(test_at)
 {
+    /* insert and read one node with the same key */
+
     Hashmap first_hashmap = create(10);
     insert(&first_hashmap, "val1", 25);
-    ck_assert_int_eq(at(&first_hashmap, "val1"), 25);
+    ck_assert_int_eq(*at(&first_hashmap, "val1"), 25);
+
+    /* insert and read many nodes with same hashes but different keys */
 
     Hashmap second_hashmap = create(10);
     insert(&second_hashmap, "val1", 20);
     insert(&second_hashmap, "wal0", 30);
     insert(&second_hashmap, "xak0", 40);
 
-    ck_assert_int_eq(at(&second_hashmap, "val1"), 20);
-    ck_assert_int_eq(at(&second_hashmap, "wal0"), 30);
-    ck_assert_int_eq(at(&second_hashmap, "xak0"), 40);
+    ck_assert_int_eq(*at(&second_hashmap, "val1"), 20);
+    ck_assert_int_eq(*at(&second_hashmap, "wal0"), 30);
+    ck_assert_int_eq(*at(&second_hashmap, "xak0"), 40);
+
+    /* try to get a value that does not exist */
+
+    Hashmap third_hashmap = create(10);
+    ck_assert_int_eq(at(&third_hashmap, "val1"), NULL);
+
+    /* try to get a value that has the same hash but different key */
+
+    Hashmap fourth_hashmap = create(10);
+    insert(&fourth_hashmap, "val1", 20);
+    ck_assert_int_eq(at(&fourth_hashmap, "wal0"), NULL);
 }
 END_TEST
 
