@@ -1,32 +1,39 @@
 /**
- * @brief Trie data structure
+ * @brief Trie structures and methods
  * @file trie.h
  */
 
-typedef struct Hashmap;
+typedef struct TrieNodeList
+{
+    struct TrieNodeList* next;
+    struct TrieNode* node;
+} TrieNodeList;
 
 typedef struct TrieNode
 {
-    struct Hashmap* children;
-    unsigned short isWord;
+    struct TrieNodeList* list;
+    char key;
 } TrieNode;
 
 /**
- * @brief Creates a new trie node
+ * @brief Creates a trie with a word inside
  *
- * @param isWord indicates if the node is a full isWord
+ * @param word the word to insert
  *
- * @return TrieNode
+ * @return TrieNode*
  */
-TrieNode createTrieNode(const unsigned short isWord);
+TrieNode* create(const char* word);
 
 /**
- * @brief Inserts one new node into a tree
+ * @brief Checks if the given key exists into the trie;
+ * returns 1 if the word exists, 0 if not found
  *
- * @param node the trie node to update
- * @param word the word to insert
+ * @param node the node to browse
+ * @param key the word to search
+ *
+ * @return const unsigned short
  */
-void insertWord(
+const unsigned short keyExists(
     TrieNode* node,
-    const char* word
+    const char* key
 );

@@ -3,24 +3,26 @@
 #include <check.h>
 
 #include "trie.h"
-#include "hashmap.h"
 
 /**
  *
  */
 START_TEST(test_create)
 {
-    TrieNode first_trie = createTrieNode(0);
+    TrieNode* trie = create("hello");
 }
 END_TEST
 
 /**
  *
  */
-START_TEST(test_insertWord)
+START_TEST(test_keyExists)
 {
-    TrieNode first_trie = createTrieNode(0);
-    insertWord(&first_trie, "hello");
+    TrieNode* first_trie = create("hello");
+    ck_assert_int_eq(keyExists(first_trie, "hello"), 1);
+
+    TrieNode* second_trie = create("hello");
+    ck_assert_int_eq(keyExists(second_trie, "bonjour"), 0);
 }
 END_TEST
 
@@ -33,7 +35,7 @@ Suite* linked_list_suite()
     TCase *tcase = tcase_create("case");
 
     tcase_add_test(tcase, test_create);
-    tcase_add_test(tcase, test_insertWord);
+    tcase_add_test(tcase, test_keyExists);
 
     suite_add_tcase(suite, tcase);
 
