@@ -63,3 +63,31 @@ const unsigned short keyExists(
 
     return node->word;
 }
+
+/**
+ *
+ */
+void insert(
+    TrieNode* node,
+    const char* key
+)
+{
+    for(
+        unsigned short i = 0;
+        key[i] != '\0';
+        i++
+    )
+    {
+        node->list = malloc(sizeof(TrieNodeList));
+        node->list->next = NULL;
+
+        node->list->node = malloc(sizeof(TrieNode));
+        node->list->node->list = NULL;
+        node->list->node->key = key[i];
+        node->list->node->word = 0;
+
+        node = node->list->node;
+    }
+
+    node->word = 1;
+}
