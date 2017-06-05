@@ -3,24 +3,13 @@
 #include <check.h>
 
 #include "trie.h"
-#include "hashmap.h"
 
 /**
  *
  */
 START_TEST(test_create)
 {
-    TrieNode first_trie = createTrieNode(0);
-}
-END_TEST
-
-/**
- *
- */
-START_TEST(test_insertWord)
-{
-    TrieNode first_trie = createTrieNode(0);
-    insertWord(&first_trie, "hello");
+    TrieNode* trie = create("hello");
 }
 END_TEST
 
@@ -33,7 +22,6 @@ Suite* linked_list_suite()
     TCase *tcase = tcase_create("case");
 
     tcase_add_test(tcase, test_create);
-    tcase_add_test(tcase, test_insertWord);
 
     suite_add_tcase(suite, tcase);
 
