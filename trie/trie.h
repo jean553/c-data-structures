@@ -13,6 +13,7 @@ typedef struct TrieNode
 {
     struct TrieNodeList* list;
     char key;
+    unsigned short word;
 } TrieNode;
 
 /**

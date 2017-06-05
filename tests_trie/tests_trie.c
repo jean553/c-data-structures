@@ -23,6 +23,9 @@ START_TEST(test_keyExists)
 
     TrieNode* second_trie = create("hello");
     ck_assert_int_eq(keyExists(second_trie, "bonjour"), 0);
+
+    TrieNode* third_trie = create("hello");
+    ck_assert_int_eq(keyExists(third_trie, "hell"), 0);
 }
 END_TEST
 
