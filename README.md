@@ -554,7 +554,7 @@ Cons:
 
 A hashmap is a map that stores data with unique key/value pairs.
 When inserting data into the hashmap, a hash of the key is generated;
-this hash is the 'address' of the data, used for future updates and research.
+this hash is the 'address' of the data, used for future updates and searches.
 
 ```
 
