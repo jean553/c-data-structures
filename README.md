@@ -4,7 +4,7 @@ Taiga project: https://tree.taiga.io/project/jean553-jean553c-data-structures
 
 # c-data-structures
 
-Clone of https://github.com/jean553/data-structures in C.
+Attempt to implement common data structures in C.
 
 ## Requirements
 
@@ -66,7 +66,7 @@ apt-get install doxygen
 pacman -S doxygen
 ```
 
-### Documentation generation
+### Documentation
 
 ```bash
 doxygen
@@ -126,11 +126,11 @@ The implemented methods are:
 
 Pros:
  * The size is not fixed
- * Read/Write is fast with small lists
- * Inserting/Removing does not require to copy the data itself (advantage with big objects)
+ * Fast read and write operations with small lists
+ * Inserting and removing don't require data copy
 
 Cons:
- * Read/Write is slow with long lists ( O(n) )
+ * slow read and write operations with long lists ( O(n) )
 
 ### Double linked list
 
