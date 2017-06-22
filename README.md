@@ -416,17 +416,17 @@ Implemented methods:
 
 ### Red black tree
 
-The red black tree is a binary search tree that ensures self-balancing when inserting.
-In fact, one of the binary search tree main problem is that according to how the insertions are done,
-an efficient binary tree can simply become a linked list.
-The access time complexity can literally decrease.
+The red black tree is a binary search tree that ensures self-balancing during insertion.
+In fact, one of the binary search tree main problem is that it can be a simple linked list
+(according how the insertions have been done).
+Using a balanced tree, the access time can decrease.
 
-The red black tree node is the same as the BST node with one more parameter called the color.
-The color is an attribute of every node that can be Black or Red.
-The nodes are inserted into the tree the same way as a standard BST
-and a "self-balancing" procedure is applied on the tree right after the node insertion.
+The red black tree node is the same as the BST node with one more parameter called the "color".
+The color is an attribute of every node that can be `Black` or `Red`.
+The nodes are inserted into the tree the same way as a standard BST;
+right after insertion, a "self-balancing" procedure is performed;
 During this process, the color of one or many nodes may change in order to respect a set of rules.
-This set of rules ensure the tree stay balanced.
+This set of rules ensure that the tree stays balanced.
 
 These rules are:
  * the root node is always black,
@@ -445,11 +445,11 @@ Those violations are recurrent and the solutions to fix them are predefined.
 This violation occurs when a new (red) node is added right after a red node:
 a red node can only have two black children exaclty (or two NULL children).
 When the uncle node of the new node is red, a predefined solution can be applied:
-the parent and the uncle become black, the parent of the uncle become red.
+the parent and the uncle become black, the parent of the uncle becomes red.
 
 ![Image 8](images/red_black_tree_1.png)
 
-##### Violation 2: Insert a left node with red parent (left node too) and black uncle
+##### Violation 2: Insert a left node with a left red parent and a black uncle
 
 This violation occurs when:
  * a new (red) node (left node) is added right after a red node
@@ -462,7 +462,7 @@ The predefined solution for this violation is to:
 
 ![Image 9](images/red_black_tree_2.png)
 
-##### Violation 3: Insert a left node with red parent (right node) or insert right node with a red parent (left node) and black uncle
+##### Violation 3: Insert a left node with a right red parent and a black uncle or insert a right node with a left red parent and a black uncle
 
 This violation occurs when:
  * a new (red) node is added right after a red node
