@@ -479,8 +479,8 @@ The predefined solution for this violation is to:
 
 ### Trie
 
-A trie is a structure in which one every node does not have its own key
-but instead the key is part of the node and its parents keys.
+A trie is a structure in which one every node does not have its own key;
+instead, the key is part of the node and its parents keys.
 
 ![Image 11](images/trie.png)
 
@@ -494,7 +494,7 @@ The trie above contains the following words:
  * idiom,
  * idea
 
-The blue circles indicates the end of one of these words.
+The blue circles indicate the end of one of these words.
 
 This trie can be used for two use cases:
  * search words from a dictionary (we simply have to browse the trie character by character to know if a word exists),
@@ -509,7 +509,8 @@ During insertion and creation, a whole string is given as parameter and inserted
 During searching, a whole string is given and used to browse the trie.
 
 In order to store the trie into memory and being able to browse it,
-every trie node stores a pointer to a linked list node that contains all its children (every linked list node contains a pointer to a child).
+every trie node stores a pointer to a linked list node that contains all its children
+(every linked list node contains a pointer to a child).
 
 ## Others
 
