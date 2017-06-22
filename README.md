@@ -324,10 +324,10 @@ Implemented methods:
 
 The binary tree is a tree in which one every node has at most two children.
 
-The `strict` binary tree has every nodes with exactly zero or two children.
-The `complete` binary tree has every level fullfilled (the last one may not be fullfilled),
+A `strict` binary tree has every nodes with exactly zero or two children.
+A `complete` binary tree has every level fullfilled (the last one may not be fullfilled),
 and all nodes are as left as possible.
-The `perfect` binary tree has every level filled.
+A `perfect` binary tree has every level filled.
 
 ![Image 1](images/binary_tree.png)
 
@@ -336,7 +336,7 @@ The `height of a binary tree` is the number of node(s) between the root node to 
 
 ![Image 2](images/binary_tree_levels.png)
 
-Find N the maximum nodes of a binary tree with a height of H:
+Find N the maximum nodes amount of a binary tree with a height of H:
 `N = 2^(H+1) - 1`
 
 Find H the height of a binary tree of N nodes:
@@ -353,7 +353,7 @@ Find H the maximum height of a binary tree of N nodes:
 Most of the time, we always want to keep the binary tree with a height as small as possible;
 we call that kind of tree a `balanced` tree.
 
-A binary tree is `balanced` when the difference the height of the left sub-tree and
+A binary tree is `balanced` when the difference between the height of the left sub-tree and
 the height of the right sub-tree is equal to 0 or 1.
 
 The difference D between two sub-nodes of a given node can be calculated
