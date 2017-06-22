@@ -543,10 +543,10 @@ The implemented methods are:
  * resize
 
 Pros:
- * read and write is fast, because we use a pointer to directly jumps at the expected index
+ * fast read and write operations, because we use a pointer to directly jump at the expected index
 
 Cons:
- * the size is fixed because memory has to be allocated once in order to ensure that all the nodes are contiguous;
+ * the size is fixed because memory has to be allocated once in order to ensure that all the nodes are grouped together in memory;
  * "dynamic" insertion requires to reallocate the memory
  * insert into the array requires to copy (shift) many nodes
 
