@@ -4,7 +4,7 @@ Taiga project: https://tree.taiga.io/project/jean553-jean553c-data-structures
 
 # c-data-structures
 
-Clone of https://github.com/jean553/data-structures in C.
+Attempt to implement common data structures in C.
 
 ## Requirements
 
@@ -66,7 +66,7 @@ apt-get install doxygen
 pacman -S doxygen
 ```
 
-### Documentation generation
+### Documentation
 
 ```bash
 doxygen
@@ -77,7 +77,7 @@ doxygen
 Lists:
  * linked list,
  * double linked list,
- * self-organized list, 
+ * self-organized list,
  * unrolled linked list,
  * XOR double linked list,
  * circular linked list,
@@ -126,11 +126,11 @@ The implemented methods are:
 
 Pros:
  * The size is not fixed
- * Read/Write is fast with small lists
- * Inserting/Removing does not require to copy the data itself (advantage with big objects)
+ * Fast read and write operations with small lists
+ * Inserting and removing don't require data copy
 
 Cons:
- * Read/Write is slow with long lists ( O(n) )
+ * slow read and write operations with long lists ( O(n) )
 
 ### Double linked list
 
@@ -164,15 +164,15 @@ The implemented methods are:
 Pros:
  * the size is not fixed
  * can be browsed in both directions
- * inserting/removing does not require to copy the data
+ * inserting and removing don't require data copy
 
 Cons:
- * take more space than a simple linked list
+ * takes more space than a simple linked list
 
 ### Self-organizing list
 
 A simple linked list that automatically updates its nodes order.
-The order is updated according to the usage frequency of each node.
+The order is updated according to the frequency of nodes calls.
 
 The implemented methods are:
  * atWithMTF - like at() and applies `Move To Front` method
@@ -187,14 +187,14 @@ Pros:
 
 Cons:
  * not accurate: simply moves to the top every requested node,
-the algorithm does not include any average consideration of nodes usage. 
+the algorithm does not include any average consideration of nodes usage.
 
 #### Swapping method
 
 Everytime a node is requested, the selected node is swapped with the previous one.
 
 Pros:
- * accurate compare to MTF, nodes move according to the frequency they are requested and they move progressively to the head
+ * accurate compared to the MTF method, nodes move according to how they are requested and they move progressively to the head
 
 Cons:
  * takes many accesses to move one node to the head
@@ -228,11 +228,11 @@ Implemented methods:
  * insertAtTheEndULL
 
 Pros:
- * access to an item by index can be faster because the last browsing step
+ * search an item by index can be faster because the last browsing step
 is performed by array indexing,
 
 Cons:
- * inserts in the middle are expensives (every item of arrays of all of nodes have to be shifted)
+ * insertions in the middle are expensives
 
 ### XOR Double linked list
 
@@ -297,15 +297,15 @@ NOTE: In such kind of list, at(5) in the list [1,2,3,4] returns 2.
            +-------+                   +-----+      +-----+                   +-----+
            |level 1+-----------------> |  6  +----> |  7  +-----------------> |  9  +---->  NULL
            +-------+                   +-----+      +-----+                   +-----+
-               |                          |            |         
+               |                          |            |
                v                          v            v                         v
-               
+
            +-------+      +-----+      +-----+      +-----+      +-----+      +-----+
            |level 0+----> |  4  +----> |  6  +----> |  7  +----> |  8  +----> |  9  +---->  NULL
            +---+---+      +--+--+      +--+--+      +--+--+      +--+--+      +--+--+
                |             |            |            |            |            |
                v             v            v            v            v            v
-             NULL           NULL         NULL         NULL         NULL  
+             NULL           NULL         NULL         NULL         NULL
 ```
 
 The skip list provides different lanes of nodes to access data quicly.
@@ -324,10 +324,10 @@ Implemented methods:
 
 The binary tree is a tree in which one every node has at most two children.
 
-The `strict` binary tree has every nodes with exactly zero or two children.
-The `complete` binary tree has every level fullfilled (the last one may not be fullfilled),
+A `strict` binary tree has every nodes with exactly zero or two children.
+A `complete` binary tree has every level fullfilled (the last one may not be fullfilled),
 and all nodes are as left as possible.
-The `perfect` binary tree has every level filled.
+A `perfect` binary tree has every level filled.
 
 ![Image 1](images/binary_tree.png)
 
@@ -336,11 +336,11 @@ The `height of a binary tree` is the number of node(s) between the root node to 
 
 ![Image 2](images/binary_tree_levels.png)
 
-Find N the maximum nodes of a binary tree with a height of H:
+Find N the maximum nodes amount of a binary tree with a height of H:
 `N = 2^(H+1) - 1`
 
 Find H the height of a binary tree of N nodes:
-`H = log2(N+1) - 1` 
+`H = log2(N+1) - 1`
 
 Find H the minimum height of a binary tree of N nodes:
 `H = log2(N)`
@@ -353,7 +353,7 @@ Find H the maximum height of a binary tree of N nodes:
 Most of the time, we always want to keep the binary tree with a height as small as possible;
 we call that kind of tree a `balanced` tree.
 
-A binary tree is `balanced` when the difference the height of the left sub-tree and
+A binary tree is `balanced` when the difference between the height of the left sub-tree and
 the height of the right sub-tree is equal to 0 or 1.
 
 The difference D between two sub-nodes of a given node can be calculated
@@ -376,9 +376,9 @@ Access the right item N of the node I in a binary tree stored as an array:
 
 ### Binary Search Tree (BST)
 
-The binary search tree is a binary tree in which one for each node, the values
-of all the nodes in the left sub-tree is lesser or equal to the current node,
-and the values of all nodes in the right sub-tree is greater to the current node.
+The binary search tree is a binary tree. In a binary search tree, the values
+of all the nodes in the left sub-tree are lesser than or equal to the current node value,
+and the values of all nodes in the right sub-tree are greater than the current node value.
 The binary search tree is an ordered binary tree.
 
 Binary search trees are used to access data faster (read and write)
@@ -386,7 +386,7 @@ than basic binary tree.
 
 For example, let's considere a list of 1 million items (10^6).
 Let's considere that the computer that has to find one item in this list
-is able to make one comparision process in 10^-5 seconds.
+is able to make one comparison process in 10^-5 seconds.
 The computer has to compare the searched value with every value of the list.
 It would take 10 seconds maximum to find the result.
 The binary search tree is a solution to this "long time search" problem.
@@ -395,10 +395,10 @@ The binary search tree is a solution to this "long time search" problem.
 
 Binary search trees make `Binary search` possible: when binary search is applied,
 a specific value is searched. This searched value is compared to the root node value;
-if the searched value is lesser or equal than the root node value,
-the search goes to the left sub-tree and the same operation is applied;
+if the searched value is lesser than or equal to the root node value,
+the search goes to the left sub-tree and the same operation is performed;
 if the searched value is greater than the root node value,
-the search goes to the right sub-tree and the same operation is applied.
+the search goes to the right sub-tree and the same operation is performed.
 
 ![Image 7](images/binary_search.png)
 
@@ -406,7 +406,7 @@ In the best case, we need `log2(n)` steps to find an item in a binary search tre
 (where `n` is the total amount of items). This is the case for balanced binary search tree.
 
 In the worst case, we need `n` steps to find an item in a binary search tree
-(for exemple, last item of a linked list, which is a not balanced binary search tree, even if ordered).
+(for exemple, the last item of a linked list, which is not balanced binary search tree even if it is ordered).
 
 Implemented methods:
  * create
