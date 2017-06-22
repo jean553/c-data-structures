@@ -77,7 +77,7 @@ doxygen
 Lists:
  * linked list,
  * double linked list,
- * self-organized list, 
+ * self-organized list,
  * unrolled linked list,
  * XOR double linked list,
  * circular linked list,
@@ -164,15 +164,15 @@ The implemented methods are:
 Pros:
  * the size is not fixed
  * can be browsed in both directions
- * inserting/removing does not require to copy the data
+ * inserting and removing don't require data copy
 
 Cons:
- * take more space than a simple linked list
+ * takes more space than a simple linked list
 
 ### Self-organizing list
 
 A simple linked list that automatically updates its nodes order.
-The order is updated according to the usage frequency of each node.
+The order is updated according to the frequency of nodes calls.
 
 The implemented methods are:
  * atWithMTF - like at() and applies `Move To Front` method
@@ -187,14 +187,14 @@ Pros:
 
 Cons:
  * not accurate: simply moves to the top every requested node,
-the algorithm does not include any average consideration of nodes usage. 
+the algorithm does not include any average consideration of nodes usage.
 
 #### Swapping method
 
 Everytime a node is requested, the selected node is swapped with the previous one.
 
 Pros:
- * accurate compare to MTF, nodes move according to the frequency they are requested and they move progressively to the head
+ * accurate compared to the MTF method, nodes move according to how they are requested and they move progressively to the head
 
 Cons:
  * takes many accesses to move one node to the head
@@ -228,11 +228,11 @@ Implemented methods:
  * insertAtTheEndULL
 
 Pros:
- * access to an item by index can be faster because the last browsing step
+ * search an item by index can be faster because the last browsing step
 is performed by array indexing,
 
 Cons:
- * inserts in the middle are expensives (every item of arrays of all of nodes have to be shifted)
+ * insertions in the middle are expensives
 
 ### XOR Double linked list
 
@@ -297,15 +297,15 @@ NOTE: In such kind of list, at(5) in the list [1,2,3,4] returns 2.
            +-------+                   +-----+      +-----+                   +-----+
            |level 1+-----------------> |  6  +----> |  7  +-----------------> |  9  +---->  NULL
            +-------+                   +-----+      +-----+                   +-----+
-               |                          |            |         
+               |                          |            |
                v                          v            v                         v
-               
+
            +-------+      +-----+      +-----+      +-----+      +-----+      +-----+
            |level 0+----> |  4  +----> |  6  +----> |  7  +----> |  8  +----> |  9  +---->  NULL
            +---+---+      +--+--+      +--+--+      +--+--+      +--+--+      +--+--+
                |             |            |            |            |            |
                v             v            v            v            v            v
-             NULL           NULL         NULL         NULL         NULL  
+             NULL           NULL         NULL         NULL         NULL
 ```
 
 The skip list provides different lanes of nodes to access data quicly.
@@ -340,7 +340,7 @@ Find N the maximum nodes of a binary tree with a height of H:
 `N = 2^(H+1) - 1`
 
 Find H the height of a binary tree of N nodes:
-`H = log2(N+1) - 1` 
+`H = log2(N+1) - 1`
 
 Find H the minimum height of a binary tree of N nodes:
 `H = log2(N)`
