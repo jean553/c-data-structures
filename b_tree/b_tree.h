@@ -5,8 +5,8 @@
 
 typedef struct Node {
     int data;
-    struct Node* next;
-    struct Node* previous;
+    struct NodesList* next;
+    struct NodesList* previous;
 } Node;
 
 typedef struct Node NodesList[4];
