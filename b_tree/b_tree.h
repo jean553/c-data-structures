@@ -7,10 +7,19 @@ typedef struct Node {
     int data;
     struct Node* next;
     struct Node* previous;
-};
+} Node;
 
 typedef struct Node NodesList[4];
 
 typedef struct BTree {
     NodesList root;
-};
+} BTree;
+
+/**
+ * @brief Creates a B-Tree with one item inside the root nodes list
+ *
+ * @param data the data to insert into the first nodes list
+ *
+ * @return BTree
+ */
+BTree create(const unsigned int data);
