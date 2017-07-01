@@ -3,18 +3,20 @@
 
 #include "b_tree.h"
 
+#define NODE_DATA_ARRAY_LENGTH 4
+#define NODE_CHILDREN_ARRAY_LENGTH 5
+
 /**
  *
  */
-BTree create(const unsigned int data)
+BTree create(const int data)
 {
     Node node;
-    node.data = data;
-    node.next = NULL;
-    node.previous = NULL;
+    node.data = malloc(sizeof(int) * NODE_DATA_ARRAY_LENGTH);
+    node.next = malloc(sizeof(Node*) * NODE_CHILDREN_ARRAY_LENGTH);
 
     BTree tree;
-    tree.root[0] = node;
+    tree.root = node;
 
     return tree;
 }

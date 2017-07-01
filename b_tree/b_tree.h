@@ -4,15 +4,12 @@
  */
 
 typedef struct Node {
-    int data;
-    struct NodesList* next;
-    struct NodesList* previous;
+    int* data;
+    struct Node** next;
 } Node;
 
-typedef struct Node NodesList[4];
-
 typedef struct BTree {
-    NodesList root;
+    Node root;
 } BTree;
 
 /**
@@ -22,4 +19,4 @@ typedef struct BTree {
  *
  * @return BTree
  */
-BTree create(const unsigned int data);
+BTree create(const int data);
