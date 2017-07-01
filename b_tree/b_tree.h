@@ -7,6 +7,7 @@ typedef struct BTreeNode {
     unsigned short* keys;
     int* datas;
     struct BTreeNode** next;
+    unsigned short isLeaf;
 } BTreeNode;
 
 /**
@@ -24,15 +25,14 @@ BTreeNode create(
 
 /**
  * @brief Searchs for a given key into the b-tree;
- * returns a pointer to the data if data is found,
- * returns NULL if not found
+ * indicates if the key exists into the tree or not
  *
  * @param tree the concerned tree
  * @param key the key to look for
  *
- * @return int*
+ * @return const unsigned short
  */
-int* search(
+const unsigned short search(
     BTreeNode* tree,
     const unsigned short key
 );
