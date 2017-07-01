@@ -20,8 +20,9 @@ START_TEST(test_search)
 {
     BTreeNode tree = create(10, 20);
 
-    /* FIXME */
-    ck_assert_int_eq(search(&tree, 10), NULL);
+    ck_assert_int_eq(search(&tree, 0), 0);
+    ck_assert_int_eq(search(&tree, 10), 1);
+    ck_assert_int_eq(search(&tree, 20), 0);
 }
 END_TEST
 

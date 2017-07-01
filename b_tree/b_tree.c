@@ -22,17 +22,37 @@ BTreeNode create(
     node.keys[0] = key;
     node.datas[0] = data;
 
+    /* the unique node is a leaf node */
+    node.isLeaf = 1;
+
     return node;
 }
 
 /**
  *
  */
-int* search(
+const unsigned short search(
     BTreeNode* tree,
     const unsigned short key
 )
 {
-    /* TODO: to implement */
-    return NULL;
+    unsigned short i = 0;
+
+    /* TODO: should browse the children */
+    while (
+        i < NODE_DATA_ARRAY_LENGTH &&
+        key > tree->keys[i]
+    ) {
+        i++;
+    }
+
+    if (tree->keys[i] == key) {
+        return 1;
+    }
+
+    if (tree->isLeaf) {
+        return 0;
+    }
+
+    return 0;
 }
