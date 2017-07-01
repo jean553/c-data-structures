@@ -68,4 +68,13 @@ void insert(
     const int data
 )
 {
+    if (tree->size == NODE_DATA_ARRAY_LENGTH) {
+
+        /* TODO: should insert into the children nodes */
+        return;
+    }
+
+    tree->keys[tree->size] = key;
+    tree->datas[tree->size] = key;
+    tree->size++;
 }
