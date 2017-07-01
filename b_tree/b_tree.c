@@ -27,3 +27,15 @@ BTree create(
 
     return tree;
 }
+
+/**
+ *
+ */
+int* search(
+    BTree* tree,
+    const unsigned short key
+)
+{
+    /* TODO: to implement */
+    return NULL;
+}

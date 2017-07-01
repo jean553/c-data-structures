@@ -25,3 +25,18 @@ BTree create(
     const unsigned short key,
     const int data
 );
+
+/**
+ * @brief Searchs for a given key into the b-tree;
+ * returns a pointer to the data if data is found,
+ * returns NULL if not found
+ *
+ * @param tree the concerned tree
+ * @param key the key to look for
+ *
+ * @return int*
+ */
+int* search(
+    BTree* tree,
+    const unsigned short key
+);

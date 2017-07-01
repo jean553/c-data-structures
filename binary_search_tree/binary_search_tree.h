@@ -38,13 +38,13 @@ void insert(
 
 /**
  * @brief Searchs for a given key into the binary search tree;
- * returns 1 if the key is found, 0 if the key is not found
+ * returns the node if the key is found, NULL if the key is not found
  *
  * @param node the node with the sub-trees in which the key is expected
  * (sub-trees of the given node)
  * @param key the key to search
  *
- * @return BinarySearchTree*
+ * @return BinarySearchTreeNode*
  */
 BinarySearchTreeNode* search(
     BinarySearchTreeNode* node,

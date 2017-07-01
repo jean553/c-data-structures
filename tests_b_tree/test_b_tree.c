@@ -16,12 +16,25 @@ END_TEST
 /**
  *
  */
+START_TEST(test_search)
+{
+    BTree tree = create(10, 20);
+
+    /* FIXME */
+    ck_assert_int_eq(search(&tree, 10), NULL);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* b_tree_suite()
 {
     Suite *suite = suite_create("b_tree");
     TCase *tcase = tcase_create("case");
 
     tcase_add_test(tcase, test_create);
+    tcase_add_test(tcase, test_search);
 
     suite_add_tcase(suite, tcase);
 
