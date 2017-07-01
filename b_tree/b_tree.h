@@ -4,7 +4,7 @@
  */
 
 typedef struct Node {
-    unsigned short* key;
+    unsigned short* keys;
     int* datas;
     struct Node** next;
 } Node;
