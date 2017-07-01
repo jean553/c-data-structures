@@ -9,11 +9,13 @@
 /**
  *
  */
-BTree create(const int data)
+BTree create(const int key)
 {
     Node node;
-    node.data = malloc(sizeof(int) * NODE_DATA_ARRAY_LENGTH);
+    node.key = malloc(sizeof(int) * NODE_DATA_ARRAY_LENGTH);
     node.next = malloc(sizeof(Node*) * NODE_CHILDREN_ARRAY_LENGTH);
+
+    node.key[0] = key;
 
     BTree tree;
     tree.root = node;

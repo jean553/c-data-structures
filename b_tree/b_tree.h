@@ -4,7 +4,7 @@
  */
 
 typedef struct Node {
-    int* data;
+    int* key;
     struct Node** next;
 } Node;
 
@@ -15,8 +15,8 @@ typedef struct BTree {
 /**
  * @brief Creates a B-Tree with one item inside the root nodes list
  *
- * @param data the data to insert into the first nodes list
+ * @param key the key to insert into the first nodes list
  *
  * @return BTree
  */
-BTree create(const int data);
+BTree create(const int key);
