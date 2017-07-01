@@ -9,7 +9,7 @@
  */
 START_TEST(test_create)
 {
-    BTree tree = create(10);
+    BTree tree = create(10, 20);
 }
 END_TEST
 
