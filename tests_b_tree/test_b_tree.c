@@ -29,6 +29,53 @@ END_TEST
 /**
  *
  */
+START_TEST(test_insert)
+{
+    BTreeNode tree = create(10, 20);
+
+    ck_assert_int_eq(search(&tree, 10), 1);
+    ck_assert_int_eq(search(&tree, 20), 0);
+    ck_assert_int_eq(search(&tree, 30), 0);
+    ck_assert_int_eq(search(&tree, 40), 0);
+
+    insert(
+        &tree,
+        20,
+        500
+    );
+
+    ck_assert_int_eq(search(&tree, 10), 1);
+    ck_assert_int_eq(search(&tree, 20), 1);
+    ck_assert_int_eq(search(&tree, 30), 0);
+    ck_assert_int_eq(search(&tree, 40), 0);
+
+    insert(
+        &tree,
+        30,
+        600
+    );
+
+    ck_assert_int_eq(search(&tree, 10), 1);
+    ck_assert_int_eq(search(&tree, 20), 1);
+    ck_assert_int_eq(search(&tree, 30), 1);
+    ck_assert_int_eq(search(&tree, 40), 0);
+
+    insert(
+        &tree,
+        40,
+        700
+    );
+
+    ck_assert_int_eq(search(&tree, 10), 1);
+    ck_assert_int_eq(search(&tree, 20), 1);
+    ck_assert_int_eq(search(&tree, 30), 1);
+    ck_assert_int_eq(search(&tree, 40), 1);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* b_tree_suite()
 {
     Suite *suite = suite_create("b_tree");
@@ -36,6 +83,7 @@ Suite* b_tree_suite()
 
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_search);
+    tcase_add_test(tcase, test_insert);
 
     suite_add_tcase(suite, tcase);
 

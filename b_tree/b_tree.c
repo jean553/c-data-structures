@@ -22,6 +22,8 @@ BTreeNode create(
     node.keys[0] = key;
     node.datas[0] = data;
 
+    node.size = 1;
+
     /* the unique node is a leaf node */
     node.isLeaf = 1;
 
@@ -66,4 +68,13 @@ void insert(
     const int data
 )
 {
+    if (tree->size == NODE_DATA_ARRAY_LENGTH) {
+
+        /* TODO: should insert into the children nodes */
+        return;
+    }
+
+    tree->keys[tree->size] = key;
+    tree->datas[tree->size] = key;
+    tree->size++;
 }
