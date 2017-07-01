@@ -19,6 +19,15 @@ BTreeNode create(
     node.datas = malloc(sizeof(int) * NODE_DATA_ARRAY_LENGTH);
     node.next = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
 
+    for (
+        unsigned short i = 0;
+        i < NODE_CHILDREN_ARRAY_LENGTH;
+        i++
+    )
+    {
+        node.next[i] = NULL;
+    }
+
     node.keys[0] = key;
     node.datas[0] = data;
 
@@ -78,11 +87,33 @@ void insert(
             i++;
         }
 
-        /* TODO: #144 by now, it only inserts at the first index of the node list */
+        if (tree->next[i] != NULL)
+        {
+            /* TODO: #146 if a child node is full, check in the sub-node */
+            /* TODO: #147 order insertion into child node */
+            tree->next[i]->keys[tree->next[i]->size] = key;
+            tree->next[i]->datas[tree->next[i]->size] = data;
+            tree->next[i]->size++;
+
+            return;
+        }
+
+        /* TODO: #148 check how this child node creation can be merged
+           with the create() method of the BTreeNode */
         tree->next[i] = malloc(sizeof(BTreeNode));
         tree->next[i]->keys = malloc(sizeof(unsigned short) * NODE_DATA_ARRAY_LENGTH);
         tree->next[i]->datas = malloc(sizeof(int) * NODE_DATA_ARRAY_LENGTH);
         tree->next[i]->next = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
+
+        for (
+            unsigned short j = 0;
+            j < NODE_CHILDREN_ARRAY_LENGTH;
+            j++
+        )
+        {
+            tree->next[i]->next[j] = NULL;
+        }
+
         tree->next[i]->keys[0] = key;
         tree->next[i]->datas[0] = data;
         tree->next[i]->size = 1;
