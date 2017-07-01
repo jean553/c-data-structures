@@ -40,7 +40,6 @@ const unsigned short search(
 {
     unsigned short i = 0;
 
-    /* TODO: should browse the children */
     while (
         i < NODE_DATA_ARRAY_LENGTH &&
         key > tree->keys[i]
@@ -56,7 +55,10 @@ const unsigned short search(
         return 0;
     }
 
-    return 0;
+    return search(
+        tree->next[i],
+        key
+    );
 }
 
 /**
