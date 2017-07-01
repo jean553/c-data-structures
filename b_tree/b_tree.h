@@ -36,3 +36,16 @@ const unsigned short search(
     BTreeNode* tree,
     const unsigned short key
 );
+
+/**
+ * @brief Inserts data at the given key into the tree
+ *
+ * @param tree the concerned tree
+ * @param key the key to look for
+ * @param data the data to insert
+ */
+void insert(
+    BTreeNode* tree,
+    const unsigned short key,
+    const int data
+);
