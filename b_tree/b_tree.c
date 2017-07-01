@@ -40,7 +40,6 @@ const unsigned short search(
 {
     unsigned short i = 0;
 
-    /* TODO: should browse the children */
     while (
         i < NODE_DATA_ARRAY_LENGTH &&
         key > tree->keys[i]
@@ -56,7 +55,10 @@ const unsigned short search(
         return 0;
     }
 
-    return 0;
+    return search(
+        tree->next[i],
+        key
+    );
 }
 
 /**
@@ -68,9 +70,26 @@ void insert(
     const int data
 )
 {
-    if (tree->size == NODE_DATA_ARRAY_LENGTH) {
+    if (tree->size == NODE_DATA_ARRAY_LENGTH)
+    {
+        unsigned short i = 0;
 
-        /* TODO: should insert into the children nodes */
+        while (tree->keys[i] < key) {
+            i++;
+        }
+
+        /* TODO: #144 by now, it only inserts at the first index of the node list */
+        tree->next[i] = malloc(sizeof(BTreeNode));
+        tree->next[i]->keys = malloc(sizeof(unsigned short) * NODE_DATA_ARRAY_LENGTH);
+        tree->next[i]->datas = malloc(sizeof(int) * NODE_DATA_ARRAY_LENGTH);
+        tree->next[i]->next = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
+        tree->next[i]->keys[0] = key;
+        tree->next[i]->datas[0] = data;
+        tree->next[i]->size = 1;
+        tree->next[i]->isLeaf = 1;
+
+        tree->isLeaf = 0;
+
         return;
     }
 
