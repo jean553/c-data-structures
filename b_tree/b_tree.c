@@ -9,30 +9,27 @@
 /**
  *
  */
-BTree create(
+BTreeNode create(
     const unsigned short key,
     const int data
 )
 {
-    Node node;
+    BTreeNode node;
     node.keys = malloc(sizeof(unsigned short) * NODE_DATA_ARRAY_LENGTH);
     node.datas = malloc(sizeof(int) * NODE_DATA_ARRAY_LENGTH);
-    node.next = malloc(sizeof(Node*) * NODE_CHILDREN_ARRAY_LENGTH);
+    node.next = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
 
     node.keys[0] = key;
     node.datas[0] = data;
 
-    BTree tree;
-    tree.root = node;
-
-    return tree;
+    return node;
 }
 
 /**
  *
  */
 int* search(
-    BTree* tree,
+    BTreeNode* tree,
     const unsigned short key
 )
 {
