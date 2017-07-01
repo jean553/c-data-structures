@@ -19,6 +19,15 @@ BTreeNode create(
     node.datas = malloc(sizeof(int) * NODE_DATA_ARRAY_LENGTH);
     node.next = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
 
+    for (
+        unsigned short i = 0;
+        i < NODE_CHILDREN_ARRAY_LENGTH;
+        i++
+    )
+    {
+        node.next[i] = NULL;
+    }
+
     node.keys[0] = key;
     node.datas[0] = data;
 
