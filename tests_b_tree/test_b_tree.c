@@ -29,7 +29,7 @@ END_TEST
 /**
  *
  */
-START_TEST(test_insert)
+START_TEST(test_insert_in_root)
 {
     BTreeNode tree = create(10, 20);
 
@@ -83,7 +83,7 @@ Suite* b_tree_suite()
 
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_search);
-    tcase_add_test(tcase, test_insert);
+    tcase_add_test(tcase, test_insert_in_root);
 
     suite_add_tcase(suite, tcase);
 
