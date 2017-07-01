@@ -8,6 +8,7 @@ typedef struct BTreeNode {
     int* datas;
     struct BTreeNode** next;
     unsigned short isLeaf;
+    unsigned short size;
 } BTreeNode;
 
 /**

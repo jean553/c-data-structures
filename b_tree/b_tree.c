@@ -22,6 +22,8 @@ BTreeNode create(
     node.keys[0] = key;
     node.datas[0] = data;
 
+    node.size = 1;
+
     /* the unique node is a leaf node */
     node.isLeaf = 1;
 
