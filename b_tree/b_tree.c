@@ -56,3 +56,14 @@ const unsigned short search(
 
     return 0;
 }
+
+/**
+ *
+ */
+void insert(
+    BTreeNode* tree,
+    const unsigned short key,
+    const int data
+)
+{
+}
