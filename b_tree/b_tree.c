@@ -78,6 +78,7 @@ void insert(
             i++;
         }
 
+        /* TODO: #144 by now, it only inserts at the first index of the node list */
         tree->next[i] = malloc(sizeof(BTreeNode));
         tree->next[i]->keys = malloc(sizeof(unsigned short) * NODE_DATA_ARRAY_LENGTH);
         tree->next[i]->datas = malloc(sizeof(int) * NODE_DATA_ARRAY_LENGTH);
