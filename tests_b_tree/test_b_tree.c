@@ -9,7 +9,7 @@
  */
 START_TEST(test_create)
 {
-    BTree tree = create(10, 20);
+    BTreeNode tree = create(10, 20);
 }
 END_TEST
 
@@ -18,7 +18,7 @@ END_TEST
  */
 START_TEST(test_search)
 {
-    BTree tree = create(10, 20);
+    BTreeNode tree = create(10, 20);
 
     /* FIXME */
     ck_assert_int_eq(search(&tree, 10), NULL);

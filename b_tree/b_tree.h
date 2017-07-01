@@ -3,15 +3,11 @@
  * @file b_tree.h
  */
 
-typedef struct Node {
+typedef struct BTreeNode {
     unsigned short* keys;
     int* datas;
-    struct Node** next;
-} Node;
-
-typedef struct BTree {
-    Node root;
-} BTree;
+    struct BTreeNode** next;
+} BTreeNode;
 
 /**
  * @brief Creates a B-Tree with one item inside the root nodes list
@@ -19,9 +15,9 @@ typedef struct BTree {
  * @param key the key of the first nodes list
  * @param data the data of the first item
  *
- * @return BTree
+ * @return BTreeNode
  */
-BTree create(
+BTreeNode create(
     const unsigned short key,
     const int data
 );
@@ -37,6 +33,6 @@ BTree create(
  * @return int*
  */
 int* search(
-    BTree* tree,
+    BTreeNode* tree,
     const unsigned short key
 );
