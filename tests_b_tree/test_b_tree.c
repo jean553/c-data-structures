@@ -38,33 +38,21 @@ START_TEST(test_insert_in_root)
     ck_assert_int_eq(search(&tree, 30), 0);
     ck_assert_int_eq(search(&tree, 40), 0);
 
-    insert(
-        &tree,
-        20,
-        500
-    );
+    insert(&tree, 20, 500);
 
     ck_assert_int_eq(search(&tree, 10), 1);
     ck_assert_int_eq(search(&tree, 20), 1);
     ck_assert_int_eq(search(&tree, 30), 0);
     ck_assert_int_eq(search(&tree, 40), 0);
 
-    insert(
-        &tree,
-        30,
-        600
-    );
+    insert(&tree, 30, 600);
 
     ck_assert_int_eq(search(&tree, 10), 1);
     ck_assert_int_eq(search(&tree, 20), 1);
     ck_assert_int_eq(search(&tree, 30), 1);
     ck_assert_int_eq(search(&tree, 40), 0);
 
-    insert(
-        &tree,
-        40,
-        700
-    );
+    insert(&tree, 40, 700);
 
     ck_assert_int_eq(search(&tree, 10), 1);
     ck_assert_int_eq(search(&tree, 20), 1);
@@ -128,13 +116,40 @@ START_TEST(test_insert_many_items_in_root_child)
     insert(&tree, 7, 700);
     insert(&tree, 8, 800);
 
+    ck_assert_int_eq(search(&tree, 9), 0);
+
+    ck_assert_int_eq(search(&tree, 50), 0);
+    ck_assert_int_eq(search(&tree, 51), 0);
+    ck_assert_int_eq(search(&tree, 52), 0);
+    ck_assert_int_eq(search(&tree, 53), 0);
+
+    ck_assert_int_eq(search(&tree, 54), 0);
+    ck_assert_int_eq(search(&tree, 55), 0);
+
     insert(&tree, 9, 900);
+
+    insert(&tree, 50, 1000);
+    insert(&tree, 51, 2000);
+    insert(&tree, 52, 3000);
+    insert(&tree, 53, 4000);
+
+    insert(&tree, 54, 5000);
+    insert(&tree, 55, 6000);
 
     ck_assert_int_eq(search(&tree, 5), 1);
     ck_assert_int_eq(search(&tree, 6), 1);
     ck_assert_int_eq(search(&tree, 7), 1);
     ck_assert_int_eq(search(&tree, 8), 1);
+
     ck_assert_int_eq(search(&tree, 9), 1);
+
+    ck_assert_int_eq(search(&tree, 50), 1);
+    ck_assert_int_eq(search(&tree, 51), 1);
+    ck_assert_int_eq(search(&tree, 52), 1);
+    ck_assert_int_eq(search(&tree, 53), 1);
+
+    ck_assert_int_eq(search(&tree, 54), 1);
+    ck_assert_int_eq(search(&tree, 55), 1);
 }
 END_TEST
 
