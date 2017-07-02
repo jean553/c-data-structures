@@ -89,11 +89,12 @@ void insert(
 
         if (tree->next[i] != NULL)
         {
-            /* TODO: #146 if a child node is full, check in the sub-node */
             /* TODO: #147 order insertion into child node */
-            tree->next[i]->keys[tree->next[i]->size] = key;
-            tree->next[i]->datas[tree->next[i]->size] = data;
-            tree->next[i]->size++;
+            insert(
+                tree->next[i],
+                key,
+                data
+            );
 
             return;
         }
@@ -125,6 +126,6 @@ void insert(
     }
 
     tree->keys[tree->size] = key;
-    tree->datas[tree->size] = key;
+    tree->datas[tree->size] = data;
     tree->size++;
 }
