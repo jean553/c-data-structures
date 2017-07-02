@@ -478,7 +478,7 @@ The predefined solution for this violation is to:
 
 ### B-tree
 
-![Image 12](images/b_tree.svg)
+![Image 12](images/b_tree.png)
 
 Each B-Tree node is a list of items. Each item contains a key and two links to another B-Tree node.
 Optionaly, each item contains some data linked to the key.
