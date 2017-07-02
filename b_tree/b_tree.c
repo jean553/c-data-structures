@@ -52,15 +52,31 @@ const unsigned short search(
     while (
         i < NODE_DATA_ARRAY_LENGTH &&
         key > tree->keys[i]
-    ) {
+    )
+    {
         i++;
     }
 
-    if (tree->keys[i] == key) {
+    if (
+        i == NODE_DATA_ARRAY_LENGTH - 1 &&
+        key > tree->keys[i]
+    )
+    {
+        i += 1;
+    }
+
+    if (tree->keys[i] == key)
+    {
         return 1;
     }
 
-    if (tree->isLeaf) {
+    if (tree->isLeaf)
+    {
+        return 0;
+    }
+
+    if (tree->next[i] == NULL)
+    {
         return 0;
     }
 
@@ -79,12 +95,24 @@ void insert(
     const int data
 )
 {
+    printf("%d", key);
+
     if (tree->size == NODE_DATA_ARRAY_LENGTH)
     {
         unsigned short i = 0;
 
-        while (tree->keys[i] < key) {
+        while (
+            i < NODE_DATA_ARRAY_LENGTH &&
+            tree->keys[i] < key
+        ) {
             i++;
+        }
+
+        if (
+            i == NODE_DATA_ARRAY_LENGTH - 1 &&
+            tree->keys[i] < key
+        ) {
+            i += 1;
         }
 
         if (tree->next[i] != NULL)
