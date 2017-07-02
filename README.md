@@ -87,6 +87,7 @@ Trees:
  * binary tree,
  * binary search tree,
  * red black tree,
+ * B-tree,
 
 Tries:
  * trie,
@@ -474,6 +475,20 @@ The predefined solution for this violation is to:
  * apply the solution of the violation 2
 
 ![Image 10](images/red_black_tree_3.png)
+
+### B-tree
+
+![Image 12](images/b_tree.svg)
+
+Each B-Tree node is a list of items. Each item contains a key and two links to another B-Tree node.
+Optionaly, each item contains some data linked to the key.
+
+Implemented methods:
+ * create
+ * insert
+ * search
+
+*NOTE*: with the current implementation, the B-tree is not automatically balanced.
 
 ## Tries
 
