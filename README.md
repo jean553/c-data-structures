@@ -1,7 +1,5 @@
 [![Build Status](https://travis-ci.org/jean553/c-data-structures.svg?branch=master)](https://travis-ci.org/jean553/c-data-structures)
 
-Taiga project: https://tree.taiga.io/project/jean553-jean553c-data-structures
-
 # c-data-structures
 
 Attempt to implement common data structures in C.
