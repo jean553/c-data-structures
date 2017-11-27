@@ -1,10 +1,30 @@
 [![Build Status](https://travis-ci.org/jean553/c-data-structures.svg?branch=master)](https://travis-ci.org/jean553/c-data-structures)
 
-Taiga project: https://tree.taiga.io/project/jean553-jean553c-data-structures
-
 # c-data-structures
 
 Attempt to implement common data structures in C.
+
+## Table of content
+
+ - [Lists](#lists)
+    * [Linked list](#linked-list)
+    * [Double linked list](#double-linked-list)
+    * [Self organizing list](#self-organizing-list)
+    * [Unrolled linked list](#unrolled-linked-list)
+    * [XOR Double linked list](#xor-double-linked-list)
+    * [Circulat linked list](#circular-linked-list)
+    * [Skip list](#skip-list)
+ - [Trees](#trees)
+    * [Binary tree](#binary-tree)
+    * [Binary Search Tree](#binary-search-tree)
+    * [Red black tree](#red-black-tree)
+    * [B-Tree](#b-tree)
+ - [Tries](#tries)
+    * [Trie](#trie)
+ - [Others](#others)
+    * [Vector](#vector)
+    * [Hashmap](#hashmap)
+
 
 ## Requirements
 
@@ -74,25 +94,6 @@ doxygen
 
 # List of data structures
 
- - [Lists](#lists)
-    * [Linked list](#linked-list)
-    * [Double linked list](#double-linked-list)
-    * [Self organizing list](#self-organizing-list)
-    * [Unrolled linked list](#unrolled-linked-list)
-    * [XOR Double linked list](#xor-double-linked-list)
-    * [Circulat linked list](#circular-linked-list)
-    * [Skip list](#skip-list)
- - [Trees](#trees)
-    * [Binary tree](#binary-tree)
-    * [Binary Search Tree](#binary-search-tree)
-    * [Red black tree](#red-black-tree)
-    * [B-Tree](#b-tree)
- - [Tries](#tries)
-    * [Trie](#trie)
- - [Others](#others)
-    * [Vector](#vector)
-    * [Hashmap](#hashmap)
-
 ## Lists
 
 NOTE: the following data structures have not been created in this project:
@@ -129,6 +130,19 @@ Pros:
 
 Cons:
  * slow read and write operations with long lists ( O(n) )
+
+Time complexity:
+ - Average:
+    * Access: O(n) (all the items must be browsed until it finds the indexed one)
+    * Search: O(n) (all the items must be browsed until it finds the researched one)
+    * Insertion: O(1) (insertion only concerns the inserted node and does not move the others)
+    * Deletion: O(1) (deletion only concerns the deleted node and does not move the others)
+ - Worst:
+    * Access: O(n) (all the items must be browsed until it finds the indexed one)
+    * Search: O(n) (all the items must be browsed until it finds the researched one)
+    * Insertion: O(1) (insertion only concerns the inserted node and does not move the others)
+    * Deletion: O(1) (deletion only concerns the deleted node and does not move the others)
+ - Space complexity: O(n)
 
 ### Double linked list
 
