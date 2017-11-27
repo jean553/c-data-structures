@@ -74,27 +74,24 @@ doxygen
 
 # List of data structures
 
-Lists:
- * linked list,
- * double linked list,
- * self-organized list,
- * unrolled linked list,
- * XOR double linked list,
- * circular linked list,
- * skip list,
-
-Trees:
- * binary tree,
- * binary search tree,
- * red black tree,
- * B-tree,
-
-Tries:
- * trie,
-
-Others:
- * vector - dynamic array,
- * hashmap
+ - [Lists](#lists)
+    * [Linked list](#linked-list)
+    * [Double linked list](#double-linked-list)
+    * [Self-organized list](#self-organized-list)
+    * [Unrolled linked list](#unrolled-linked-list)
+    * [XOR Double linked list](#xor-double-linked-list)
+    * [Circulat linked list](#circular-linked-list)
+    * [Skip list](#skip-list)
+ - [Trees](#trees)
+    * [Binary tree](#binary-tree)
+    * [Binary Search Tree](#binary-search-tree)
+    * [Red black tree](#red-black-tree)
+    * [B-Tree](#b-tree)
+ - [Tries](#tries)
+    * [Trie](#trie)
+ - [Others](#others)
+    * [Vector](#vector)
+    * [Hashmap](#hashmap)
 
 ## Lists
 
