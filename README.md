@@ -4,6 +4,28 @@
 
 Attempt to implement common data structures in C.
 
+## Table of content
+
+ - [Lists](#lists)
+    * [Linked list](#linked-list)
+    * [Double linked list](#double-linked-list)
+    * [Self organizing list](#self-organizing-list)
+    * [Unrolled linked list](#unrolled-linked-list)
+    * [XOR Double linked list](#xor-double-linked-list)
+    * [Circulat linked list](#circular-linked-list)
+    * [Skip list](#skip-list)
+ - [Trees](#trees)
+    * [Binary tree](#binary-tree)
+    * [Binary Search Tree](#binary-search-tree)
+    * [Red black tree](#red-black-tree)
+    * [B-Tree](#b-tree)
+ - [Tries](#tries)
+    * [Trie](#trie)
+ - [Others](#others)
+    * [Vector](#vector)
+    * [Hashmap](#hashmap)
+
+
 ## Requirements
 
 ### Ubuntu/Debian
@@ -71,25 +93,6 @@ doxygen
 ```
 
 # List of data structures
-
- - [Lists](#lists)
-    * [Linked list](#linked-list)
-    * [Double linked list](#double-linked-list)
-    * [Self organizing list](#self-organizing-list)
-    * [Unrolled linked list](#unrolled-linked-list)
-    * [XOR Double linked list](#xor-double-linked-list)
-    * [Circulat linked list](#circular-linked-list)
-    * [Skip list](#skip-list)
- - [Trees](#trees)
-    * [Binary tree](#binary-tree)
-    * [Binary Search Tree](#binary-search-tree)
-    * [Red black tree](#red-black-tree)
-    * [B-Tree](#b-tree)
- - [Tries](#tries)
-    * [Trie](#trie)
- - [Others](#others)
-    * [Vector](#vector)
-    * [Hashmap](#hashmap)
 
 ## Lists
 
