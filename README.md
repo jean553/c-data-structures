@@ -77,7 +77,7 @@ doxygen
  - [Lists](#lists)
     * [Linked list](#linked-list)
     * [Double linked list](#double-linked-list)
-    * [Self-organized list](#self-organized-list)
+    * [Self organizing list](#self-organizing-list)
     * [Unrolled linked list](#unrolled-linked-list)
     * [XOR Double linked list](#xor-double-linked-list)
     * [Circulat linked list](#circular-linked-list)
@@ -167,7 +167,7 @@ Pros:
 Cons:
  * takes more space than a simple linked list
 
-### Self-organizing list
+### Self organizing list
 
 A simple linked list that automatically updates its nodes order.
 The order is updated according to the frequency of nodes calls.
@@ -372,7 +372,7 @@ Access the right item N of the node I in a binary tree stored as an array:
 
 ![Image 5](images/binary_tree_structure.png)
 
-### Binary Search Tree (BST)
+### Binary Search Tree
 
 The binary search tree is a binary tree. In a binary search tree, the values
 of all the nodes in the left sub-tree are lesser than or equal to the current node value,
@@ -526,7 +526,7 @@ every trie node stores a pointer to a linked list node that contains all its chi
 
 ## Others
 
-### Vector - Dynamic array
+### Vector
 
 An array is a set of continuous data in memory.
 A vector is a dynamic array (the allocated size can vary).
