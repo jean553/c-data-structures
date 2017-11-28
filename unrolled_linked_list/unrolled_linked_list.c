@@ -28,7 +28,7 @@ int atULL(
 
     UnrolledLinkedListNode* node = list->head;
 
-    while(index > arraySize)
+    while(index >= arraySize)
     {
         node = node->next;
 
