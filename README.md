@@ -133,7 +133,7 @@ Cons:
 
 Time complexity:
  - Average:
-    * Access: O(n) (all the items must be browsed until it finds the indexed one)
+    * Access: O(n) (all the items must be browsed until it reaches the indexed one)
     * Search: O(n) (all the items must be browsed until it finds the researched one)
     * Insertion: O(1) (insertion only concerns the inserted node and does not move the others)
     * Deletion: O(1) (deletion only concerns the deleted node and does not move the others)
