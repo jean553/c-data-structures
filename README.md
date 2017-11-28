@@ -133,7 +133,7 @@ Cons:
 
 Time complexity:
  - Average:
-    * Access: O(n) (all the items must be browsed until it finds the indexed one)
+    * Access: O(n) (all the items must be browsed until it reaches the indexed one)
     * Search: O(n) (all the items must be browsed until it finds the researched one)
     * Insertion: O(1) (insertion only concerns the inserted node and does not move the others)
     * Deletion: O(1) (deletion only concerns the deleted node and does not move the others)
@@ -181,6 +181,20 @@ Pros:
 
 Cons:
  * takes more space than a simple linked list
+
+Time complexity:
+ - Average:
+    * Access: O(n) (all the items must be browsed until it reaches the indexed one, time can be improved according to which side is selected to start browsing if the position of the indexed item is estimated first),
+    * Search: O(n) (all the items must be browsed until it founds the indexed one, time can be improved according to which side is selected to start browsing if the position of the indexed item is estimated first),
+    * Insertion: O(1) (insertion only concerns the inserted node and does not move the others)
+    * Deletion: O(1) (insertion only concerns the inserted node and does not move the others)
+ - Worst:
+    * Access: O(n) (all the items must be browsed)
+    * Search: O(n) (all the items must be browsed)
+    * Insertion: O(1) (insertion only concerns the inserted node and does not move the others)
+    * Deletion: O(1) (insertion only concerns the inserted node and does not move the others)
+
+Space complexity: O(n)
 
 ### Self organizing list
 
