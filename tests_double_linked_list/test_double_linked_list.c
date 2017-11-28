@@ -95,6 +95,14 @@ START_TEST(test_at)
     insertAtTheEnd(&first_list, 40);
     insertAtTheEnd(&first_list, 50);
 
+    /* browse list from head to tail */
+
+    ck_assert_int_eq(at(&first_list, 0), 10);
+    ck_assert_int_eq(at(&first_list, 1), 20);
+
+    /* browse list from tail to head */
+
+    ck_assert_int_eq(at(&first_list, 2), 30);
     ck_assert_int_eq(at(&first_list, 3), 40);
     ck_assert_int_eq(at(&first_list, 4), 50);
 }
