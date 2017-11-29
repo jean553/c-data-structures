@@ -226,7 +226,7 @@ Pros:
 Cons:
  * takes many accesses to move one node to the head
 
-## Unrolled linked list
+### Unrolled linked list
 
 ```
         +--------------------------------+
