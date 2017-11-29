@@ -132,7 +132,17 @@ START_TEST(test_removeAt)
     insert(&fourth_tree, 23);
     insert(&fourth_tree, 27);
 
+    /* check position of nodes that will be moved */
+    ck_assert_int_eq(fourth_tree.right->key, 20);
+    ck_assert_int_eq(fourth_tree.right->right->key, 25);
+    ck_assert_int_eq(fourth_tree.right->right->left->key, 23);
+
     removeAt(&fourth_tree, 20);
+
+    /* check position of nodes that have been moved */
+    ck_assert_int_eq(fourth_tree.right->key, 23); /* replaced by right child left child */
+    ck_assert_int_eq(fourth_tree.right->right->key, 25);
+    ck_assert_int_eq(fourth_tree.right->right->left, NULL);
 
     ck_assert_int_eq(search(&fourth_tree, 20), NULL);
     ck_assert_int_eq(search(&fourth_tree, 10)->key, 10);
@@ -156,7 +166,17 @@ START_TEST(test_removeAt)
     insert(&fifth_tree, 13);
     insert(&fifth_tree, 27);
 
+    /* check positions of nodes that will be moved */
+    ck_assert_int_eq(fifth_tree.right->key, 20);
+    ck_assert_int_eq(fifth_tree.right->right->key, 25);
+    ck_assert_int_eq(fifth_tree.right->right->right->key, 27);
+
     removeAt(&fifth_tree, 20);
+
+    /* check positions of nodes that have been moved */
+    ck_assert_int_eq(fifth_tree.right->key, 25); /* replaced by right child */
+    ck_assert_int_eq(fifth_tree.right->right->key, 27);
+    ck_assert_int_eq(fifth_tree.right->right->right, NULL);
 
     ck_assert_int_eq(search(&fifth_tree, 20), NULL);
     ck_assert_int_eq(search(&fifth_tree, 10)->key, 10);
