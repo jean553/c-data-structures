@@ -472,6 +472,7 @@ Tests have been implemented for the following violations (in order in the tests 
  * red parent (left child) and red uncle (right child), black root node, the current node (left child) should be black
  * red parent (left child) and red uncle (right child), black root node, the current node (right child) should be black
  * red parent (right child) and red uncle (left child), black root node, the current node (left child) should be black
+ * red parent (right child) and red uncle (left child), black root node, the current node (right child) should be black
 
 #### Violations
 
