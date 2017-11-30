@@ -469,7 +469,8 @@ Those violations are recurrent and the solutions to fix them are predefined.
 
 Tests have been implemented for the following violations (in order in the tests file):
 
- * red parent and red uncle, black root node, the current node should be black
+ * red parent and red uncle, black root node, the current node (left child) should be black
+ * red parent and red uncle, black root node, the current node (right child) should be black
 
 #### Violations
 
