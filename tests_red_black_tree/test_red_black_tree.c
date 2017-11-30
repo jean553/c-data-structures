@@ -49,17 +49,17 @@ START_TEST(test_insert)
      *  3R
      */
 
-    RedBlackTreeNode first_tree = create(10);
-    ck_assert_int_eq(first_tree.color, BLACK);
+    RedBlackTreeNode first_rb_tree = create(10);
+    ck_assert_int_eq(first_rb_tree.color, BLACK);
 
-    insert(&first_tree, 5);
-    ck_assert_int_eq(first_tree.color, BLACK);
-    ck_assert_int_eq(first_tree.left->color, RED);
+    insert(&first_rb_tree, 5);
+    ck_assert_int_eq(first_rb_tree.color, BLACK);
+    ck_assert_int_eq(first_rb_tree.left->color, RED);
 
-    insert(&first_tree, 15);
-    ck_assert_int_eq(first_tree.color, BLACK);
-    ck_assert_int_eq(first_tree.left->color, RED);
-    ck_assert_int_eq(first_tree.right->color, RED);
+    insert(&first_rb_tree, 15);
+    ck_assert_int_eq(first_rb_tree.color, BLACK);
+    ck_assert_int_eq(first_rb_tree.left->color, RED);
+    ck_assert_int_eq(first_rb_tree.right->color, RED);
 
     insert(&first_tree, 3);
     ck_assert_int_eq(first_tree.color, BLACK);
