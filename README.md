@@ -465,6 +465,12 @@ Note that a NULL node of any other node is considered as black.
 The self-balancing process simply tries to detect some violations of these rules right after a node insertion.
 Those violations are recurrent and the solutions to fix them are predefined.
 
+#### Implemented tests
+
+Tests have been implemented for the following violations (in order in the tests file):
+
+ * red parent and red uncle, black root node, the current node should be black
+
 #### Violations
 
 ##### Violation 1: Insert a node with red parent and red uncle
