@@ -31,6 +31,7 @@ START_TEST(test_insert)
      *   -----
      *   |   |
      *   1R  2R
+     *   |
      *  ---
      *  |
      *  3R
@@ -42,6 +43,7 @@ START_TEST(test_insert)
      *   -----
      *   |   |
      *   1B  2B
+     *   |
      *  ---
      *  |
      *  3R
