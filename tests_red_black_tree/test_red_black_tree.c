@@ -61,11 +61,55 @@ START_TEST(test_insert)
     ck_assert_int_eq(first_rb_tree.left->color, RED);
     ck_assert_int_eq(first_rb_tree.right->color, RED);
 
-    insert(&first_tree, 3);
-    ck_assert_int_eq(first_tree.color, BLACK);
-    ck_assert_int_eq(first_tree.right->color, BLACK);
-    ck_assert_int_eq(first_tree.left->color, BLACK);
-    ck_assert_int_eq(first_tree.left->left->color, RED);
+    insert(&first_rb_tree, 3);
+    ck_assert_int_eq(first_rb_tree.color, BLACK);
+    ck_assert_int_eq(first_rb_tree.right->color, BLACK);
+    ck_assert_int_eq(first_rb_tree.left->color, BLACK);
+    ck_assert_int_eq(first_rb_tree.left->left->color, RED);
+
+    /**
+     * Try to resolve the following violation:
+     *
+     *     0B
+     *     |
+     *   -----
+     *   |   |
+     *   1R  2R
+     *   |
+     *  ---
+     *    |
+     *    3R
+     *
+     * to:
+     *
+     *     0B
+     *     |
+     *   -----
+     *   |   |
+     *   1B  2B
+     *   |
+     *  ---
+     *    |
+     *    3R
+     */
+
+    RedBlackTreeNode second_rb_tree = create(10);
+    ck_assert_int_eq(second_rb_tree.color, BLACK);
+
+    insert(&second_rb_tree, 5);
+    ck_assert_int_eq(second_rb_tree.color, BLACK);
+    ck_assert_int_eq(second_rb_tree.left->color, RED);
+
+    insert(&second_rb_tree, 15);
+    ck_assert_int_eq(second_rb_tree.color, BLACK);
+    ck_assert_int_eq(second_rb_tree.left->color, RED);
+    ck_assert_int_eq(second_rb_tree.right->color, RED);
+
+    insert(&second_rb_tree, 7);
+    ck_assert_int_eq(second_rb_tree.color, BLACK);
+    ck_assert_int_eq(second_rb_tree.right->color, BLACK);
+    ck_assert_int_eq(second_rb_tree.left->color, BLACK);
+    ck_assert_int_eq(second_rb_tree.left->right->color, RED);
 
     /* simulate the red parent and black uncle violation
        when the inserted node is the left child and
