@@ -5,6 +5,11 @@
 #include "red_black_tree.h"
 
 /**
+ * NOTE: in the following ASCII trees, B and R represents Black and Red
+ * The number represents the node itself (in order to follow nodes movement)
+ */
+
+/**
  *
  */
 START_TEST(test_create)
