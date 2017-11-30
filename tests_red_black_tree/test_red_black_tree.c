@@ -23,14 +23,43 @@ END_TEST
  */
 START_TEST(test_insert)
 {
-    /* simulate the red parent and red uncle violation
-       when the grandparent is the root node of the tree */
+    /**
+     * Try to resolve the following violation:
+     *
+     *     0B
+     *     |
+     *   -----
+     *   |   |
+     *   1R  2R
+     *  ---
+     *  |
+     *  3R
+     *
+     * to:
+     *
+     *     0B
+     *     |
+     *   -----
+     *   |   |
+     *   1B  2B
+     *  ---
+     *  |
+     *  3R
+     */
 
     RedBlackTreeNode first_tree = create(10);
-    insert(&first_tree, 5);
-    insert(&first_tree, 15);
-    insert(&first_tree, 3);
+    ck_assert_int_eq(first_tree.color, BLACK);
 
+    insert(&first_tree, 5);
+    ck_assert_int_eq(first_tree.color, BLACK);
+    ck_assert_int_eq(first_tree.left->color, RED);
+
+    insert(&first_tree, 15);
+    ck_assert_int_eq(first_tree.color, BLACK);
+    ck_assert_int_eq(first_tree.left->color, RED);
+    ck_assert_int_eq(first_tree.right->color, RED);
+
+    insert(&first_tree, 3);
     ck_assert_int_eq(first_tree.color, BLACK);
     ck_assert_int_eq(first_tree.right->color, BLACK);
     ck_assert_int_eq(first_tree.left->color, BLACK);
