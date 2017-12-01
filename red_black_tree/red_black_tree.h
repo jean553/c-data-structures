@@ -142,7 +142,21 @@ void invertParentAndGrandParentKeys(
  * @paran parent the parent of the node to check
  * @param node the concerned node to check
  */
-void rotateParentWithGrandParent(
+void rotateLeftParentWithGrandParentForLeftChild(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+);
+
+/**
+ * @brief Rotates the parent with its grand parent
+ * when the parent is the right child of its grand parent
+ *
+ * @param grandParent the grand parent of the node to check
+ * @paran parent the parent of the node to check
+ * @param node the concerned node to check
+ */
+void rotateRightParentWithGrandParentForRightChild(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent,
     RedBlackTreeNode* node

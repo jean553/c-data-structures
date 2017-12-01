@@ -127,7 +127,7 @@ void insert(
             parent
         );
 
-        rotateParentWithGrandParent(
+        rotateLeftParentWithGrandParentForLeftChild(
             grandParent,
             parent,
             node
@@ -148,7 +148,7 @@ void insert(
             parent
         );
 
-        rotateParentWithGrandParent(
+        rotateRightParentWithGrandParentForRightChild(
             grandParent,
             parent,
             node
@@ -413,7 +413,7 @@ void invertParentAndGrandParentKeys(
 /**
  *
  */
-void rotateParentWithGrandParent(
+void rotateLeftParentWithGrandParentForLeftChild(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent,
     RedBlackTreeNode* node
@@ -424,6 +424,22 @@ void rotateParentWithGrandParent(
     grandParent->right = parent;
     parent->right = uncle;
     grandParent->left = node;
+}
+
+/**
+ *
+ */
+void rotateRightParentWithGrandParentForRightChild(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+)
+{
+    RedBlackTreeNode* uncle = grandParent->left;
+
+    grandParent->left = parent;
+    parent->left = uncle;
+    grandParent->right = node;
 }
 
 /**
