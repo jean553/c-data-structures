@@ -17,27 +17,27 @@ START_TEST(test_insert_first_violation)
     /**
      * Try to resolve the following violation:
      *
-     *     0B
+     *     5B
      *     |
      *   -----
      *   |   |
-     *   1R  2R
+     *   2R  6R
      *   |
      *  ---
      *  |
-     *  3R
+     *  1R
      *
      * to:
      *
-     *     0B
+     *     5B
      *     |
      *   -----
      *   |   |
-     *   1B  2B
+     *   2B  6B
      *   |
      *  ---
      *  |
-     *  3R
+     *  1R
      */
 
     RedBlackTreeNode first_rb_tree = create(10);
@@ -61,11 +61,11 @@ START_TEST(test_insert_first_violation)
     /**
      * Try to resolve the following violation:
      *
-     *     0B
+     *     5B
      *     |
      *   -----
      *   |   |
-     *   1R  2R
+     *   2R  6R
      *   |
      *  ---
      *    |
@@ -73,11 +73,11 @@ START_TEST(test_insert_first_violation)
      *
      * to:
      *
-     *     0B
+     *     5B
      *     |
      *   -----
      *   |   |
-     *   1B  2B
+     *   2B  6B
      *   |
      *  ---
      *    |
@@ -105,27 +105,27 @@ START_TEST(test_insert_first_violation)
     /**
      * Try to resolve the following violation:
      *
-     *     0B
+     *     5B
      *     |
      *   -----
      *   |   |
-     *   1R  2R
+     *   1R  8R
      *       |
      *      ---
      *      |
-     *      3R
+     *      7R
      *
      * to:
      *
-     *     0B
+     *     5B
      *     |
      *   -----
      *   |   |
-     *   1B  2B
+     *   1B  8B
      *       |
      *      ---
      *      |
-     *      3R
+     *      7R
      */
 
     RedBlackTreeNode third_rb_tree = create(10);
@@ -149,27 +149,27 @@ START_TEST(test_insert_first_violation)
     /**
      * Try to resolve the following violation:
      *
-     *     0B
+     *     5B
      *     |
      *   -----
      *   |   |
-     *   1R  2R
+     *   1R  6R
      *       |
      *      ---
      *        |
-     *        3R
+     *        7R
      *
      * to:
      *
-     *     0B
+     *     5B
      *     |
      *   -----
      *   |   |
-     *   1B  2B
+     *   1B  6B
      *       |
      *      ---
      *        |
-     *        3R
+     *        7R
      */
     RedBlackTreeNode fourth_rb_tree = create(10);
     ck_assert_int_eq(fourth_rb_tree.color, BLACK);
