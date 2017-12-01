@@ -479,6 +479,7 @@ First violation tests (`tests_red_black_tree_first_violation`):
 Second violation tests (`tests_red_black_tree_second_violation`):
 
  * black grand parent (left child) and red parent (left child), no others
+ * black grand parent (right child) and red parent (right child), no others
 
 #### Violations
 
