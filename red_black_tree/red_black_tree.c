@@ -310,6 +310,45 @@ const unsigned short hasRedParentAndBlackUncleAndIsLeftChild(
 /**
  *
  */
+const unsigned short hasRedParentAndBlackUncleAndIsRightChild(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+)
+{
+    if (
+        parent == NULL ||
+        grandParent == NULL ||
+        parent->color != RED
+    )
+    {
+        return 0;
+    }
+
+    if (
+        grandParent->right != parent ||
+        parent->right != node
+    )
+    {
+        return 0;
+    }
+
+    RedBlackTreeNode* uncle = grandParent->left;
+
+    if (
+        uncle != NULL &&
+        uncle->color == RED
+    )
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+/**
+ *
+ */
 void setParentAndUncleWithBlack(
     RedBlackTreeNode* root,
     RedBlackTreeNode* grandParent,
