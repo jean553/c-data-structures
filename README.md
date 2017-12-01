@@ -476,6 +476,10 @@ First violation tests (`tests_red_black_tree_first_violation`):
  * red parent (right child) and red uncle (left child), black root node, the current node (left child) should be black
  * red parent (right child) and red uncle (left child), black root node, the current node (right child) should be black
 
+Second violation tests (`tests_red_black_tree_second_violation`):
+
+ * black grand parent (left child) and red parent (left child), no others
+
 #### Violations
 
 ##### Violation 1: Insert a node with red parent and red uncle
