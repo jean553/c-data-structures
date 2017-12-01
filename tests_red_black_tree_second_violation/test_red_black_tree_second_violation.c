@@ -6,7 +6,7 @@
 
 /**
  * NOTE: in the following ASCII trees, B and R represents Black and Red
- * The number represents the node itself (in order to follow nodes movement)
+ * The numbers represent random values.
  */
 
 /**
