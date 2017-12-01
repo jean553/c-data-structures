@@ -127,7 +127,28 @@ void insert(
             parent
         );
 
-        rotateParentWithGrandParent(
+        rotateLeftParentWithGrandParentForLeftChild(
+            grandParent,
+            parent,
+            node
+        );
+    }
+
+    const unsigned short hasRedParentAndBlackUncleAndIsRightChildCondition =
+        hasRedParentAndBlackUncleAndIsRightChild(
+            grandParent,
+            parent,
+            node
+        );
+
+    if (hasRedParentAndBlackUncleAndIsRightChildCondition)
+    {
+        invertParentAndGrandParentKeys(
+            grandParent,
+            parent
+        );
+
+        rotateRightParentWithGrandParentForRightChild(
             grandParent,
             parent,
             node
@@ -310,6 +331,45 @@ const unsigned short hasRedParentAndBlackUncleAndIsLeftChild(
 /**
  *
  */
+const unsigned short hasRedParentAndBlackUncleAndIsRightChild(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+)
+{
+    if (
+        parent == NULL ||
+        grandParent == NULL ||
+        parent->color != RED
+    )
+    {
+        return 0;
+    }
+
+    if (
+        grandParent->right != parent ||
+        parent->right != node
+    )
+    {
+        return 0;
+    }
+
+    RedBlackTreeNode* uncle = grandParent->left;
+
+    if (
+        uncle != NULL &&
+        uncle->color == RED
+    )
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+/**
+ *
+ */
 void setParentAndUncleWithBlack(
     RedBlackTreeNode* root,
     RedBlackTreeNode* grandParent,
@@ -353,7 +413,7 @@ void invertParentAndGrandParentKeys(
 /**
  *
  */
-void rotateParentWithGrandParent(
+void rotateLeftParentWithGrandParentForLeftChild(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent,
     RedBlackTreeNode* node
@@ -364,6 +424,22 @@ void rotateParentWithGrandParent(
     grandParent->right = parent;
     parent->right = uncle;
     grandParent->left = node;
+}
+
+/**
+ *
+ */
+void rotateRightParentWithGrandParentForRightChild(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+)
+{
+    RedBlackTreeNode* uncle = grandParent->left;
+
+    grandParent->left = parent;
+    parent->left = uncle;
+    grandParent->right = node;
 }
 
 /**

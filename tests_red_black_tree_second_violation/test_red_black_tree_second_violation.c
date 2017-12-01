@@ -53,8 +53,52 @@ START_TEST(test_insert_second_violation)
     ck_assert_int_eq(first_rb_tree.key, 2);
     ck_assert_int_eq(first_rb_tree.left->color, RED);
     ck_assert_int_eq(first_rb_tree.left->key, 1);
+    ck_assert_int_eq(first_rb_tree.left->left, NULL);
     ck_assert_int_eq(first_rb_tree.right->color, RED);
     ck_assert_int_eq(first_rb_tree.right->key, 5);
+
+    /**
+     * Try to resolve the following violation:
+     *
+     *     5B
+     *     |
+     *    ---
+     *      |
+     *      7R
+     *      |
+     *     ---
+     *       |
+     *       10R
+     *
+     * to:
+     *
+     *     7B
+     *     |
+     *   -----
+     *   |   |
+     *   5R  10R
+     */
+    RedBlackTreeNode second_rb_tree = create(5);
+
+    ck_assert_int_eq(second_rb_tree.color, BLACK);
+    ck_assert_int_eq(second_rb_tree.key, 5);
+
+    insert(&second_rb_tree, 7);
+
+    ck_assert_int_eq(second_rb_tree.color, BLACK);
+    ck_assert_int_eq(second_rb_tree.key, 5);
+    ck_assert_int_eq(second_rb_tree.right->color, RED);
+    ck_assert_int_eq(second_rb_tree.right->key, 7);
+
+    insert(&second_rb_tree, 10);
+
+    ck_assert_int_eq(second_rb_tree.color, BLACK);
+    ck_assert_int_eq(second_rb_tree.key, 7);
+    ck_assert_int_eq(second_rb_tree.right->color, RED);
+    ck_assert_int_eq(second_rb_tree.right->key, 10);
+    ck_assert_int_eq(second_rb_tree.right->right, NULL);
+    ck_assert_int_eq(second_rb_tree.left->color, RED);
+    ck_assert_int_eq(second_rb_tree.left->key, 5);
 }
 END_TEST
 
