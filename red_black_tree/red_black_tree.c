@@ -133,6 +133,27 @@ void insert(
             node
         );
     }
+
+    const unsigned short hasRedParentAndBlackUncleAndIsRightChildCondition =
+        hasRedParentAndBlackUncleAndIsRightChild(
+            grandParent,
+            parent,
+            node
+        );
+
+    if (hasRedParentAndBlackUncleAndIsRightChildCondition)
+    {
+        invertParentAndGrandParentKeys(
+            grandParent,
+            parent
+        );
+
+        rotateParentWithGrandParent(
+            grandParent,
+            parent,
+            node
+        );
+    }
 }
 
 /**
