@@ -34,9 +34,27 @@ START_TEST(test_insert_second_violation)
      *   -----
      *   |   |
      *   1R  5R
-     *
-     * TODO
      */
+    RedBlackTreeNode first_rb_tree = create(5);
+
+    ck_assert_int_eq(first_rb_tree.color, BLACK);
+    ck_assert_int_eq(first_rb_tree.key, 5);
+
+    insert(&first_rb_tree, 2);
+
+    ck_assert_int_eq(first_rb_tree.color, BLACK);
+    ck_assert_int_eq(first_rb_tree.key, 5);
+    ck_assert_int_eq(first_rb_tree.left->color, RED);
+    ck_assert_int_eq(first_rb_tree.left->key, 2);
+
+    insert(&first_rb_tree, 1);
+
+    ck_assert_int_eq(first_rb_tree.color, BLACK);
+    ck_assert_int_eq(first_rb_tree.key, 2);
+    ck_assert_int_eq(first_rb_tree.left->color, RED);
+    ck_assert_int_eq(first_rb_tree.left->key, 1);
+    ck_assert_int_eq(first_rb_tree.right->color, RED);
+    ck_assert_int_eq(first_rb_tree.right->key, 5);
 }
 END_TEST
 
