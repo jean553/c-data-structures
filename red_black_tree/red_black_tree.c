@@ -140,6 +140,8 @@ void insert(
             parent,
             node
         );
+
+        return;
     }
 
     const unsigned short hasRedParentAndBlackUncleAndIsRightChildCondition =
@@ -161,6 +163,8 @@ void insert(
             parent,
             node
         );
+
+        return;
     }
 }
 
