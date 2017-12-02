@@ -457,7 +457,7 @@ This set of rules ensure that the tree stays balanced.
 
 These rules are:
  * the root node is always black,
- * the leaf nodes of the tree are always black,
+ * the leaf nodes of the tree are always black (or Null),
  * every red node always have exactly two black children,
  * all paths from one node to a leaf node have the same amount of black nodes
 Note that a NULL node of any other node is considered as black.
@@ -488,43 +488,6 @@ First and second violation tests (`tests_red_black_tree_first_and_second_violati
  * first violation and second violation by adding only three left children
  * red parent (left child) and black uncle (right child), black root node, the current node is a red right child
  * red parent (right child) and black uncle (left child), black root node, the current node is a red left child
-
-#### Violations
-
-##### Violation 1: Insert a node with red parent and red uncle
-
-This violation occurs when a new (red) node is added right after a red node:
-a red node can only have two black children exaclty (or two NULL children).
-When the uncle node of the new node is red, a predefined solution can be applied:
-the parent and the uncle become black, the parent of the uncle becomes red.
-
-![Image 8](images/red_black_tree_1.png)
-
-##### Violation 2: Insert a left node with a left red parent and a black uncle
-
-This violation occurs when:
- * a new (red) node (left node) is added right after a red node
- * the parent node itself is a left child node
- * the uncle of the inserted node is black
-
-The predefined solution for this violation is to:
- * invert the inserted parent node with its own parent, without inverting the colors,
- * rotate the inserted parent node with its own parent
-
-![Image 9](images/red_black_tree_2.png)
-
-##### Violation 3: Insert a left node with a right red parent and a black uncle or insert a right node with a left red parent and a black uncle
-
-This violation occurs when:
- * a new (red) node is added right after a red node
- * the new inserted node is a left node of a right node OR the new inserted node is a right node of a left node
- * the uncle of the inserted node is black
-
-The predefined solution for this violation is to:
- * rotate the new inserted node with its own parent in order to have the condition of the violation 2
- * apply the solution of the violation 2
-
-![Image 10](images/red_black_tree_3.png)
 
 ### B-tree
 
