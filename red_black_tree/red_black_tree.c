@@ -423,6 +423,7 @@ void rotateLeftParentWithGrandParentForLeftChild(
 
     grandParent->right = parent;
     parent->right = uncle;
+    parent->left = NULL;
     grandParent->left = node;
 }
 
