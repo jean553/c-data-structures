@@ -435,6 +435,17 @@ const unsigned short isRightChildAndHasLeftChildRedParentAndRightChildBlackUncle
 /**
  *
  */
+const unsigned short isLeftChildAndHasRightChildRedParentAndLeftChildBlackUncle(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+) {
+    return 0;
+}
+
+/**
+ *
+ */
 void setParentAndUncleWithBlack(
     RedBlackTreeNode* root,
     RedBlackTreeNode* grandParent,
@@ -496,6 +507,15 @@ void moveRightChildToLeft(RedBlackTreeNode* node)
 {
     node->left = node->right;
     node->right = NULL;
+}
+
+/**
+ *
+ */
+void moveLeftChildToRight(RedBlackTreeNode* node)
+{
+    node->right = node->left;
+    node->left = NULL;
 }
 
 /**
