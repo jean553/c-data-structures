@@ -121,6 +121,23 @@ void insert(
         return;
     }
 
+    const unsigned short isRightChildAndHasLeftChildRedParentAndRightChildBlackUncleCondition =
+        isRightChildAndHasLeftChildRedParentAndRightChildBlackUncle(
+            grandParent,
+            parent,
+            node
+        );
+
+    if (isRightChildAndHasLeftChildRedParentAndRightChildBlackUncleCondition)
+    {
+        invertParentAndNodeKeys(
+            parent,
+            node
+        );
+
+        moveRightChildToLeft(parent);
+    }
+
     const unsigned short isLeftChildAndHasLeftChildParentAndRightChildBlackUncleCondition =
         isLeftChildAndHasLeftChildParentAndRightChildBlackUncle(
             grandParent,
@@ -163,16 +180,7 @@ void insert(
             parent,
             node
         );
-
-        return;
     }
-
-    const unsigned short isRightChildAndHasLeftChildRedParentAndRightChildBlackUncleCondition =
-        isRightChildAndHasLeftChildRedParentAndRightChildBlackUncle(
-            grandParent,
-            parent,
-            node
-        );
 }
 
 /**
