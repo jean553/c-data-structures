@@ -485,6 +485,7 @@ First and second violation tests (`tests_red_black_tree_first_and_second_violati
 
  * first violation and second violation by adding only right children
  * first violation and second violation by adding only left children
+ * first violation and second violation by adding only three left children
 
 #### Violations
 
