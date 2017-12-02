@@ -457,7 +457,34 @@ const unsigned short isLeftChildAndHasRightChildRedParentAndLeftChildBlackUncle(
     RedBlackTreeNode* parent,
     RedBlackTreeNode* node
 ) {
-    return 0;
+    if (
+        parent == NULL ||
+        grandParent == NULL ||
+        parent->color != RED
+    )
+    {
+        return 0;
+    }
+
+    if (
+        grandParent->right != parent ||
+        parent->left != node
+    )
+    {
+        return 0;
+    }
+
+    RedBlackTreeNode* uncle = grandParent->left;
+
+    if (
+        uncle != NULL &&
+        uncle->color == RED
+    )
+    {
+        return 0;
+    }
+
+    return 1;
 }
 
 /**
