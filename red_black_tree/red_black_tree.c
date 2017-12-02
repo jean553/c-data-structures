@@ -121,6 +121,23 @@ void insert(
         return;
     }
 
+    const unsigned short isRightChildAndHasLeftChildRedParentAndRightChildBlackUncleCondition =
+        isRightChildAndHasLeftChildRedParentAndRightChildBlackUncle(
+            grandParent,
+            parent,
+            node
+        );
+
+    if (isRightChildAndHasLeftChildRedParentAndRightChildBlackUncleCondition)
+    {
+        invertParentAndNodeKeys(
+            parent,
+            node
+        );
+
+        moveRightChildToLeft(parent);
+    }
+
     const unsigned short isLeftChildAndHasLeftChildParentAndRightChildBlackUncleCondition =
         isLeftChildAndHasLeftChildParentAndRightChildBlackUncle(
             grandParent,
@@ -163,8 +180,6 @@ void insert(
             parent,
             node
         );
-
-        return;
     }
 }
 
@@ -382,6 +397,44 @@ const unsigned short isRightChildAndHasRightChildParentAndLeftChildBlackUncle(
 /**
  *
  */
+const unsigned short isRightChildAndHasLeftChildRedParentAndRightChildBlackUncle(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+) {
+    if (
+        parent == NULL ||
+        grandParent == NULL ||
+        parent->color != RED
+    )
+    {
+        return 0;
+    }
+
+    if (
+        grandParent->left != parent ||
+        parent->right != node
+    )
+    {
+        return 0;
+    }
+
+    RedBlackTreeNode* uncle = grandParent->right;
+
+    if (
+        uncle != NULL &&
+        uncle->color == RED
+    )
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+/**
+ *
+ */
 void setParentAndUncleWithBlack(
     RedBlackTreeNode* root,
     RedBlackTreeNode* grandParent,
@@ -420,6 +473,29 @@ void invertParentAndGrandParentKeys(
     grandParent->key = grandParent->key + parent->key;
     parent->key = grandParent->key - parent->key;
     grandParent->key = grandParent->key - parent->key;
+}
+
+/**
+ *
+ */
+void invertParentAndNodeKeys(
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* child
+)
+{
+    /* invert the two values */
+    child->key = child->key + parent->key;
+    parent->key = child->key - parent->key;
+    child->key = child->key - parent->key;
+}
+
+/**
+ *
+ */
+void moveRightChildToLeft(RedBlackTreeNode* node)
+{
+    node->left = node->right;
+    node->right = NULL;
 }
 
 /**
