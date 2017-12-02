@@ -470,6 +470,29 @@ void invertParentAndGrandParentKeys(
 /**
  *
  */
+void invertParentAndNodeKeys(
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* child
+)
+{
+    /* invert the two values */
+    child->key = child->key + parent->key;
+    parent->key = child->key - parent->key;
+    child->key = child->key - parent->key;
+}
+
+/**
+ *
+ */
+void moveRightChildToLeft(RedBlackTreeNode* node)
+{
+    node->left = node->right;
+    node->right = NULL;
+}
+
+/**
+ *
+ */
 void rotateLeftParentWithGrandParentForLeftChild(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent,
