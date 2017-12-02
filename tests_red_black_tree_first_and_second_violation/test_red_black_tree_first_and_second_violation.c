@@ -404,10 +404,16 @@ START_TEST(test_insert_first_and_second_violation)
     ck_assert_int_eq(sixth_rb_tree.left->key, 1);
     ck_assert_int_eq(sixth_rb_tree.right->color, BLACK);
     ck_assert_int_eq(sixth_rb_tree.right->key, 10);
+    ck_assert_int_eq(sixth_rb_tree.right->left, NULL);
+    ck_assert_int_eq(sixth_rb_tree.right->right, NULL);
     ck_assert_int_eq(sixth_rb_tree.left->left->color, RED);
     ck_assert_int_eq(sixth_rb_tree.left->left->key, 0);
+    ck_assert_int_eq(sixth_rb_tree.left->left->left, NULL);
+    ck_assert_int_eq(sixth_rb_tree.left->left->right, NULL);
     ck_assert_int_eq(sixth_rb_tree.left->right->color, RED);
     ck_assert_int_eq(sixth_rb_tree.left->right->key, 2);
+    ck_assert_int_eq(sixth_rb_tree.left->right->left, NULL);
+    ck_assert_int_eq(sixth_rb_tree.left->right->right, NULL);
 }
 END_TEST
 
