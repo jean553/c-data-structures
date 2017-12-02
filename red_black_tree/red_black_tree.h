@@ -127,6 +127,22 @@ const unsigned short isRightChildAndHasLeftChildRedParentAndRightChildBlackUncle
 );
 
 /**
+ * @brief Checks if the node is a left child, has a right child red parent
+ * and a left child black uncle
+ *
+ * @param grandParent the grand parent of the node to check
+ * @paran parent the parent of the node to check
+ * @param node the concerned node to check
+ *
+ * @return const unsigned short
+ */
+const unsigned short isLeftChildAndHasRightChildRedParentAndLeftChildBlackUncle(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+);
+
+/**
  * @brief Changes the parent and uncle color of a node to black
  *
  * @param root the root node of the whole tree
@@ -168,6 +184,14 @@ void invertParentAndNodeKeys(
  * @param node the node to update
  */
 void moveRightChildToLeft(RedBlackTreeNode* node);
+
+/**
+ * @brief moves the left child of the given node to the right
+ * sets the right child as null
+ *
+ * @param node the node to update
+ */
+void moveLeftChildToRight(RedBlackTreeNode* node);
 
 /**
  * @brief Rotates the parent with its grand parent

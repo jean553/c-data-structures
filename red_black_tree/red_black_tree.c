@@ -138,6 +138,23 @@ void insert(
         moveRightChildToLeft(parent);
     }
 
+    const unsigned short isLeftChildAndHasRightChildRedParentAndLeftChildBlackUncleCondition =
+        isLeftChildAndHasRightChildRedParentAndLeftChildBlackUncle(
+            grandParent,
+            parent,
+            node
+        );
+
+    if (isLeftChildAndHasRightChildRedParentAndLeftChildBlackUncleCondition)
+    {
+        invertParentAndNodeKeys(
+            parent,
+            node
+        );
+
+        moveLeftChildToRight(parent);
+    }
+
     const unsigned short isLeftChildAndHasLeftChildParentAndRightChildBlackUncleCondition =
         isLeftChildAndHasLeftChildParentAndRightChildBlackUncle(
             grandParent,
@@ -435,6 +452,44 @@ const unsigned short isRightChildAndHasLeftChildRedParentAndRightChildBlackUncle
 /**
  *
  */
+const unsigned short isLeftChildAndHasRightChildRedParentAndLeftChildBlackUncle(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+) {
+    if (
+        parent == NULL ||
+        grandParent == NULL ||
+        parent->color != RED
+    )
+    {
+        return 0;
+    }
+
+    if (
+        grandParent->right != parent ||
+        parent->left != node
+    )
+    {
+        return 0;
+    }
+
+    RedBlackTreeNode* uncle = grandParent->left;
+
+    if (
+        uncle != NULL &&
+        uncle->color == RED
+    )
+    {
+        return 0;
+    }
+
+    return 1;
+}
+
+/**
+ *
+ */
 void setParentAndUncleWithBlack(
     RedBlackTreeNode* root,
     RedBlackTreeNode* grandParent,
@@ -496,6 +551,15 @@ void moveRightChildToLeft(RedBlackTreeNode* node)
 {
     node->left = node->right;
     node->right = NULL;
+}
+
+/**
+ *
+ */
+void moveLeftChildToRight(RedBlackTreeNode* node)
+{
+    node->right = node->left;
+    node->left = NULL;
 }
 
 /**

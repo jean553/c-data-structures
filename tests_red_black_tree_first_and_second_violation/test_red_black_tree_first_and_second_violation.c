@@ -414,6 +414,122 @@ START_TEST(test_insert_first_and_second_violation)
     ck_assert_int_eq(sixth_rb_tree.left->right->key, 2);
     ck_assert_int_eq(sixth_rb_tree.left->right->left, NULL);
     ck_assert_int_eq(sixth_rb_tree.left->right->right, NULL);
+
+    /**
+     * Try to resolve the following violation:
+     *
+     *     10B
+     *     |
+     *    ---
+     *    |
+     *    5R
+     *    |
+     *   ---
+     *   |
+     *   2R
+     *
+     * to:
+     *
+     *     5B
+     *     |
+     *   -----
+     *   |   |
+     *   2R  10R
+     *
+     * then
+     *
+     *     5B
+     *     |
+     *   -----
+     *   |   |
+     *   2R  10R
+     *   |
+     *  ---
+     *    |
+     *    4R
+     *
+     * to:
+     *
+     *     5B
+     *     |
+     *   -----
+     *   |   |
+     *   2B  10B
+     *   |
+     *  ---
+     *    |
+     *    4R
+     *
+     * then
+     *
+     *     5B
+     *     |
+     *   -----
+     *   |   |
+     *   2B  10B
+     *   |
+     *  ---
+     *    |
+     *    4R
+     *    |
+     *   ---
+     *   |
+     *   3R
+     *
+     * to:
+     *
+     *     5B
+     *     |
+     *   -----
+     *   |   |
+     *   3B  10B
+     *   |
+     *  ----
+     *  |  |
+     *  2R 4R
+     */
+    RedBlackTreeNode seventh_rb_tree = create(10);
+
+    ck_assert_int_eq(seventh_rb_tree.color, BLACK);
+    ck_assert_int_eq(seventh_rb_tree.key, 10);
+
+    insert(&seventh_rb_tree, 5);
+
+    ck_assert_int_eq(seventh_rb_tree.color, BLACK);
+    ck_assert_int_eq(seventh_rb_tree.key, 10);
+    ck_assert_int_eq(seventh_rb_tree.left->color, RED);
+    ck_assert_int_eq(seventh_rb_tree.left->key, 5);
+
+    insert(&seventh_rb_tree, 2);
+
+    ck_assert_int_eq(seventh_rb_tree.color, BLACK);
+    ck_assert_int_eq(seventh_rb_tree.key, 5);
+    ck_assert_int_eq(seventh_rb_tree.left->color, RED);
+    ck_assert_int_eq(seventh_rb_tree.left->key, 2);
+    ck_assert_int_eq(seventh_rb_tree.right->color, RED);
+    ck_assert_int_eq(seventh_rb_tree.right->key, 10);
+
+    insert(&seventh_rb_tree, 4);
+
+    ck_assert_int_eq(seventh_rb_tree.color, BLACK);
+    ck_assert_int_eq(seventh_rb_tree.key, 5);
+    ck_assert_int_eq(seventh_rb_tree.left->color, BLACK);
+    ck_assert_int_eq(seventh_rb_tree.left->key, 2);
+    ck_assert_int_eq(seventh_rb_tree.left->right->color, RED);
+    ck_assert_int_eq(seventh_rb_tree.left->right->key, 4);
+    ck_assert_int_eq(seventh_rb_tree.right->color, BLACK);
+    ck_assert_int_eq(seventh_rb_tree.right->key, 10);
+
+    insert(&seventh_rb_tree, 3);
+
+    ck_assert_int_eq(seventh_rb_tree.color, BLACK);
+    ck_assert_int_eq(seventh_rb_tree.key, 5);
+    ck_assert_int_eq(seventh_rb_tree.left->color, BLACK);
+    ck_assert_int_eq(seventh_rb_tree.left->key, 3);
+    ck_assert_int_eq(seventh_rb_tree.left->left->color, RED);
+    ck_assert_int_eq(seventh_rb_tree.left->left->key, 2);
+    ck_assert_int_eq(seventh_rb_tree.left->right->color, RED);
+    ck_assert_int_eq(seventh_rb_tree.left->right->key, 4);
 }
 END_TEST
 
