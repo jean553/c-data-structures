@@ -111,6 +111,15 @@ const unsigned short isRightChildAndHasRightChildParentAndLeftChildBlackUncle(
 );
 
 /**
+ * TODO
+ */
+const unsigned short isRightChildAndHasLeftChildRedParentAndRightChildBlackUncle(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+);
+
+/**
  * @brief Changes the parent and uncle color of a node to black
  *
  * @param root the root node of the whole tree

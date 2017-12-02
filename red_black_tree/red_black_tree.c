@@ -166,6 +166,13 @@ void insert(
 
         return;
     }
+
+    const unsigned short isRightChildAndHasLeftChildRedParentAndRightChildBlackUncleCondition =
+        isRightChildAndHasLeftChildRedParentAndRightChildBlackUncle(
+            grandParent,
+            parent,
+            node
+        );
 }
 
 /**
@@ -377,6 +384,17 @@ const unsigned short isRightChildAndHasRightChildParentAndLeftChildBlackUncle(
     }
 
     return 1;
+}
+
+/**
+ *
+ */
+const unsigned short isRightChildAndHasLeftChildRedParentAndRightChildBlackUncle(
+    RedBlackTreeNode* grandParent,
+    RedBlackTreeNode* parent,
+    RedBlackTreeNode* node
+) {
+    return 0;
 }
 
 /**
