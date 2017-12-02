@@ -121,14 +121,14 @@ void insert(
         return;
     }
 
-    const unsigned short hasRedParentAndBlackUncleAndIsLeftChildCondition =
-        hasRedParentAndBlackUncleAndIsLeftChild(
+    const unsigned short isLeftChildAndHasLeftChildParentAndRightChildBlackUncleCondition =
+        isLeftChildAndHasLeftChildParentAndRightChildBlackUncle(
             grandParent,
             parent,
             node
         );
 
-    if (hasRedParentAndBlackUncleAndIsLeftChildCondition)
+    if (isLeftChildAndHasLeftChildParentAndRightChildBlackUncleCondition)
     {
         invertParentAndGrandParentKeys(
             grandParent,
@@ -144,14 +144,14 @@ void insert(
         return;
     }
 
-    const unsigned short hasRedParentAndBlackUncleAndIsRightChildCondition =
-        hasRedParentAndBlackUncleAndIsRightChild(
+    const unsigned short isRightChildAndHasRightChildParentAndLeftChildBlackUncleCondition =
+        isRightChildAndHasRightChildParentAndLeftChildBlackUncle(
             grandParent,
             parent,
             node
         );
 
-    if (hasRedParentAndBlackUncleAndIsRightChildCondition)
+    if (isRightChildAndHasRightChildParentAndLeftChildBlackUncleCondition)
     {
         invertParentAndGrandParentKeys(
             grandParent,
@@ -304,7 +304,7 @@ const unsigned short hasRedParentAndRedUncle(
 /**
  *
  */
-const unsigned short hasRedParentAndBlackUncleAndIsLeftChild(
+const unsigned short isLeftChildAndHasLeftChildParentAndRightChildBlackUncle(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent,
     RedBlackTreeNode* node
@@ -343,7 +343,7 @@ const unsigned short hasRedParentAndBlackUncleAndIsLeftChild(
 /**
  *
  */
-const unsigned short hasRedParentAndBlackUncleAndIsRightChild(
+const unsigned short isRightChildAndHasRightChildParentAndLeftChildBlackUncle(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent,
     RedBlackTreeNode* node
@@ -452,6 +452,7 @@ void rotateRightParentWithGrandParentForRightChild(
 
     grandParent->left = parent;
     parent->left = uncle;
+    parent->right = NULL;
     grandParent->right = node;
 }
 

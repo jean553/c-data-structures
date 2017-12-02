@@ -87,7 +87,7 @@ const unsigned short hasRedParentAndRedUncle(
  *
  * @return const unsigned short
  */
-const unsigned short hasRedParentAndBlackUncleAndIsLeftChild(
+const unsigned short isLeftChildAndHasLeftChildParentAndRightChildBlackUncle(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent,
     RedBlackTreeNode* node
@@ -104,7 +104,7 @@ const unsigned short hasRedParentAndBlackUncleAndIsLeftChild(
  *
  * @return const unsigned short
  */
-const unsigned short hasRedParentAndBlackUncleAndIsRightChild(
+const unsigned short isRightChildAndHasRightChildParentAndLeftChildBlackUncle(
     RedBlackTreeNode* grandParent,
     RedBlackTreeNode* parent,
     RedBlackTreeNode* node
