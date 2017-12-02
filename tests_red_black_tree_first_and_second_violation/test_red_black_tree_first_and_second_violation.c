@@ -236,11 +236,11 @@ START_TEST(test_insert_first_and_second_violation)
      *     |
      *   -----
      *   |   |
-     *   2R  5B
+     *   2B  5B
      *   |
      *  ----
      *  |  |
-     *  1R 3B
+     *  1R 3R
      */
     RedBlackTreeNode fifth_rb_tree = create(4);
 
@@ -273,6 +273,23 @@ START_TEST(test_insert_first_and_second_violation)
     ck_assert_int_eq(fifth_rb_tree.left->key, 3);
     ck_assert_int_eq(fifth_rb_tree.left->left->color, RED);
     ck_assert_int_eq(fifth_rb_tree.left->left->key, 2);
+
+    insert(&fifth_rb_tree, 1);
+
+    ck_assert_int_eq(fifth_rb_tree.color, BLACK);
+    ck_assert_int_eq(fifth_rb_tree.key, 4);
+    ck_assert_int_eq(fifth_rb_tree.right->color, BLACK);
+    ck_assert_int_eq(fifth_rb_tree.right->key, 5);
+    ck_assert_int_eq(fifth_rb_tree.left->color, BLACK);
+    ck_assert_int_eq(fifth_rb_tree.left->key, 2);
+    ck_assert_int_eq(fifth_rb_tree.left->left->color, RED);
+    ck_assert_int_eq(fifth_rb_tree.left->left->key, 1);
+    ck_assert_int_eq(fifth_rb_tree.left->left->left, NULL);
+    ck_assert_int_eq(fifth_rb_tree.left->left->right, NULL);
+    ck_assert_int_eq(fifth_rb_tree.left->right->color, RED);
+    ck_assert_int_eq(fifth_rb_tree.left->right->key, 3);
+    ck_assert_int_eq(fifth_rb_tree.left->right->left, NULL);
+    ck_assert_int_eq(fifth_rb_tree.left->right->right, NULL);
 }
 END_TEST
 
