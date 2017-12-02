@@ -168,6 +168,80 @@ START_TEST(test_insert_first_and_second_violation)
     ck_assert_int_eq(fourth_rb_tree.left->key, 3);
     ck_assert_int_eq(fourth_rb_tree.left->left->color, RED);
     ck_assert_int_eq(fourth_rb_tree.left->left->key, 2);
+
+    /**
+     * Try to resolve the following violation:
+     *
+     *     5B
+     *     |
+     *    ---
+     *    |
+     *    4R
+     *    |
+     *   ---
+     *   |
+     *   3R
+     *
+     * to:
+     *
+     *     4B
+     *     |
+     *   -----
+     *   |   |
+     *   3R  5R
+     *
+     * then
+     *
+     *     4B
+     *     |
+     *   -----
+     *   |   |
+     *   3R  5R
+     *   |
+     *  ---
+     *  |
+     *  2R
+     *
+     * to:
+     *
+     *     4B
+     *     |
+     *   -----
+     *   |   |
+     *   3B  5B
+     *   |
+     *  ---
+     *  |
+     *  2R
+     *
+     * then
+     *
+     *     4B
+     *     |
+     *   -----
+     *   |   |
+     *   3B  5B
+     *   |
+     *  ---
+     *  |
+     *  2R
+     *  |
+     * ---
+     * |
+     * 1R
+     *
+     * to:
+     *
+     *     4B
+     *     |
+     *   -----
+     *   |   |
+     *   2R  5B
+     *   |
+     *  ----
+     *  |  |
+     *  1R 3B
+     */
 }
 END_TEST
 
