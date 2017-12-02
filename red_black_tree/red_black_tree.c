@@ -74,6 +74,10 @@ void insert(
 
             node->left = createNode(key);
 
+            grandParent = parent;
+            parent = node;
+            node = node->left;
+
             break;
         }
         else
@@ -90,6 +94,10 @@ void insert(
             }
 
             node->right = createNode(key);
+
+            grandParent = parent;
+            parent = node;
+            node = node->right;
 
             break;
         }
