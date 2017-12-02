@@ -138,6 +138,23 @@ void insert(
         moveRightChildToLeft(parent);
     }
 
+    const unsigned short isLeftChildAndHasRightChildRedParentAndLeftChildBlackUncleCondition =
+        isLeftChildAndHasRightChildRedParentAndLeftChildBlackUncle(
+            grandParent,
+            parent,
+            node
+        );
+
+    if (isLeftChildAndHasRightChildRedParentAndLeftChildBlackUncleCondition)
+    {
+        invertParentAndNodeKeys(
+            parent,
+            node
+        );
+
+        moveLeftChildToRight(parent);
+    }
+
     const unsigned short isLeftChildAndHasLeftChildParentAndRightChildBlackUncleCondition =
         isLeftChildAndHasLeftChildParentAndRightChildBlackUncle(
             grandParent,
