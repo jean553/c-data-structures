@@ -54,7 +54,7 @@ const unsigned short search(
         key > tree->keys[i]
     )
     {
-        i++;
+        i += 1;
     }
 
     if (
@@ -105,7 +105,7 @@ void insert(
             i < NODE_DATA_ARRAY_LENGTH &&
             tree->keys[i] < key
         ) {
-            i++;
+            i += 1;
         }
 
         if (
@@ -137,7 +137,7 @@ void insert(
         for (
             unsigned short j = 0;
             j < NODE_CHILDREN_ARRAY_LENGTH;
-            j++
+            j += 1
         )
         {
             tree->next[i]->next[j] = NULL;
@@ -155,5 +155,5 @@ void insert(
 
     tree->keys[tree->size] = key;
     tree->datas[tree->size] = data;
-    tree->size++;
+    tree->size += 1;
 }
