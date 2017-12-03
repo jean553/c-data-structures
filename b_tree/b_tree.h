@@ -6,7 +6,7 @@
 typedef struct BTreeNode {
     unsigned short* keys;
     int* datas;
-    struct BTreeNode** next;
+    struct BTreeNode** children;
     unsigned short isLeaf;
     unsigned short size;
 } BTreeNode;
