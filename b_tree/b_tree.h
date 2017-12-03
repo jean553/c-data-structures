@@ -4,7 +4,7 @@
  */
 
 typedef struct BTreeNode {
-    struct BTreeNodeItem* items;
+    struct BTreeNodeItem** items;
     struct BTreeNode** children;
     unsigned short isLeaf;
     unsigned short size;
