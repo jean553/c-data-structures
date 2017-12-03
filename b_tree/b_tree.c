@@ -22,10 +22,20 @@ BTreeNode create(
     for (
         unsigned short i = 0;
         i < NODE_CHILDREN_ARRAY_LENGTH;
-        i++
+        i += 1
     )
     {
         node.next[i] = NULL;
+    }
+
+    for (
+        unsigned short i = 0;
+        i < NODE_DATA_ARRAY_LENGTH;
+        i += 1
+    )
+    {
+        node.keys[i] = 0;
+        node.datas[i] = 0;
     }
 
     node.keys[0] = key;
