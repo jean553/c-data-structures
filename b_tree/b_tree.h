@@ -4,12 +4,16 @@
  */
 
 typedef struct BTreeNode {
-    unsigned short* keys;
-    int* datas;
-    struct BTreeNode** next;
+    struct BTreeNodeItem* items;
+    struct BTreeNode** children;
     unsigned short isLeaf;
     unsigned short size;
 } BTreeNode;
+
+typedef struct BTreeNodeItem {
+    unsigned short key;
+    int data;
+} BTreeNodeItem;
 
 /**
  * @brief Creates a B-Tree with one item inside the root nodes list

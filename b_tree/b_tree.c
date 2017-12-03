@@ -15,9 +15,8 @@ BTreeNode create(
 )
 {
     BTreeNode node;
-    node.keys = malloc(sizeof(unsigned short) * NODE_DATA_ARRAY_LENGTH);
-    node.datas = malloc(sizeof(int) * NODE_DATA_ARRAY_LENGTH);
-    node.next = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
+    node.items = malloc(sizeof(BTreeNodeItem) * NODE_DATA_ARRAY_LENGTH);
+    node.children = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
 
     for (
         unsigned short i = 0;
@@ -25,7 +24,7 @@ BTreeNode create(
         i += 1
     )
     {
-        node.next[i] = NULL;
+        node.children[i] = NULL;
     }
 
     for (
@@ -34,16 +33,14 @@ BTreeNode create(
         i += 1
     )
     {
-        node.keys[i] = 0;
-        node.datas[i] = 0;
+        node.items[i].key = 0;
+        node.items[i].data = 0;
     }
 
-    node.keys[0] = key;
-    node.datas[0] = data;
+    node.items[0].key = key;
+    node.items[0].data = data;
 
     node.size = 1;
-
-    /* the unique node is a leaf node */
     node.isLeaf = 1;
 
     return node;
@@ -61,7 +58,7 @@ const unsigned short search(
 
     while (
         i < NODE_DATA_ARRAY_LENGTH &&
-        key > tree->keys[i]
+        key > tree->items[i].key
     )
     {
         i += 1;
@@ -69,13 +66,13 @@ const unsigned short search(
 
     if (
         i == NODE_DATA_ARRAY_LENGTH - 1 &&
-        key > tree->keys[i]
+        key > tree->items[i].key
     )
     {
         i += 1;
     }
 
-    if (tree->keys[i] == key)
+    if (tree->items[i].key == key)
     {
         return 1;
     }
@@ -85,13 +82,13 @@ const unsigned short search(
         return 0;
     }
 
-    if (tree->next[i] == NULL)
+    if (tree->children[i] == NULL)
     {
         return 0;
     }
 
     return search(
-        tree->next[i],
+        tree->children[i],
         key
     );
 }
@@ -105,31 +102,29 @@ void insert(
     const int data
 )
 {
-    printf("%d", key);
-
     if (tree->size == NODE_DATA_ARRAY_LENGTH)
     {
         unsigned short i = 0;
 
         while (
             i < NODE_DATA_ARRAY_LENGTH &&
-            tree->keys[i] < key
+            tree->items[i].key < key
         ) {
             i += 1;
         }
 
         if (
             i == NODE_DATA_ARRAY_LENGTH - 1 &&
-            tree->keys[i] < key
+            tree->items[i].key < key
         ) {
             i += 1;
         }
 
-        if (tree->next[i] != NULL)
+        if (tree->children[i] != NULL)
         {
             /* TODO: #147 order insertion into child node */
             insert(
-                tree->next[i],
+                tree->children[i],
                 key,
                 data
             );
@@ -139,10 +134,9 @@ void insert(
 
         /* TODO: #148 check how this child node creation can be merged
            with the create() method of the BTreeNode */
-        tree->next[i] = malloc(sizeof(BTreeNode));
-        tree->next[i]->keys = malloc(sizeof(unsigned short) * NODE_DATA_ARRAY_LENGTH);
-        tree->next[i]->datas = malloc(sizeof(int) * NODE_DATA_ARRAY_LENGTH);
-        tree->next[i]->next = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
+        tree->children[i] = malloc(sizeof(BTreeNode));
+        tree->children[i]->items = malloc(sizeof(BTreeNodeItem) * NODE_DATA_ARRAY_LENGTH);
+        tree->children[i]->children = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
 
         for (
             unsigned short j = 0;
@@ -150,20 +144,20 @@ void insert(
             j += 1
         )
         {
-            tree->next[i]->next[j] = NULL;
+            tree->children[i]->children[j] = NULL;
         }
 
-        tree->next[i]->keys[0] = key;
-        tree->next[i]->datas[0] = data;
-        tree->next[i]->size = 1;
-        tree->next[i]->isLeaf = 1;
+        tree->children[i]->items[0].key = key;
+        tree->children[i]->items[0].data = data;
+        tree->children[i]->size = 1;
+        tree->children[i]->isLeaf = 1;
 
         tree->isLeaf = 0;
 
         return;
     }
 
-    tree->keys[tree->size] = key;
-    tree->datas[tree->size] = data;
+    tree->items[tree->size].key = key;
+    tree->items[tree->size].data = data;
     tree->size += 1;
 }
