@@ -493,6 +493,10 @@ First and second violation tests (`tests_red_black_tree_first_and_second_violati
 
 ![Image 12](images/b_tree.png)
 
+A B-Tree can also be called a #-# B-Tree according to its amount of keys and children.
+For example, a B-Tree with two keys and three children per node is a `2-3 B-Tree`,
+a B-Tree with four keys and five children per node is a `4-5 B-Tree`.
+
 Each B-Tree node is a list of items. Each item contains a key and two links to another B-Tree node.
 Optionaly, each item contains some data linked to the key.
 
