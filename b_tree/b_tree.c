@@ -15,33 +15,12 @@ BTreeNode create(
 )
 {
     BTreeNode node;
-    node.items = malloc(sizeof(BTreeNodeItem*) * NODE_DATA_ARRAY_LENGTH);
-    node.children = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
-
-    for (
-        unsigned short i = 0;
-        i < NODE_CHILDREN_ARRAY_LENGTH;
-        i += 1
-    )
-    {
-        node.children[i] = NULL;
-    }
-
-    for (
-        unsigned short i = 0;
-        i < NODE_DATA_ARRAY_LENGTH;
-        i += 1
-    )
-    {
-        node.items[i] = NULL;
-    }
-
-    node.items[0] = malloc(sizeof(BTreeNodeItem));
-    node.items[0]->key = key;
-    node.items[0]->data = data;
-
-    node.size = 1;
-    node.isLeaf = 1;
+    BTreeNode* pNode = &node;
+    initialize_node(
+        pNode,
+        key,
+        data
+    );
 
     return node;
 }
@@ -138,35 +117,12 @@ void insert(
             return;
         }
 
-        /* TODO: #148 check how this child node creation can be merged
-           with the create() method of the BTreeNode */
         tree->children[i] = malloc(sizeof(BTreeNode));
-        tree->children[i]->items = malloc(sizeof(BTreeNodeItem*) * NODE_DATA_ARRAY_LENGTH);
-        tree->children[i]->children = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
-
-        for (
-            unsigned short j = 0;
-            j < NODE_CHILDREN_ARRAY_LENGTH;
-            j += 1
-        )
-        {
-            tree->children[i]->children[j] = NULL;
-        }
-
-        for (
-            unsigned short j = 0;
-            j < NODE_DATA_ARRAY_LENGTH;
-            j += 1
-        )
-        {
-            tree->children[i]->items[j] = NULL;
-        }
-
-        tree->children[i]->items[0] = malloc(sizeof(BTreeNodeItem));
-        tree->children[i]->items[0]->key = key;
-        tree->children[i]->items[0]->data = data;
-        tree->children[i]->size = 1;
-        tree->children[i]->isLeaf = 1;
+        initialize_node(
+            tree->children[i],
+            key,
+            data
+        );
 
         tree->isLeaf = 0;
 
@@ -177,4 +133,42 @@ void insert(
     tree->items[tree->size]->key = key;
     tree->items[tree->size]->data = data;
     tree->size += 1;
+}
+
+/**
+ *
+ */
+void initialize_node(
+    BTreeNode* node,
+    const unsigned short key,
+    const int data
+)
+{
+    node->items = malloc(sizeof(BTreeNodeItem*) * NODE_DATA_ARRAY_LENGTH);
+    node->children = malloc(sizeof(BTreeNode*) * NODE_CHILDREN_ARRAY_LENGTH);
+
+    for (
+        unsigned short j = 0;
+        j < NODE_CHILDREN_ARRAY_LENGTH;
+        j += 1
+    )
+    {
+        node->children[j] = NULL;
+    }
+
+    for (
+        unsigned short j = 0;
+        j < NODE_DATA_ARRAY_LENGTH;
+        j += 1
+    )
+    {
+        node->items[j] = NULL;
+    }
+
+    node->items[0] = malloc(sizeof(BTreeNodeItem));
+    node->items[0]->key = key;
+    node->items[0]->data = data;
+
+    node->size = 1;
+    node->isLeaf = 1;
 }
