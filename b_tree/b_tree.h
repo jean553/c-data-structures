@@ -54,3 +54,18 @@ void insert(
     const unsigned short key,
     const int data
 );
+
+/**
+ * @brief Initializes a node children and items to NULL,
+ * sets the first node item key and data with given values,
+ * initializes node size and leaf indication
+ *
+ * @param node the concerned node
+ * @param key the key of the first node item
+ * @param data the data of the first node item
+ */
+void initialize_node(
+    BTreeNode* node,
+    const unsigned short key,
+    const int data
+);
