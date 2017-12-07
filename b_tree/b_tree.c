@@ -15,9 +15,8 @@ BTreeNode create(
 )
 {
     BTreeNode node;
-    BTreeNode* pNode = &node;
     initialize_node(
-        pNode,
+        &node,
         key,
         data
     );
