@@ -79,9 +79,8 @@ START_TEST(test_insert_in_root_child)
     ck_assert_int_eq(search(&tree, 5), 0);
     ck_assert_int_eq(search(&tree, 15), 0);
     ck_assert_int_eq(search(&tree, 25), 0);
-    // XXX: #191 this line makes Travis-CI build fail
-    //ck_assert_int_eq(search(&tree, 35), 0);
-    //ck_assert_int_eq(search(&tree, 45), 0);
+    ck_assert_int_eq(search(&tree, 35), 0);
+    ck_assert_int_eq(search(&tree, 45), 0);
 
     insert(&tree, 5, 500);
     insert(&tree, 15, 600);
@@ -93,8 +92,7 @@ START_TEST(test_insert_in_root_child)
     ck_assert_int_eq(search(&tree, 15), 1);
     ck_assert_int_eq(search(&tree, 25), 1);
     ck_assert_int_eq(search(&tree, 35), 1);
-    // XXX: #191 this line makes Travis-CI build fail
-    //ck_assert_int_eq(search(&tree, 45), 1);
+    ck_assert_int_eq(search(&tree, 45), 1);
 }
 END_TEST
 

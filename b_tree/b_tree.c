@@ -75,6 +75,7 @@ const unsigned short search(
     }
 
     if (
+        i < NODE_DATA_ARRAY_LENGTH &&
         tree->items[i] != NULL &&
         tree->items[i]->key == key
     )
