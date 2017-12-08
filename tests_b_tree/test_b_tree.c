@@ -161,10 +161,20 @@ START_TEST(test_insert_unordered)
     BTreeNode tree = create(10, 100);
 
     ck_assert_int_eq(search(&tree, 10), 1);
+    ck_assert_int_eq(search(&tree, 5), 0);
+    ck_assert_int_eq(search(&tree, 2), 0);
 
     insert(&tree, 5, 150);
 
+    ck_assert_int_eq(search(&tree, 10), 1);
     ck_assert_int_eq(search(&tree, 5), 1);
+    ck_assert_int_eq(search(&tree, 2), 0);
+
+    insert(&tree, 2, 150);
+
+    ck_assert_int_eq(search(&tree, 10), 1);
+    ck_assert_int_eq(search(&tree, 5), 1);
+    ck_assert_int_eq(search(&tree, 2), 1);
 }
 END_TEST
 
