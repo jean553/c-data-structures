@@ -128,9 +128,21 @@ void insert(
         return;
     }
 
-    tree->items[tree->size] = malloc(sizeof(BTreeNodeItem));
-    tree->items[tree->size]->key = key;
-    tree->items[tree->size]->data = data;
+    short index = tree->size;
+
+    while (
+        index != 0 &&
+        tree->items[index - 1]->key > key
+    )
+    {
+        tree->items[index] = tree->items[index - 1];
+
+        index -= 1;
+    }
+
+    tree->items[index] = malloc(sizeof(BTreeNodeItem));
+    tree->items[index]->key = key;
+    tree->items[index]->data = data;
     tree->size += 1;
 }
 
