@@ -156,6 +156,21 @@ END_TEST
 /**
  *
  */
+START_TEST(test_insert_unordered)
+{
+    BTreeNode tree = create(10, 100);
+
+    ck_assert_int_eq(search(&tree, 10), 1);
+
+    insert(&tree, 5, 150);
+
+    ck_assert_int_eq(search(&tree, 5), 1);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* b_tree_suite()
 {
     Suite *suite = suite_create("b_tree");
@@ -166,6 +181,7 @@ Suite* b_tree_suite()
     tcase_add_test(tcase, test_insert_in_root);
     tcase_add_test(tcase, test_insert_in_root_child);
     tcase_add_test(tcase, test_insert_many_items_in_root_child);
+    tcase_add_test(tcase, test_insert_unordered);
 
     suite_add_tcase(suite, tcase);
 
