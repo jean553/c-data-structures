@@ -164,17 +164,33 @@ START_TEST(test_insert_unordered)
     ck_assert_int_eq(search(&tree, 5), 0);
     ck_assert_int_eq(search(&tree, 2), 0);
 
+    ck_assert_int_eq(tree.items[0]->key, 10);
+
     insert(&tree, 5, 150);
 
     ck_assert_int_eq(search(&tree, 10), 1);
     ck_assert_int_eq(search(&tree, 5), 1);
     ck_assert_int_eq(search(&tree, 2), 0);
 
+    ck_assert_int_eq(tree.items[0]->key, 5);
+    ck_assert_int_eq(tree.items[1]->key, 10);
+
     insert(&tree, 2, 150);
 
     ck_assert_int_eq(search(&tree, 10), 1);
     ck_assert_int_eq(search(&tree, 5), 1);
     ck_assert_int_eq(search(&tree, 2), 1);
+
+    ck_assert_int_eq(tree.items[0]->key, 2);
+    ck_assert_int_eq(tree.items[1]->key, 5);
+    ck_assert_int_eq(tree.items[2]->key, 10);
+
+    insert(&tree, 15, 150);
+
+    ck_assert_int_eq(tree.items[0]->key, 2);
+    ck_assert_int_eq(tree.items[1]->key, 5);
+    ck_assert_int_eq(tree.items[2]->key, 10);
+    ck_assert_int_eq(tree.items[3]->key, 15);
 }
 END_TEST
 
