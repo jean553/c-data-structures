@@ -93,6 +93,17 @@ START_TEST(test_insert_in_root_child)
     ck_assert_int_eq(search(&tree, 25), 1);
     ck_assert_int_eq(search(&tree, 35), 1);
     ck_assert_int_eq(search(&tree, 45), 1);
+
+    ck_assert_int_eq(tree.items[0]->key, 10);
+    ck_assert_int_eq(tree.items[1]->key, 20);
+    ck_assert_int_eq(tree.items[2]->key, 30);
+    ck_assert_int_eq(tree.items[3]->key, 40);
+
+    ck_assert_int_eq(tree.children[0]->items[0]->key, 5);
+    ck_assert_int_eq(tree.children[1]->items[0]->key, 15);
+    ck_assert_int_eq(tree.children[2]->items[0]->key, 25);
+    ck_assert_int_eq(tree.children[3]->items[0]->key, 35);
+    ck_assert_int_eq(tree.children[4]->items[0]->key, 45);
 }
 END_TEST
 
@@ -197,6 +208,160 @@ END_TEST
 /**
  *
  */
+START_TEST(test_insert_unordered_into_children)
+{
+    BTreeNode tree = create(100, 100);
+
+    ck_assert_int_eq(tree.items[0]->key, 100);
+
+    insert(&tree, 90, 190);
+
+    ck_assert_int_eq(tree.items[0]->key, 90);
+    ck_assert_int_eq(tree.items[1]->key, 100);
+
+    insert(&tree, 80, 180);
+
+    ck_assert_int_eq(tree.items[0]->key, 80);
+    ck_assert_int_eq(tree.items[1]->key, 90);
+    ck_assert_int_eq(tree.items[2]->key, 100);
+
+    insert(&tree, 70, 170);
+
+    ck_assert_int_eq(tree.items[0]->key, 70);
+    ck_assert_int_eq(tree.items[1]->key, 80);
+    ck_assert_int_eq(tree.items[2]->key, 90);
+    ck_assert_int_eq(tree.items[3]->key, 100);
+
+    insert(&tree, 60, 160);
+
+    ck_assert_int_eq(tree.children[0]->items[0]->key, 60);
+    ck_assert_int_eq(tree.items[0]->key, 70);
+    ck_assert_int_eq(tree.items[1]->key, 80);
+    ck_assert_int_eq(tree.items[2]->key, 90);
+    ck_assert_int_eq(tree.items[3]->key, 100);
+
+    insert(&tree, 61, 160);
+
+    ck_assert_int_eq(tree.children[0]->items[0]->key, 60);
+    ck_assert_int_eq(tree.children[0]->items[1]->key, 61);
+    ck_assert_int_eq(tree.items[0]->key, 70);
+    ck_assert_int_eq(tree.items[1]->key, 80);
+    ck_assert_int_eq(tree.items[2]->key, 90);
+    ck_assert_int_eq(tree.items[3]->key, 100);
+
+    insert(&tree, 62, 160);
+
+    ck_assert_int_eq(tree.children[0]->items[0]->key, 60);
+    ck_assert_int_eq(tree.children[0]->items[1]->key, 61);
+    ck_assert_int_eq(tree.children[0]->items[2]->key, 62);
+    ck_assert_int_eq(tree.items[0]->key, 70);
+    ck_assert_int_eq(tree.items[1]->key, 80);
+    ck_assert_int_eq(tree.items[2]->key, 90);
+    ck_assert_int_eq(tree.items[3]->key, 100);
+
+    insert(&tree, 59, 90);
+
+    ck_assert_int_eq(tree.children[0]->items[0]->key, 59);
+    ck_assert_int_eq(tree.children[0]->items[1]->key, 60);
+    ck_assert_int_eq(tree.children[0]->items[2]->key, 61);
+    ck_assert_int_eq(tree.children[0]->items[3]->key, 62);
+    ck_assert_int_eq(tree.items[0]->key, 70);
+    ck_assert_int_eq(tree.items[1]->key, 80);
+    ck_assert_int_eq(tree.items[2]->key, 90);
+    ck_assert_int_eq(tree.items[3]->key, 100);
+
+    insert(&tree, 50, 90);
+
+    ck_assert_int_eq(tree.children[0]->children[0]->items[0]->key, 50);
+    ck_assert_int_eq(tree.children[0]->items[0]->key, 59);
+    ck_assert_int_eq(tree.children[0]->items[1]->key, 60);
+    ck_assert_int_eq(tree.children[0]->items[2]->key, 61);
+    ck_assert_int_eq(tree.children[0]->items[3]->key, 62);
+    ck_assert_int_eq(tree.items[0]->key, 70);
+    ck_assert_int_eq(tree.items[1]->key, 80);
+    ck_assert_int_eq(tree.items[2]->key, 90);
+    ck_assert_int_eq(tree.items[3]->key, 100);
+
+    insert(&tree, 40, 90);
+
+    ck_assert_int_eq(tree.children[0]->children[0]->items[0]->key, 40);
+    ck_assert_int_eq(tree.children[0]->children[0]->items[1]->key, 50);
+    ck_assert_int_eq(tree.children[0]->items[0]->key, 59);
+    ck_assert_int_eq(tree.children[0]->items[1]->key, 60);
+    ck_assert_int_eq(tree.children[0]->items[2]->key, 61);
+    ck_assert_int_eq(tree.children[0]->items[3]->key, 62);
+    ck_assert_int_eq(tree.items[0]->key, 70);
+    ck_assert_int_eq(tree.items[1]->key, 80);
+    ck_assert_int_eq(tree.items[2]->key, 90);
+    ck_assert_int_eq(tree.items[3]->key, 100);
+
+    insert(&tree, 110, 90);
+
+    ck_assert_int_eq(tree.children[0]->children[0]->items[0]->key, 40);
+    ck_assert_int_eq(tree.children[0]->children[0]->items[1]->key, 50);
+    ck_assert_int_eq(tree.children[0]->items[0]->key, 59);
+    ck_assert_int_eq(tree.children[0]->items[1]->key, 60);
+    ck_assert_int_eq(tree.children[0]->items[2]->key, 61);
+    ck_assert_int_eq(tree.children[0]->items[3]->key, 62);
+    ck_assert_int_eq(tree.items[0]->key, 70);
+    ck_assert_int_eq(tree.items[1]->key, 80);
+    ck_assert_int_eq(tree.items[2]->key, 90);
+    ck_assert_int_eq(tree.items[3]->key, 100);
+    ck_assert_int_eq(tree.children[4]->items[0]->key, 110);
+
+    insert(&tree, 105, 90);
+
+    ck_assert_int_eq(tree.children[0]->children[0]->items[0]->key, 40);
+    ck_assert_int_eq(tree.children[0]->children[0]->items[1]->key, 50);
+    ck_assert_int_eq(tree.children[0]->items[0]->key, 59);
+    ck_assert_int_eq(tree.children[0]->items[1]->key, 60);
+    ck_assert_int_eq(tree.children[0]->items[2]->key, 61);
+    ck_assert_int_eq(tree.children[0]->items[3]->key, 62);
+    ck_assert_int_eq(tree.items[0]->key, 70);
+    ck_assert_int_eq(tree.items[1]->key, 80);
+    ck_assert_int_eq(tree.items[2]->key, 90);
+    ck_assert_int_eq(tree.items[3]->key, 100);
+    ck_assert_int_eq(tree.children[4]->items[0]->key, 105);
+    ck_assert_int_eq(tree.children[4]->items[1]->key, 110);
+
+    insert(&tree, 85, 90);
+
+    ck_assert_int_eq(tree.children[0]->children[0]->items[0]->key, 40);
+    ck_assert_int_eq(tree.children[0]->children[0]->items[1]->key, 50);
+    ck_assert_int_eq(tree.children[0]->items[0]->key, 59);
+    ck_assert_int_eq(tree.children[0]->items[1]->key, 60);
+    ck_assert_int_eq(tree.children[0]->items[2]->key, 61);
+    ck_assert_int_eq(tree.children[0]->items[3]->key, 62);
+    ck_assert_int_eq(tree.items[0]->key, 70);
+    ck_assert_int_eq(tree.items[1]->key, 80);
+    ck_assert_int_eq(tree.children[2]->items[0]->key, 85);
+    ck_assert_int_eq(tree.items[2]->key, 90);
+    ck_assert_int_eq(tree.items[3]->key, 100);
+    ck_assert_int_eq(tree.children[4]->items[0]->key, 105);
+    ck_assert_int_eq(tree.children[4]->items[1]->key, 110);
+
+    insert(&tree, 84, 90);
+
+    ck_assert_int_eq(tree.children[0]->children[0]->items[0]->key, 40);
+    ck_assert_int_eq(tree.children[0]->children[0]->items[1]->key, 50);
+    ck_assert_int_eq(tree.children[0]->items[0]->key, 59);
+    ck_assert_int_eq(tree.children[0]->items[1]->key, 60);
+    ck_assert_int_eq(tree.children[0]->items[2]->key, 61);
+    ck_assert_int_eq(tree.children[0]->items[3]->key, 62);
+    ck_assert_int_eq(tree.items[0]->key, 70);
+    ck_assert_int_eq(tree.items[1]->key, 80);
+    ck_assert_int_eq(tree.children[2]->items[0]->key, 84);
+    ck_assert_int_eq(tree.children[2]->items[1]->key, 85);
+    ck_assert_int_eq(tree.items[2]->key, 90);
+    ck_assert_int_eq(tree.items[3]->key, 100);
+    ck_assert_int_eq(tree.children[4]->items[0]->key, 105);
+    ck_assert_int_eq(tree.children[4]->items[1]->key, 110);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* b_tree_suite()
 {
     Suite *suite = suite_create("b_tree");
@@ -208,6 +373,7 @@ Suite* b_tree_suite()
     tcase_add_test(tcase, test_insert_in_root_child);
     tcase_add_test(tcase, test_insert_many_items_in_root_child);
     tcase_add_test(tcase, test_insert_unordered);
+    tcase_add_test(tcase, test_insert_unordered_into_children);
 
     suite_add_tcase(suite, tcase);
 
