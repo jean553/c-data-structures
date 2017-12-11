@@ -14,6 +14,10 @@ typedef struct LinkedListNode
     struct LinkedListNode* next;
 } LinkedListNode;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief Creates a new linked list with one node
  *
@@ -91,3 +95,7 @@ void dropAt(LinkedList* list, const unsigned int index);
  * @param list the linked list to modify
  */
 void dropAtTheEnd(LinkedList* list);
+
+#ifdef __cplusplus
+}
+#endif
