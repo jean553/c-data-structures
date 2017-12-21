@@ -71,6 +71,11 @@ const unsigned int size(LinkedList* list)
 {
     unsigned int size = 1;
 
+    if (list->head == NULL)
+    {
+        return 0;
+    }
+
     LinkedListNode* node = list->head;
 
     while(node->next != NULL)
@@ -134,14 +139,30 @@ void insertAfter(LinkedList* list, const unsigned int index, const int data)
 void dropAt(LinkedList* list, const unsigned int index)
 {
     LinkedListNode* node = list->head;
+    LinkedListNode* previousNode = list->head;
+
+    if (
+        index == 0 &&
+        node->next == NULL
+    )
+    {
+        free(list->head);
+
+        list->head = NULL;
+
+        return;
+    }
 
     for(unsigned int i = 0; i != index; i++)
     {
+        previousNode = node;
         node = node->next;
     }
 
     if (node->next == NULL)
     {
+        previousNode->next = NULL;
+
         free(node);
 
         return;
