@@ -17,6 +17,10 @@ typedef struct DoubleLinkedList
     struct DoubleLinkedListNode* tail;
 } DoubleLinkedList;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief Creates a new double linked list with one node
  *
@@ -74,3 +78,7 @@ int* all(DoubleLinkedList* list);
  * @param data the data to insert into the list
  */
 void insertAfter(DoubleLinkedList* list, const unsigned int index, const int data);
+
+#ifdef __cplusplus
+}
+#endif
