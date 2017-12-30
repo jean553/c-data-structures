@@ -12,42 +12,42 @@ START_TEST(test_atWithMTF)
 {
     /* index in the middle */
 
-    LinkedList first_node = create(10);
-    insertAtTheEnd(&first_node, 20);
-    insertAtTheEnd(&first_node, 30);
-    insertAtTheEnd(&first_node, 40);
+    LinkedList first_node = createLL(10);
+    insertAtTheEndLL(&first_node, 20);
+    insertAtTheEndLL(&first_node, 30);
+    insertAtTheEndLL(&first_node, 40);
 
     ck_assert_int_eq(atWithMTF(&first_node, 2), 30);
-    ck_assert_int_eq(at(&first_node, 0), 30);
-    ck_assert_int_eq(at(&first_node, 1), 10);
-    ck_assert_int_eq(at(&first_node, 2), 20);
-    ck_assert_int_eq(at(&first_node, 3), 40);
+    ck_assert_int_eq(atLL(&first_node, 0), 30);
+    ck_assert_int_eq(atLL(&first_node, 1), 10);
+    ck_assert_int_eq(atLL(&first_node, 2), 20);
+    ck_assert_int_eq(atLL(&first_node, 3), 40);
 
     /* index at the end */
 
-    LinkedList second_node = create(10);
-    insertAtTheEnd(&second_node, 20);
-    insertAtTheEnd(&second_node, 30);
-    insertAtTheEnd(&second_node, 40);
+    LinkedList second_node = createLL(10);
+    insertAtTheEndLL(&second_node, 20);
+    insertAtTheEndLL(&second_node, 30);
+    insertAtTheEndLL(&second_node, 40);
 
     ck_assert_int_eq(atWithMTF(&second_node, 3), 40);
-    ck_assert_int_eq(at(&second_node, 0), 40);
-    ck_assert_int_eq(at(&second_node, 1), 10);
-    ck_assert_int_eq(at(&second_node, 2), 20);
-    ck_assert_int_eq(at(&second_node, 3), 30);
+    ck_assert_int_eq(atLL(&second_node, 0), 40);
+    ck_assert_int_eq(atLL(&second_node, 1), 10);
+    ck_assert_int_eq(atLL(&second_node, 2), 20);
+    ck_assert_int_eq(atLL(&second_node, 3), 30);
 
     /* index at the beginning */
 
-    LinkedList third_node = create(10);
-    insertAtTheEnd(&third_node, 20);
-    insertAtTheEnd(&third_node, 30);
-    insertAtTheEnd(&third_node, 40);
+    LinkedList third_node = createLL(10);
+    insertAtTheEndLL(&third_node, 20);
+    insertAtTheEndLL(&third_node, 30);
+    insertAtTheEndLL(&third_node, 40);
 
     ck_assert_int_eq(atWithMTF(&third_node, 0), 10);
-    ck_assert_int_eq(at(&third_node, 0), 10);
-    ck_assert_int_eq(at(&third_node, 1), 20);
-    ck_assert_int_eq(at(&third_node, 2), 30);
-    ck_assert_int_eq(at(&third_node, 3), 40);
+    ck_assert_int_eq(atLL(&third_node, 0), 10);
+    ck_assert_int_eq(atLL(&third_node, 1), 20);
+    ck_assert_int_eq(atLL(&third_node, 2), 30);
+    ck_assert_int_eq(atLL(&third_node, 3), 40);
 }
 END_TEST
 
@@ -58,55 +58,55 @@ START_TEST(test_atTranspose)
 {
     /* index in the middle */
 
-    LinkedList first_node = create(10);
-    insertAtTheEnd(&first_node, 20);
-    insertAtTheEnd(&first_node, 30);
-    insertAtTheEnd(&first_node, 40);
+    LinkedList first_node = createLL(10);
+    insertAtTheEndLL(&first_node, 20);
+    insertAtTheEndLL(&first_node, 30);
+    insertAtTheEndLL(&first_node, 40);
 
     ck_assert_int_eq(atTranspose(&first_node, 2), 30);
-    ck_assert_int_eq(at(&first_node, 0), 10);
-    ck_assert_int_eq(at(&first_node, 1), 30);
-    ck_assert_int_eq(at(&first_node, 2), 20);
-    ck_assert_int_eq(at(&first_node, 3), 40);
+    ck_assert_int_eq(atLL(&first_node, 0), 10);
+    ck_assert_int_eq(atLL(&first_node, 1), 30);
+    ck_assert_int_eq(atLL(&first_node, 2), 20);
+    ck_assert_int_eq(atLL(&first_node, 3), 40);
 
-    /* index at the end */
+    /* index atLL the end */
 
-    LinkedList second_node = create(10);
-    insertAtTheEnd(&second_node, 20);
-    insertAtTheEnd(&second_node, 30);
-    insertAtTheEnd(&second_node, 40);
+    LinkedList second_node = createLL(10);
+    insertAtTheEndLL(&second_node, 20);
+    insertAtTheEndLL(&second_node, 30);
+    insertAtTheEndLL(&second_node, 40);
 
     ck_assert_int_eq(atTranspose(&second_node, 3), 40);
-    ck_assert_int_eq(at(&second_node, 0), 10);
-    ck_assert_int_eq(at(&second_node, 1), 20);
-    ck_assert_int_eq(at(&second_node, 2), 40);
-    ck_assert_int_eq(at(&second_node, 3), 30);
+    ck_assert_int_eq(atLL(&second_node, 0), 10);
+    ck_assert_int_eq(atLL(&second_node, 1), 20);
+    ck_assert_int_eq(atLL(&second_node, 2), 40);
+    ck_assert_int_eq(atLL(&second_node, 3), 30);
 
-    /* index at the beginning */
+    /* index atLL the beginning */
 
-    LinkedList third_node = create(10);
-    insertAtTheEnd(&third_node, 20);
-    insertAtTheEnd(&third_node, 30);
-    insertAtTheEnd(&third_node, 40);
+    LinkedList third_node = createLL(10);
+    insertAtTheEndLL(&third_node, 20);
+    insertAtTheEndLL(&third_node, 30);
+    insertAtTheEndLL(&third_node, 40);
 
     ck_assert_int_eq(atTranspose(&third_node, 0), 10);
-    ck_assert_int_eq(at(&third_node, 0), 10);
-    ck_assert_int_eq(at(&third_node, 1), 20);
-    ck_assert_int_eq(at(&third_node, 2), 30);
-    ck_assert_int_eq(at(&third_node, 3), 40);
+    ck_assert_int_eq(atLL(&third_node, 0), 10);
+    ck_assert_int_eq(atLL(&third_node, 1), 20);
+    ck_assert_int_eq(atLL(&third_node, 2), 30);
+    ck_assert_int_eq(atLL(&third_node, 3), 40);
 
-    /* index at the second position */
+    /* index atLL the second position */
 
-    LinkedList fourth_node = create(10);
-    insertAtTheEnd(&fourth_node, 20);
-    insertAtTheEnd(&fourth_node, 30);
-    insertAtTheEnd(&fourth_node, 40);
+    LinkedList fourth_node = createLL(10);
+    insertAtTheEndLL(&fourth_node, 20);
+    insertAtTheEndLL(&fourth_node, 30);
+    insertAtTheEndLL(&fourth_node, 40);
 
     ck_assert_int_eq(atTranspose(&fourth_node, 1), 20);
-    ck_assert_int_eq(at(&fourth_node, 0), 20);
-    ck_assert_int_eq(at(&fourth_node, 1), 10);
-    ck_assert_int_eq(at(&fourth_node, 2), 30);
-    ck_assert_int_eq(at(&fourth_node, 3), 40);
+    ck_assert_int_eq(atLL(&fourth_node, 0), 20);
+    ck_assert_int_eq(atLL(&fourth_node, 1), 10);
+    ck_assert_int_eq(atLL(&fourth_node, 2), 30);
+    ck_assert_int_eq(atLL(&fourth_node, 3), 40);
 }
 END_TEST
 

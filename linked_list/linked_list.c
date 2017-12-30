@@ -6,7 +6,7 @@
 /**
  *
  */
-LinkedList create(const int data)
+LinkedList createLL(const int data)
 {
     LinkedList list;
     list.head = malloc(sizeof(LinkedListNode));
@@ -19,7 +19,7 @@ LinkedList create(const int data)
 /**
  *
  */
-void insertAtTheEnd(LinkedList* list, const int data)
+void insertAtTheEndLL(LinkedList* list, const int data)
 {
     LinkedListNode* node = list->head;
 
@@ -36,7 +36,7 @@ void insertAtTheEnd(LinkedList* list, const int data)
 /**
  *
  */
-void insertAtTheBeginning(LinkedList* list, const int data)
+void insertAtTheBeginningLL(LinkedList* list, const int data)
 {
     LinkedListNode* newNode = malloc(sizeof(LinkedListNode));
     newNode->next = list->head;
@@ -48,7 +48,7 @@ void insertAtTheBeginning(LinkedList* list, const int data)
 /**
  *
  */
-const int at(LinkedList* list, const unsigned int index)
+const int atLL(LinkedList* list, const unsigned int index)
 {
     LinkedListNode* node = list->head;
 
@@ -67,7 +67,7 @@ const int at(LinkedList* list, const unsigned int index)
 /**
  *
  */
-const unsigned int size(LinkedList* list)
+const unsigned int sizeLL(LinkedList* list)
 {
     unsigned int size = 1;
 
@@ -90,11 +90,11 @@ const unsigned int size(LinkedList* list)
 /**
  *
  */
-int* all(LinkedList* list)
+int* allLL(LinkedList* list)
 {
     LinkedListNode* node = list->head;
 
-    int* datas = (int*) malloc(size(list) * sizeof(int));
+    int* datas = (int*) malloc(sizeLL(list) * sizeof(int));
 
     unsigned int i = 0;
     while(node != NULL)
@@ -111,7 +111,7 @@ int* all(LinkedList* list)
 /**
  *
  */
-void insertAfter(LinkedList* list, const unsigned int index, const int data)
+void insertAfterLL(LinkedList* list, const unsigned int index, const int data)
 {
     LinkedListNode* node = list->head;
     LinkedListNode* currentNext = node->next;
@@ -136,7 +136,7 @@ void insertAfter(LinkedList* list, const unsigned int index, const int data)
 /**
  *
  */
-void dropAt(LinkedList* list, const unsigned int index)
+void dropAtLL(LinkedList* list, const unsigned int index)
 {
     LinkedListNode* node = list->head;
     LinkedListNode* previousNode = list->head;
@@ -179,7 +179,7 @@ void dropAt(LinkedList* list, const unsigned int index)
 /**
  *
  */
-void dropAtTheEnd(LinkedList* list)
+void dropAtTheEndLL(LinkedList* list)
 {
     LinkedListNode* node = list->head;
     LinkedListNode* newLast = node;
