@@ -25,7 +25,7 @@ extern "C" {
  *
  * @return LinkedList
  */
-LinkedList create(const int data);
+LinkedList createLL(const int data);
 
 /**
  * @brief Appends one new node into the given linked list
@@ -33,7 +33,7 @@ LinkedList create(const int data);
  * @param list the linked list to modify
  * @param data integer to set into the new created node
  */
-void insertAtTheEnd(LinkedList* list, const int data);
+void insertAtTheEndLL(LinkedList* list, const int data);
 
 /**
  * @brief Prepends one new node into the given linked list,
@@ -42,7 +42,7 @@ void insertAtTheEnd(LinkedList* list, const int data);
  * @param list the linked list to modify
  * @param data integer to set into the new created node
  */
-void insertAtTheBeginning(LinkedList* node, const int data);
+void insertAtTheBeginningLL(LinkedList* node, const int data);
 
 /**
  * @brief Returns the value of the node at the given position
@@ -52,7 +52,7 @@ void insertAtTheBeginning(LinkedList* node, const int data);
  *
  * @return const int
  */
-const int at(LinkedList* list, const unsigned int index);
+const int atLL(LinkedList* list, const unsigned int index);
 
 /**
  * @brief Returns the length of the linked list
@@ -61,7 +61,7 @@ const int at(LinkedList* list, const unsigned int index);
  *
  * @return const unsigned int
  */
-const unsigned int size(LinkedList* list);
+const unsigned int sizeLL(LinkedList* list);
 
 /**
  * @brief Prints every nodes from the first one to the last one
@@ -70,7 +70,7 @@ const unsigned int size(LinkedList* list);
  *
  * @return int*
  */
-int* all(LinkedList* list);
+int* allLL(LinkedList* list);
 
 /**
  * @brief Inserts one node right after the given index
@@ -79,7 +79,7 @@ int* all(LinkedList* list);
  * @param index the index where the data has to be inserted
  * @param data the data to insert
  */
-void insertAfter(LinkedList* list, const unsigned int index, const int data);
+void insertAfterLL(LinkedList* list, const unsigned int index, const int data);
 
 /**
  * @brief Deletes one node at the given index
@@ -87,14 +87,14 @@ void insertAfter(LinkedList* list, const unsigned int index, const int data);
  * @param list the linked list to modify
  * @param index the index where the data has to be dropd
  */
-void dropAt(LinkedList* list, const unsigned int index);
+void dropAtLL(LinkedList* list, const unsigned int index);
 
 /**
  * @brief Deletes the last node from the list
  *
  * @param list the linked list to modify
  */
-void dropAtTheEnd(LinkedList* list);
+void dropAtTheEndLL(LinkedList* list);
 
 #ifdef __cplusplus
 }
