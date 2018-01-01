@@ -48,7 +48,7 @@ void insertAtTheBeginningLL(LinkedList* list, const int data)
 /**
  *
  */
-const int atLL(LinkedList* list, const unsigned int index)
+int atLL(LinkedList* list, const unsigned int index)
 {
     LinkedListNode* node = list->head;
 
@@ -67,7 +67,7 @@ const int atLL(LinkedList* list, const unsigned int index)
 /**
  *
  */
-const unsigned int sizeLL(LinkedList* list)
+unsigned int sizeLL(LinkedList* list)
 {
     unsigned int size = 1;
 

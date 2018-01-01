@@ -51,15 +51,19 @@ void insertAtTheBeginning(DoubleLinkedList* list, const int data);
  *
  * @param list the double linked list to modify
  * @param index the index into the list of the expected data
+ *
+ * @return int
  */
-const int at(DoubleLinkedList* list, const unsigned int index);
+int at(DoubleLinkedList* list, const unsigned int index);
 
 /**
  * @brief Returns the size of the list
  *
  * @param list the concerned double linked list
+ *
+ * @return unsigned int
  */
-const unsigned int size(DoubleLinkedList* list);
+unsigned int size(DoubleLinkedList* list);
 
 /**
  * @brief Returns an array pointer with all the ordered items
