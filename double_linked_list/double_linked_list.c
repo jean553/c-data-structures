@@ -56,7 +56,7 @@ void insertAtTheBeginning(DoubleLinkedList* list, const int data)
 /**
  *
  */
-const int at(DoubleLinkedList* list, const unsigned int index)
+int at(DoubleLinkedList* list, const unsigned int index)
 {
     const unsigned int length = size(list);
     const unsigned int middle = length / 2;
@@ -96,7 +96,7 @@ const int at(DoubleLinkedList* list, const unsigned int index)
 /**
  *
  */
-const unsigned int size(DoubleLinkedList* list)
+unsigned int size(DoubleLinkedList* list)
 {
     return list->size;
 }

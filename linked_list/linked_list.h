@@ -52,7 +52,7 @@ void insertAtTheBeginningLL(LinkedList* node, const int data);
  *
  * @return const int
  */
-const int atLL(LinkedList* list, const unsigned int index);
+int atLL(LinkedList* list, const unsigned int index);
 
 /**
  * @brief Returns the length of the linked list
@@ -61,7 +61,7 @@ const int atLL(LinkedList* list, const unsigned int index);
  *
  * @return const unsigned int
  */
-const unsigned int sizeLL(LinkedList* list);
+unsigned int sizeLL(LinkedList* list);
 
 /**
  * @brief Prints every nodes from the first one to the last one
