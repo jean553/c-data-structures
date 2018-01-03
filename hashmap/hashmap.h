@@ -16,6 +16,10 @@ typedef struct HashmapNode
     struct HashmapNode* next;
 } HashmapNode;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /**
  * @brief Creates a hashmap of the given size
  *
@@ -23,7 +27,7 @@ typedef struct HashmapNode
  *
  * @return Hashmap
  */
-Hashmap create(const unsigned short size);
+Hashmap createHM(const unsigned short size);
 
 /**
  * @brief Inserts the given value into the hashmap
@@ -32,7 +36,7 @@ Hashmap create(const unsigned short size);
  * @param key the key for the given value
  * @param value the value itself
  */
-void insert(Hashmap* hashmap, const char* key, const int value);
+void insertHM(Hashmap* hashmap, const char* key, const int value);
 
 /**
  * @brief Returns the value for the given key from the hashmap
@@ -42,7 +46,7 @@ void insert(Hashmap* hashmap, const char* key, const int value);
  *
  * @return int*
  */
-int* at(Hashmap* hashmap, const char* key);
+int* atHM(Hashmap* hashmap, const char* key);
 
 /**
  * @brief Returns the hash of the given key for the given hashmap;
@@ -54,4 +58,8 @@ int* at(Hashmap* hashmap, const char* key);
  *
  * @return const unsigned int
  */
-const unsigned int hash(Hashmap* hasmap, const char* key);
+const unsigned int hashHM(Hashmap* hasmap, const char* key);
+
+#ifdef __cplusplus
+}
+#endif
