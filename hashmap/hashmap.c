@@ -16,7 +16,7 @@ Hashmap create(const unsigned short size)
     for (
         unsigned short i = 0;
         i < size;
-        i++
+        i += 1
     )
     {
         hashmap.head[i] = NULL;
@@ -99,7 +99,7 @@ const unsigned int hash(Hashmap* hashmap, const char* key)
     for (
         unsigned short i = 0;
         i < keySize;
-        i++
+        i += 1
     )
     {
         keyStringSum += key[i];
