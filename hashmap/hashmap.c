@@ -7,7 +7,7 @@
 /**
  *
  */
-Hashmap create(const unsigned short size)
+Hashmap createHM(const unsigned short size)
 {
     Hashmap hashmap;
     hashmap.size = size;
@@ -16,7 +16,7 @@ Hashmap create(const unsigned short size)
     for (
         unsigned short i = 0;
         i < size;
-        i++
+        i += 1
     )
     {
         hashmap.head[i] = NULL;
@@ -28,9 +28,9 @@ Hashmap create(const unsigned short size)
 /**
  *
  */
-void insert(Hashmap* hashmap, const char* key, const int value)
+void insertHM(Hashmap* hashmap, const char* key, const int value)
 {
-    HashmapNode* node = hashmap->head[hash(hashmap, key)];
+    HashmapNode* node = hashmap->head[hashHM(hashmap, key)];
 
     if (node == NULL)
     {
@@ -39,12 +39,12 @@ void insert(Hashmap* hashmap, const char* key, const int value)
         node->key = key;
         node->next = NULL;
 
-        hashmap->head[hash(hashmap, key)] = node;
+        hashmap->head[hashHM(hashmap, key)] = node;
 
         return;
     }
 
-    HashmapNode* previous = hashmap->head[hash(hashmap, key)];
+    HashmapNode* previous = hashmap->head[hashHM(hashmap, key)];
 
     while(node != NULL)
     {
@@ -63,9 +63,9 @@ void insert(Hashmap* hashmap, const char* key, const int value)
 /**
  *
  */
-int* at(Hashmap* hashmap, const char* key)
+int* atHM(Hashmap* hashmap, const char* key)
 {
-    HashmapNode* node = hashmap->head[hash(hashmap, key)];
+    HashmapNode* node = hashmap->head[hashHM(hashmap, key)];
 
     while(
         node != NULL &&
@@ -91,7 +91,7 @@ int* at(Hashmap* hashmap, const char* key)
 /**
  *
  */
-const unsigned int hash(Hashmap* hashmap, const char* key)
+const unsigned int hashHM(Hashmap* hashmap, const char* key)
 {
     const unsigned short keySize = strlen(key);
     unsigned int keyStringSum = 0;
@@ -99,7 +99,7 @@ const unsigned int hash(Hashmap* hashmap, const char* key)
     for (
         unsigned short i = 0;
         i < keySize;
-        i++
+        i += 1
     )
     {
         keyStringSum += key[i];
