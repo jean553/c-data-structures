@@ -45,7 +45,9 @@ void insert(Hashmap* hashmap, const char* key, const int value);
 int* at(Hashmap* hashmap, const char* key);
 
 /**
- * @brief Returns the hash of the given key for the given hashmap
+ * @brief Returns the hash of the given key for the given hashmap;
+ * the hash calculation is simply a sum of every key character,
+ * the rest of this sum when divided it by the hashmap size
  *
  * @param hashmap the concerned hashmap
  * @param key the key value to translate into hash
