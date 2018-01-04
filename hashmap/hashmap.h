@@ -56,9 +56,9 @@ int* atHM(Hashmap* hashmap, const char* key);
  * @param hashmap the concerned hashmap
  * @param key the key value to translate into hash
  *
- * @return const unsigned int
+ * @return unsigned int
  */
-const unsigned int hashHM(Hashmap* hasmap, const char* key);
+unsigned int hashHM(Hashmap* hasmap, const char* key);
 
 #ifdef __cplusplus
 }
