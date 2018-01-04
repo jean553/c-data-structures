@@ -91,7 +91,7 @@ int* atHM(Hashmap* hashmap, const char* key)
 /**
  *
  */
-const unsigned int hashHM(Hashmap* hashmap, const char* key)
+unsigned int hashHM(Hashmap* hashmap, const char* key)
 {
     const unsigned short keySize = strlen(key);
     unsigned int keyStringSum = 0;
