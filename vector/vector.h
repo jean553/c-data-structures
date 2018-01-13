@@ -5,18 +5,18 @@
 
 typedef struct Vector
 {
-    unsigned short size;
+    unsigned short capacity;
     int* array;
 } Vector;
 
 /**
  * @brief Initializes the array in heap memory
  *
- * @param size The initial size of the array
+ * @param capacity The initial capacity of the array
  *
  * @return Vector
  */
-Vector create(const unsigned short size);
+Vector create(const unsigned short capacity);
 
 /**
  * @brief Appends data in the given vector
@@ -43,23 +43,23 @@ int at(
 );
 
 /**
- * @brief Returns the current array size
+ * @brief Returns the current array capacity
  *
  * @param vector the given vector
  *
  * @return const unsigned short
  */
-const unsigned short size(Vector* vector);
+const unsigned short capacity(Vector* vector);
 
 /**
- * @brief Resizes the array
+ * @brief Resize the array
  *
- * @param vector the vector to resize
- * @param size the new expected size
+ * @param vector the vector to recapacity
+ * @param capacity the new expected capacity
  */
 void resize(
     Vector* vector,
-    const unsigned short size
+    const unsigned short capacity
 );
 
 /**

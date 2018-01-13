@@ -59,7 +59,7 @@ void insertAtTheEndULL(UnrolledLinkedList* list)
 UnrolledLinkedListNode* getNewUnrolledLinkedListNode(const unsigned short arraySize)
 {
     Vector* vector = malloc(sizeof(Vector));
-    vector->size = arraySize;
+    vector->capacity = arraySize;
     vector->array = (int*) malloc(sizeof(int) * arraySize);
 
     unsigned short i = 0;

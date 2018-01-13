@@ -6,15 +6,15 @@
 /**
  *
  */
-Vector create(const unsigned short size)
+Vector create(const unsigned short capacity)
 {
     Vector vector;
-    vector.size = size;
-    vector.array = (int*) malloc(sizeof(int) * size);
+    vector.capacity = capacity;
+    vector.array = (int*) malloc(sizeof(int) * capacity);
 
     for (
         unsigned short i = 0;
-        i < size;
+        i < capacity;
         i += 1
     )
     {
@@ -32,14 +32,14 @@ void insertAtTheEnd(
     int data
 )
 {
-    vector->size += 1;
+    vector->capacity += 1;
 
     vector->array = realloc(
         vector->array,
-        sizeof(int) * vector->size
+        sizeof(int) * vector->capacity
     );
 
-    vector->array[vector->size - 1] = data;
+    vector->array[vector->capacity - 1] = data;
 }
 
 /**
@@ -56,9 +56,9 @@ int at(
 /**
  *
  */
-const unsigned short size(Vector* vector)
+const unsigned short capacity(Vector* vector)
 {
-    return vector->size;
+    return vector->capacity;
 }
 
 /**
@@ -66,32 +66,32 @@ const unsigned short size(Vector* vector)
  */
 void resize(
     Vector* vector,
-    const unsigned short size
+    const unsigned short capacity
 )
 {
     vector->array = realloc(
         vector->array,
-        sizeof(int) * size
+        sizeof(int) * capacity
     );
 
-    if (size <= vector->size)
+    if (capacity <= vector->capacity)
     {
-        vector->size = size;
+        vector->capacity = capacity;
 
         return;
     }
 
-    unsigned short index = vector->size;
+    unsigned short index = vector->capacity;
     for (
-        index = vector->size;
-        index < size;
+        index = vector->capacity;
+        index < capacity;
         index += 1
     )
     {
         vector->array[index] = 0;
     }
 
-    vector->size = size;
+    vector->capacity = capacity;
 }
 
 /**
@@ -103,15 +103,15 @@ void insertAt(
     const int data
 )
 {
-    vector->size += 1;
+    vector->capacity += 1;
 
     vector->array = realloc(
         vector->array,
-        sizeof(int) * vector->size
+        sizeof(int) * vector->capacity
     );
 
     for(
-        unsigned int i = vector->size - 2; // minus 2 as the last one is empty
+        unsigned int i = vector->capacity - 2; // minus 2 as the last one is empty
         i > index;
         i -= 1
     )
