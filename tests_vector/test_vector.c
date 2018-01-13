@@ -13,7 +13,7 @@ START_TEST(test_create)
     ck_assert_int_eq(at(&first_list, 0), 0);
     ck_assert_int_eq(at(&first_list, 9), 0);
 
-    ck_assert_int_eq(size(&first_list), 10);
+    ck_assert_int_eq(capacity(&first_list), 10);
 }
 END_TEST
 
@@ -30,7 +30,7 @@ START_TEST(test_insertAtTheEnd)
     ck_assert_int_eq(at(&first_list, 10), 5);
     ck_assert_int_eq(at(&first_list, 11), 50);
 
-    ck_assert_int_eq(size(&first_list), 12);
+    ck_assert_int_eq(capacity(&first_list), 12);
 
     Vector second_list = create(0);
     insertAtTheEnd(&second_list, 25);
@@ -39,7 +39,7 @@ START_TEST(test_insertAtTheEnd)
     ck_assert_int_eq(at(&second_list, 0), 25);
     ck_assert_int_eq(at(&second_list, 1), 35);
 
-    ck_assert_int_eq(size(&second_list), 2);
+    ck_assert_int_eq(capacity(&second_list), 2);
 }
 END_TEST
 
@@ -50,7 +50,7 @@ START_TEST(test_size)
 {
     Vector first_list = create(0);
 
-    ck_assert_int_eq(size(&first_list), 0);
+    ck_assert_int_eq(capacity(&first_list), 0);
 }
 END_TEST
 
@@ -63,15 +63,15 @@ START_TEST(test_resize)
 
     Vector first_list = create(5);
     insertAtTheEnd(&first_list, 10);
-    ck_assert_int_eq(size(&first_list), 6);
+    ck_assert_int_eq(capacity(&first_list), 6);
 
     resize(&first_list, 15);
-    ck_assert_int_eq(size(&first_list), 15);
+    ck_assert_int_eq(capacity(&first_list), 15);
     ck_assert_int_eq(at(&first_list, 14), 0);
 
     insertAtTheEnd(&first_list, 20);
     ck_assert_int_eq(at(&first_list, 15), 20);
-    ck_assert_int_eq(size(&first_list), 16);
+    ck_assert_int_eq(capacity(&first_list), 16);
 
     /* decrease the size */
 
@@ -81,16 +81,16 @@ START_TEST(test_resize)
     insertAtTheEnd(&second_list, 30);
     insertAtTheEnd(&second_list, 40);
     insertAtTheEnd(&second_list, 50);
-    ck_assert_int_eq(size(&second_list), 5);
+    ck_assert_int_eq(capacity(&second_list), 5);
 
     resize(&second_list, 2);
-    ck_assert_int_eq(size(&second_list), 2);
+    ck_assert_int_eq(capacity(&second_list), 2);
     ck_assert_int_eq(at(&second_list, 0), 10);
     ck_assert_int_eq(at(&second_list, 1), 20);
 
     insertAtTheEnd(&second_list, 100);
     ck_assert_int_eq(at(&second_list, 2), 100);
-    ck_assert_int_eq(size(&second_list), 3);
+    ck_assert_int_eq(capacity(&second_list), 3);
 }
 END_TEST
 
