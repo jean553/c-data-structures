@@ -3,7 +3,7 @@
 
 #include "vector.h"
 
-#define DEFAULT_CAPACITY 10000
+#define DEFAULT_CAPACITY 4
 
 /**
  *
@@ -35,6 +35,16 @@ void insertAtTheEnd(
     int data
 )
 {
+    if (vector->length == vector->capacity) {
+
+        vector->capacity += DEFAULT_CAPACITY;
+
+        vector->array = (int*) realloc(
+            vector->array,
+            sizeof(int) * vector->capacity
+        );
+    }
+
     vector->array[vector->length] = data;
 
     vector->length += 1;
@@ -60,6 +70,16 @@ void insertAt(
     const int data
 )
 {
+    if (vector->length == vector->capacity) {
+
+        vector->capacity += DEFAULT_CAPACITY;
+
+        vector->array = (int*) realloc(
+            vector->array,
+            sizeof(int) * vector->capacity
+        );
+    }
+
     for (
         unsigned short i = vector->length;
         i > index;
