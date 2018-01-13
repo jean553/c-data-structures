@@ -12,8 +12,11 @@ Vector create(const unsigned short size)
     vector.size = size;
     vector.array = (int*) malloc(sizeof(int) * size);
 
-    unsigned short i = 0;
-    for (i = 0; i < size; i++)
+    for (
+        unsigned short i = 0;
+        i < size;
+        i += 1
+    )
     {
         vector.array[i] = 0;
     }
@@ -24,9 +27,12 @@ Vector create(const unsigned short size)
 /**
  *
  */
-void insertAtTheEnd(Vector* vector, int data)
+void insertAtTheEnd(
+    Vector* vector,
+    int data
+)
 {
-    vector->size++;
+    vector->size += 1;
 
     vector->array = realloc(
         vector->array,
@@ -39,7 +45,10 @@ void insertAtTheEnd(Vector* vector, int data)
 /**
  *
  */
-int at(Vector* vector, const unsigned short index)
+int at(
+    Vector* vector,
+    const unsigned short index
+)
 {
     return vector->array[index];
 }
@@ -55,7 +64,10 @@ const unsigned short size(Vector* vector)
 /**
  *
  */
-void resize(Vector* vector, const unsigned short size)
+void resize(
+    Vector* vector,
+    const unsigned short size
+)
 {
     vector->array = realloc(
         vector->array,
@@ -70,7 +82,11 @@ void resize(Vector* vector, const unsigned short size)
     }
 
     unsigned short index = vector->size;
-    for (index = vector->size; index < size; index++)
+    for (
+        index = vector->size;
+        index < size;
+        index += 1
+    )
     {
         vector->array[index] = 0;
     }
@@ -81,9 +97,13 @@ void resize(Vector* vector, const unsigned short size)
 /**
  *
  */
-void insertAt(Vector* vector, const unsigned short index, const int data)
+void insertAt(
+    Vector* vector,
+    const unsigned short index,
+    const int data
+)
 {
-    vector->size++;
+    vector->size += 1;
 
     vector->array = realloc(
         vector->array,
@@ -93,7 +113,7 @@ void insertAt(Vector* vector, const unsigned short index, const int data)
     for(
         unsigned int i = vector->size - 2; // minus 2 as the last one is empty
         i > index;
-        i--
+        i -= 1
     )
     {
         vector->array[i + 1] = vector->array[i];
@@ -105,7 +125,11 @@ void insertAt(Vector* vector, const unsigned short index, const int data)
 /**
  *
  */
-void updateAt(Vector* vector, const unsigned short index, const int data)
+void updateAt(
+    Vector* vector,
+    const unsigned short index,
+    const int data
+)
 {
     vector->array[index] = data;
 }

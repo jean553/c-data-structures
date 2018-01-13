@@ -24,7 +24,10 @@ Vector create(const unsigned short size);
  * @param vector the given vector to modify
  * @param data the data to append
  */
-void insertAtTheEnd(Vector* vector, int data);
+void insertAtTheEnd(
+    Vector* vector,
+    int data
+);
 
 /**
  * @brief Gets data at the given position
@@ -34,7 +37,10 @@ void insertAtTheEnd(Vector* vector, int data);
  *
  * @return int
  */
-int at(Vector* vector, const unsigned short index);
+int at(
+    Vector* vector,
+    const unsigned short index
+);
 
 /**
  * @brief Returns the current array size
@@ -51,7 +57,10 @@ const unsigned short size(Vector* vector);
  * @param vector the vector to resize
  * @param size the new expected size
  */
-void resize(Vector* vector, const unsigned short size);
+void resize(
+    Vector* vector,
+    const unsigned short size
+);
 
 /**
  * @brief Inserts in the vector at the given index;
@@ -61,7 +70,11 @@ void resize(Vector* vector, const unsigned short size);
  * @param index the new data is inserted after the given index
  * @param data the data to insert into the vector
  */
-void insertAt(Vector* vector, const unsigned short index, const int data);
+void insertAt(
+    Vector* vector,
+    const unsigned short index,
+    const int data
+);
 
 /**
  * @brief Updates the data at the given index;
@@ -71,4 +84,8 @@ void insertAt(Vector* vector, const unsigned short index, const int data);
  * @param index the new data is inserted after the given index
  * @param data the data to insert into the vector
  */
-void updateAt(Vector* vector, const unsigned short index, const int data);
+void updateAt(
+    Vector* vector,
+    const unsigned short index,
+    const int data
+);
