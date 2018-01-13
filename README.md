@@ -551,19 +551,10 @@ every trie node stores a pointer to a linked list node that contains all its chi
 An array is a set of continuous data in memory.
 A vector is a dynamic array (the allocated size can vary).
 
-```
-     +-----------------------+
-     |       |       |       |
-     |   A   |   B   |   C   |
-     |       |       |       |
-     +-----------------------+
-         ^
-         |
-         |
-         |
-         +
-       ARRAY
-```
+The meta-data about the vector is fixed-size and allocated on the stack.
+It contains a pointer to the data itself, the capacity of the vector
+and the current length of the data.
+The data array itself is allocated on the heap and is contiguous.
 
 The implemented methods are:
  * create
@@ -572,14 +563,13 @@ The implemented methods are:
  * updateAt
  * at
  * size
- * resize
 
 Pros:
  * fast read and write operations, because we use a pointer to directly jump at the expected index
 
 Cons:
  * the size is fixed because memory has to be allocated once in order to ensure that all the nodes are grouped together in memory;
- * "dynamic" insertion requires to reallocate the memory
+ * insert when the array is full requires to reallocate memory (the whole array content might be copied)
  * insert into the array requires to copy (shift) many nodes
 
 ### Hashmap
