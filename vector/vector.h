@@ -42,26 +42,6 @@ int at(
 );
 
 /**
- * @brief Returns the current array capacity
- *
- * @param vector the given vector
- *
- * @return const unsigned short
- */
-const unsigned short capacity(Vector* vector);
-
-/**
- * @brief Resize the array
- *
- * @param vector the vector to recapacity
- * @param capacity the new expected capacity
- */
-void resize(
-    Vector* vector,
-    const unsigned short capacity
-);
-
-/**
  * @brief Inserts in the vector at the given index;
  * every nodes after the selected one are shifted to the right of the array
  *
