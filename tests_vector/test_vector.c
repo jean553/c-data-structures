@@ -11,7 +11,6 @@ START_TEST(test_create)
 {
     Vector first_list = create();
     ck_assert_int_eq(at(&first_list, 0), 0);
-    ck_assert_int_eq(at(&first_list, 9), 0);
 }
 END_TEST
 
@@ -41,8 +40,6 @@ END_TEST
  */
 START_TEST(test_insertAt)
 {
-    /* insert only one node */
-
     Vector first_list = create();
     insertAtTheEnd(&first_list, 10);
     insertAtTheEnd(&first_list, 20);
@@ -79,6 +76,30 @@ START_TEST(test_insertAt)
     ck_assert_int_eq(at(&second_list, 3), 60);
     ck_assert_int_eq(at(&second_list, 4), 40);
     ck_assert_int_eq(at(&second_list, 5), 50);
+
+    insertAt(&second_list, 0, 100);
+    insertAt(&second_list, 0, 200);
+    insertAt(&second_list, 0, 300);
+    insertAt(&second_list, 0, 400);
+    insertAt(&second_list, 0, 500);
+    insertAt(&second_list, 0, 600);
+    insertAt(&second_list, 0, 700);
+    insertAt(&second_list, 0, 800);
+
+    ck_assert_int_eq(at(&second_list, 0), 800);
+    ck_assert_int_eq(at(&second_list, 1), 700);
+    ck_assert_int_eq(at(&second_list, 2), 600);
+    ck_assert_int_eq(at(&second_list, 3), 500);
+    ck_assert_int_eq(at(&second_list, 4), 400);
+    ck_assert_int_eq(at(&second_list, 5), 300);
+    ck_assert_int_eq(at(&second_list, 6), 200);
+    ck_assert_int_eq(at(&second_list, 7), 100);
+    ck_assert_int_eq(at(&second_list, 8), 10);
+    ck_assert_int_eq(at(&second_list, 9), 20);
+    ck_assert_int_eq(at(&second_list, 10), 30);
+    ck_assert_int_eq(at(&second_list, 11), 60);
+    ck_assert_int_eq(at(&second_list, 12), 40);
+    ck_assert_int_eq(at(&second_list, 13), 50);
 }
 END_TEST
 
@@ -90,6 +111,17 @@ START_TEST(test_updateAt)
     /* insert only one node */
 
     Vector first_list = create();
+    insertAtTheEnd(&first_list, 100);
+    insertAtTheEnd(&first_list, 200);
+    insertAtTheEnd(&first_list, 300);
+    insertAtTheEnd(&first_list, 400);
+    insertAtTheEnd(&first_list, 500);
+    insertAtTheEnd(&first_list, 600);
+    insertAtTheEnd(&first_list, 700);
+    insertAtTheEnd(&first_list, 800);
+    insertAtTheEnd(&first_list, 900);
+    insertAtTheEnd(&first_list, 1000);
+
     updateAt(&first_list, 0, 0);
     updateAt(&first_list, 1, 10);
     updateAt(&first_list, 2, 20);
@@ -117,6 +149,36 @@ END_TEST
 /**
  *
  */
+START_TEST(test_insertAtTheEnd_realloc)
+{
+    Vector first_list_realloc = create();
+    insertAtTheEnd(&first_list_realloc, 10);
+    insertAtTheEnd(&first_list_realloc, 20);
+    insertAtTheEnd(&first_list_realloc, 30);
+    insertAtTheEnd(&first_list_realloc, 40);
+    insertAtTheEnd(&first_list_realloc, 50);
+    insertAtTheEnd(&first_list_realloc, 60);
+    insertAtTheEnd(&first_list_realloc, 70);
+    insertAtTheEnd(&first_list_realloc, 80);
+    insertAtTheEnd(&first_list_realloc, 90);
+    insertAtTheEnd(&first_list_realloc, 100);
+
+    ck_assert_int_eq(at(&first_list_realloc, 0), 10);
+    ck_assert_int_eq(at(&first_list_realloc, 1), 20);
+    ck_assert_int_eq(at(&first_list_realloc, 2), 30);
+    ck_assert_int_eq(at(&first_list_realloc, 3), 40);
+    ck_assert_int_eq(at(&first_list_realloc, 4), 50);
+    ck_assert_int_eq(at(&first_list_realloc, 5), 60);
+    ck_assert_int_eq(at(&first_list_realloc, 6), 70);
+    ck_assert_int_eq(at(&first_list_realloc, 7), 80);
+    ck_assert_int_eq(at(&first_list_realloc, 8), 90);
+    ck_assert_int_eq(at(&first_list_realloc, 9), 100);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* vector_suite()
 {
     Suite *suite = suite_create("vector");
@@ -126,6 +188,7 @@ Suite* vector_suite()
     tcase_add_test(tcase, test_insertAtTheEnd);
     tcase_add_test(tcase, test_insertAt);
     tcase_add_test(tcase, test_updateAt);
+    tcase_add_test(tcase, test_insertAtTheEnd_realloc);
 
     suite_add_tcase(suite, tcase);
 
