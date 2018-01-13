@@ -6,17 +6,16 @@
 typedef struct Vector
 {
     unsigned short capacity;
+    unsigned short length;
     int* array;
 } Vector;
 
 /**
  * @brief Initializes the array in heap memory
  *
- * @param capacity The initial capacity of the array
- *
  * @return Vector
  */
-Vector create(const unsigned short capacity);
+Vector create();
 
 /**
  * @brief Appends data in the given vector
