@@ -3,18 +3,21 @@
 
 #include "vector.h"
 
+#define DEFAULT_CAPACITY 10000
+
 /**
  *
  */
-Vector create(const unsigned short capacity)
+Vector create()
 {
     Vector vector;
-    vector.capacity = capacity;
-    vector.array = (int*) malloc(sizeof(int) * capacity);
+    vector.length = 0;
+    vector.capacity = DEFAULT_CAPACITY;
+    vector.array = (int*) malloc(sizeof(int) * vector.capacity);
 
     for (
         unsigned short i = 0;
-        i < capacity;
+        i < vector.capacity;
         i += 1
     )
     {
@@ -32,14 +35,9 @@ void insertAtTheEnd(
     int data
 )
 {
-    vector->capacity += 1;
+    vector->array[vector->length] = data;
 
-    vector->array = realloc(
-        vector->array,
-        sizeof(int) * vector->capacity
-    );
-
-    vector->array[vector->capacity - 1] = data;
+    vector->length += 1;
 }
 
 /**
@@ -56,70 +54,24 @@ int at(
 /**
  *
  */
-const unsigned short capacity(Vector* vector)
-{
-    return vector->capacity;
-}
-
-/**
- *
- */
-void resize(
-    Vector* vector,
-    const unsigned short capacity
-)
-{
-    vector->array = realloc(
-        vector->array,
-        sizeof(int) * capacity
-    );
-
-    if (capacity <= vector->capacity)
-    {
-        vector->capacity = capacity;
-
-        return;
-    }
-
-    unsigned short index = vector->capacity;
-    for (
-        index = vector->capacity;
-        index < capacity;
-        index += 1
-    )
-    {
-        vector->array[index] = 0;
-    }
-
-    vector->capacity = capacity;
-}
-
-/**
- *
- */
 void insertAt(
     Vector* vector,
     const unsigned short index,
     const int data
 )
 {
-    vector->capacity += 1;
-
-    vector->array = realloc(
-        vector->array,
-        sizeof(int) * vector->capacity
-    );
-
-    for(
-        unsigned int i = vector->capacity - 2; // minus 2 as the last one is empty
+    for (
+        unsigned short i = vector->length;
         i > index;
         i -= 1
     )
     {
-        vector->array[i + 1] = vector->array[i];
+        vector->array[i] = vector->array[i - 1];
     }
 
     vector->array[index] = data;
+
+    vector->length += 1;
 }
 
 /**
