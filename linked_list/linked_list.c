@@ -184,6 +184,15 @@ void dropAtTheEndLL(LinkedList* list)
     LinkedListNode* node = list->head;
     LinkedListNode* newLast = node;
 
+    if (sizeLL(list) == 1)
+    {
+        free(list->head);
+
+        list->head = NULL;
+
+        return;
+    }
+
     while(node->next != NULL)
     {
         newLast = node;
