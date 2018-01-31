@@ -24,7 +24,7 @@ Attempt to implement common data structures in C.
  - [Others](#others)
     * [Vector](#vector)
     * [Hashmap](#hashmap)
-
+    * [Set](#set)
 
 ## Requirements
 
@@ -614,3 +614,16 @@ Implemented methods:
  * create
  * insert
  * at
+
+### Set
+
+A set is an array of unique keys (a standart set usually only contains keys, instead of some sets implementations, like C++ std::multi_set, that store keys and values). The order of the keys
+usually depends of how the set has been implemented.
+
+In fact, a set can be implemented using:
+ * trees (binary search tree, red-black tree...), in that case, the order depends of how the tree organizes items and move them during self-balancing operations (std::set in C++),
+ * hashmap, in that case, the order is not predictable at all (std::unordered_set in C++),
+
+That's why the "order" is something that does not matter when storing stuffs to a set.
+
+There is no set implementation in this project. Instead, there are trees and hashmap implementations.

@@ -217,6 +217,44 @@ END_TEST
 /**
  *
  */
+START_TEST(test_unique_keys)
+{
+    BinarySearchTreeNode first_tree = create(10);
+    insert(&first_tree, 20);
+    insert(&first_tree, 15);
+
+    /* check first all the nodes of the tree */
+
+    ck_assert_int_eq(first_tree.key, 10);
+    ck_assert_int_eq(first_tree.right->key, 20);
+    ck_assert_int_eq(first_tree.left, NULL);
+
+    ck_assert_int_eq(first_tree.right->left->key, 15);
+    ck_assert_int_eq(first_tree.right->right, NULL);
+
+    ck_assert_int_eq(first_tree.right->left->left, NULL);
+    ck_assert_int_eq(first_tree.right->left->right, NULL);
+
+    /* check again all the nodes of the tree
+       after insertion of key that already exists */
+
+    insert(&first_tree, 15);
+
+    ck_assert_int_eq(first_tree.key, 10);
+    ck_assert_int_eq(first_tree.right->key, 20);
+    ck_assert_int_eq(first_tree.left, NULL);
+
+    ck_assert_int_eq(first_tree.right->left->key, 15);
+    ck_assert_int_eq(first_tree.right->right, NULL);
+
+    ck_assert_int_eq(first_tree.right->left->left, NULL);
+    ck_assert_int_eq(first_tree.right->left->right, NULL);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("binary_search_tree");
@@ -225,6 +263,7 @@ Suite* linked_list_suite()
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_insert);
     tcase_add_test(tcase, test_removeAt);
+    tcase_add_test(tcase, test_unique_keys);
 
     suite_add_tcase(suite, tcase);
 
