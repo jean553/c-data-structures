@@ -209,6 +209,7 @@ void dropAt(
         DoubleLinkedListNode* previousNode = last->previous;
         previousNode->next = NULL;
         list->tail = previousNode;
+        list->size -= 1;
         free(last);
 
         return;
