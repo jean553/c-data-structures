@@ -186,6 +186,7 @@ void dropAt(
 ) {
 
     DoubleLinkedListNode* node = list->head;
+    DoubleLinkedListNode* last = list->tail;
 
     if (
         index == 0 &&
@@ -200,6 +201,15 @@ void dropAt(
         node->next->previous = NULL;
         list->head = node->next;
         free(node);
+        return;
+    }
+
+    if (index == size(list) - 1) {
+        DoubleLinkedListNode* previousNode = last->previous;
+        previousNode->next = NULL;
+        list->tail = previousNode;
+        free(last);
+
         return;
     }
 }
