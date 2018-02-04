@@ -195,4 +195,11 @@ void dropAt(
         list->head = NULL;
         return;
     }
+
+    if (index == 0) {
+        node->next->previous = NULL;
+        list->head = node->next;
+        free(node);
+        return;
+    }
 }
