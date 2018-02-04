@@ -184,11 +184,16 @@ END_TEST
  */
 START_TEST(test_dropAt)
 {
+    /* drop when only one node */
+
     DoubleLinkedList first_list = create(0);
+    ck_assert_int_ne(first_list.head, NULL);
 
     dropAt(&first_list, 0);
 
     ck_assert_int_eq(first_list.head, NULL);
+
+    /* drop when multiple items */
 }
 END_TEST
 
