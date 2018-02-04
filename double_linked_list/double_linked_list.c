@@ -201,6 +201,7 @@ void dropAt(
         node->next->previous = NULL;
         list->head = node->next;
         free(node);
+        list->size -= 1;
         return;
     }
 
