@@ -215,12 +215,34 @@ void dropAt(
         return;
     }
 
-    for (
-        unsigned short i = 0;
-        i != index;
-        i += 1
-    ) {
-        node = node->next;
+    const unsigned int length = size(list);
+    const unsigned int middle = length / 2;
+
+    if (index < middle)
+    {
+        node = list->head;
+
+        for (
+            unsigned int i = 0;
+            i != index;
+            i += 1
+        )
+        {
+            node = node->next;
+        }
+    }
+    else
+    {
+        node = list->tail;
+
+        for (
+            unsigned int i = length - 1;
+            i != index;
+            i -= 1
+        )
+        {
+            node = node->previous;
+        }
     }
 
     node->previous->next = node->next;
