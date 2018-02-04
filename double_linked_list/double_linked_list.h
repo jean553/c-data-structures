@@ -83,6 +83,17 @@ int* all(DoubleLinkedList* list);
  */
 void insertAfter(DoubleLinkedList* list, const unsigned int index, const int data);
 
+/**
+ * @brief Drops one node at the given index
+ *
+ * @param list the double linked list to modify
+ * @param index the position of the new node to remove
+ */
+void dropAt(
+    DoubleLinkedList* list,
+    const unsigned int index
+);
+
 #ifdef __cplusplus
 }
 #endif
