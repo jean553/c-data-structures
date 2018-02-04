@@ -269,6 +269,27 @@ START_TEST(test_dropAt)
     ck_assert_int_eq(at(&fifth_list, 0), 10);
     ck_assert_int_eq(at(&fifth_list, 1), 20);
     ck_assert_int_eq(fifth_list.tail, fifth_list.head->next);
+
+    /* drop at the beginning when three items */
+
+    DoubleLinkedList sixth_list = create(10);
+    insertAtTheEnd(&sixth_list, 20);
+    insertAtTheEnd(&sixth_list, 30);
+
+    ck_assert_int_ne(sixth_list.head, NULL);
+    ck_assert_int_ne(sixth_list.head->next, NULL);
+    ck_assert_int_ne(sixth_list.head->next->previous, NULL);
+    ck_assert_int_ne(sixth_list.head->next->next->previous, NULL);
+    ck_assert_int_eq(at(&sixth_list, 0), 10);
+    ck_assert_int_eq(at(&sixth_list, 1), 20);
+    ck_assert_int_eq(at(&sixth_list, 2), 30);
+
+    dropAt(&sixth_list, 1);
+
+    ck_assert_int_eq(at(&sixth_list, 0), 10);
+    ck_assert_int_eq(at(&sixth_list, 1), 30);
+    ck_assert_int_eq(sixth_list.tail->previous, sixth_list.head);
+    ck_assert_int_eq(sixth_list.head->next, sixth_list.tail);
 }
 END_TEST
 
