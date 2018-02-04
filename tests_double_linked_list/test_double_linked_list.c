@@ -193,7 +193,22 @@ START_TEST(test_dropAt)
 
     ck_assert_int_eq(first_list.head, NULL);
 
-    /* drop when multiple items */
+    /* drop when two items */
+
+    DoubleLinkedList second_list = create(10);
+    insertAtTheEnd(&second_list, 20);
+
+    ck_assert_int_ne(second_list.head, NULL);
+    ck_assert_int_ne(second_list.head->next, NULL);
+    ck_assert_int_ne(second_list.head->next->previous, NULL);
+    ck_assert_int_eq(at(&second_list, 0), 10);
+    ck_assert_int_eq(at(&second_list, 1), 20);
+
+    dropAt(&second_list, 0);
+
+    ck_assert_int_eq(at(&second_list, 0), 20);
+    ck_assert_int_ne(second_list.head, NULL);
+    ck_assert_int_eq(second_list.head->next, NULL);
 }
 END_TEST
 
