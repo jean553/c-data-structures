@@ -215,24 +215,16 @@ void dropAt(
         return;
     }
 
-    DoubleLinkedListNode* previousNode = node;
-    DoubleLinkedListNode* nextNode = node;
-
     for (
         unsigned short i = 0;
         i != index;
         i += 1
     ) {
-        previousNode = node;
         node = node->next;
-
-        if (node->next != NULL) {
-            nextNode = node->next;
-        }
     }
 
-    previousNode->next = node->next;
-    node->next->previous = previousNode;
+    node->previous->next = node->next;
+    node->next->previous = node->previous;
     free(node);
     list->size -= 1;
 }
