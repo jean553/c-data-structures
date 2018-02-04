@@ -176,3 +176,23 @@ void insertAfter(DoubleLinkedList* list, const unsigned int index, const int dat
 
     list->size++;
 }
+
+/**
+ *
+ */
+void dropAt(
+    DoubleLinkedList* list,
+    const unsigned int index
+) {
+
+    DoubleLinkedListNode* node = list->head;
+
+    if (
+        index == 0 &&
+        node->next == NULL
+    ) {
+        free(list->head);
+        list->head = NULL;
+        return;
+    }
+}
