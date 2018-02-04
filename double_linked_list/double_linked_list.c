@@ -194,6 +194,8 @@ void dropAt(
     ) {
         free(list->head);
         list->head = NULL;
+        list->tail = NULL;
+        list->size -= 1;
         return;
     }
 
