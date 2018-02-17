@@ -9,6 +9,14 @@
  */
 START_TEST(test_create)
 {
+    QuadTreeNode node = create();
+
+    ck_assert_int_eq(node.children[0], NULL);
+    ck_assert_int_eq(node.children[1], NULL);
+    ck_assert_int_eq(node.children[2], NULL);
+    ck_assert_int_eq(node.children[3], NULL);
+
+    ck_assert_int_eq(node.data, 0);
 }
 END_TEST
 
