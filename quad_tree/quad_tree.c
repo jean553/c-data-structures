@@ -64,6 +64,8 @@ void freeQT(QuadTreeNode* node)
             freeQT(node->children[index]);
 
             free(node->children[index]);
+
+            node->children[index] = NULL;
         }
     }
 }
