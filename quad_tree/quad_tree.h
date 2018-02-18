@@ -17,3 +17,10 @@ typedef struct QuadTreeNode
  * @return QuadTreeNode
  */
 QuadTreeNode create();
+
+/**
+ * @brief Allocates memory and initializes children of the given node
+ *
+ * @param node the node for which children must be allocated
+ */
+void allocateChildren(QuadTreeNode* node);
