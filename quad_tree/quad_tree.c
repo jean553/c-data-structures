@@ -47,3 +47,23 @@ void allocateChildren(QuadTreeNode* node)
         node->children[index]->data = 0;
     }
 }
+
+/**
+ *
+ */
+void freeQT(QuadTreeNode* node)
+{
+    for (
+        size_t index = 0;
+        index < NODE_CHILDREN_AMOUNT;
+        index += 1
+    ) {
+
+        if (node->children[index] != NULL)
+        {
+            freeQT(node->children[index]);
+
+            free(node->children[index]);
+        }
+    }
+}
