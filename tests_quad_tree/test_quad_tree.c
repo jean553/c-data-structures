@@ -23,12 +23,60 @@ END_TEST
 /**
  *
  */
+START_TEST(test_allocateChildren)
+{
+    QuadTreeNode node = create();
+
+    ck_assert_int_eq(node.children[0], NULL);
+    ck_assert_int_eq(node.children[1], NULL);
+    ck_assert_int_eq(node.children[2], NULL);
+    ck_assert_int_eq(node.children[3], NULL);
+
+    ck_assert_int_eq(node.data, 0);
+
+    allocateChildren(&node);
+
+    ck_assert_int_ne(node.children[0], NULL);
+    ck_assert_int_ne(node.children[1], NULL);
+    ck_assert_int_ne(node.children[2], NULL);
+    ck_assert_int_ne(node.children[3], NULL);
+
+    ck_assert_int_eq(node.children[0]->children[0], NULL);
+    ck_assert_int_eq(node.children[0]->children[1], NULL);
+    ck_assert_int_eq(node.children[0]->children[2], NULL);
+    ck_assert_int_eq(node.children[0]->children[3], NULL);
+    ck_assert_int_eq(node.children[0]->data, 0);
+
+    ck_assert_int_eq(node.children[1]->children[0], NULL);
+    ck_assert_int_eq(node.children[1]->children[1], NULL);
+    ck_assert_int_eq(node.children[1]->children[2], NULL);
+    ck_assert_int_eq(node.children[1]->children[3], NULL);
+    ck_assert_int_eq(node.children[1]->data, 0);
+
+    ck_assert_int_eq(node.children[2]->children[0], NULL);
+    ck_assert_int_eq(node.children[2]->children[1], NULL);
+    ck_assert_int_eq(node.children[2]->children[2], NULL);
+    ck_assert_int_eq(node.children[2]->children[3], NULL);
+    ck_assert_int_eq(node.children[2]->data, 0);
+
+    ck_assert_int_eq(node.children[3]->children[0], NULL);
+    ck_assert_int_eq(node.children[3]->children[1], NULL);
+    ck_assert_int_eq(node.children[3]->children[2], NULL);
+    ck_assert_int_eq(node.children[3]->children[3], NULL);
+    ck_assert_int_eq(node.children[3]->data, 0);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("quad_tree");
     TCase *tcase = tcase_create("case");
 
     tcase_add_test(tcase, test_create);
+    tcase_add_test(tcase, test_allocateChildren);
 
     suite_add_tcase(suite, tcase);
 
