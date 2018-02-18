@@ -70,6 +70,51 @@ END_TEST
 /**
  *
  */
+START_TEST(test_freeQT)
+{
+    /* free when there is only a root node */
+
+    QuadTreeNode firstNode = create();
+
+    ck_assert_int_eq(firstNode.children[0], NULL);
+    ck_assert_int_eq(firstNode.children[1], NULL);
+    ck_assert_int_eq(firstNode.children[2], NULL);
+    ck_assert_int_eq(firstNode.children[3], NULL);
+
+    ck_assert_int_eq(firstNode.data, 0);
+
+    freeQT(&firstNode);
+
+    /* free when there are multiple nested nodes */
+
+    QuadTreeNode secondNode = create();
+
+    ck_assert_int_eq(secondNode.children[0], NULL);
+    ck_assert_int_eq(secondNode.children[1], NULL);
+    ck_assert_int_eq(secondNode.children[2], NULL);
+    ck_assert_int_eq(secondNode.children[3], NULL);
+
+    ck_assert_int_eq(secondNode.data, 0);
+
+    allocateChildren(&secondNode);
+
+    allocateChildren(secondNode.children[0]);
+
+    ck_assert_int_ne(secondNode.children[0]->children[0], NULL);
+    ck_assert_int_eq(secondNode.children[1]->children[0], NULL);
+
+    freeQT(&secondNode);
+
+    ck_assert_int_eq(secondNode.children[0], NULL);
+    ck_assert_int_eq(secondNode.children[1], NULL);
+    ck_assert_int_eq(secondNode.children[2], NULL);
+    ck_assert_int_eq(secondNode.children[3], NULL);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* linked_list_suite()
 {
     Suite *suite = suite_create("quad_tree");
@@ -77,6 +122,7 @@ Suite* linked_list_suite()
 
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_allocateChildren);
+    tcase_add_test(tcase, test_freeQT);
 
     suite_add_tcase(suite, tcase);
 

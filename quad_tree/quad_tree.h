@@ -24,3 +24,10 @@ QuadTreeNode create();
  * @param node the node for which children must be allocated
  */
 void allocateChildren(QuadTreeNode* node);
+
+/**
+ * @brief Free the whole tree allocated memory
+ *
+ * @param node the root node of the tree to remove from memory
+ */
+void freeQT(QuadTreeNode* node);
