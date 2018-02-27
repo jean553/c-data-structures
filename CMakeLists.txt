@@ -5,7 +5,8 @@ set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/CMakeModules/")
 project(c-data-structures)
 enable_testing()
 
-add_compile_options(-std=c99)
+# Position-Independent Code is required by Cargo when linking libraries with Rust projects
+add_compile_options(-std=c99 -fPIC)
 
 add_subdirectory(linked_list)
 add_subdirectory(circular_linked_list)
