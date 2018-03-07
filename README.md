@@ -19,6 +19,7 @@ Attempt to implement common data structures in C.
     * [Binary Search Tree](#binary-search-tree)
     * [Red black tree](#red-black-tree)
     * [B-Tree](#b-tree)
+    * [Quad tree](#quad-tree)
  - [Tries](#tries)
     * [Trie](#trie)
  - [Others](#others)
@@ -506,6 +507,15 @@ Implemented methods:
  * search
 
 *NOTE*: with the current implementation, the B-tree is not automatically balanced.
+
+### Quad Tree
+
+Tree data structure in which one each node has four children.
+
+Implemented methods:
+ * create
+ * allocateChildren (allocates the children nodes into memory for one given node)
+ * free (free the whole tree from the memory)
 
 ## Tries
 
