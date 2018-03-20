@@ -174,6 +174,7 @@ The implemented methods are:
  * at
  * size
  * all
+ * invert
 
 Pros:
  * the size is not fixed
