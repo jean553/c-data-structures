@@ -252,3 +252,28 @@ void dropAt(
     free(node);
     list->size -= 1;
 }
+
+/**
+ *
+ */
+void invert(DoubleLinkedList* list) {
+
+    DoubleLinkedListNode* currentNode = list->head;
+
+    for (
+        size_t i = 0;
+        i < list->size;
+        i += 1
+    ) {
+
+        DoubleLinkedList* currentNext = currentNode->next;
+        currentNode->next = currentNode->previous;
+        currentNode->previous = currentNext;
+
+        currentNode = currentNext;
+    }
+
+    DoubleLinkedListNode* currentHead = list->head;
+    list->head = list->tail;
+    list->tail = currentHead;
+}
