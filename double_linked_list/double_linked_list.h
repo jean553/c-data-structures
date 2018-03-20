@@ -94,6 +94,13 @@ void dropAt(
     const unsigned int index
 );
 
+/**
+ * @brief Inverts the given double linked list
+ *
+ * @param list the double linked list to invert
+ */
+void invert(DoubleLinkedList* list);
+
 #ifdef __cplusplus
 }
 #endif
