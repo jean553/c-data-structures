@@ -22,6 +22,7 @@ Attempt to implement common data structures in C.
     * [Quad tree](#quad-tree)
  - [Tries](#tries)
     * [Trie](#trie)
+    * [Radix trie](#radix-trie)
  - [Others](#others)
     * [Vector](#vector)
     * [Hashmap](#hashmap)
@@ -554,6 +555,13 @@ During searching, a whole string is given and used to browse the trie.
 In order to store the trie into memory and being able to browse it,
 every trie node stores a pointer to a linked list node that contains all its children
 (every linked list node contains a pointer to a child).
+
+### Radix Trie
+
+Specific trie into which one multiple key characters can be accumulated as a same node key.
+
+A Radix Trie implementation using Rust can be found into a dedicated project:
+[rust-radix-trie](https://github.com/jean553/rust-radix-trie)
 
 ## Others
 
