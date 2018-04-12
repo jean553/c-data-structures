@@ -12,7 +12,7 @@ typedef struct DoubleLinkedListNode
 
 typedef struct DoubleLinkedList
 {
-    unsigned int size;
+    size_t size;
     struct DoubleLinkedListNode* head;
     struct DoubleLinkedListNode* tail;
 } DoubleLinkedList;
@@ -36,7 +36,10 @@ DoubleLinkedList create(const int data);
  * @param list the double linked list to modify
  * @param data the data to insert into the list
  */
-void insertAtTheEnd(DoubleLinkedList* list, const int data);
+void insertAtTheEnd(
+    DoubleLinkedList* const list,
+    const int data
+);
 
 /**
  * @brief Inserts one node at the beginning of the double linked list
@@ -44,7 +47,10 @@ void insertAtTheEnd(DoubleLinkedList* list, const int data);
  * @param list the double linked list to modify
  * @param data the data to insert into the list
  */
-void insertAtTheBeginning(DoubleLinkedList* list, const int data);
+void insertAtTheBeginning(
+    DoubleLinkedList* const list,
+    const int data
+);
 
 /**
  * @brief Returns the element at the given index
@@ -54,16 +60,19 @@ void insertAtTheBeginning(DoubleLinkedList* list, const int data);
  *
  * @return int
  */
-int at(DoubleLinkedList* list, const unsigned int index);
+int at(
+    const DoubleLinkedList* const list,
+    const size_t index
+);
 
 /**
  * @brief Returns the size of the list
  *
  * @param list the concerned double linked list
  *
- * @return unsigned int
+ * @return size_t
  */
-unsigned int size(DoubleLinkedList* list);
+size_t size(const DoubleLinkedList* const list);
 
 /**
  * @brief Returns an array pointer with all the ordered items
@@ -72,7 +81,7 @@ unsigned int size(DoubleLinkedList* list);
  *
  * @return int*
  */
-int* all(DoubleLinkedList* list);
+int* all(const DoubleLinkedList* const list);
 
 /**
  * @brief Inserts one node right after the given position
@@ -81,7 +90,11 @@ int* all(DoubleLinkedList* list);
  * @param index the position of the new node to add
  * @param data the data to insert into the list
  */
-void insertAfter(DoubleLinkedList* list, const unsigned int index, const int data);
+void insertAfter(
+    DoubleLinkedList* const list,
+    const size_t index,
+    const int data
+);
 
 /**
  * @brief Drops one node at the given index
@@ -90,8 +103,8 @@ void insertAfter(DoubleLinkedList* list, const unsigned int index, const int dat
  * @param index the position of the new node to remove
  */
 void dropAt(
-    DoubleLinkedList* list,
-    const unsigned int index
+    DoubleLinkedList* const list,
+    const size_t index
 );
 
 /**
@@ -99,7 +112,7 @@ void dropAt(
  *
  * @param list the double linked list to invert
  */
-void invert(DoubleLinkedList* list);
+void invert(DoubleLinkedList* const list);
 
 #ifdef __cplusplus
 }
