@@ -25,7 +25,7 @@ DoubleLinkedList create(const int data)
  *
  */
 void insertAtTheEnd(
-    DoubleLinkedList* list,
+    DoubleLinkedList* const list,
     const int data
 )
 {
@@ -36,7 +36,7 @@ void insertAtTheEnd(
     node->next->next = NULL;
     node->next->previous = node;
 
-    list->size++;
+    list->size += 1;
     list->tail = node->next;
 }
 
@@ -44,7 +44,7 @@ void insertAtTheEnd(
  *
  */
 void insertAtTheBeginning(
-    DoubleLinkedList* list,
+    DoubleLinkedList* const list,
     const int data
 )
 {
@@ -55,7 +55,7 @@ void insertAtTheBeginning(
     node->previous->next = node;
     node->previous->previous = NULL;
 
-    list->size++;
+    list->size += 1;
     list->head = node->previous;
 }
 
@@ -63,8 +63,8 @@ void insertAtTheBeginning(
  *
  */
 int at(
-    DoubleLinkedList* list,
-    const unsigned int index
+    const DoubleLinkedList* const list,
+    const size_t index
 )
 {
     const unsigned int length = size(list);
@@ -79,7 +79,7 @@ int at(
         for (
             unsigned int i = 0;
             i != index;
-            i++
+            i += 1
         )
         {
             node = node->next;
@@ -92,7 +92,7 @@ int at(
         for (
             unsigned int i = length - 1;
             i != index;
-            i--
+            i -= 1
         )
         {
             node = node->previous;
@@ -105,7 +105,7 @@ int at(
 /**
  *
  */
-unsigned int size(DoubleLinkedList* list)
+size_t size(const DoubleLinkedList* const list)
 {
     return list->size;
 }
@@ -113,19 +113,19 @@ unsigned int size(DoubleLinkedList* list)
 /**
  *
  */
-int* all(DoubleLinkedList* list)
+int* all(const DoubleLinkedList* const list)
 {
     DoubleLinkedListNode* node = list->head;
 
     int* datas = (int*) malloc(list->size * sizeof(int));
 
-    unsigned int i = 0;
+    size_t i = 0;
     while(node != NULL)
     {
         datas[i] = node->data;
 
         node = node->next;
-        i++;
+        i += 1;
     }
 
     return datas;
@@ -135,8 +135,8 @@ int* all(DoubleLinkedList* list)
  *
  */
 void insertAfter(
-    DoubleLinkedList* list,
-    const unsigned int index,
+    DoubleLinkedList* const list,
+    const size_t index,
     const int data
 )
 {
@@ -153,9 +153,9 @@ void insertAfter(
         currentNext = node->next;
 
         for (
-            unsigned int i = 0;
+            size_t i = 0;
             i < index;
-            i++
+            i += 1
         )
         {
             node = node->next;
@@ -169,9 +169,9 @@ void insertAfter(
         currentNext = node->next;
 
         for (
-            unsigned int i = length - 1;
+            size_t i = length - 1;
             i > index;
-            i--
+            i -= 1
         )
         {
             node = node->previous;
@@ -187,15 +187,15 @@ void insertAfter(
 
     currentNext->previous = node->next;
 
-    list->size++;
+    list->size += 1;
 }
 
 /**
  *
  */
 void dropAt(
-    DoubleLinkedList* list,
-    const unsigned int index
+    DoubleLinkedList* const list,
+    const size_t index
 ) {
 
     DoubleLinkedListNode* node = list->head;
@@ -238,7 +238,7 @@ void dropAt(
         node = list->head;
 
         for (
-            unsigned int i = 0;
+            size_t i = 0;
             i != index;
             i += 1
         )
@@ -251,7 +251,7 @@ void dropAt(
         node = list->tail;
 
         for (
-            unsigned int i = length - 1;
+            size_t i = length - 1;
             i != index;
             i -= 1
         )
@@ -269,7 +269,7 @@ void dropAt(
 /**
  *
  */
-void invert(DoubleLinkedList* list) {
+void invert(DoubleLinkedList* const list) {
 
     DoubleLinkedListNode* currentNode = list->head;
 
