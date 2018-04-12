@@ -33,7 +33,10 @@ LinkedList createLL(const int data);
  * @param list the linked list to modify
  * @param data integer to set into the new created node
  */
-void insertAtTheEndLL(LinkedList* list, const int data);
+void insertAtTheEndLL(
+    const LinkedList* const list,
+    const int data
+);
 
 /**
  * @brief Prepends one new node into the given linked list,
@@ -42,7 +45,10 @@ void insertAtTheEndLL(LinkedList* list, const int data);
  * @param list the linked list to modify
  * @param data integer to set into the new created node
  */
-void insertAtTheBeginningLL(LinkedList* node, const int data);
+void insertAtTheBeginningLL(
+    LinkedList* const node,
+    const int data
+);
 
 /**
  * @brief Returns the value of the node at the given position
@@ -52,16 +58,19 @@ void insertAtTheBeginningLL(LinkedList* node, const int data);
  *
  * @return const int
  */
-int atLL(LinkedList* list, const unsigned int index);
+int atLL(
+    const LinkedList* const list,
+    const unsigned int index
+);
 
 /**
  * @brief Returns the length of the linked list
  *
  * @param list the linked list to analyze
  *
- * @return const unsigned int
+ * @return size_t
  */
-unsigned int sizeLL(LinkedList* list);
+size_t sizeLL(const LinkedList* const list);
 
 /**
  * @brief Prints every nodes from the first one to the last one
@@ -70,7 +79,7 @@ unsigned int sizeLL(LinkedList* list);
  *
  * @return int*
  */
-int* allLL(LinkedList* list);
+int* allLL(const LinkedList* const list);
 
 /**
  * @brief Inserts one node right after the given index
@@ -79,7 +88,11 @@ int* allLL(LinkedList* list);
  * @param index the index where the data has to be inserted
  * @param data the data to insert
  */
-void insertAfterLL(LinkedList* list, const unsigned int index, const int data);
+void insertAfterLL(
+    const LinkedList* const list,
+    const size_t index,
+    const int data
+);
 
 /**
  * @brief Deletes one node at the given index
@@ -87,14 +100,17 @@ void insertAfterLL(LinkedList* list, const unsigned int index, const int data);
  * @param list the linked list to modify
  * @param index the index where the data has to be dropd
  */
-void dropAtLL(LinkedList* list, const unsigned int index);
+void dropAtLL(
+    LinkedList* const list,
+    const size_t index
+);
 
 /**
  * @brief Deletes the last node from the list
  *
  * @param list the linked list to modify
  */
-void dropAtTheEndLL(LinkedList* list);
+void dropAtTheEndLL(LinkedList* const list);
 
 #ifdef __cplusplus
 }

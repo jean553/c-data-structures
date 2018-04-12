@@ -19,7 +19,10 @@ LinkedList createLL(const int data)
 /**
  *
  */
-void insertAtTheEndLL(LinkedList* list, const int data)
+void insertAtTheEndLL(
+    const LinkedList* const list,
+    const int data
+)
 {
     LinkedListNode* node = list->head;
 
@@ -36,7 +39,10 @@ void insertAtTheEndLL(LinkedList* list, const int data)
 /**
  *
  */
-void insertAtTheBeginningLL(LinkedList* list, const int data)
+void insertAtTheBeginningLL(
+    LinkedList* const list,
+    const int data
+)
 {
     LinkedListNode* newNode = malloc(sizeof(LinkedListNode));
     newNode->next = list->head;
@@ -48,14 +54,17 @@ void insertAtTheBeginningLL(LinkedList* list, const int data)
 /**
  *
  */
-int atLL(LinkedList* list, const unsigned int index)
+int atLL(
+    const LinkedList* const list,
+    const unsigned int index
+)
 {
     LinkedListNode* node = list->head;
 
     for (
         unsigned int i = 0;
         i != index;
-        i++
+        i += 1
     )
     {
         node = node->next;
@@ -67,9 +76,9 @@ int atLL(LinkedList* list, const unsigned int index)
 /**
  *
  */
-unsigned int sizeLL(LinkedList* list)
+size_t sizeLL(const LinkedList* const list)
 {
-    unsigned int size = 1;
+    size_t size = 1;
 
     if (list->head == NULL)
     {
@@ -81,7 +90,7 @@ unsigned int sizeLL(LinkedList* list)
     while(node->next != NULL)
     {
         node = node->next;
-        size++;
+        size += 1;
     }
 
     return size;
@@ -90,19 +99,19 @@ unsigned int sizeLL(LinkedList* list)
 /**
  *
  */
-int* allLL(LinkedList* list)
+int* allLL(const LinkedList* const list)
 {
     LinkedListNode* node = list->head;
 
     int* datas = (int*) malloc(sizeLL(list) * sizeof(int));
 
-    unsigned int i = 0;
+    size_t i = 0;
     while(node != NULL)
     {
         datas[i] = node->data;
 
         node = node->next;
-        i++;
+        i += 1;
     }
 
     return datas;
@@ -111,15 +120,19 @@ int* allLL(LinkedList* list)
 /**
  *
  */
-void insertAfterLL(LinkedList* list, const unsigned int index, const int data)
+void insertAfterLL(
+    const LinkedList* const list,
+    const size_t index,
+    const int data
+)
 {
     LinkedListNode* node = list->head;
     LinkedListNode* currentNext = node->next;
 
     for (
-        unsigned int i = 0;
+        size_t i = 0;
         i < index;
-        i++
+        i += 1
     )
     {
         node = node->next;
@@ -136,7 +149,10 @@ void insertAfterLL(LinkedList* list, const unsigned int index, const int data)
 /**
  *
  */
-void dropAtLL(LinkedList* list, const unsigned int index)
+void dropAtLL(
+    LinkedList* const list,
+    const size_t index
+)
 {
     LinkedListNode* node = list->head;
     LinkedListNode* previousNode = list->head;
@@ -153,7 +169,11 @@ void dropAtLL(LinkedList* list, const unsigned int index)
         return;
     }
 
-    for(unsigned int i = 0; i != index; i++)
+    for(
+        size_t i = 0;
+        i != index;
+        i += 1
+    )
     {
         previousNode = node;
         node = node->next;
@@ -179,7 +199,7 @@ void dropAtLL(LinkedList* list, const unsigned int index)
 /**
  *
  */
-void dropAtTheEndLL(LinkedList* list)
+void dropAtTheEndLL(LinkedList* const list)
 {
     LinkedListNode* node = list->head;
     LinkedListNode* newLast = node;
