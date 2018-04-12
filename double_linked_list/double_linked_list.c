@@ -24,7 +24,10 @@ DoubleLinkedList create(const int data)
 /**
  *
  */
-void insertAtTheEnd(DoubleLinkedList* list, const int data)
+void insertAtTheEnd(
+    DoubleLinkedList* list,
+    const int data
+)
 {
     DoubleLinkedListNode* node = list->tail;
 
@@ -40,7 +43,10 @@ void insertAtTheEnd(DoubleLinkedList* list, const int data)
 /**
  *
  */
-void insertAtTheBeginning(DoubleLinkedList* list, const int data)
+void insertAtTheBeginning(
+    DoubleLinkedList* list,
+    const int data
+)
 {
     DoubleLinkedListNode* node = list->head;
 
@@ -56,7 +62,10 @@ void insertAtTheBeginning(DoubleLinkedList* list, const int data)
 /**
  *
  */
-int at(DoubleLinkedList* list, const unsigned int index)
+int at(
+    DoubleLinkedList* list,
+    const unsigned int index
+)
 {
     const unsigned int length = size(list);
     const unsigned int middle = length / 2;
@@ -125,7 +134,11 @@ int* all(DoubleLinkedList* list)
 /**
  *
  */
-void insertAfter(DoubleLinkedList* list, const unsigned int index, const int data)
+void insertAfter(
+    DoubleLinkedList* list,
+    const unsigned int index,
+    const int data
+)
 {
     const unsigned int length = size(list);
     const unsigned int middle = length / 2;

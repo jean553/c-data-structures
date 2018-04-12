@@ -12,7 +12,7 @@ typedef struct DoubleLinkedListNode
 
 typedef struct DoubleLinkedList
 {
-    unsigned int size;
+    size_t size;
     struct DoubleLinkedListNode* head;
     struct DoubleLinkedListNode* tail;
 } DoubleLinkedList;
@@ -36,7 +36,10 @@ DoubleLinkedList create(const int data);
  * @param list the double linked list to modify
  * @param data the data to insert into the list
  */
-void insertAtTheEnd(DoubleLinkedList* list, const int data);
+void insertAtTheEnd(
+    DoubleLinkedList* list,
+    const int data
+);
 
 /**
  * @brief Inserts one node at the beginning of the double linked list
@@ -44,7 +47,10 @@ void insertAtTheEnd(DoubleLinkedList* list, const int data);
  * @param list the double linked list to modify
  * @param data the data to insert into the list
  */
-void insertAtTheBeginning(DoubleLinkedList* list, const int data);
+void insertAtTheBeginning(
+    DoubleLinkedList* list,
+    const int data
+);
 
 /**
  * @brief Returns the element at the given index
@@ -54,7 +60,10 @@ void insertAtTheBeginning(DoubleLinkedList* list, const int data);
  *
  * @return int
  */
-int at(DoubleLinkedList* list, const unsigned int index);
+int at(
+    DoubleLinkedList* list,
+    const unsigned int index
+);
 
 /**
  * @brief Returns the size of the list
@@ -81,7 +90,11 @@ int* all(DoubleLinkedList* list);
  * @param index the position of the new node to add
  * @param data the data to insert into the list
  */
-void insertAfter(DoubleLinkedList* list, const unsigned int index, const int data);
+void insertAfter(
+    DoubleLinkedList* list,
+    const unsigned int index,
+    const int data
+);
 
 /**
  * @brief Drops one node at the given index
