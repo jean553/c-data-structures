@@ -16,7 +16,7 @@ Vector create()
     vector.array = (int*) malloc(sizeof(int) * vector.capacity);
 
     for (
-        unsigned short i = 0;
+        size_t i = 0;
         i < vector.capacity;
         i += 1
     )
@@ -31,7 +31,7 @@ Vector create()
  *
  */
 void insertAtTheEnd(
-    Vector* vector,
+    Vector* const vector,
     int data
 )
 {
@@ -54,8 +54,8 @@ void insertAtTheEnd(
  *
  */
 int at(
-    Vector* vector,
-    const unsigned short index
+    const Vector* const vector,
+    const size_t index
 )
 {
     return vector->array[index];
@@ -65,8 +65,8 @@ int at(
  *
  */
 void insertAt(
-    Vector* vector,
-    const unsigned short index,
+    Vector* const vector,
+    const size_t index,
     const int data
 )
 {
@@ -81,7 +81,7 @@ void insertAt(
     }
 
     for (
-        unsigned short i = vector->length;
+        size_t i = vector->length;
         i > index;
         i -= 1
     )
@@ -98,8 +98,8 @@ void insertAt(
  *
  */
 void updateAt(
-    Vector* vector,
-    const unsigned short index,
+    Vector* const vector,
+    const size_t index,
     const int data
 )
 {

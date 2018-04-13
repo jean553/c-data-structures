@@ -5,8 +5,8 @@
 
 typedef struct Vector
 {
-    unsigned short capacity;
-    unsigned short length;
+    size_t capacity;
+    size_t length;
     int* array;
 } Vector;
 
@@ -24,7 +24,7 @@ Vector create();
  * @param data the data to append
  */
 void insertAtTheEnd(
-    Vector* vector,
+    Vector* const vector,
     int data
 );
 
@@ -37,8 +37,8 @@ void insertAtTheEnd(
  * @return int
  */
 int at(
-    Vector* vector,
-    const unsigned short index
+    const Vector* const vector,
+    const size_t index
 );
 
 /**
@@ -50,8 +50,8 @@ int at(
  * @param data the data to insert into the vector
  */
 void insertAt(
-    Vector* vector,
-    const unsigned short index,
+    Vector* const vector,
+    const size_t index,
     const int data
 );
 
@@ -64,7 +64,7 @@ void insertAt(
  * @param data the data to insert into the vector
  */
 void updateAt(
-    Vector* vector,
-    const unsigned short index,
+    Vector* const vector,
+    const size_t index,
     const int data
 );
