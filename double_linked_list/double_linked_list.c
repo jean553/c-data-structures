@@ -279,7 +279,7 @@ void invert(DoubleLinkedList* const list) {
         i += 1
     ) {
 
-        DoubleLinkedList* currentNext = currentNode->next;
+        DoubleLinkedListNode* currentNext = currentNode->next;
         currentNode->next = currentNode->previous;
         currentNode->previous = currentNext;
 
