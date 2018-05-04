@@ -15,8 +15,8 @@ typedef struct RedBlackTreeNode {
 
 typedef struct NodeWithParent
 {
-    struct RedBlackTreeNode* node;
-    struct RedBlackTreeNode* parent;
+    RedBlackTreeNode* node;
+    RedBlackTreeNode* parent;
 } NodeWithParent;
 
 /**
