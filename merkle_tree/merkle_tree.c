@@ -8,7 +8,7 @@ MerkleTree createMerkleTree() {
     MerkleTreeNode root;
     root.left = NULL;
     root.right = NULL;
-    root.hash = "";
+    root.hash = NULL;
 
     MerkleTree tree;
     tree.leavesAmount = 0;
