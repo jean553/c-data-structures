@@ -48,13 +48,13 @@ START_TEST(test_at)
     /* try to get a value that does not exist */
 
     Hashmap third_hashmap = createHM(10);
-    ck_assert_int_eq(atHM(&third_hashmap, "val1"), NULL);
+    ck_assert_ptr_eq(atHM(&third_hashmap, "val1"), NULL);
 
     /* try to get a value that has the same hash but different key */
 
     Hashmap fourth_hashmap = createHM(10);
     insertHM(&fourth_hashmap, "val1", 20);
-    ck_assert_int_eq(atHM(&fourth_hashmap, "wal0"), NULL);
+    ck_assert_ptr_eq(atHM(&fourth_hashmap, "wal0"), NULL);
 }
 END_TEST
 

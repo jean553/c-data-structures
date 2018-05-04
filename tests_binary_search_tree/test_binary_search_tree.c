@@ -38,11 +38,11 @@ START_TEST(test_insert)
     ck_assert_int_eq(search(&tree, 27)->key, 27);
     ck_assert_int_eq(search(&tree, 15)->key, 15);
 
-    ck_assert_int_eq(search(&tree, 9), 0);
-    ck_assert_int_eq(search(&tree, 14), 0);
-    ck_assert_int_eq(search(&tree, 16), 0);
-    ck_assert_int_eq(search(&tree, 23), 0);
-    ck_assert_int_eq(search(&tree, 26), 0);
+    ck_assert_ptr_eq(search(&tree, 9), NULL);
+    ck_assert_ptr_eq(search(&tree, 14), NULL);
+    ck_assert_ptr_eq(search(&tree, 16), NULL);
+    ck_assert_ptr_eq(search(&tree, 23), NULL);
+    ck_assert_ptr_eq(search(&tree, 26), NULL);
 }
 END_TEST
 
@@ -61,7 +61,7 @@ START_TEST(test_removeAt)
 
     removeAt(&first_tree, 15);
 
-    ck_assert_int_eq(search(&first_tree, 15), NULL);
+    ck_assert_ptr_eq(search(&first_tree, 15), NULL);
 
     /* delete node with one child */
 
@@ -76,7 +76,7 @@ START_TEST(test_removeAt)
     removeAt(&second_tree, 20);
 
     ck_assert_int_eq(search(&second_tree, 10)->key, 10);
-    ck_assert_int_eq(search(&second_tree, 20), NULL);
+    ck_assert_ptr_eq(search(&second_tree, 20), NULL);
     ck_assert_int_eq(search(&second_tree, 15)->key, 15);
 
     /* others tests to delete node with one child */
@@ -102,7 +102,7 @@ START_TEST(test_removeAt)
     ck_assert_int_eq(search(&third_tree, 19)->key, 19);
     ck_assert_int_eq(search(&third_tree, 18)->key, 18);
     ck_assert_int_eq(search(&third_tree, 17)->key, 17);
-    ck_assert_int_eq(search(&third_tree, 20), NULL);
+    ck_assert_ptr_eq(search(&third_tree, 20), NULL);
 
     removeAt(&third_tree, 19);
 
@@ -110,14 +110,14 @@ START_TEST(test_removeAt)
     ck_assert_int_eq(search(&third_tree, 15)->key, 15);
     ck_assert_int_eq(search(&third_tree, 18)->key, 18);
     ck_assert_int_eq(search(&third_tree, 17)->key, 17);
-    ck_assert_int_eq(search(&third_tree, 19), NULL);
+    ck_assert_ptr_eq(search(&third_tree, 19), NULL);
 
     removeAt(&third_tree, 18);
 
     ck_assert_int_eq(search(&third_tree, 10)->key, 10);
     ck_assert_int_eq(search(&third_tree, 15)->key, 15);
     ck_assert_int_eq(search(&third_tree, 17)->key, 17);
-    ck_assert_int_eq(search(&third_tree, 18), NULL);
+    ck_assert_ptr_eq(search(&third_tree, 18), NULL);
 
     /* delete a node with two children when the minimum key
        of the right sub-tree is a leaf node */
@@ -142,9 +142,9 @@ START_TEST(test_removeAt)
     /* check position of nodes that have been moved */
     ck_assert_int_eq(fourth_tree.right->key, 23); /* replaced by right child left child */
     ck_assert_int_eq(fourth_tree.right->right->key, 25);
-    ck_assert_int_eq(fourth_tree.right->right->left, NULL);
+    ck_assert_ptr_eq(fourth_tree.right->right->left, NULL);
 
-    ck_assert_int_eq(search(&fourth_tree, 20), NULL);
+    ck_assert_ptr_eq(search(&fourth_tree, 20), NULL);
     ck_assert_int_eq(search(&fourth_tree, 10)->key, 10);
     ck_assert_int_eq(search(&fourth_tree, 5)->key, 5);
     ck_assert_int_eq(search(&fourth_tree, 15)->key, 15);
@@ -176,9 +176,9 @@ START_TEST(test_removeAt)
     /* check positions of nodes that have been moved */
     ck_assert_int_eq(fifth_tree.right->key, 25); /* replaced by right child */
     ck_assert_int_eq(fifth_tree.right->right->key, 27);
-    ck_assert_int_eq(fifth_tree.right->right->right, NULL);
+    ck_assert_ptr_eq(fifth_tree.right->right->right, NULL);
 
-    ck_assert_int_eq(search(&fifth_tree, 20), NULL);
+    ck_assert_ptr_eq(search(&fifth_tree, 20), NULL);
     ck_assert_int_eq(search(&fifth_tree, 10)->key, 10);
     ck_assert_int_eq(search(&fifth_tree, 5)->key, 5);
     ck_assert_int_eq(search(&fifth_tree, 15)->key, 15);
@@ -203,10 +203,10 @@ START_TEST(test_removeAt)
     removeAt(&sixth_tree, 25);
     removeAt(&sixth_tree, 13);
 
-    ck_assert_int_eq(search(&sixth_tree, 20), NULL);
-    ck_assert_int_eq(search(&sixth_tree, 17), NULL);
-    ck_assert_int_eq(search(&sixth_tree, 25), NULL);
-    ck_assert_int_eq(search(&sixth_tree, 13), NULL);
+    ck_assert_ptr_eq(search(&sixth_tree, 20), NULL);
+    ck_assert_ptr_eq(search(&sixth_tree, 17), NULL);
+    ck_assert_ptr_eq(search(&sixth_tree, 25), NULL);
+    ck_assert_ptr_eq(search(&sixth_tree, 13), NULL);
     ck_assert_int_eq(search(&sixth_tree, 10)->key, 10);
     ck_assert_int_eq(search(&sixth_tree, 5)->key, 5);
     ck_assert_int_eq(search(&sixth_tree, 15)->key, 15);
@@ -227,13 +227,13 @@ START_TEST(test_unique_keys)
 
     ck_assert_int_eq(first_tree.key, 10);
     ck_assert_int_eq(first_tree.right->key, 20);
-    ck_assert_int_eq(first_tree.left, NULL);
+    ck_assert_ptr_eq(first_tree.left, NULL);
 
     ck_assert_int_eq(first_tree.right->left->key, 15);
-    ck_assert_int_eq(first_tree.right->right, NULL);
+    ck_assert_ptr_eq(first_tree.right->right, NULL);
 
-    ck_assert_int_eq(first_tree.right->left->left, NULL);
-    ck_assert_int_eq(first_tree.right->left->right, NULL);
+    ck_assert_ptr_eq(first_tree.right->left->left, NULL);
+    ck_assert_ptr_eq(first_tree.right->left->right, NULL);
 
     /* check again all the nodes of the tree
        after insertion of key that already exists */
@@ -242,13 +242,13 @@ START_TEST(test_unique_keys)
 
     ck_assert_int_eq(first_tree.key, 10);
     ck_assert_int_eq(first_tree.right->key, 20);
-    ck_assert_int_eq(first_tree.left, NULL);
+    ck_assert_ptr_eq(first_tree.left, NULL);
 
     ck_assert_int_eq(first_tree.right->left->key, 15);
-    ck_assert_int_eq(first_tree.right->right, NULL);
+    ck_assert_ptr_eq(first_tree.right->right, NULL);
 
-    ck_assert_int_eq(first_tree.right->left->left, NULL);
-    ck_assert_int_eq(first_tree.right->left->right, NULL);
+    ck_assert_ptr_eq(first_tree.right->left->left, NULL);
+    ck_assert_ptr_eq(first_tree.right->left->right, NULL);
 }
 END_TEST
 
