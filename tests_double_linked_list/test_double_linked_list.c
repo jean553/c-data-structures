@@ -187,45 +187,45 @@ START_TEST(test_dropAt)
     /* drop when only one node */
 
     DoubleLinkedList first_list = create(0);
-    ck_assert_int_ne(first_list.head, NULL);
+    ck_assert_ptr_ne(first_list.head, NULL);
 
     dropAt(&first_list, 0);
 
-    ck_assert_int_eq(first_list.head, NULL);
+    ck_assert_ptr_eq(first_list.head, NULL);
 
     /* drop at the beginning when two items */
 
     DoubleLinkedList second_list = create(10);
     insertAtTheEnd(&second_list, 20);
 
-    ck_assert_int_ne(second_list.head, NULL);
-    ck_assert_int_ne(second_list.head->next, NULL);
-    ck_assert_int_ne(second_list.head->next->previous, NULL);
+    ck_assert_ptr_ne(second_list.head, NULL);
+    ck_assert_ptr_ne(second_list.head->next, NULL);
+    ck_assert_ptr_ne(second_list.head->next->previous, NULL);
     ck_assert_int_eq(at(&second_list, 0), 10);
     ck_assert_int_eq(at(&second_list, 1), 20);
 
     dropAt(&second_list, 0);
 
     ck_assert_int_eq(at(&second_list, 0), 20);
-    ck_assert_int_ne(second_list.head, NULL);
-    ck_assert_int_eq(second_list.head->next, NULL);
+    ck_assert_ptr_ne(second_list.head, NULL);
+    ck_assert_ptr_eq(second_list.head->next, NULL);
 
     /* drop at the end when two items */
 
     DoubleLinkedList third_list = create(10);
     insertAtTheEnd(&third_list, 20);
 
-    ck_assert_int_ne(third_list.head, NULL);
-    ck_assert_int_ne(third_list.head->next, NULL);
-    ck_assert_int_ne(third_list.head->next->previous, NULL);
+    ck_assert_ptr_ne(third_list.head, NULL);
+    ck_assert_ptr_ne(third_list.head->next, NULL);
+    ck_assert_ptr_ne(third_list.head->next->previous, NULL);
     ck_assert_int_eq(at(&third_list, 0), 10);
     ck_assert_int_eq(at(&third_list, 1), 20);
 
     dropAt(&third_list, 1);
 
     ck_assert_int_eq(at(&third_list, 0), 10);
-    ck_assert_int_ne(third_list.head, NULL);
-    ck_assert_int_eq(third_list.head->next, NULL);
+    ck_assert_ptr_ne(third_list.head, NULL);
+    ck_assert_ptr_eq(third_list.head->next, NULL);
 
     /* drop at the beginning when three items */
 
@@ -233,10 +233,10 @@ START_TEST(test_dropAt)
     insertAtTheEnd(&fourth_list, 20);
     insertAtTheEnd(&fourth_list, 30);
 
-    ck_assert_int_ne(fourth_list.head, NULL);
-    ck_assert_int_ne(fourth_list.head->next, NULL);
-    ck_assert_int_ne(fourth_list.head->next->previous, NULL);
-    ck_assert_int_ne(fourth_list.head->next->next->previous, NULL);
+    ck_assert_ptr_ne(fourth_list.head, NULL);
+    ck_assert_ptr_ne(fourth_list.head->next, NULL);
+    ck_assert_ptr_ne(fourth_list.head->next->previous, NULL);
+    ck_assert_ptr_ne(fourth_list.head->next->next->previous, NULL);
     ck_assert_int_eq(at(&fourth_list, 0), 10);
     ck_assert_int_eq(at(&fourth_list, 1), 20);
     ck_assert_int_eq(at(&fourth_list, 2), 30);
@@ -245,10 +245,10 @@ START_TEST(test_dropAt)
 
     ck_assert_int_eq(at(&fourth_list, 0), 20);
     ck_assert_int_eq(at(&fourth_list, 1), 30);
-    ck_assert_int_ne(fourth_list.head, NULL);
-    ck_assert_int_ne(fourth_list.head->next, NULL);
-    ck_assert_int_eq(fourth_list.head->next->previous, fourth_list.head);
-    ck_assert_int_eq(fourth_list.head->next->next, NULL);
+    ck_assert_ptr_ne(fourth_list.head, NULL);
+    ck_assert_ptr_ne(fourth_list.head->next, NULL);
+    ck_assert_ptr_eq(fourth_list.head->next->previous, fourth_list.head);
+    ck_assert_ptr_eq(fourth_list.head->next->next, NULL);
 
     /* drop at the end when three items */
 
@@ -256,10 +256,10 @@ START_TEST(test_dropAt)
     insertAtTheEnd(&fifth_list, 20);
     insertAtTheEnd(&fifth_list, 30);
 
-    ck_assert_int_ne(fifth_list.head, NULL);
-    ck_assert_int_ne(fifth_list.head->next, NULL);
-    ck_assert_int_ne(fifth_list.head->next->previous, NULL);
-    ck_assert_int_ne(fifth_list.head->next->next->previous, NULL);
+    ck_assert_ptr_ne(fifth_list.head, NULL);
+    ck_assert_ptr_ne(fifth_list.head->next, NULL);
+    ck_assert_ptr_ne(fifth_list.head->next->previous, NULL);
+    ck_assert_ptr_ne(fifth_list.head->next->next->previous, NULL);
     ck_assert_int_eq(at(&fifth_list, 0), 10);
     ck_assert_int_eq(at(&fifth_list, 1), 20);
     ck_assert_int_eq(at(&fifth_list, 2), 30);
@@ -268,7 +268,7 @@ START_TEST(test_dropAt)
 
     ck_assert_int_eq(at(&fifth_list, 0), 10);
     ck_assert_int_eq(at(&fifth_list, 1), 20);
-    ck_assert_int_eq(fifth_list.tail, fifth_list.head->next);
+    ck_assert_ptr_eq(fifth_list.tail, fifth_list.head->next);
 
     /* drop at the beginning when three items */
 
@@ -276,10 +276,10 @@ START_TEST(test_dropAt)
     insertAtTheEnd(&sixth_list, 20);
     insertAtTheEnd(&sixth_list, 30);
 
-    ck_assert_int_ne(sixth_list.head, NULL);
-    ck_assert_int_ne(sixth_list.head->next, NULL);
-    ck_assert_int_ne(sixth_list.head->next->previous, NULL);
-    ck_assert_int_ne(sixth_list.head->next->next->previous, NULL);
+    ck_assert_ptr_ne(sixth_list.head, NULL);
+    ck_assert_ptr_ne(sixth_list.head->next, NULL);
+    ck_assert_ptr_ne(sixth_list.head->next->previous, NULL);
+    ck_assert_ptr_ne(sixth_list.head->next->next->previous, NULL);
     ck_assert_int_eq(at(&sixth_list, 0), 10);
     ck_assert_int_eq(at(&sixth_list, 1), 20);
     ck_assert_int_eq(at(&sixth_list, 2), 30);
@@ -288,8 +288,8 @@ START_TEST(test_dropAt)
 
     ck_assert_int_eq(at(&sixth_list, 0), 10);
     ck_assert_int_eq(at(&sixth_list, 1), 30);
-    ck_assert_int_eq(sixth_list.tail->previous, sixth_list.head);
-    ck_assert_int_eq(sixth_list.head->next, sixth_list.tail);
+    ck_assert_ptr_eq(sixth_list.tail->previous, sixth_list.head);
+    ck_assert_ptr_eq(sixth_list.head->next, sixth_list.tail);
 
     /* multiple drops from the head and the tail */
 
