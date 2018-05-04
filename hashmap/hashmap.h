@@ -36,7 +36,7 @@ Hashmap createHM(const unsigned short size);
  * @param key the key for the given value
  * @param value the value itself
  */
-void insertHM(Hashmap* hashmap, const char* key, const int value);
+void insertHM(Hashmap* hashmap, char* key, const int value);
 
 /**
  * @brief Returns the value for the given key from the hashmap
