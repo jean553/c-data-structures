@@ -11,10 +11,10 @@ START_TEST(test_create)
 {
     QuadTreeNode node = create();
 
-    ck_assert_int_eq(node.children[0], NULL);
-    ck_assert_int_eq(node.children[1], NULL);
-    ck_assert_int_eq(node.children[2], NULL);
-    ck_assert_int_eq(node.children[3], NULL);
+    ck_assert_ptr_eq(node.children[0], NULL);
+    ck_assert_ptr_eq(node.children[1], NULL);
+    ck_assert_ptr_eq(node.children[2], NULL);
+    ck_assert_ptr_eq(node.children[3], NULL);
 
     ck_assert_int_eq(node.data, 0);
 }
@@ -27,42 +27,42 @@ START_TEST(test_allocateChildren)
 {
     QuadTreeNode node = create();
 
-    ck_assert_int_eq(node.children[0], NULL);
-    ck_assert_int_eq(node.children[1], NULL);
-    ck_assert_int_eq(node.children[2], NULL);
-    ck_assert_int_eq(node.children[3], NULL);
+    ck_assert_ptr_eq(node.children[0], NULL);
+    ck_assert_ptr_eq(node.children[1], NULL);
+    ck_assert_ptr_eq(node.children[2], NULL);
+    ck_assert_ptr_eq(node.children[3], NULL);
 
     ck_assert_int_eq(node.data, 0);
 
     allocateChildren(&node);
 
-    ck_assert_int_ne(node.children[0], NULL);
-    ck_assert_int_ne(node.children[1], NULL);
-    ck_assert_int_ne(node.children[2], NULL);
-    ck_assert_int_ne(node.children[3], NULL);
+    ck_assert_ptr_ne(node.children[0], NULL);
+    ck_assert_ptr_ne(node.children[1], NULL);
+    ck_assert_ptr_ne(node.children[2], NULL);
+    ck_assert_ptr_ne(node.children[3], NULL);
 
-    ck_assert_int_eq(node.children[0]->children[0], NULL);
-    ck_assert_int_eq(node.children[0]->children[1], NULL);
-    ck_assert_int_eq(node.children[0]->children[2], NULL);
-    ck_assert_int_eq(node.children[0]->children[3], NULL);
+    ck_assert_ptr_eq(node.children[0]->children[0], NULL);
+    ck_assert_ptr_eq(node.children[0]->children[1], NULL);
+    ck_assert_ptr_eq(node.children[0]->children[2], NULL);
+    ck_assert_ptr_eq(node.children[0]->children[3], NULL);
     ck_assert_int_eq(node.children[0]->data, 0);
 
-    ck_assert_int_eq(node.children[1]->children[0], NULL);
-    ck_assert_int_eq(node.children[1]->children[1], NULL);
-    ck_assert_int_eq(node.children[1]->children[2], NULL);
-    ck_assert_int_eq(node.children[1]->children[3], NULL);
+    ck_assert_ptr_eq(node.children[1]->children[0], NULL);
+    ck_assert_ptr_eq(node.children[1]->children[1], NULL);
+    ck_assert_ptr_eq(node.children[1]->children[2], NULL);
+    ck_assert_ptr_eq(node.children[1]->children[3], NULL);
     ck_assert_int_eq(node.children[1]->data, 0);
 
-    ck_assert_int_eq(node.children[2]->children[0], NULL);
-    ck_assert_int_eq(node.children[2]->children[1], NULL);
-    ck_assert_int_eq(node.children[2]->children[2], NULL);
-    ck_assert_int_eq(node.children[2]->children[3], NULL);
+    ck_assert_ptr_eq(node.children[2]->children[0], NULL);
+    ck_assert_ptr_eq(node.children[2]->children[1], NULL);
+    ck_assert_ptr_eq(node.children[2]->children[2], NULL);
+    ck_assert_ptr_eq(node.children[2]->children[3], NULL);
     ck_assert_int_eq(node.children[2]->data, 0);
 
-    ck_assert_int_eq(node.children[3]->children[0], NULL);
-    ck_assert_int_eq(node.children[3]->children[1], NULL);
-    ck_assert_int_eq(node.children[3]->children[2], NULL);
-    ck_assert_int_eq(node.children[3]->children[3], NULL);
+    ck_assert_ptr_eq(node.children[3]->children[0], NULL);
+    ck_assert_ptr_eq(node.children[3]->children[1], NULL);
+    ck_assert_ptr_eq(node.children[3]->children[2], NULL);
+    ck_assert_ptr_eq(node.children[3]->children[3], NULL);
     ck_assert_int_eq(node.children[3]->data, 0);
 }
 END_TEST
@@ -76,10 +76,10 @@ START_TEST(test_freeQT)
 
     QuadTreeNode firstNode = create();
 
-    ck_assert_int_eq(firstNode.children[0], NULL);
-    ck_assert_int_eq(firstNode.children[1], NULL);
-    ck_assert_int_eq(firstNode.children[2], NULL);
-    ck_assert_int_eq(firstNode.children[3], NULL);
+    ck_assert_ptr_eq(firstNode.children[0], NULL);
+    ck_assert_ptr_eq(firstNode.children[1], NULL);
+    ck_assert_ptr_eq(firstNode.children[2], NULL);
+    ck_assert_ptr_eq(firstNode.children[3], NULL);
 
     ck_assert_int_eq(firstNode.data, 0);
 
@@ -89,10 +89,10 @@ START_TEST(test_freeQT)
 
     QuadTreeNode secondNode = create();
 
-    ck_assert_int_eq(secondNode.children[0], NULL);
-    ck_assert_int_eq(secondNode.children[1], NULL);
-    ck_assert_int_eq(secondNode.children[2], NULL);
-    ck_assert_int_eq(secondNode.children[3], NULL);
+    ck_assert_ptr_eq(secondNode.children[0], NULL);
+    ck_assert_ptr_eq(secondNode.children[1], NULL);
+    ck_assert_ptr_eq(secondNode.children[2], NULL);
+    ck_assert_ptr_eq(secondNode.children[3], NULL);
 
     ck_assert_int_eq(secondNode.data, 0);
 
@@ -100,15 +100,15 @@ START_TEST(test_freeQT)
 
     allocateChildren(secondNode.children[0]);
 
-    ck_assert_int_ne(secondNode.children[0]->children[0], NULL);
-    ck_assert_int_eq(secondNode.children[1]->children[0], NULL);
+    ck_assert_ptr_ne(secondNode.children[0]->children[0], NULL);
+    ck_assert_ptr_eq(secondNode.children[1]->children[0], NULL);
 
     freeQT(&secondNode);
 
-    ck_assert_int_eq(secondNode.children[0], NULL);
-    ck_assert_int_eq(secondNode.children[1], NULL);
-    ck_assert_int_eq(secondNode.children[2], NULL);
-    ck_assert_int_eq(secondNode.children[3], NULL);
+    ck_assert_ptr_eq(secondNode.children[0], NULL);
+    ck_assert_ptr_eq(secondNode.children[1], NULL);
+    ck_assert_ptr_eq(secondNode.children[2], NULL);
+    ck_assert_ptr_eq(secondNode.children[3], NULL);
 }
 END_TEST
 

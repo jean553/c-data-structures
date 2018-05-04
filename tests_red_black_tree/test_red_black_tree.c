@@ -97,7 +97,7 @@ START_TEST(test_removeAt)
     ck_assert_int_eq(first_tree.key, 10);
     ck_assert_int_eq(first_tree.right->key, 15);
     ck_assert_int_eq(first_tree.left->key, 5);
-    ck_assert_int_eq(first_tree.left->left, NULL);
+    ck_assert_ptr_eq(first_tree.left->left, NULL);
 
     /* delete a node with one left red child, the deleted node is black */
 
@@ -125,7 +125,7 @@ START_TEST(test_removeAt)
     ck_assert_int_eq(second_tree.key, 10);
     ck_assert_int_eq(second_tree.right->key, 15);
     ck_assert_int_eq(second_tree.left->key, 3);
-    ck_assert_int_eq(second_tree.left->left, NULL);
+    ck_assert_ptr_eq(second_tree.left->left, NULL);
 
     /* delete a node with one right red child, the deleted node is black */
 
@@ -153,7 +153,7 @@ START_TEST(test_removeAt)
     ck_assert_int_eq(third_tree.key, 10);
     ck_assert_int_eq(third_tree.right->key, 15);
     ck_assert_int_eq(third_tree.left->key, 6);
-    ck_assert_int_eq(third_tree.left->right, NULL);
+    ck_assert_ptr_eq(third_tree.left->right, NULL);
 }
 END_TEST
 
