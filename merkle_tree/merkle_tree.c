@@ -138,6 +138,29 @@ void insertMT(
         subRoot->left = leftNode;
         subRoot->right = rightNode;
         subRoot->data = 0;
+
+        hashesSum(
+            leftNode->hash,
+            rightNode->hash,
+            subRoot->hash
+        );
+
+        /* create a new root node */
+
+        MerkleTreeNode* newRoot = malloc(sizeof(MerkleTreeNode));
+        newRoot->left = tree->merkleNode;
+        newRoot->right = subRoot;
+        newRoot->data = 0;
+
+        hashesSum(
+            tree->merkleNode->hash,
+            subRoot->hash,
+            newRoot->hash
+        );
+
+        tree->merkleNode = newRoot;
+
+        tree->leavesAmount += 1;
     }
 
     tree->leavesAmount += 1;

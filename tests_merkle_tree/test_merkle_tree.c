@@ -55,6 +55,39 @@ START_TEST(test_insert)
     ck_assert_int_eq(tree.merkleNode->right->hash[19], 0xEC);
 
     ck_assert_int_eq(tree.leavesAmount, 2);
+
+    insertMT(&tree, 'C');
+
+    ck_assert_int_eq(tree.merkleNode->data, 0);
+    /* expected digest: 53...0C */
+    ck_assert_int_eq(tree.merkleNode->hash[0], 0x53);
+    ck_assert_int_eq(tree.merkleNode->hash[19], 0x0C);
+
+    ck_assert_int_eq(tree.merkleNode->left->data, 0);
+    ck_assert_int_eq(tree.merkleNode->left->left->data, 'A');
+    ck_assert_int_eq(tree.merkleNode->left->right->data, 'B');
+    /* expected digest: B3E76D777129BD79A970CB4EA882ECFCF7EF9C01 */
+    ck_assert_int_eq(tree.merkleNode->left->hash[0], 0xB3);
+    ck_assert_int_eq(tree.merkleNode->left->hash[19], 0x01);
+    /* expected digest: 6DCD4CE23D88E2EE9568BA546C007C63D9131C1B */
+    ck_assert_int_eq(tree.merkleNode->left->left->hash[0], 0x6D);
+    ck_assert_int_eq(tree.merkleNode->left->left->hash[19], 0x1B);
+    /* expected digest: AE4F281DF5A5D0FF3CAD6371F76D5C29B6D953EC */
+    ck_assert_int_eq(tree.merkleNode->left->right->hash[0], 0xAE);
+    ck_assert_int_eq(tree.merkleNode->left->right->hash[19], 0xEC);
+
+    ck_assert_int_eq(tree.merkleNode->right->data, 0);
+    ck_assert_int_eq(tree.merkleNode->right->left->data, 'C');
+    ck_assert_int_eq(tree.merkleNode->right->right->data, 'C');
+    /* expected digest: E0AA426EEA80BF46CBC1BEF1609921924881D14E */
+    ck_assert_int_eq(tree.merkleNode->right->hash[0], 0xE0);
+    ck_assert_int_eq(tree.merkleNode->right->hash[19], 0x4E);
+    /* expected digest: 32096C2E0EFF33D844EE6D675407ACE18289357D */
+    ck_assert_int_eq(tree.merkleNode->right->left->hash[0], 0x32);
+    ck_assert_int_eq(tree.merkleNode->right->left->hash[19], 0x7D);
+    /* expected digest: 32096C2E0EFF33D844EE6D675407ACE18289357D */
+    ck_assert_int_eq(tree.merkleNode->right->right->hash[0], 0x32);
+    ck_assert_int_eq(tree.merkleNode->right->right->hash[19], 0x7D);
 }
 END_TEST
 
