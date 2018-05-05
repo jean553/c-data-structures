@@ -159,8 +159,6 @@ void insertMT(
         );
 
         tree->merkleNode = newRoot;
-
-        tree->leavesAmount += 1;
     }
 
     tree->leavesAmount += 1;
