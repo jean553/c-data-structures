@@ -4,6 +4,41 @@
 #include <string.h>
 
 /**
+ * @brief makes the concatenation of the first and second hashes,
+ * hashes it and stores it into the array pointed by result
+ *
+ * @param first the first hash
+ * @param second the second hash
+ * @param result pointer of the result array
+ */
+void hashesSum(
+    unsigned char* first,
+    unsigned char* second,
+    unsigned char* result
+) {
+
+    char hashesSum[HASH_BYTES_LENGTH * 2];
+    memcpy(
+        hashesSum,
+        first,
+        HASH_BYTES_LENGTH
+    );
+
+    /* TODO: check if there is another way to copy an array
+       into another one from a specific index */
+
+    for (
+        size_t index = 0;
+        index < HASH_BYTES_LENGTH;
+        index += 1
+    ) {
+        hashesSum[index + HASH_BYTES_LENGTH] = second[index];
+    }
+
+    SHA1(hashesSum, HASH_BYTES_LENGTH * 2, result);
+}
+
+/**
  *
  */
 MerkleTree createMerkleTree() {
