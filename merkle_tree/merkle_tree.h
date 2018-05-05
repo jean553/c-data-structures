@@ -4,10 +4,18 @@
 
 #include <stdlib.h>
 
+#define HASH_BYTES_LENGTH 20
+
 typedef struct MerkleTreeNode {
-    char* hash;
+    unsigned char hash[HASH_BYTES_LENGTH];
     struct MerkleTreeNode* left;
     struct MerkelTreeNode* right;
+
+    /* TODO: check if different kind of nodes can be created,
+     * non-leaf node, leaf node and data node, it would prevent
+     * to create too generic structures as here (in most cases,
+     * data is not used) */
+    unsigned char data;
 } MerkleTreeNode;
 
 typedef struct MerkleTree {
