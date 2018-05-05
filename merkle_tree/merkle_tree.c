@@ -1,5 +1,7 @@
 #include "merkle_tree.h"
 
+#include <openssl/sha.h>
+
 /**
  *
  */
