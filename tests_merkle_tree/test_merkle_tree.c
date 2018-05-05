@@ -36,8 +36,9 @@ START_TEST(test_insert)
     insertMT(&tree, 'B');
 
     ck_assert_int_eq(tree.merkleNode->data, 0);
-
-    /* TODO: check the merkle node hash */
+    /* expected digest: B3E76D777129BD79A970CB4EA882ECFCF7EF9C01 */
+    ck_assert_int_eq(tree.merkleNode->hash[0], 0xB3);
+    ck_assert_int_eq(tree.merkleNode->hash[19], 0x01);
 
     ck_assert_int_eq(tree.merkleNode->left->data, 'A');
     ck_assert_ptr_eq(tree.merkleNode->left->left, NULL);

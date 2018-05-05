@@ -73,7 +73,25 @@ void insertMT(
         newRoot->right = node;
         newRoot->data = 0;
 
-        /* TODO: make the hash sum here and store into the new root node */
+        char hashesSum[HASH_BYTES_LENGTH * 2];
+        memcpy(
+            hashesSum,
+            previousRoot->hash,
+            HASH_BYTES_LENGTH
+        );
+
+        /* TODO: check if there is another way to copy an array
+           into another one from a specific index */
+
+        for (
+            size_t index = 0;
+            index < HASH_BYTES_LENGTH;
+            index += 1
+        ) {
+            hashesSum[index + HASH_BYTES_LENGTH] = node->hash[index];
+        }
+
+        SHA1(hashesSum, HASH_BYTES_LENGTH * 2, newRoot->hash);
 
         tree->merkleNode = newRoot;
     }
