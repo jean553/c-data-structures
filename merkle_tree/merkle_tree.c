@@ -78,7 +78,7 @@ void insertMT(
         SHA1(&data, 1, root->hash);
         root->data = data;
 
-    } else {
+    } else if (tree->leavesAmount == 1) {
 
         /* create the new node */
 
@@ -108,27 +108,36 @@ void insertMT(
         newRoot->right = node;
         newRoot->data = 0;
 
-        char hashesSum[HASH_BYTES_LENGTH * 2];
-        memcpy(
-            hashesSum,
+        hashesSum(
             previousRoot->hash,
-            HASH_BYTES_LENGTH
+            node->hash,
+            newRoot->hash
         );
 
-        /* TODO: check if there is another way to copy an array
-           into another one from a specific index */
-
-        for (
-            size_t index = 0;
-            index < HASH_BYTES_LENGTH;
-            index += 1
-        ) {
-            hashesSum[index + HASH_BYTES_LENGTH] = node->hash[index];
-        }
-
-        SHA1(hashesSum, HASH_BYTES_LENGTH * 2, newRoot->hash);
-
         tree->merkleNode = newRoot;
+
+    } else {
+
+        /* create two new nodes with identical content */
+
+        MerkleTreeNode* leftNode = malloc(sizeof(MerkleTreeNode));
+        leftNode->left = NULL;
+        leftNode->right = NULL;
+        leftNode->data = data;
+        SHA1(&data, 1, leftNode->hash);
+
+        MerkleTreeNode* rightNode = malloc(sizeof(MerkleTreeNode));
+        rightNode->left = NULL;
+        rightNode->right = NULL;
+        rightNode->data = data;
+        SHA1(&data, 1, rightNode->hash);
+
+        /* create the new sub-root node */
+
+        MerkleTreeNode* subRoot = malloc(sizeof(MerkleTreeNode));
+        subRoot->left = leftNode;
+        subRoot->right = rightNode;
+        subRoot->data = 0;
     }
 
     tree->leavesAmount += 1;
