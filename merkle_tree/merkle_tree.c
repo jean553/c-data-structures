@@ -26,3 +26,18 @@ MerkleTree createMerkleTree() {
 
     return tree;
 }
+
+/**
+ *
+ */
+void insertMT(
+    MerkleTree* const tree,
+    unsigned char data
+) {
+    /* FIXME: works only if the tree only contains an empty root node */
+
+    MerkleTreeNode* root = &tree->merkleNode;
+
+    SHA1(&data, 1, root->hash);
+    root->data = data;
+}

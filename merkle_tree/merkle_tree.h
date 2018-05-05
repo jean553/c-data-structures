@@ -21,3 +21,16 @@ typedef struct MerkleTree {
  * @return the created merkle tree
  */
 MerkleTree createMerkleTree();
+
+/**
+ * @brief inserts data into the merkle tree,
+ * generates the leaf nodes and non-leaf nodes,
+ * generate the new root node hash
+ *
+ * @param tree the merkle tree to modify
+ * @param data the data to insert
+ */
+void insertMT(
+    MerkleTree* const tree,
+    unsigned char data
+);
