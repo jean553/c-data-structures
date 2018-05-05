@@ -9,7 +9,7 @@
 typedef struct MerkleTreeNode {
     unsigned char hash[HASH_BYTES_LENGTH];
     struct MerkleTreeNode* left;
-    struct MerkelTreeNode* right;
+    struct MerkleTreeNode* right;
 
     /* TODO: check if different kind of nodes can be created,
      * non-leaf node, leaf node and data node, it would prevent
@@ -20,7 +20,7 @@ typedef struct MerkleTreeNode {
 
 typedef struct MerkleTree {
     size_t leavesAmount;
-    MerkleTreeNode merkleNode;
+    MerkleTreeNode* merkleNode;
 } MerkleTree;
 
 /**
