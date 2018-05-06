@@ -58,6 +58,42 @@ MerkleTreeNode* createLeafNode(unsigned char data) {
 }
 
 /**
+ * @brief generates a binary tree with merkel nodes according to the given leaves nodes amount
+ *
+ * @param leavesAmount the amount of expected leaves nodes
+ *
+ * @return MerkleTreeNode*
+ */
+MerkleTreeNode* createNodes(size_t leavesAmount) {
+
+    MerkleTreeNode* leaves = malloc(sizeof(MerkleTreeNode) * leavesAmount);
+
+    while (leavesAmount != 1) {
+
+        leavesAmount = leavesAmount / 2;
+
+        MerkleTreeNode* nodes = malloc(sizeof(MerkleTreeNode) * leavesAmount);
+
+        size_t leavesIndex = 0;
+        for (
+            size_t index = 0;
+            index < leavesAmount;
+            index += 1
+        ) {
+            nodes[index].left = &leaves[leavesIndex];
+            leavesIndex += 1;
+
+            nodes[index].right = &leaves[leavesIndex];
+            leavesIndex += 1;
+        }
+
+        leaves = nodes;
+    }
+
+    return leaves;
+}
+
+/**
  *
  */
 MerkleTree createMerkleTree() {
