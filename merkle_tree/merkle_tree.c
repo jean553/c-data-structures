@@ -131,7 +131,7 @@ void insertMT(
 
         tree->merkleNode = newRoot;
 
-    } else {
+    } else if (tree->leavesAmount == 2) {
 
         /* create two new nodes with identical content */
 
@@ -165,6 +165,16 @@ void insertMT(
         );
 
         tree->merkleNode = newRoot;
+
+    } else {
+
+        /* FIXME: this is a temporary solution, find the node to edit
+           should handle the current size of the whole tree */
+
+        MerkleTreeNode* node = tree->merkleNode->right->right;
+        node->data = data;
+
+        SHA1(&node->data, 1, node->hash);
     }
 
     tree->leavesAmount += 1;
