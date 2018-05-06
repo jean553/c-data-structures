@@ -58,6 +58,56 @@ MerkleTreeNode* createLeafNode(unsigned char data) {
 }
 
 /**
+ * @brief generates a binary tree with merkel nodes according to the given leaves nodes amount
+ *
+ * @param leavesAmount the amount of expected leaves nodes
+ *
+ * @return MerkleTreeNode*
+ */
+MerkleTreeNode* createNodes(size_t leavesAmount) {
+
+    MerkleTreeNode* leaves = malloc(sizeof(MerkleTreeNode) * leavesAmount);
+
+    while (leavesAmount != 1) {
+
+        leavesAmount = leavesAmount / 2;
+
+        MerkleTreeNode* nodes = malloc(sizeof(MerkleTreeNode) * leavesAmount);
+
+        /* calculate the sha1 digest of '0' only once,
+           in order to set it as default digest value
+           of every created node without calculating it everytime */
+        unsigned char zero = 0;
+        unsigned char zeroHash[HASH_BYTES_LENGTH];
+        SHA1(&zero, 1, zeroHash);
+
+        size_t leavesIndex = 0;
+        for (
+            size_t index = 0;
+            index < leavesAmount;
+            index += 1
+        ) {
+
+            /* TODO: use similar code, should be refactored */
+
+            nodes[index].left = &leaves[leavesIndex];
+            leaves[leavesIndex].data = 0;
+            memcpy(leaves[leavesIndex].hash, zeroHash, HASH_BYTES_LENGTH);
+            leavesIndex += 1;
+
+            nodes[index].right = &leaves[leavesIndex];
+            leaves[leavesIndex].data = 0;
+            memcpy(leaves[leavesIndex].hash, zeroHash, HASH_BYTES_LENGTH);
+            leavesIndex += 1;
+        }
+
+        leaves = nodes;
+    }
+
+    return leaves;
+}
+
+/**
  *
  */
 MerkleTree createMerkleTree() {
@@ -81,16 +131,14 @@ void insertMT(
 
     if (tree->leavesAmount == 0) {
 
-        MerkleTreeNode* leftNode = createLeafNode(data);
-        MerkleTreeNode* rightNode = createLeafNode(0);
+        MerkleTreeNode* root = createNodes(2);
 
-        MerkleTreeNode* root = createLeafNode(0);
-        root->left = leftNode;
-        root->right = rightNode;
+        root->left->data = data;
+        SHA1(&root->left->data, 1, root->left->hash);
 
         hashesSum(
-            leftNode->hash,
-            rightNode->hash,
+            root->left->hash,
+            root->right->hash,
             root->hash
         );
 
