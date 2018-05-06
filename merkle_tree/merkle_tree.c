@@ -62,22 +62,9 @@ MerkleTreeNode* createLeafNode(unsigned char data) {
  */
 MerkleTree createMerkleTree() {
 
-    MerkleTreeNode* root = malloc(sizeof(MerkleTreeNode));
-    root->left = NULL;
-    root->right = NULL;
-    root->data = 0;
-
-    for (
-        size_t index = 0;
-        index < HASH_BYTES_LENGTH;
-        index += 1
-    ) {
-        root->hash[index] = 0;
-    }
-
     MerkleTree tree;
     tree.leavesAmount = 0;
-    tree.merkleNode = root;
+    tree.merkleNode = NULL;
 
     return tree;
 }
@@ -94,8 +81,7 @@ void insertMT(
 
     if (tree->leavesAmount == 0) {
 
-        SHA1(&data, 1, root->hash);
-        root->data = data;
+        tree->merkleNode = createLeafNode(data);
 
     } else if (tree->leavesAmount == 1) {
 

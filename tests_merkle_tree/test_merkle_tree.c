@@ -11,8 +11,7 @@ START_TEST(test_create)
 {
     MerkleTree tree = createMerkleTree();
 
-    ck_assert_ptr_eq(tree.merkleNode->left, NULL);
-    ck_assert_ptr_eq(tree.merkleNode->right, NULL);
+    ck_assert_ptr_eq(tree.merkleNode, NULL);
     ck_assert_int_eq(tree.leavesAmount, 0);
 }
 END_TEST
