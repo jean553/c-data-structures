@@ -74,16 +74,30 @@ MerkleTreeNode* createNodes(size_t leavesAmount) {
 
         MerkleTreeNode* nodes = malloc(sizeof(MerkleTreeNode) * leavesAmount);
 
+        /* calculate the sha1 digest of '0' only once,
+           in order to set it as default digest value
+           of every created node without calculating it everytime */
+        unsigned char zero = 0;
+        unsigned char zeroHash[HASH_BYTES_LENGTH];
+        SHA1(&zero, 1, zeroHash);
+
         size_t leavesIndex = 0;
         for (
             size_t index = 0;
             index < leavesAmount;
             index += 1
         ) {
+
+            /* TODO: use similar code, should be refactored */
+
             nodes[index].left = &leaves[leavesIndex];
+            leaves[leavesIndex].data = 0;
+            memcpy(leaves[leavesIndex].hash, zeroHash, HASH_BYTES_LENGTH);
             leavesIndex += 1;
 
             nodes[index].right = &leaves[leavesIndex];
+            leaves[leavesIndex].data = 0;
+            memcpy(leaves[leavesIndex].hash, zeroHash, HASH_BYTES_LENGTH);
             leavesIndex += 1;
         }
 
@@ -118,12 +132,9 @@ void insertMT(
     if (tree->leavesAmount == 0) {
 
         MerkleTreeNode* root = createNodes(2);
-        root->data = 0;
-        root->left->data = data;
-        root->right->data = 0;
 
+        root->left->data = data;
         SHA1(&root->left->data, 1, root->left->hash);
-        SHA1(&root->right->data, 1, root->right->hash);
 
         hashesSum(
             root->left->hash,
