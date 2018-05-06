@@ -81,41 +81,36 @@ void insertMT(
 
     if (tree->leavesAmount == 0) {
 
-        tree->merkleNode = createLeafNode(data);
+        MerkleTreeNode* leftNode = createLeafNode(data);
+        MerkleTreeNode* rightNode = createLeafNode(0);
+
+        MerkleTreeNode* root = createLeafNode(0);
+        root->left = leftNode;
+        root->right = rightNode;
+
+        hashesSum(
+            leftNode->hash,
+            rightNode->hash,
+            root->hash
+        );
+
+        tree->merkleNode = root;
 
     } else if (tree->leavesAmount == 1) {
 
-        /* create the new node */
+        MerkleTreeNode* root = tree->merkleNode;
 
-        MerkleTreeNode* node = createLeafNode(data);
+        MerkleTreeNode* node = root->right;
+        node->data = data;
 
-        /* copy the previous root node into a leaf node */
+        SHA1(&node->data, 1, node->hash);
 
-        MerkleTreeNode* previousRoot = malloc(sizeof(MerkleTreeNode));
-        previousRoot->left = root->left; 
-        previousRoot->right = root->right; 
-        previousRoot->data = root->data;
-
-        memcpy(
-            previousRoot->hash,
-            root->hash,
-            HASH_BYTES_LENGTH
-        );
-
-        /* create the new root node */
-
-        MerkleTreeNode* newRoot = malloc(sizeof(MerkleTreeNode));
-        newRoot->left = previousRoot;
-        newRoot->right = node;
-        newRoot->data = 0;
-
+        MerkleTreeNode* leftNode = root->left;
         hashesSum(
-            previousRoot->hash,
+            leftNode->hash,
             node->hash,
-            newRoot->hash
+            root->hash
         );
-
-        tree->merkleNode = newRoot;
 
     } else if (tree->leavesAmount == 2) {
 
