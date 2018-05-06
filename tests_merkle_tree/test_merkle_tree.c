@@ -88,6 +88,31 @@ START_TEST(test_insert)
     /* expected digest: 32096C2E0EFF33D844EE6D675407ACE18289357D */
     ck_assert_int_eq(tree.merkleNode->right->right->hash[0], 0x32);
     ck_assert_int_eq(tree.merkleNode->right->right->hash[19], 0x7D);
+
+    insertMT(&tree, 'D');
+
+    ck_assert_int_eq(tree.merkleNode->right->right->data, 'D');
+    /* expected digest: 50C9E8D5FC98727B4BBC93CF5D64A68DB647F04F */
+    ck_assert_int_eq(tree.merkleNode->right->right->hash[0], 0x50);
+    ck_assert_int_eq(tree.merkleNode->right->right->hash[19], 0x4F);
+    /* expected digest: 32096C2E0EFF33D844EE6D675407ACE18289357D */
+    ck_assert_int_eq(tree.merkleNode->right->left->hash[0], 0x32);
+    ck_assert_int_eq(tree.merkleNode->right->left->hash[19], 0x7D);
+    /* expected digest: 9E...7A */
+    ck_assert_int_eq(tree.merkleNode->right->hash[0], 0x9E);
+    ck_assert_int_eq(tree.merkleNode->right->hash[19], 0x7A);
+    /* expected digest: B3E76D777129BD79A970CB4EA882ECFCF7EF9C01 */
+    ck_assert_int_eq(tree.merkleNode->left->hash[0], 0xB3);
+    ck_assert_int_eq(tree.merkleNode->left->hash[19], 0x01);
+    /* expected digest: 6DCD4CE23D88E2EE9568BA546C007C63D9131C1B */
+    ck_assert_int_eq(tree.merkleNode->left->left->hash[0], 0x6D);
+    ck_assert_int_eq(tree.merkleNode->left->left->hash[19], 0x1B);
+    /* expected digest: AE4F281DF5A5D0FF3CAD6371F76D5C29B6D953EC */
+    ck_assert_int_eq(tree.merkleNode->left->right->hash[0], 0xAE);
+    ck_assert_int_eq(tree.merkleNode->left->right->hash[19], 0xEC);
+    /* expected digest: 83...7E */
+    ck_assert_int_eq(tree.merkleNode->hash[0], 0x83);
+    ck_assert_int_eq(tree.merkleNode->hash[19], 0x7E);
 }
 END_TEST
 
