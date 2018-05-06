@@ -117,16 +117,17 @@ void insertMT(
 
     if (tree->leavesAmount == 0) {
 
-        MerkleTreeNode* leftNode = createLeafNode(data);
-        MerkleTreeNode* rightNode = createLeafNode(0);
+        MerkleTreeNode* root = createNodes(2);
+        root->data = 0;
+        root->left->data = data;
+        root->right->data = 0;
 
-        MerkleTreeNode* root = createLeafNode(0);
-        root->left = leftNode;
-        root->right = rightNode;
+        SHA1(&root->left->data, 1, root->left->hash);
+        SHA1(&root->right->data, 1, root->right->hash);
 
         hashesSum(
-            leftNode->hash,
-            rightNode->hash,
+            root->left->hash,
+            root->right->hash,
             root->hash
         );
 
