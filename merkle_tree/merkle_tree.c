@@ -39,6 +39,25 @@ void hashesSum(
 }
 
 /**
+ * @brief generates a new merkle tree leaf node and returns its pointer
+ *
+ * @param data the data to insert into the leaf node
+ *
+ * @return MerkleTreeNode*
+ */
+MerkleTreeNode* createLeafNode(unsigned char data) {
+
+    MerkleTreeNode* node = malloc(sizeof(MerkleTreeNode));
+    node->left = NULL;
+    node->right = NULL;
+    node->data = data;
+
+    SHA1(&data, 1, node->hash);
+
+    return node;
+}
+
+/**
  *
  */
 MerkleTree createMerkleTree() {
@@ -82,11 +101,7 @@ void insertMT(
 
         /* create the new node */
 
-        MerkleTreeNode* node = malloc(sizeof(MerkleTreeNode));
-        node->left = NULL;
-        node->right = NULL;
-        node->data = data;
-        SHA1(&data, 1, node->hash);
+        MerkleTreeNode* node = createLeafNode(data);
 
         /* copy the previous root node into a leaf node */
 
@@ -120,17 +135,8 @@ void insertMT(
 
         /* create two new nodes with identical content */
 
-        MerkleTreeNode* leftNode = malloc(sizeof(MerkleTreeNode));
-        leftNode->left = NULL;
-        leftNode->right = NULL;
-        leftNode->data = data;
-        SHA1(&data, 1, leftNode->hash);
-
-        MerkleTreeNode* rightNode = malloc(sizeof(MerkleTreeNode));
-        rightNode->left = NULL;
-        rightNode->right = NULL;
-        rightNode->data = data;
-        SHA1(&data, 1, rightNode->hash);
+        MerkleTreeNode* leftNode = createLeafNode(data);
+        MerkleTreeNode* rightNode = createLeafNode(data);
 
         /* create the new sub-root node */
 
