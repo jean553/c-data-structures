@@ -174,7 +174,7 @@ void insertMT(
         /* create two new nodes with identical content */
 
         MerkleTreeNode* leftNode = createLeafNode(data);
-        MerkleTreeNode* rightNode = createLeafNode(data);
+        MerkleTreeNode* rightNode = createLeafNode(0);
 
         /* create the new sub-root node */
 
