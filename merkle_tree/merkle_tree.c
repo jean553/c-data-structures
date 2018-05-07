@@ -171,21 +171,16 @@ void insertMT(
 
     } else if (tree->leavesAmount == 2) {
 
-        /* create two new nodes with identical content */
+        /* create the new nodes */
 
-        MerkleTreeNode* leftNode = createLeafNode(data);
-        MerkleTreeNode* rightNode = createLeafNode(0);
+        MerkleTreeNode* subRoot = createNodes(2);
 
-        /* create the new sub-root node */
-
-        MerkleTreeNode* subRoot = malloc(sizeof(MerkleTreeNode));
-        subRoot->left = leftNode;
-        subRoot->right = rightNode;
-        subRoot->data = 0;
+        subRoot->left->data = data;
+        SHA1(&subRoot->left->data, 1, subRoot->left->hash);
 
         hashesSum(
-            leftNode->hash,
-            rightNode->hash,
+            subRoot->left->hash,
+            subRoot->right->hash,
             subRoot->hash
         );
 
