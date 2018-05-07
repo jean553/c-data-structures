@@ -68,6 +68,15 @@ MerkleTreeNode* createNodes(size_t leavesAmount) {
 
     MerkleTreeNode* leaves = malloc(sizeof(MerkleTreeNode) * leavesAmount);
 
+    for (
+        size_t index = 0;
+        index < leavesAmount;
+        index += 1
+    ) {
+        leaves[index].left = NULL;
+        leaves[index].right = NULL;
+    }
+
     while (leavesAmount != 1) {
 
         leavesAmount = leavesAmount / 2;
