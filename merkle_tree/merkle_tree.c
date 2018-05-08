@@ -217,10 +217,15 @@ void insertMT(
 
     if (tree->leavesAmount % 2 == 0) {
 
+        /* TODO: grows according to the current size */
+
         root = createNodes(2);
         tree->size += 2;
 
         MerkleTreeNode* node = NULL;
+
+        /* TODO: the new node creation can be moded into a dedicated function,
+           getLeafByIndex should handle trees with sizes equal to 1 or 2 */
 
         if (tree->leavesAmount != 0) {
 
