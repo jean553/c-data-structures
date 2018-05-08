@@ -149,6 +149,45 @@ void updateBranchHashes(MerkleTreeNode* const leafNode) {
 }
 
 /**
+ * @brief returns a pointer to a leaf node according to its index
+ * (leaves nodes are ordered from the left to the right in the tree)
+ *
+ * @param tree the tree where to search for the node
+ * @param index the index of the leaf node to find
+ *
+ * @return MerkleTreeNode*
+ */
+MerkleTreeNode* getLeafByIndex(
+    MerkleTree* tree,
+    size_t index
+) {
+
+    MerkleTreeNode* node = tree->merkleNode;
+    size_t currentIndex = tree->size / 2;
+    size_t balance = currentIndex;
+
+    do {
+
+        balance = balance / 2;
+
+        if (index >= currentIndex) {
+            node = node->right;
+            currentIndex += balance;
+        } else {
+            node = node->left;
+            currentIndex -= balance;
+        }
+
+    } while (balance != 1);
+
+    if (currentIndex == index) {
+        return node->right;
+    }
+
+    return node->left;
+}
+
+/**
  *
  */
 MerkleTree createMerkleTree() {
@@ -215,7 +254,7 @@ void insertMT(
         /* FIXME: this is a temporary solution, find the node to edit
            should handle the current size of the whole tree */
 
-        MerkleTreeNode* node = tree->merkleNode->right->right;
+        MerkleTreeNode* node = getLeafByIndex(tree, 3); // fourth node, third index
         node->data = data;
         SHA1(&node->data, 1, node->hash);
 
