@@ -155,6 +155,7 @@ MerkleTree createMerkleTree() {
 
     MerkleTree tree;
     tree.leavesAmount = 0;
+    tree.size = 0;
     tree.merkleNode = NULL;
 
     return tree;
@@ -173,6 +174,7 @@ void insertMT(
     if (tree->leavesAmount % 2 == 0) {
 
         root = createNodes(2);
+        tree->size += 2;
         root->left->data = data;
         SHA1(&root->left->data, 1, root->left->hash);
 

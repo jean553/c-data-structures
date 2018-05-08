@@ -21,6 +21,7 @@ typedef struct MerkleTreeNode {
 
 typedef struct MerkleTree {
     size_t leavesAmount;
+    size_t size;
     MerkleTreeNode* merkleNode;
 } MerkleTree;
 
