@@ -198,6 +198,7 @@ void insertMT(
 
         MerkleTreeNode* newRoot = malloc(sizeof(MerkleTreeNode));
         newRoot->left = tree->merkleNode;
+        newRoot->left->parent = newRoot;
         newRoot->right = root;
         newRoot->data = 0;
         root->parent = newRoot;
