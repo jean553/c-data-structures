@@ -179,13 +179,11 @@ void insertMT(
 
     if (tree->leavesAmount == 0) {
 
-        updateBranchHashes(root->left);
-
         tree->merkleNode = root;
 
     } else if (tree->leavesAmount == 1) {
 
-        MerkleTreeNode* root = tree->merkleNode;
+        root = tree->merkleNode;
 
         MerkleTreeNode* node = root->right;
         node->data = data;
@@ -203,8 +201,6 @@ void insertMT(
         newRoot->right = root;
         newRoot->data = 0;
         root->parent = newRoot;
-
-        updateBranchHashes(root->left);
 
         tree->merkleNode = newRoot;
 
@@ -224,10 +220,14 @@ void insertMT(
 
         /* update the hash of the root node */
 
-        MerkleTreeNode* root = tree->merkleNode;
+        root = tree->merkleNode;
         leftNode = root->left;
 
         updateBranchHashes(node);
+    }
+
+    if (tree->leavesAmount % 2 == 0) {
+        updateBranchHashes(root->left);
     }
 
     tree->leavesAmount += 1;
