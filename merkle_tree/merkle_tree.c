@@ -175,6 +175,18 @@ void insertMT(
         root = createNodes(2);
         root->left->data = data;
         SHA1(&root->left->data, 1, root->left->hash);
+
+        if (tree->leavesAmount != 0) {
+
+            MerkleTreeNode* newRoot = malloc(sizeof(MerkleTreeNode));
+            newRoot->left = tree->merkleNode;
+            newRoot->left->parent = newRoot;
+            newRoot->right = root;
+            newRoot->data = 0;
+            root->parent = newRoot;
+
+            tree->merkleNode = newRoot;
+        }
     }
 
     if (tree->leavesAmount == 0) {
@@ -194,16 +206,7 @@ void insertMT(
 
     } else if (tree->leavesAmount == 2) {
 
-        /* create a new root node */
-
-        MerkleTreeNode* newRoot = malloc(sizeof(MerkleTreeNode));
-        newRoot->left = tree->merkleNode;
-        newRoot->left->parent = newRoot;
-        newRoot->right = root;
-        newRoot->data = 0;
-        root->parent = newRoot;
-
-        tree->merkleNode = newRoot;
+        /* FIXME: ensure backward compatibility, must be deleted */
 
     } else {
 
