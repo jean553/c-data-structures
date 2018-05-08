@@ -125,6 +125,30 @@ MerkleTreeNode* createNodes(size_t leavesAmount) {
 }
 
 /**
+ * @brief bottom-up update of the nodes digests according to their children digests;
+ * updates digests from the given node to the tree root node;
+ * does not modify the given leaf node
+ *
+ * @param leafNode the starting leaf node for browsing the tree from the bottom to the top
+ */
+void updateBranchHashes(MerkleTreeNode* const leafNode) {
+
+    MerkleTreeNode* node = leafNode;
+
+    do {
+
+        node = node->parent;
+
+        hashesSum(
+            node->left->hash,
+            node->right->hash,
+            node->hash
+        );
+
+    } while (node->parent != NULL);
+}
+
+/**
  *
  */
 MerkleTree createMerkleTree() {
@@ -153,11 +177,7 @@ void insertMT(
         root->left->data = data;
         SHA1(&root->left->data, 1, root->left->hash);
 
-        hashesSum(
-            root->left->hash,
-            root->right->hash,
-            root->hash
-        );
+        updateBranchHashes(root->left);
 
         tree->merkleNode = root;
 
@@ -170,14 +190,11 @@ void insertMT(
 
         SHA1(&node->data, 1, node->hash);
 
-        MerkleTreeNode* leftNode = root->left;
-        hashesSum(
-            leftNode->hash,
-            node->hash,
-            root->hash
-        );
+        updateBranchHashes(root->right);
 
     } else if (tree->leavesAmount == 2) {
+
+        /* TODO: use updateBranchHashes */
 
         /* create the new nodes */
 
