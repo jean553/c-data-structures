@@ -10,6 +10,7 @@ typedef struct MerkleTreeNode {
     unsigned char hash[HASH_BYTES_LENGTH];
     struct MerkleTreeNode* left;
     struct MerkleTreeNode* right;
+    struct MerkleTreeNode* parent;
 
     /* TODO: check if different kind of nodes can be created,
      * non-leaf node, leaf node and data node, it would prevent

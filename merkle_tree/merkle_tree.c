@@ -83,6 +83,10 @@ MerkleTreeNode* createNodes(size_t leavesAmount) {
 
         MerkleTreeNode* nodes = malloc(sizeof(MerkleTreeNode) * leavesAmount);
 
+        if (leavesAmount == 1) {
+            nodes[0].parent = NULL;
+        }
+
         /* calculate the sha1 digest of '0' only once,
            in order to set it as default digest value
            of every created node without calculating it everytime */
@@ -101,13 +105,17 @@ MerkleTreeNode* createNodes(size_t leavesAmount) {
 
             nodes[index].left = &leaves[leavesIndex];
             leaves[leavesIndex].data = 0;
+            leaves[leavesIndex].parent = &nodes[index];
             memcpy(leaves[leavesIndex].hash, zeroHash, HASH_BYTES_LENGTH);
             leavesIndex += 1;
 
             nodes[index].right = &leaves[leavesIndex];
             leaves[leavesIndex].data = 0;
+            leaves[leavesIndex].parent = &nodes[index];
             memcpy(leaves[leavesIndex].hash, zeroHash, HASH_BYTES_LENGTH);
             leavesIndex += 1;
+
+            nodes[index].data = 0;
         }
 
         leaves = nodes;
