@@ -170,12 +170,14 @@ void insertMT(
 
     MerkleTreeNode* root = tree->merkleNode;
 
-    if (tree->leavesAmount == 0) {
+    if (tree->leavesAmount % 2 == 0) {
 
-        MerkleTreeNode* root = createNodes(2);
-
+        root = createNodes(2);
         root->left->data = data;
         SHA1(&root->left->data, 1, root->left->hash);
+    }
+
+    if (tree->leavesAmount == 0) {
 
         updateBranchHashes(root->left);
 
@@ -194,22 +196,15 @@ void insertMT(
 
     } else if (tree->leavesAmount == 2) {
 
-        /* create the new nodes */
-
-        MerkleTreeNode* subRoot = createNodes(2);
-
-        subRoot->left->data = data;
-        SHA1(&subRoot->left->data, 1, subRoot->left->hash);
-
         /* create a new root node */
 
         MerkleTreeNode* newRoot = malloc(sizeof(MerkleTreeNode));
         newRoot->left = tree->merkleNode;
-        newRoot->right = subRoot;
+        newRoot->right = root;
         newRoot->data = 0;
-        subRoot->parent = newRoot;
+        root->parent = newRoot;
 
-        updateBranchHashes(subRoot->left);
+        updateBranchHashes(root->left);
 
         tree->merkleNode = newRoot;
 
