@@ -162,6 +162,11 @@ MerkleTreeNode* getLeafByIndex(
     size_t index
 ) {
 
+    /* TODO: prevent segfaults, to handle correctly (or document correctly) */
+    if (tree->size == 2) {
+        return NULL;
+    }
+
     MerkleTreeNode* node = tree->merkleNode;
     size_t currentIndex = tree->size / 2;
     size_t balance = currentIndex;
@@ -214,8 +219,8 @@ void insertMT(
 
         root = createNodes(2);
         tree->size += 2;
-        root->left->data = data;
-        SHA1(&root->left->data, 1, root->left->hash);
+
+        MerkleTreeNode* node = NULL;
 
         if (tree->leavesAmount != 0) {
 
@@ -227,29 +232,31 @@ void insertMT(
             root->parent = newRoot;
 
             tree->merkleNode = newRoot;
+            node = getLeafByIndex(tree, 2);
+
+        } else {
+
+            tree->merkleNode = root;
+            node = root->left;
         }
+
+        node->data = data;
+        SHA1(&node->data, 1, node->hash);
+        updateBranchHashes(node);
     }
 
-    if (tree->leavesAmount == 0) {
+    /* TODO: refactor the part below */
 
-        tree->merkleNode = root;
-
-    } else if (tree->leavesAmount == 1) {
-
-        root = tree->merkleNode;
+    if (tree->leavesAmount == 1) {
 
         MerkleTreeNode* node = root->right;
         node->data = data;
-
         SHA1(&node->data, 1, node->hash);
 
-        updateBranchHashes(root->right);
+        updateBranchHashes(tree->merkleNode->right);
 
-    } else if (tree->leavesAmount == 2) {
-
-        /* FIXME: ensure backward compatibility, must be deleted */
-
-    } else {
+    }
+    else if (tree->leavesAmount == 3) {
 
         /* FIXME: this is a temporary solution, find the node to edit
            should handle the current size of the whole tree */
@@ -269,10 +276,6 @@ void insertMT(
         leftNode = root->left;
 
         updateBranchHashes(node);
-    }
-
-    if (tree->leavesAmount % 2 == 0) {
-        updateBranchHashes(root->left);
     }
 
     tree->leavesAmount += 1;
