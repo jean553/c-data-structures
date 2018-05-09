@@ -258,11 +258,11 @@ void insertMT(
 
     if (tree->leavesAmount == 1) {
 
-        MerkleTreeNode* node = root->right;
+        MerkleTreeNode* node = getLeafByIndex(tree, 1);
         node->data = data;
         SHA1(&node->data, 1, node->hash);
 
-        updateBranchHashes(tree->merkleNode->right);
+        updateBranchHashes(node);
 
     }
     else if (tree->leavesAmount == 3) {
@@ -273,16 +273,6 @@ void insertMT(
         MerkleTreeNode* node = getLeafByIndex(tree, 3); // fourth node, third index
         node->data = data;
         SHA1(&node->data, 1, node->hash);
-
-        /* update the hash of the leaf node root node */
-
-        MerkleTreeNode* subRoot = tree->merkleNode->right;
-        MerkleTreeNode* leftNode = subRoot->left;
-
-        /* update the hash of the root node */
-
-        root = tree->merkleNode;
-        leftNode = root->left;
 
         updateBranchHashes(node);
     }
