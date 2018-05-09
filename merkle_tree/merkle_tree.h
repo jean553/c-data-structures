@@ -44,3 +44,17 @@ void insertMT(
     MerkleTree* const tree,
     unsigned char data
 );
+
+/**
+ * @brief returns a pointer to a leaf node according to its index
+ * (leaves nodes are ordered from the left to the right in the tree)
+ *
+ * @param tree the tree where to search for the node
+ * @param index the index of the leaf node to find
+ *
+ * @return MerkleTreeNode*
+ */
+MerkleTreeNode* getLeafByIndex(
+    MerkleTree* tree,
+    size_t index
+);
