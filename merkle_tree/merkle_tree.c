@@ -211,17 +211,15 @@ void insertMT(
     unsigned char data
 ) {
 
-    MerkleTreeNode* root = tree->merkleNode;
-
     if (tree->leavesAmount == 0) {
 
-        root = createNodes(2);
+        MerkleTreeNode* root = createNodes(2);
         tree->size += 2;
         tree->merkleNode = root;
     }
     else if (tree->leavesAmount % 2 == 0) {
 
-        root = createNodes(tree->size);
+        MerkleTreeNode* root = createNodes(tree->size);
         tree->size += tree->size;
 
         MerkleTreeNode* newRoot = malloc(sizeof(MerkleTreeNode));
