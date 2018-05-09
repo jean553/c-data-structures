@@ -219,17 +219,16 @@ void insertMT(
 
     MerkleTreeNode* root = tree->merkleNode;
 
-    if (tree->leavesAmount % 2 == 0) {
-
-        /* TODO: grows according to the current size */
+    if (tree->leavesAmount == 0) {
 
         root = createNodes(2);
         tree->size += 2;
+        tree->merkleNode = root;
+    }
+    else if (tree->leavesAmount % 2 == 0) {
 
-        MerkleTreeNode* node = NULL;
-
-        /* TODO: the new node creation can be moded into a dedicated function,
-           getLeafByIndex should handle trees with sizes equal to 1 or 2 */
+        root = createNodes(tree->size);
+        tree->size += tree->size;
 
         if (tree->leavesAmount != 0) {
 
@@ -238,29 +237,17 @@ void insertMT(
             newRoot->left->parent = newRoot;
             newRoot->right = root;
             newRoot->data = 0;
+
             root->parent = newRoot;
 
             tree->merkleNode = newRoot;
-            node = getLeafByIndex(tree, 2);
-
-        } else {
-
-            tree->merkleNode = root;
-            node = getLeafByIndex(tree, 0);
         }
-
-        node->data = data;
-        SHA1(&node->data, 1, node->hash);
-        updateBranchHashes(node);
-
-    } else {
-
-        MerkleTreeNode* node = getLeafByIndex(tree, tree->leavesAmount);
-        node->data = data;
-        SHA1(&node->data, 1, node->hash);
-
-        updateBranchHashes(node);
     }
+
+    MerkleTreeNode* node = getLeafByIndex(tree, tree->leavesAmount);
+    node->data = data;
+    SHA1(&node->data, 1, node->hash);
+    updateBranchHashes(node);
 
     tree->leavesAmount += 1;
 }
