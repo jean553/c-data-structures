@@ -162,9 +162,13 @@ MerkleTreeNode* getLeafByIndex(
     size_t index
 ) {
 
-    /* TODO: prevent segfaults, to handle correctly (or document correctly) */
     if (tree->size == 2) {
-        return NULL;
+
+        if (index == 0) {
+            return tree->merkleNode->left;
+        }
+
+        return tree->merkleNode->right;
     }
 
     MerkleTreeNode* node = tree->merkleNode;
@@ -242,7 +246,7 @@ void insertMT(
         } else {
 
             tree->merkleNode = root;
-            node = root->left;
+            node = getLeafByIndex(tree, 0);
         }
 
         node->data = data;
