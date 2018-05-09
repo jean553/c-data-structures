@@ -252,25 +252,10 @@ void insertMT(
         node->data = data;
         SHA1(&node->data, 1, node->hash);
         updateBranchHashes(node);
-    }
 
-    /* TODO: refactor the part below */
+    } else {
 
-    if (tree->leavesAmount == 1) {
-
-        MerkleTreeNode* node = getLeafByIndex(tree, 1);
-        node->data = data;
-        SHA1(&node->data, 1, node->hash);
-
-        updateBranchHashes(node);
-
-    }
-    else if (tree->leavesAmount == 3) {
-
-        /* FIXME: this is a temporary solution, find the node to edit
-           should handle the current size of the whole tree */
-
-        MerkleTreeNode* node = getLeafByIndex(tree, 3); // fourth node, third index
+        MerkleTreeNode* node = getLeafByIndex(tree, tree->leavesAmount);
         node->data = data;
         SHA1(&node->data, 1, node->hash);
 
