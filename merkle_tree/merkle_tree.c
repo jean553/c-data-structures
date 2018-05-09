@@ -162,9 +162,13 @@ MerkleTreeNode* getLeafByIndex(
     size_t index
 ) {
 
-    /* TODO: prevent segfaults, to handle correctly (or document correctly) */
     if (tree->size == 2) {
-        return NULL;
+
+        if (index == 0) {
+            return tree->merkleNode->left;
+        }
+
+        return tree->merkleNode->right;
     }
 
     MerkleTreeNode* node = tree->merkleNode;
@@ -215,17 +219,16 @@ void insertMT(
 
     MerkleTreeNode* root = tree->merkleNode;
 
-    if (tree->leavesAmount % 2 == 0) {
-
-        /* TODO: grows according to the current size */
+    if (tree->leavesAmount == 0) {
 
         root = createNodes(2);
         tree->size += 2;
+        tree->merkleNode = root;
+    }
+    else if (tree->leavesAmount % 2 == 0) {
 
-        MerkleTreeNode* node = NULL;
-
-        /* TODO: the new node creation can be moded into a dedicated function,
-           getLeafByIndex should handle trees with sizes equal to 1 or 2 */
+        root = createNodes(tree->size);
+        tree->size += tree->size;
 
         if (tree->leavesAmount != 0) {
 
@@ -234,54 +237,17 @@ void insertMT(
             newRoot->left->parent = newRoot;
             newRoot->right = root;
             newRoot->data = 0;
+
             root->parent = newRoot;
 
             tree->merkleNode = newRoot;
-            node = getLeafByIndex(tree, 2);
-
-        } else {
-
-            tree->merkleNode = root;
-            node = root->left;
         }
-
-        node->data = data;
-        SHA1(&node->data, 1, node->hash);
-        updateBranchHashes(node);
     }
 
-    /* TODO: refactor the part below */
-
-    if (tree->leavesAmount == 1) {
-
-        MerkleTreeNode* node = root->right;
-        node->data = data;
-        SHA1(&node->data, 1, node->hash);
-
-        updateBranchHashes(tree->merkleNode->right);
-
-    }
-    else if (tree->leavesAmount == 3) {
-
-        /* FIXME: this is a temporary solution, find the node to edit
-           should handle the current size of the whole tree */
-
-        MerkleTreeNode* node = getLeafByIndex(tree, 3); // fourth node, third index
-        node->data = data;
-        SHA1(&node->data, 1, node->hash);
-
-        /* update the hash of the leaf node root node */
-
-        MerkleTreeNode* subRoot = tree->merkleNode->right;
-        MerkleTreeNode* leftNode = subRoot->left;
-
-        /* update the hash of the root node */
-
-        root = tree->merkleNode;
-        leftNode = root->left;
-
-        updateBranchHashes(node);
-    }
+    MerkleTreeNode* node = getLeafByIndex(tree, tree->leavesAmount);
+    node->data = data;
+    SHA1(&node->data, 1, node->hash);
+    updateBranchHashes(node);
 
     tree->leavesAmount += 1;
 }
