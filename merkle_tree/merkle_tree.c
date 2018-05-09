@@ -227,6 +227,7 @@ void insertMT(
         newRoot->left->parent = newRoot;
         newRoot->right = root;
         newRoot->data = 0;
+        newRoot->parent = NULL;
 
         root->parent = newRoot;
 
