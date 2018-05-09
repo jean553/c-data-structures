@@ -11,7 +11,7 @@
  * @param second the second hash
  * @param result pointer of the result array
  */
-void hashesSum(
+static void hashesSum(
     unsigned char* first,
     unsigned char* second,
     unsigned char* result
@@ -45,7 +45,7 @@ void hashesSum(
  *
  * @return MerkleTreeNode*
  */
-MerkleTreeNode* createLeafNode(unsigned char data) {
+static MerkleTreeNode* createLeafNode(unsigned char data) {
 
     MerkleTreeNode* node = malloc(sizeof(MerkleTreeNode));
     node->left = NULL;
@@ -64,7 +64,7 @@ MerkleTreeNode* createLeafNode(unsigned char data) {
  *
  * @return MerkleTreeNode*
  */
-MerkleTreeNode* createNodes(size_t leavesAmount) {
+static MerkleTreeNode* createNodes(size_t leavesAmount) {
 
     MerkleTreeNode* leaves = malloc(sizeof(MerkleTreeNode) * leavesAmount);
 
@@ -131,7 +131,7 @@ MerkleTreeNode* createNodes(size_t leavesAmount) {
  *
  * @param leafNode the starting leaf node for browsing the tree from the bottom to the top
  */
-void updateBranchHashes(MerkleTreeNode* const leafNode) {
+static void updateBranchHashes(MerkleTreeNode* const leafNode) {
 
     MerkleTreeNode* node = leafNode;
 
@@ -157,7 +157,7 @@ void updateBranchHashes(MerkleTreeNode* const leafNode) {
  *
  * @return MerkleTreeNode*
  */
-MerkleTreeNode* getLeafByIndex(
+static MerkleTreeNode* getLeafByIndex(
     MerkleTree* tree,
     size_t index
 ) {
