@@ -133,6 +133,36 @@ END_TEST
 /**
  *
  */
+START_TEST(test_getLeafByIndex)
+{
+    MerkleTree tree = createMerkleTree();
+    insertMT(&tree, 'A');
+    insertMT(&tree, 'B');
+    insertMT(&tree, 'C');
+    insertMT(&tree, 'D');
+    insertMT(&tree, 'E');
+    insertMT(&tree, 'F');
+    insertMT(&tree, 'G');
+    insertMT(&tree, 'H');
+    insertMT(&tree, 'I');
+    insertMT(&tree, 'J');
+
+    ck_assert_int_eq(getLeafByIndex(&tree, 0)->data, 'A');
+    ck_assert_int_eq(getLeafByIndex(&tree, 1)->data, 'B');
+    ck_assert_int_eq(getLeafByIndex(&tree, 2)->data, 'C');
+    ck_assert_int_eq(getLeafByIndex(&tree, 3)->data, 'D');
+    ck_assert_int_eq(getLeafByIndex(&tree, 4)->data, 'E');
+    ck_assert_int_eq(getLeafByIndex(&tree, 5)->data, 'F');
+    ck_assert_int_eq(getLeafByIndex(&tree, 6)->data, 'G');
+    ck_assert_int_eq(getLeafByIndex(&tree, 7)->data, 'H');
+    ck_assert_int_eq(getLeafByIndex(&tree, 8)->data, 'I');
+    ck_assert_int_eq(getLeafByIndex(&tree, 9)->data, 'J');
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* merkle_tree_suite()
 {
     Suite *suite = suite_create("merkle_tree");
@@ -140,6 +170,7 @@ Suite* merkle_tree_suite()
 
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_insert);
+    tcase_add_test(tcase, test_getLeafByIndex);
 
     suite_add_tcase(suite, tcase);
 
