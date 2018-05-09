@@ -224,18 +224,15 @@ void insertMT(
         root = createNodes(tree->size);
         tree->size += tree->size;
 
-        if (tree->leavesAmount != 0) {
+        MerkleTreeNode* newRoot = malloc(sizeof(MerkleTreeNode));
+        newRoot->left = tree->merkleNode;
+        newRoot->left->parent = newRoot;
+        newRoot->right = root;
+        newRoot->data = 0;
 
-            MerkleTreeNode* newRoot = malloc(sizeof(MerkleTreeNode));
-            newRoot->left = tree->merkleNode;
-            newRoot->left->parent = newRoot;
-            newRoot->right = root;
-            newRoot->data = 0;
+        root->parent = newRoot;
 
-            root->parent = newRoot;
-
-            tree->merkleNode = newRoot;
-        }
+        tree->merkleNode = newRoot;
     }
 
     MerkleTreeNode* node = getLeafByIndex(tree, tree->leavesAmount);
