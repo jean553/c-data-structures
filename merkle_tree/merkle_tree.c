@@ -303,7 +303,8 @@ unsigned int isDataValid(
         }
 
         node = node->parent;
-        hash = result;
+
+        memcpy(hash, result, HASH_BYTES_LENGTH);
     }
 
     if (!memcmp(nodes[nodesAmount - 1]->hash, hash, HASH_BYTES_LENGTH)) {

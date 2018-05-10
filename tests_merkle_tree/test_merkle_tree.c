@@ -324,17 +324,20 @@ START_TEST(test_isDataValid)
 
     insertMT(&tree, 'A');
 
-    const MerkleTreeNode const* nodes[2] = {
+    /* valid digests */
+
+    const MerkleTreeNode const* validNodes[2] = {
         tree.merkleNode->right,
         tree.merkleNode
     };
-
     ck_assert_int_eq(
-        isDataValid(tree.merkleNode->left, nodes, 2),
+        isDataValid(tree.merkleNode->left, validNodes, 2),
         1
     );
 
-} END_TEST
+    /* TODO: check with invalid nodes */
+}
+END_TEST
 
 /**
  *
