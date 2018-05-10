@@ -20,6 +20,7 @@ Attempt to implement common data structures in C.
     * [Red black tree](#red-black-tree)
     * [B-Tree](#b-tree)
     * [Quad tree](#quad-tree)
+    * [Merkle tree](#merkle-tree)
  - [Tries](#tries)
     * [Trie](#trie)
     * [Radix trie](#radix-trie)
@@ -510,7 +511,7 @@ Implemented methods:
 
 *NOTE*: with the current implementation, the B-tree is not automatically balanced.
 
-### Quad Tree
+### Quad tree
 
 Tree data structure in which one each node has four children.
 
@@ -518,6 +519,17 @@ Implemented methods:
  * create
  * allocateChildren (allocates the children nodes into memory for one given node)
  * free (free the whole tree from the memory)
+
+### Merkle tree
+
+The merkle tree is also called "hash tree". This is a balanced binary tree.
+Leaves nodes contain data and the hash digest of their data.
+All the other nodes contain the hash digest of their two children hash digests.
+
+Implemented methods:
+ * create
+ * insert
+ * get leaf node by index
 
 ## Tries
 
