@@ -241,3 +241,13 @@ void insertMT(
 
     tree->leavesAmount += 1;
 }
+
+/**
+ *
+ */
+unsigned int isDataValid(
+    char data,
+    char* rootDigest,
+    char** digests
+) {
+}

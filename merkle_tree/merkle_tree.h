@@ -58,3 +58,21 @@ MerkleTreeNode* getLeafByIndex(
     MerkleTree* tree,
     size_t index
 );
+
+/**
+ * @brief gives data, a root digest and a list of ordered digests
+ * (all supposed to be from the same tree)
+ * the method uses this few amount of hash digests to determine
+ * if the chunk is the genuine one (without alteration or modification)
+ *
+ * @param data the data of the chunk
+ * @param rootDigest the root digest of the tree
+ * @param digests list of digests, from the leaf node neighbour to the one closest to the root
+ *
+ * @return unsigned int
+ */
+unsigned int isDataValid(
+    char data,
+    char* rootDigest,
+    char** digests
+);
