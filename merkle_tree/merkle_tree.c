@@ -274,4 +274,41 @@ unsigned int isDataValid(
     const MerkleTreeNode** const nodes,
     size_t nodesAmount
 ) {
+
+    MerkleTreeNode* node = (MerkleTreeNode*) dataNode;
+    unsigned char* hash = node->hash;
+    unsigned char* result;
+
+    for (
+        size_t index;
+        index < nodesAmount - 1;
+        index += 1
+    ) {
+
+        if (node->side == LeftNode) {
+
+            hashesSum(
+                hash,
+                (unsigned char*) nodes[index]->hash,
+                result
+            );
+
+        } else {
+
+            hashesSum(
+                (unsigned char*) nodes[index]->hash,
+                hash,
+                result
+            );
+        }
+
+        node = node->parent;
+        hash = result;
+    }
+
+    if (!memcmp(nodes[nodesAmount - 1]->hash, hash, HASH_BYTES_LENGTH)) {
+        return 1;
+    }
+
+    return 0;
 }
