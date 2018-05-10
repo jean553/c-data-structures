@@ -178,6 +178,85 @@ END_TEST
 /**
  *
  */
+START_TEST(test_size_and_leaves_amount)
+{
+    MerkleTree tree = createMerkleTree();
+    ck_assert_int_eq(tree.size, 0);
+    ck_assert_int_eq(tree.leavesAmount, 0);
+
+    insertMT(&tree, 'A');
+    ck_assert_int_eq(tree.size, 2);
+    ck_assert_int_eq(tree.leavesAmount, 1);
+
+    insertMT(&tree, 'B');
+    ck_assert_int_eq(tree.size, 2);
+    ck_assert_int_eq(tree.leavesAmount, 2);
+
+    insertMT(&tree, 'C');
+    ck_assert_int_eq(tree.size, 4);
+    ck_assert_int_eq(tree.leavesAmount, 3);
+
+    insertMT(&tree, 'D');
+    ck_assert_int_eq(tree.size, 4);
+    ck_assert_int_eq(tree.leavesAmount, 4);
+
+    insertMT(&tree, 'E');
+    ck_assert_int_eq(tree.size, 8);
+    ck_assert_int_eq(tree.leavesAmount, 5);
+
+    insertMT(&tree, 'F');
+    ck_assert_int_eq(tree.size, 8);
+    ck_assert_int_eq(tree.leavesAmount, 6);
+
+    insertMT(&tree, 'G');
+    ck_assert_int_eq(tree.size, 8);
+    ck_assert_int_eq(tree.leavesAmount, 7);
+
+    insertMT(&tree, 'H');
+    ck_assert_int_eq(tree.size, 8);
+    ck_assert_int_eq(tree.leavesAmount, 8);
+
+    insertMT(&tree, 'I');
+    ck_assert_int_eq(tree.size, 16);
+    ck_assert_int_eq(tree.leavesAmount, 9);
+
+    insertMT(&tree, 'J');
+    ck_assert_int_eq(tree.size, 16);
+    ck_assert_int_eq(tree.leavesAmount, 10);
+
+    insertMT(&tree, 'K');
+    ck_assert_int_eq(tree.size, 16);
+    ck_assert_int_eq(tree.leavesAmount, 11);
+
+    insertMT(&tree, 'L');
+    ck_assert_int_eq(tree.size, 16);
+    ck_assert_int_eq(tree.leavesAmount, 12);
+
+    insertMT(&tree, 'M');
+    ck_assert_int_eq(tree.size, 16);
+    ck_assert_int_eq(tree.leavesAmount, 13);
+
+    insertMT(&tree, 'N');
+    ck_assert_int_eq(tree.size, 16);
+    ck_assert_int_eq(tree.leavesAmount, 14);
+
+    insertMT(&tree, 'O');
+    ck_assert_int_eq(tree.size, 16);
+    ck_assert_int_eq(tree.leavesAmount, 15);
+
+    insertMT(&tree, 'P');
+    ck_assert_int_eq(tree.size, 16);
+    ck_assert_int_eq(tree.leavesAmount, 16);
+
+    insertMT(&tree, 'Q');
+    ck_assert_int_eq(tree.size, 32);
+    ck_assert_int_eq(tree.leavesAmount, 17);
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* merkle_tree_suite()
 {
     Suite *suite = suite_create("merkle_tree");
@@ -186,6 +265,7 @@ Suite* merkle_tree_suite()
     tcase_add_test(tcase, test_create);
     tcase_add_test(tcase, test_insert);
     tcase_add_test(tcase, test_getLeafByIndex);
+    tcase_add_test(tcase, test_size_and_leaves_amount);
 
     suite_add_tcase(suite, tcase);
 
