@@ -57,6 +57,23 @@ static MerkleTreeNode* createLeafNode(unsigned char data) {
     return node;
 }
 
+
+/**
+ * @brief returns the side of a node according to an index
+ *
+ * @param index the index of the node
+ *
+ * @return enum MerkleTreeNodeSide
+ */
+static enum MerkleTreeNodeSide getNodeSideByIndex(size_t index) {
+
+    if (index % 2 == 0) {
+        return LeftNode;
+    }
+
+    return RightNode;
+}
+
 /**
  * @brief generates a binary tree with merkel nodes according to the given leaves nodes amount
  *
@@ -75,6 +92,7 @@ static MerkleTreeNode* createNodes(size_t leavesAmount) {
     ) {
         leaves[index].left = NULL;
         leaves[index].right = NULL;
+        leaves[index].side = getNodeSideByIndex(index);
     }
 
     while (leavesAmount != 1) {
