@@ -280,7 +280,7 @@ unsigned int isDataValid(
     unsigned char* result;
 
     for (
-        size_t index;
+        size_t index = 0;
         index < nodesAmount - 1;
         index += 1
     ) {

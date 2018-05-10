@@ -318,6 +318,27 @@ END_TEST
 /**
  *
  */
+START_TEST(test_isDataValid)
+{
+    MerkleTree tree = createMerkleTree();
+
+    insertMT(&tree, 'A');
+
+    const MerkleTreeNode const* nodes[2] = {
+        tree.merkleNode->right,
+        tree.merkleNode
+    };
+
+    ck_assert_int_eq(
+        isDataValid(tree.merkleNode->left, nodes, 2),
+        1
+    );
+
+} END_TEST
+
+/**
+ *
+ */
 Suite* merkle_tree_suite()
 {
     Suite *suite = suite_create("merkle_tree");
@@ -328,6 +349,7 @@ Suite* merkle_tree_suite()
     tcase_add_test(tcase, test_getLeafByIndex);
     tcase_add_test(tcase, test_size_and_leaves_amount);
     tcase_add_test(tcase, test_sides);
+    tcase_add_test(tcase, test_isDataValid);
 
     suite_add_tcase(suite, tcase);
 
