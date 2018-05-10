@@ -124,12 +124,14 @@ static MerkleTreeNode* createNodes(size_t leavesAmount) {
             nodes[index].left = &leaves[leavesIndex];
             leaves[leavesIndex].data = 0;
             leaves[leavesIndex].parent = &nodes[index];
+            leaves[leavesIndex].side = LeftNode;
             memcpy(leaves[leavesIndex].hash, zeroHash, HASH_BYTES_LENGTH);
             leavesIndex += 1;
 
             nodes[index].right = &leaves[leavesIndex];
             leaves[leavesIndex].data = 0;
             leaves[leavesIndex].parent = &nodes[index];
+            leaves[leavesIndex].side = RightNode;
             memcpy(leaves[leavesIndex].hash, zeroHash, HASH_BYTES_LENGTH);
             leavesIndex += 1;
 
@@ -234,6 +236,7 @@ void insertMT(
         MerkleTreeNode* root = createNodes(2);
         tree->size += 2;
         tree->merkleNode = root;
+        tree->merkleNode->side = RightNode;
     }
     else if (tree->leavesAmount == tree->size) {
 
@@ -242,11 +245,14 @@ void insertMT(
 
         MerkleTreeNode* newRoot = malloc(sizeof(MerkleTreeNode));
         newRoot->left = tree->merkleNode;
+        newRoot->left->side = LeftNode;
         newRoot->left->parent = newRoot;
         newRoot->right = root;
+        newRoot->side = RightNode;
         newRoot->data = 0;
         newRoot->parent = NULL;
 
+        root->side = RightNode;
         root->parent = newRoot;
 
         tree->merkleNode = newRoot;
