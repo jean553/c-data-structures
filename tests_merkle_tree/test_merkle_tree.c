@@ -257,6 +257,91 @@ END_TEST
 /**
  *
  */
+START_TEST(test_sides)
+{
+    MerkleTree tree = createMerkleTree();
+
+    insertMT(&tree, 'A');
+    ck_assert_int_eq(tree.merkleNode->side, RightNode);
+    ck_assert_int_eq(tree.merkleNode->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->right->side, RightNode);
+
+    insertMT(&tree, 'B');
+    ck_assert_int_eq(tree.merkleNode->side, RightNode);
+    ck_assert_int_eq(tree.merkleNode->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->right->side, RightNode);
+
+    insertMT(&tree, 'C');
+    ck_assert_int_eq(tree.merkleNode->side, RightNode);
+    ck_assert_int_eq(tree.merkleNode->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->left->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->left->right->side, RightNode);
+    ck_assert_int_eq(tree.merkleNode->right->side, RightNode);
+    ck_assert_int_eq(tree.merkleNode->right->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->right->right->side, RightNode);
+
+    insertMT(&tree, 'D');
+    ck_assert_int_eq(tree.merkleNode->side, RightNode);
+    ck_assert_int_eq(tree.merkleNode->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->left->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->left->right->side, RightNode);
+    ck_assert_int_eq(tree.merkleNode->right->side, RightNode);
+    ck_assert_int_eq(tree.merkleNode->right->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->right->right->side, RightNode);
+
+    insertMT(&tree, 'E');
+    ck_assert_int_eq(tree.merkleNode->side, RightNode);
+
+    ck_assert_int_eq(tree.merkleNode->left->side, LeftNode);
+
+    ck_assert_int_eq(tree.merkleNode->left->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->right->side, RightNode);
+
+    ck_assert_int_eq(tree.merkleNode->left->left->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->left->left->right->side, RightNode);
+
+    ck_assert_int_eq(tree.merkleNode->left->right->side, RightNode);
+    ck_assert_int_eq(tree.merkleNode->left->right->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->left->right->right->side, RightNode);
+
+    ck_assert_int_eq(tree.merkleNode->right->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->right->right->side, RightNode);
+
+    ck_assert_int_eq(tree.merkleNode->right->left->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->right->left->right->side, RightNode);
+
+    ck_assert_int_eq(tree.merkleNode->right->right->left->side, LeftNode);
+    ck_assert_int_eq(tree.merkleNode->right->right->right->side, RightNode);
+}
+END_TEST
+
+/**
+ *
+ */
+START_TEST(test_isDataValid)
+{
+    MerkleTree tree = createMerkleTree();
+
+    insertMT(&tree, 'A');
+
+    /* valid digests */
+
+    const MerkleTreeNode const* validNodes[2] = {
+        tree.merkleNode->right,
+        tree.merkleNode
+    };
+    ck_assert_int_eq(
+        isDataValid(tree.merkleNode->left, validNodes, 2),
+        1
+    );
+
+    /* TODO: check with invalid nodes */
+}
+END_TEST
+
+/**
+ *
+ */
 Suite* merkle_tree_suite()
 {
     Suite *suite = suite_create("merkle_tree");
@@ -266,6 +351,8 @@ Suite* merkle_tree_suite()
     tcase_add_test(tcase, test_insert);
     tcase_add_test(tcase, test_getLeafByIndex);
     tcase_add_test(tcase, test_size_and_leaves_amount);
+    tcase_add_test(tcase, test_sides);
+    tcase_add_test(tcase, test_isDataValid);
 
     suite_add_tcase(suite, tcase);
 

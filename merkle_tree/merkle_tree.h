@@ -6,11 +6,17 @@
 
 #define HASH_BYTES_LENGTH 20
 
+enum MerkleTreeNodeSide {
+    LeftNode,
+    RightNode,
+};
+
 typedef struct MerkleTreeNode {
     unsigned char hash[HASH_BYTES_LENGTH];
     struct MerkleTreeNode* left;
     struct MerkleTreeNode* right;
     struct MerkleTreeNode* parent;
+    enum MerkleTreeNodeSide side;
 
     /* TODO: check if different kind of nodes can be created,
      * non-leaf node, leaf node and data node, it would prevent
@@ -57,4 +63,22 @@ void insertMT(
 MerkleTreeNode* getLeafByIndex(
     MerkleTree* tree,
     size_t index
+);
+
+/**
+ * @brief gives data, a root digest and a list of ordered digests
+ * (all supposed to be from the same tree)
+ * the method uses this few amount of hash digests to determine
+ * if the chunk is the genuine one (without alteration or modification)
+ *
+ * @param dataNode the node with the data chunk
+ * @param nodes given ordered nodes (including tree root) to check if data is valid, from the leaf to the root
+ * @param nodesAmount the amount of nodes from the given nodes array
+ *
+ * @return unsigned int
+ */
+unsigned int isDataValid(
+    const MerkleTreeNode* const dataNode,
+    const MerkleTreeNode** const nodes,
+    size_t nodesAmount
 );

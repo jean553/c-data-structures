@@ -57,6 +57,23 @@ static MerkleTreeNode* createLeafNode(unsigned char data) {
     return node;
 }
 
+
+/**
+ * @brief returns the side of a node according to an index
+ *
+ * @param index the index of the node
+ *
+ * @return enum MerkleTreeNodeSide
+ */
+static enum MerkleTreeNodeSide getNodeSideByIndex(size_t index) {
+
+    if (index % 2 == 0) {
+        return LeftNode;
+    }
+
+    return RightNode;
+}
+
 /**
  * @brief generates a binary tree with merkel nodes according to the given leaves nodes amount
  *
@@ -75,6 +92,7 @@ static MerkleTreeNode* createNodes(size_t leavesAmount) {
     ) {
         leaves[index].left = NULL;
         leaves[index].right = NULL;
+        leaves[index].side = getNodeSideByIndex(index);
     }
 
     while (leavesAmount != 1) {
@@ -106,12 +124,14 @@ static MerkleTreeNode* createNodes(size_t leavesAmount) {
             nodes[index].left = &leaves[leavesIndex];
             leaves[leavesIndex].data = 0;
             leaves[leavesIndex].parent = &nodes[index];
+            leaves[leavesIndex].side = LeftNode;
             memcpy(leaves[leavesIndex].hash, zeroHash, HASH_BYTES_LENGTH);
             leavesIndex += 1;
 
             nodes[index].right = &leaves[leavesIndex];
             leaves[leavesIndex].data = 0;
             leaves[leavesIndex].parent = &nodes[index];
+            leaves[leavesIndex].side = RightNode;
             memcpy(leaves[leavesIndex].hash, zeroHash, HASH_BYTES_LENGTH);
             leavesIndex += 1;
 
@@ -216,6 +236,7 @@ void insertMT(
         MerkleTreeNode* root = createNodes(2);
         tree->size += 2;
         tree->merkleNode = root;
+        tree->merkleNode->side = RightNode;
     }
     else if (tree->leavesAmount == tree->size) {
 
@@ -224,11 +245,14 @@ void insertMT(
 
         MerkleTreeNode* newRoot = malloc(sizeof(MerkleTreeNode));
         newRoot->left = tree->merkleNode;
+        newRoot->left->side = LeftNode;
         newRoot->left->parent = newRoot;
         newRoot->right = root;
+        newRoot->side = RightNode;
         newRoot->data = 0;
         newRoot->parent = NULL;
 
+        root->side = RightNode;
         root->parent = newRoot;
 
         tree->merkleNode = newRoot;
@@ -240,4 +264,52 @@ void insertMT(
     updateBranchHashes(node);
 
     tree->leavesAmount += 1;
+}
+
+/**
+ *
+ */
+unsigned int isDataValid(
+    const MerkleTreeNode* const dataNode,
+    const MerkleTreeNode** const nodes,
+    size_t nodesAmount
+) {
+
+    MerkleTreeNode* node = (MerkleTreeNode*) dataNode;
+    unsigned char* hash = node->hash;
+    unsigned char* result;
+
+    for (
+        size_t index = 0;
+        index < nodesAmount - 1;
+        index += 1
+    ) {
+
+        if (node->side == LeftNode) {
+
+            hashesSum(
+                hash,
+                (unsigned char*) nodes[index]->hash,
+                result
+            );
+
+        } else {
+
+            hashesSum(
+                (unsigned char*) nodes[index]->hash,
+                hash,
+                result
+            );
+        }
+
+        node = node->parent;
+
+        memcpy(hash, result, HASH_BYTES_LENGTH);
+    }
+
+    if (!memcmp(nodes[nodesAmount - 1]->hash, hash, HASH_BYTES_LENGTH)) {
+        return 1;
+    }
+
+    return 0;
 }
