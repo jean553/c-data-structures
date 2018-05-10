@@ -246,8 +246,8 @@ void insertMT(
  *
  */
 unsigned int isDataValid(
-    char data,
-    char* rootDigest,
-    char** digests
+    const MerkleTreeNode* const dataNode,
+    const MerkleTreeNode** const nodes,
+    size_t nodesAmount
 ) {
 }

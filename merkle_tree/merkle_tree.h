@@ -65,14 +65,14 @@ MerkleTreeNode* getLeafByIndex(
  * the method uses this few amount of hash digests to determine
  * if the chunk is the genuine one (without alteration or modification)
  *
- * @param data the data of the chunk
- * @param rootDigest the root digest of the tree
- * @param digests list of digests, from the leaf node neighbour to the one closest to the root
+ * @param dataNode the node with the data chunk
+ * @param nodes given ordered nodes (including tree root) to check if data is valid, from the leaf to the root
+ * @param nodesAmount the amount of nodes from the given nodes array
  *
  * @return unsigned int
  */
 unsigned int isDataValid(
-    char data,
-    char* rootDigest,
-    char** digests
+    const MerkleTreeNode* const dataNode,
+    const MerkleTreeNode** const nodes,
+    size_t nodesAmount
 );
