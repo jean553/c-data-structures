@@ -217,7 +217,7 @@ void insertMT(
         tree->size += 2;
         tree->merkleNode = root;
     }
-    else if (tree->leavesAmount % 2 == 0) {
+    else if (tree->leavesAmount == tree->size) {
 
         MerkleTreeNode* root = createNodes(tree->size);
         tree->size += tree->size;
