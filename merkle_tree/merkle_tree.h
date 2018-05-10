@@ -6,11 +6,17 @@
 
 #define HASH_BYTES_LENGTH 20
 
+enum MerkleTreeNodeSide {
+    LeftNode,
+    RightNode,
+};
+
 typedef struct MerkleTreeNode {
     unsigned char hash[HASH_BYTES_LENGTH];
     struct MerkleTreeNode* left;
     struct MerkleTreeNode* right;
     struct MerkleTreeNode* parent;
+    enum MerkleTreeNodeSide side;
 
     /* TODO: check if different kind of nodes can be created,
      * non-leaf node, leaf node and data node, it would prevent
