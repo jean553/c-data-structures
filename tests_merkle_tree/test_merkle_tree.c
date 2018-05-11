@@ -326,23 +326,119 @@ START_TEST(test_isDataValid)
 
     /* valid digests */
 
-    const MerkleTreeNode const* validNodes[2] = {
+    const MerkleTreeNode const* firstValidNodes[2] = {
         tree.merkleNode->right,
         tree.merkleNode
     };
     ck_assert_int_eq(
-        isDataValid(tree.merkleNode->left, validNodes, 2),
+        isDataValid(tree.merkleNode->left, firstValidNodes, 2),
         1
     );
 
     /* invalid digests */
 
-    const MerkleTreeNode const* invalidNodes[2] = {
+    const MerkleTreeNode const* firstInvalidNodes[2] = {
         tree.merkleNode->left,
         tree.merkleNode
     };
     ck_assert_int_eq(
-        isDataValid(tree.merkleNode->left, invalidNodes, 2),
+        isDataValid(tree.merkleNode->left, firstInvalidNodes, 2),
+        0
+    );
+
+    insertMT(&tree, 'B');
+
+    /* valid digests */
+
+    const MerkleTreeNode const* secondValidNodes[2] = {
+        tree.merkleNode->right,
+        tree.merkleNode
+    };
+    ck_assert_int_eq(
+        isDataValid(tree.merkleNode->left, secondValidNodes, 2),
+        1
+    );
+
+    /* invalid digests */
+
+    const MerkleTreeNode const* secondInvalidNodes[2] = {
+        tree.merkleNode->left,
+        tree.merkleNode
+    };
+    ck_assert_int_eq(
+        isDataValid(tree.merkleNode->left, secondInvalidNodes, 2),
+        0
+    );
+
+    insertMT(&tree, 'C');
+
+    /* valid digests */
+
+    const MerkleTreeNode const* thirdValidNodes[3] = {
+        tree.merkleNode->right->right,
+        tree.merkleNode->left,
+        tree.merkleNode
+    };
+    ck_assert_int_eq(
+        isDataValid(tree.merkleNode->right->left, thirdValidNodes, 3),
+        1
+    );
+
+    /* invalid digests */
+
+    const MerkleTreeNode const* thirdInvalidNodes[3] = {
+        tree.merkleNode->right->right,
+        tree.merkleNode->right,
+        tree.merkleNode
+    };
+    ck_assert_int_eq(
+        isDataValid(tree.merkleNode->right->left, thirdInvalidNodes, 3),
+        0
+    );
+
+    insertMT(&tree, 'D');
+
+    /* valid digests */
+
+    const MerkleTreeNode const* fourthValidNodes[3] = {
+        tree.merkleNode->right->left,
+        tree.merkleNode->left,
+        tree.merkleNode
+    };
+    ck_assert_int_eq(
+        isDataValid(tree.merkleNode->right->right, fourthValidNodes, 3),
+        1
+    );
+
+    const MerkleTreeNode const* fifthValidNodes[3] = {
+        tree.merkleNode->left->right,
+        tree.merkleNode->right,
+        tree.merkleNode
+    };
+    ck_assert_int_eq(
+        isDataValid(tree.merkleNode->left->left, fifthValidNodes, 3),
+        1
+    );
+
+    /* invalid digests */
+
+    const MerkleTreeNode const* fourthInvalidNodes[3] = {
+        tree.merkleNode->left->right,
+        tree.merkleNode->right,
+        tree.merkleNode
+    };
+    ck_assert_int_eq(
+        isDataValid(tree.merkleNode->right->right, fourthInvalidNodes, 3),
+        0
+    );
+
+    const MerkleTreeNode const* fifthInvalidNodes[3] = {
+        tree.merkleNode->left->right,
+        tree.merkleNode->right->left,
+        tree.merkleNode
+    };
+    ck_assert_int_eq(
+        isDataValid(tree.merkleNode->left->left, fifthInvalidNodes, 3),
         0
     );
 }
