@@ -17,7 +17,7 @@ static void hashesSum(
     unsigned char* result
 ) {
 
-    char hashesSum[HASH_BYTES_LENGTH * 2];
+    unsigned char hashesSum[HASH_BYTES_LENGTH * 2];
     memcpy(
         hashesSum,
         first,
