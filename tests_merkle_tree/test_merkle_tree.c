@@ -335,7 +335,16 @@ START_TEST(test_isDataValid)
         1
     );
 
-    /* TODO: check with invalid nodes */
+    /* invalid digests */
+
+    const MerkleTreeNode const* invalidNodes[2] = {
+        tree.merkleNode->left,
+        tree.merkleNode
+    };
+    ck_assert_int_eq(
+        isDataValid(tree.merkleNode->left, invalidNodes, 2),
+        0
+    );
 }
 END_TEST
 
