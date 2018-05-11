@@ -276,8 +276,11 @@ unsigned int isDataValid(
 ) {
 
     MerkleTreeNode* node = (MerkleTreeNode*) dataNode;
-    unsigned char* hash = node->hash;
-    unsigned char* result;
+
+    unsigned char hash[20];
+    memcpy(hash, node->hash, HASH_BYTES_LENGTH);
+
+    unsigned char result[20];
 
     for (
         size_t index = 0;
