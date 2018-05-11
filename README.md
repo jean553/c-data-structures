@@ -530,7 +530,7 @@ Implemented methods:
  * create
  * insert
  * get leaf node by index
- * check if data chunk is valid according a set of limited other nodes hash digests
+ * check if data chunk is valid according to a set of limited other nodes hash digests
 
 ## Tries
 
