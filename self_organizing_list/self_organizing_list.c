@@ -23,7 +23,7 @@ int atWithMTF(
     for (
         unsigned int i = 0;
         i != index;
-        i++
+        i += 1
     )
     {
         previousNode = node;
@@ -59,7 +59,7 @@ int atTranspose(
     for (
         unsigned int i = 0;
         i != index;
-        i++
+        i += 1
     )
     {
         previousPreviousNode = previousNode;
