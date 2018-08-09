@@ -13,9 +13,12 @@ typedef struct LinkedList LinkedList;
  * @param list the linked list to modify
  * @param index the index into the list of the expected data
  *
- * @return const int
+ * @return int
  */
-const int atWithMTF(LinkedList* list, const unsigned int index);
+int atWithMTF(
+    LinkedList* const list,
+    const unsigned int index
+);
 
 /**
  * @brief returns data at the given index and
@@ -25,6 +28,9 @@ const int atWithMTF(LinkedList* list, const unsigned int index);
  * @param list the linked list to modify
  * @param index the index into the list of the expected data
  *
- * @return const int
+ * @return int
  */
-const int atTranspose(LinkedList* list, const unsigned int index);
+int atTranspose(
+    LinkedList* const list,
+    const unsigned int index
+);
