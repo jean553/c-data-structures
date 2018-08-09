@@ -7,8 +7,10 @@
 /**
  *
  */
-const int atWithMTF(LinkedList* list, const unsigned int index)
-{
+int atWithMTF(
+    LinkedList* const list,
+    const unsigned int index
+) {
     LinkedListNode* node = list->head;
 
     if (index == 0)
@@ -21,7 +23,7 @@ const int atWithMTF(LinkedList* list, const unsigned int index)
     for (
         unsigned int i = 0;
         i != index;
-        i++
+        i += 1
     )
     {
         previousNode = node;
@@ -40,8 +42,10 @@ const int atWithMTF(LinkedList* list, const unsigned int index)
 /**
  *
  */
-const int atTranspose(LinkedList* list, const unsigned int index)
-{
+int atTranspose(
+    LinkedList* const list,
+    const unsigned int index
+) {
     LinkedListNode* node = list->head;
 
     if (index == 0)
@@ -55,7 +59,7 @@ const int atTranspose(LinkedList* list, const unsigned int index)
     for (
         unsigned int i = 0;
         i != index;
-        i++
+        i += 1
     )
     {
         previousPreviousNode = previousNode;
