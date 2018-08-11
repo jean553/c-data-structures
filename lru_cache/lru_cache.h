@@ -33,3 +33,14 @@ void insertKey(
     LRUCache* const cache,
     const unsigned int key
 );
+
+/**
+ * @brief Searches the given key into the cache and makes the necessary list modifications
+ *
+ * @param cache the concerned cache
+ * @param key the key to get
+ */
+void getKey(
+    LRUCache* const cache,
+    const unsigned int key
+);

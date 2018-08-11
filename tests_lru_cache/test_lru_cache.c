@@ -12,6 +12,7 @@ START_TEST(test_lru_cache)
 {
    LRUCache cache = createLRU(5); 
    insertKey(&cache, 10);
+   getKey(&cache, 10);
 }
 END_TEST
 
