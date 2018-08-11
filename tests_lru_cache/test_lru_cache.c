@@ -10,9 +10,34 @@
  */
 START_TEST(test_lru_cache)
 {
-   LRUCache cache = createLRU(5); 
-   insertKey(&cache, 10);
-   getKey(&cache, 10);
+    LRUCache cache = createLRU(5);
+    insertKey(&cache, 10);
+    insertKey(&cache, 20);
+    insertKey(&cache, 30);
+    insertKey(&cache, 40);
+    insertKey(&cache, 50);
+
+    ck_assert_int_eq(atLL(cache.list, 0), 50);
+    ck_assert_int_eq(atLL(cache.list, 1), 40);
+    ck_assert_int_eq(atLL(cache.list, 2), 30);
+    ck_assert_int_eq(atLL(cache.list, 3), 20);
+    ck_assert_int_eq(atLL(cache.list, 4), 10);
+
+    getKey(&cache, 10);
+
+    ck_assert_int_eq(atLL(cache.list, 0), 10);
+    ck_assert_int_eq(atLL(cache.list, 1), 50);
+    ck_assert_int_eq(atLL(cache.list, 2), 40);
+    ck_assert_int_eq(atLL(cache.list, 3), 30);
+    ck_assert_int_eq(atLL(cache.list, 4), 20);
+
+    getKey(&cache, 30);
+
+    ck_assert_int_eq(atLL(cache.list, 0), 30);
+    ck_assert_int_eq(atLL(cache.list, 1), 10);
+    ck_assert_int_eq(atLL(cache.list, 2), 50);
+    ck_assert_int_eq(atLL(cache.list, 3), 40);
+    ck_assert_int_eq(atLL(cache.list, 4), 20);
 }
 END_TEST
 
