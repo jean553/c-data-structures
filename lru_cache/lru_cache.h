@@ -18,10 +18,14 @@ typedef struct LRUCache
  * @brief Creates a new LRU cache
  *
  * @param capacity the capacity of the LRU cache to create
+ * @param key the first key to insert into the cache
  *
  * @return LRUCache
  */
-LRUCache createLRU(const size_t capacity);
+LRUCache createLRU(
+    const size_t capacity,
+    const unsigned int key
+);
 
 /**
  * @brief Inserts a given key into the cache
