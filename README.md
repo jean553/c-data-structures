@@ -28,6 +28,7 @@ Attempt to implement common data structures in C.
     * [Vector](#vector)
     * [Hashmap](#hashmap)
     * [Set](#set)
+    * [LRU Cache](#lru-cache)
 
 ## Requirements
 
@@ -659,3 +660,13 @@ In fact, a set can be implemented using:
 That's why the "order" is something that does not matter when storing stuffs to a set.
 
 There is no set implementation in this project. Instead, there are trees and hashmap implementations.
+
+### LRU Cache
+
+LRU = Least Recently Used
+
+A cache that stores items into a linked list.
+The last requested item is always moved at the head of the list.
+When one item is inserted into the cache, the last item of the list is removed (replacement).
+This mechanism ensures that the most requested items are always near the head,
+furthermore, the least recently used items can be replaced.

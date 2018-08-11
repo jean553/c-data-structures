@@ -1,0 +1,50 @@
+/**
+ * @brief LRU cache structure and methods
+ * @file lru_cache.h
+ */
+
+#include <stdlib.h>
+
+typedef struct LinkedList LinkedList;
+
+typedef struct LRUCache
+{
+    size_t capacity;
+    size_t size;
+    LinkedList* list;
+} LRUCache;
+
+/**
+ * @brief Creates a new LRU cache
+ *
+ * @param capacity the capacity of the LRU cache to create
+ * @param key the first key to insert into the cache
+ *
+ * @return LRUCache
+ */
+LRUCache createLRU(
+    const size_t capacity,
+    const unsigned int key
+);
+
+/**
+ * @brief Inserts a given key into the cache
+ *
+ * @param cache the cache to modify
+ * @param key the key to insert
+ */
+void insertKey(
+    LRUCache* const cache,
+    const unsigned int key
+);
+
+/**
+ * @brief Searches the given key into the cache and makes the necessary list modifications
+ *
+ * @param cache the concerned cache
+ * @param key the key to get
+ */
+void getKey(
+    LRUCache* const cache,
+    const unsigned int key
+);

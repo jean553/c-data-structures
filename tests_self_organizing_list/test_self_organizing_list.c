@@ -113,7 +113,7 @@ END_TEST
 /**
  *
  */
-Suite* double_linked_list_suite()
+Suite* self_organizing_list_suite()
 {
     Suite *suite = suite_create("self_organizing_list");
     TCase *tcase = tcase_create("case");
@@ -131,7 +131,7 @@ Suite* double_linked_list_suite()
  */
 int main(int argc, char *argv[])
 {
-    Suite *suite = double_linked_list_suite();
+    Suite *suite = self_organizing_list_suite();
     SRunner *runner = srunner_create(suite);
 
     srunner_run_all(runner, CK_NORMAL);
