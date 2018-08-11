@@ -9,6 +9,7 @@ typedef struct LinkedList LinkedList;
 
 typedef struct LRUCache
 {
+    size_t capacity;
     size_t size;
     LinkedList* list;
 } LRUCache;
@@ -16,8 +17,19 @@ typedef struct LRUCache
 /**
  * @brief Creates a new LRU cache
  *
- * @param size the size of the LRU cache to create
+ * @param capacity the capacity of the LRU cache to create
  *
  * @return LRUCache
  */
-LRUCache createLRU(const size_t size);
+LRUCache createLRU(const size_t capacity);
+
+/**
+ * @brief Inserts a given key into the cache
+ *
+ * @param cache the cache to modify
+ * @param key the key to insert
+ */
+void insertKey(
+    LRUCache* const cache,
+    const unsigned int key
+);
