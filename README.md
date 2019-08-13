@@ -12,7 +12,7 @@ Attempt to implement common data structures in C.
     * [Self organizing list](#self-organizing-list)
     * [Unrolled linked list](#unrolled-linked-list)
     * [XOR Double linked list](#xor-double-linked-list)
-    * [Circulat linked list](#circular-linked-list)
+    * [Circular linked list](#circular-linked-list)
     * [Skip list](#skip-list)
  - [Trees](#trees)
     * [Binary tree](#binary-tree)
